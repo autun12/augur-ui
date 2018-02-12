@@ -83,7 +83,7 @@ let config = {
       {
         test: /\.jsx?/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'ts'
       },
       {
         test: /\.json/,
@@ -197,7 +197,7 @@ if (!process.env.DEBUG_BUILD && process.env.NODE_ENV === 'development') {
         }
       ]
     },
-    devtool: 'eval-source-map',
+    devtool: 'inline-source-map',
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
