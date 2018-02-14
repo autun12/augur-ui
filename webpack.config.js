@@ -14,6 +14,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // NOTE -- removed uglify temporarily as the git link was broken + we don't currently use this lib
 
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
 const PATHS = {
   BUILD: path.resolve(__dirname, 'build'),
   APP: path.resolve(__dirname, 'src'),
@@ -46,7 +48,9 @@ let config = {
       '.less',
       '.json',
       '.js',
-      '.jsx'
+      '.jsx',
+      '.ts',
+      '.tsx'
     ],
     alias: {
       src: PATHS.APP,
@@ -81,7 +85,7 @@ let config = {
         }
       },
       {
-        test: /\.jsx?/,
+        test: /\.(j|t)sx?/,
         exclude: /node_modules/,
         loader: 'ts'
       },
@@ -150,7 +154,8 @@ let config = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         GETH_PASSWORD: JSON.stringify(process.env.GETH_PASSWORD)
       }
-    })
+    }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
   node: {
     fs: 'empty',
