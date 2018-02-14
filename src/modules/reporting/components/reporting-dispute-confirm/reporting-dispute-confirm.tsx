@@ -1,0 +1,49 @@
+import React from "react";
+import BigNumber from "bignumber.js";
+import FormStyles from "modules/common/less/form";
+import ConfirmStyles from "modules/common/less/confirm-table";
+type ReportingDisputeConfirmProps = {
+  market: object,
+  selectedOutcome: string,
+  stake: string,
+  isMarketValid?: boolean
+};
+const ReportingDisputeConfirm: React.SFC<ReportingDisputeConfirmProps> = p => (
+  <article className={FormStyles.Form__fields}>
+    <div className={ConfirmStyles.Confirm}>
+      <h2 className={ConfirmStyles.Confirm__heading}>Confirm Dispute</h2>
+      <div className={ConfirmStyles["Confirm__wrapper--wide"]}>
+        <div className={ConfirmStyles.Confirm__creation}>
+          <ul className={ConfirmStyles["Confirm__list--left-align"]}>
+            <li>
+              <span>Current Outcome</span>
+              <span>{p.market.currentOutcome.name}</span>
+            </li>
+            <li>
+              <span>Proposed Outcome</span>
+              <span>{p.isMarketValid ? p.selectedOutcome : "Invalid"}</span>
+            </li>
+            <li>
+              <span>Dispute Bond</span>
+              <span>{p.disputeBond} REP</span>
+            </li>
+            {p.stake && (
+              <li>
+                <span>Stake</span>
+                <span>
+                  {p.stake instanceof BigNumber ? p.stake.toNumber() : p.stake}{" "}
+                  REP
+                </span>
+              </li>
+            )}
+            <li>
+              <span>Gas</span>
+              <span>0.0023 ETH (2.8%)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+);
+export default ReportingDisputeConfirm;

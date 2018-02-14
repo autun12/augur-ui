@@ -1,0 +1,385 @@
+import React, { Component } from "react";
+import classNames from "classnames";
+import getValue from "utils/get-value";
+import MarketPositionsListPosition from "modules/market/components/market-positions-list--position/market-positions-list--position";
+import MarketStatusIcon from "modules/market/components/market-status-icon/market-status-icon";
+import MarketPositionsListOrder from "modules/market/components/market-positions-list--order/market-positions-list--order";
+import CaretDropdown from "modules/common/components/caret-dropdown/caret-dropdown";
+import MarketLink from "modules/market/components/market-link/market-link";
+import {
+  TYPE_REPORT,
+  TYPE_CHALLENGE,
+  TYPE_CLAIM_PROCEEDS
+} from "modules/market/constants/link-types";
+import { dateHasPassed } from "utils/format-date";
+import CommonStyles from "modules/market/components/common/market-common.styles";
+import Styles from "modules/market/components/market-portfolio-card/market-portfolio-card.styles";
+import PositionStyles from "modules/market/components/market-positions-list/market-positions-list.styles";
+type MarketPortfolioCardProps = {
+  market: object,
+  closePositionStatus: object,
+  scalarShareDenomination: object,
+  orderCancellation: object,
+  linkType?: string,
+  positionsDefault?: boolean,
+  claimTradingProceeds?: (...args: any[]) => any,
+  isMobile?: boolean
+};
+type MarketPortfolioCardState = {
+  tableOpen: any,
+  tableOpen: { myPositions: any, openOrders: boolean }
+};
+export default class MarketPortfolioCard extends Component<
+  MarketPortfolioCardProps,
+  MarketPortfolioCardState
+> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tableOpen: {
+        myPositions: this.props.positionsDefault,
+        openOrders: false
+      }
+    };
+  }
+  toggleTable(tableKey) {
+    this.setState({
+      tableOpen: {
+        ...this.state.tableOpen,
+        [tableKey]: !this.state.tableOpen[tableKey]
+      }
+    });
+  }
+  render() {
+    const p = this.props;
+    const myPositionsSummary = getValue(
+      this.props,
+      "market.myPositionsSummary"
+    );
+    const myPositionOutcomes = getValue(this.props, "market.outcomes");
+    let buttonText;
+    switch (p.linkType) {
+      case TYPE_REPORT:
+        buttonText = "Report";
+        break;
+      case TYPE_CHALLENGE:
+        buttonText = "Challenge";
+        break;
+      case TYPE_CLAIM_PROCEEDS:
+        buttonText = "Claim Proceeds";
+        break;
+      default:
+        buttonText = "View";
+    }
+    return (
+      <article className={CommonStyles.MarketCommon__container}>
+        <section
+          className={classNames(
+            CommonStyles.MarketCommon__topcontent,
+            Styles.MarketCard__topcontent
+          )}
+        >
+          <div
+            className={classNames(
+              CommonStyles.MarketCommon__header,
+              Styles.MarketCard__header
+            )}
+          >
+            <div className={Styles.MarketCard__headertext}>
+              <span className={Styles["MarketCard__expiration--mobile"]}>
+                {dateHasPassed(p.market.endDate.timestamp)
+                  ? "Expired "
+                  : "Expires "}
+                {p.isMobile
+                  ? p.market.endDate.formattedShort
+                  : p.market.endDate.formatted}
+              </span>
+              <h1 className={CommonStyles.MarketCommon__description}>
+                <MarketLink
+                  id={this.props.market.id}
+                  formattedDescription={this.props.market.description}
+                >
+                  {this.props.market.description}
+                </MarketLink>
+              </h1>
+            </div>
+            <MarketStatusIcon
+              className={Styles.MarketCard__statusicon}
+              isOpen={p.market.isOpen}
+              isReported={p.market.isReported}
+            />
+          </div>
+          <div className={Styles.MarketCard__topstats}>
+            <div className={Styles.MarketCard__leftstats}>
+              <div className={Styles.MarketCard__stat}>
+                <span className={Styles.MarketCard__statlabel}>
+                  Realized P/L
+                </span>
+                <span className={Styles.MarketCard__statvalue}>
+                  {getValue(myPositionsSummary, "realizedNet.formatted")}
+                </span>
+                <span className={Styles.MarketCard__statunit}>ETH</span>
+              </div>
+              <div className={Styles.MarketCard__stat}>
+                <span className={Styles.MarketCard__statlabel}>
+                  Unrealized P/L
+                </span>
+                <span className={Styles.MarketCard__statvalue}>
+                  {getValue(myPositionsSummary, "unrealizedNet.formatted")}
+                </span>
+                <span className={Styles.MarketCard__statunit}>ETH</span>
+              </div>
+              <div className={Styles.MarketCard__stat}>
+                <span className={Styles.MarketCard__statlabel}>Total P/L</span>
+                <span className={Styles.MarketCard__statvalue}>
+                  {getValue(myPositionsSummary, "totalNet.formatted")}
+                </span>
+                <span className={Styles.MarketCard__statunit}>ETH</span>
+              </div>
+            </div>
+            <span className={Styles.MarketCard__expiration}>
+              <span className={Styles.MarketCard__expirationlabel}>
+                {this.props.market.endDateLabel}
+              </span>
+              <span className={Styles.MarketCard__expirationvalue}>
+                {getValue(this.props.market, "endDate.formatted")}
+              </span>
+            </span>
+          </div>
+        </section>
+        <section className={Styles.MarketCard__tablesection}>
+          {(myPositionOutcomes || []).filter(outcome => outcome.position)
+            .length !== 0 && (
+            <div className={Styles.MarketCard__headingcontainer}>
+              <h1 className={Styles.MarketCard__tableheading}>My Positions</h1>
+              <button
+                className={Styles.MarketCard__tabletoggle}
+                onClick={() => this.toggleTable("myPositions")}
+              >
+                <CaretDropdown flipped={this.state.tableOpen.myPositions} />
+              </button>
+              {p.linkType &&
+                p.linkType !== TYPE_CLAIM_PROCEEDS && (
+                  <MarketLink
+                    key={p.market.id}
+                    className={Styles.MarketCard__action}
+                    id={p.market.id}
+                    formattedDescription={p.market.description}
+                    linkType={p.linkType}
+                  >
+                    {p.buttonText || buttonText}
+                  </MarketLink>
+                )}
+              {p.linkType &&
+                p.linkType === TYPE_CLAIM_PROCEEDS &&
+                (myPositionOutcomes &&
+                  myPositionOutcomes.filter(outcome => outcome.position)
+                    .length > 0 &&
+                  myPositionOutcomes.filter(
+                    outcome =>
+                      outcome.position &&
+                      outcome.position.unrealizedNet.formattedValue > 0
+                  ).length > 0) && (
+                  <button
+                    className={Styles.MarketCard__action}
+                    onClick={() => p.claimTradingProceeds([p.market.id])}
+                  >
+                    {p.buttonText || buttonText}
+                  </button>
+                )}
+            </div>
+          )}
+          <div className={PositionStyles.MarketPositionsList__table}>
+            {this.state.tableOpen.myPositions &&
+              (myPositionOutcomes || []).filter(outcome => outcome.position)
+                .length > 0 && (
+                <ul
+                  className={
+                    PositionStyles["MarketPositionsList__table-header"]
+                  }
+                >
+                  <li>Outcome</li>
+                  {p.isMobile ? (
+                    <li>
+                      <span>Qty</span>
+                    </li>
+                  ) : (
+                    <li>
+                      <span>Quantity</span>
+                    </li>
+                  )}
+                  {p.isMobile ? (
+                    <li>
+                      <span>Avg</span>
+                    </li>
+                  ) : (
+                    <li>
+                      <span>Avg Price</span>
+                    </li>
+                  )}
+                  {!p.isMobile && (
+                    <li>
+                      <span>Last Price</span>
+                    </li>
+                  )}
+                  {!p.isMobile && (
+                    <li>
+                      <span>
+                        Realized <span />P/L
+                      </span>
+                    </li>
+                  )}
+                  {!p.isMobile && (
+                    <li>
+                      <span>
+                        Unrealized <span />P/L
+                      </span>
+                    </li>
+                  )}
+                  <li>
+                    <span>
+                      Total <span />P/L
+                    </span>
+                  </li>
+                  <li>
+                    <span>Action</span>
+                  </li>
+                </ul>
+              )}
+            <div className={PositionStyles["MarketPositionsList__table-body"]}>
+              {this.state.tableOpen.myPositions &&
+                (myPositionOutcomes || [])
+                  .filter(outcome => outcome.position)
+                  .map(outcome => (
+                    <MarketPositionsListPosition
+                      key={outcome.id + outcome.marketID}
+                      name={outcome.name}
+                      position={outcome.position}
+                      openOrders={
+                        outcome.userOpenOrders
+                          ? outcome.userOpenOrders.filter(
+                              order =>
+                                order.id === outcome.position.id &&
+                                order.pending === true
+                            )
+                          : []
+                      }
+                      isExtendedDisplay
+                      isMobile={p.isMobile}
+                    />
+                  ))}
+            </div>
+          </div>
+        </section>
+        <section className={Styles.MarketCard__tablesection}>
+          <div className={PositionStyles.MarketPositionsList__table}>
+            {this.props.market.outcomes[0] &&
+              this.props.market.outcomes[0].userOpenOrders &&
+              this.props.market.outcomes[0].userOpenOrders.length !== 0 && (
+                <div className={Styles.MarketCard__headingcontainer}>
+                  <h1 className={Styles.MarketCard__tableheading}>
+                    Open Orders
+                  </h1>
+                  <button
+                    className={Styles.MarketCard__tabletoggle}
+                    onClick={() => this.toggleTable("openOrders")}
+                  >
+                    <CaretDropdown flipped={this.state.tableOpen.openOrders} />
+                  </button>
+                </div>
+              )}
+            <div className={PositionStyles.MarketPositionsList__table}>
+              {this.state.tableOpen.openOrders && (
+                <ul
+                  className={
+                    PositionStyles["MarketPositionsList__table-header"]
+                  }
+                >
+                  <li>Outcome</li>
+                  {p.isMobile ? (
+                    <li>
+                      <span>Qty</span>
+                    </li>
+                  ) : (
+                    <li>
+                      <span>Quantity</span>
+                    </li>
+                  )}
+                  {p.isMobile ? (
+                    <li>
+                      <span>Avg</span>
+                    </li>
+                  ) : (
+                    <li>
+                      <span>Avg Price</span>
+                    </li>
+                  )}
+                  {!p.isMobile && (
+                    <li>
+                      <span>Last Price</span>
+                    </li>
+                  )}
+                  {!p.isMobile && (
+                    <li>
+                      <span>
+                        Realized <span />P/L
+                      </span>
+                    </li>
+                  )}
+                  {!p.isMobile && (
+                    <li>
+                      <span>
+                        Unrealized <span />P/L
+                      </span>
+                    </li>
+                  )}
+                  <li>
+                    <span>
+                      Total <span />P/L
+                    </span>
+                  </li>
+                  <li>
+                    <span>Action</span>
+                  </li>
+                </ul>
+              )}
+              <div
+                className={PositionStyles["MarketPositionsList__table-body"]}
+              >
+                {this.state.tableOpen.openOrders &&
+                  (myPositionOutcomes || [])
+                    .filter(outcome => outcome.userOpenOrders)
+                    .map(outcome =>
+                      outcome.userOpenOrders.map((order, i) => (
+                        <MarketPositionsListOrder
+                          key={order.id}
+                          name={outcome.name}
+                          order={order}
+                          pending={order.pending}
+                          isExtendedDisplay
+                          isMobile={p.isMobile}
+                        />
+                      ))
+                    )}
+              </div>
+            </div>
+          </div>
+        </section>
+        {p.linkType && (
+          <section className={Styles["MarketCard__tablesection-mobile"]}>
+            <div className={Styles["MarketCard__headingcontainer-mobile"]}>
+              <MarketLink
+                className={Styles["MarketCard__action-mobile"]}
+                id={p.market.id}
+                formattedDescription={p.market.description}
+                linkType={p.linkType}
+              >
+                {p.buttonText || buttonText}
+              </MarketLink>
+            </div>
+          </section>
+        )}
+      </article>
+    );
+  }
+}
