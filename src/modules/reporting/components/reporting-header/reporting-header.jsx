@@ -19,9 +19,9 @@ export default class ReportingHeader extends Component {
     reportingWindowStats: PropTypes.object.isRequired,
     repBalance: PropTypes.string.isRequired,
     updateModal: PropTypes.func.isRequired,
-    isForking: PropTypes.bool.isRequired,
+    isForking: PropTypes.bool,
     forkEndTime: PropTypes.string,
-    currentTime: PropTypes.number.isRequired,
+    currentTime: PropTypes.number,
   }
 
   componentWillMount() {
@@ -69,14 +69,12 @@ export default class ReportingHeader extends Component {
                       canClose: true,
                     })}
                   >
-                    {Participate}
-                    <span
-                      className={Styles['ReportingHeader__participationTokens--text']}
-                    >
+                    { Participate }
+                    <span className={Styles['ReportingHeader__participationTokens--text']}>
                       participate
                     </span>
                   </button>
-                  {!p.isMobile &&
+                  { !p.isMobile &&
                     <ReactTooltip
                       id="tooltip--participation-tokens"
                       className={TooltipStyles.Tooltip}
