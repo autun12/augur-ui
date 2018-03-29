@@ -3,9 +3,13 @@
 import { selectCategories } from 'modules/categories/selectors/categories'
 
 describe(`modules/categories/selectors/categories.js`, () => {
-  const test = t => it(t.description, () => (
-    t.assertions(selectCategories({ categories: t.categories }))
-  ))
+  const test = t => it(t.description, () => {
+    const categories = selectCategories({ categories: t.categories }).map(({ category, popularity }) => ({
+      category,
+      popularity: popularity.toString(),
+    }))
+    t.assertions(categories)
+  })
   test({
     description: 'no categories',
     categories: {},
@@ -18,12 +22,12 @@ describe(`modules/categories/selectors/categories.js`, () => {
     categories: {
       0: {
         category: 'testing',
-        popularity: 10,
+        popularity: '10',
       },
     },
     assertions: (output) => {
       assert.deepEqual(output, [
-        { category: 'testing', popularity: 10 },
+        { category: 'testing', popularity: '10' },
       ])
     },
   })
@@ -32,17 +36,17 @@ describe(`modules/categories/selectors/categories.js`, () => {
     categories: {
       0: {
         category: 'testing',
-        popularity: 10,
+        popularity: '10',
       },
       1: {
         category: 'backflips',
-        popularity: 2,
+        popularity: '2',
       },
     },
     assertions: (output) => {
       assert.deepEqual(output, [
-        { category: 'testing', popularity: 10 },
-        { category: 'backflips', popularity: 2 },
+        { category: 'testing', popularity: '10' },
+        { category: 'backflips', popularity: '2' },
       ])
     },
   })
@@ -51,17 +55,17 @@ describe(`modules/categories/selectors/categories.js`, () => {
     categories: {
       0: {
         category: 'testing',
-        popularity: 10,
+        popularity: '10',
       },
       1: {
         category: 'frontflips',
-        popularity: 10,
+        popularity: '10',
       },
     },
     assertions: (output) => {
       assert.deepEqual(output, [
-        { category: 'testing', popularity: 10 },
-        { category: 'frontflips', popularity: 10 },
+        { category: 'testing', popularity: '10' },
+        { category: 'frontflips', popularity: '10' },
       ])
     },
   })
@@ -70,22 +74,22 @@ describe(`modules/categories/selectors/categories.js`, () => {
     categories: {
       0: {
         category: 'testing',
-        popularity: 10,
+        popularity: '10',
       },
       1: {
         category: 'backflips',
-        popularity: 2,
+        popularity: '2',
       },
       2: {
         category: 'sideflips',
-        popularity: 5,
+        popularity: '5',
       },
     },
     assertions: (output) => {
       assert.deepEqual(output, [
-        { category: 'testing', popularity: 10 },
-        { category: 'sideflips', popularity: 5 },
-        { category: 'backflips', popularity: 2 },
+        { category: 'testing', popularity: '10' },
+        { category: 'sideflips', popularity: '5' },
+        { category: 'backflips', popularity: '2' },
       ])
     },
   })
@@ -94,22 +98,22 @@ describe(`modules/categories/selectors/categories.js`, () => {
     categories: {
       0: {
         category: 'testing',
-        popularity: 10,
+        popularity: '10',
       },
       1: {
         category: 'backflips',
-        popularity: 2,
+        popularity: '2',
       },
       2: {
         category: 'frontflips',
-        popularity: 10,
+        popularity: '10',
       },
     },
     assertions: (output) => {
       assert.deepEqual(output, [
-        { category: 'testing', popularity: 10 },
-        { category: 'frontflips', popularity: 10 },
-        { category: 'backflips', popularity: 2 },
+        { category: 'testing', popularity: '10' },
+        { category: 'frontflips', popularity: '10' },
+        { category: 'backflips', popularity: '2' },
       ])
     },
   })
@@ -118,22 +122,22 @@ describe(`modules/categories/selectors/categories.js`, () => {
     categories: {
       0: {
         category: 'testing',
-        popularity: 10,
+        popularity: '10',
       },
       1: {
         category: 'twirling',
-        popularity: 10,
+        popularity: '10',
       },
       2: {
         category: 'frontflips',
-        popularity: 10,
+        popularity: '10',
       },
     },
     assertions: (output) => {
       assert.deepEqual(output, [
-        { category: 'testing', popularity: 10 },
-        { category: 'twirling', popularity: 10 },
-        { category: 'frontflips', popularity: 10 },
+        { category: 'testing', popularity: '10' },
+        { category: 'twirling', popularity: '10' },
+        { category: 'frontflips', popularity: '10' },
       ])
     },
   })
@@ -142,26 +146,26 @@ describe(`modules/categories/selectors/categories.js`, () => {
     categories: {
       0: {
         category: 'testing',
-        popularity: 10,
+        popularity: '10',
       },
       1: {
         category: 'twirling',
-        popularity: 10,
+        popularity: '10',
       },
       2: {
         category: 'frontflips',
-        popularity: 10,
+        popularity: '10',
       },
       3: {
         category: '',
-        popularity: 10,
+        popularity: '10',
       },
     },
     assertions: (output) => {
       assert.deepEqual(output, [
-        { category: 'testing', popularity: 10 },
-        { category: 'twirling', popularity: 10 },
-        { category: 'frontflips', popularity: 10 },
+        { category: 'testing', popularity: '10' },
+        { category: 'twirling', popularity: '10' },
+        { category: 'frontflips', popularity: '10' },
       ])
     },
   })

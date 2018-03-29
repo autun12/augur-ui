@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect'
 import store from 'src/store'
 import { selectCategoriesState } from 'src/select-state'
+import { WrappedBigNumber } from 'src/utils/wrapped-big-number'
 
 export default function () {
   return selectCategories(store.getState())
@@ -8,20 +9,13 @@ export default function () {
 
 export const selectCategories = createSelector(
   selectCategoriesState,
-  (categories) => {
-    const selectedCategories = []
-    Object.keys(categories || {})
-      .forEach((category) => {
-        // if the name of the category is falsey don't include it.
-        if (categories[category] && !!categories[category].category) {
-          selectedCategories.push({
-            popularity: categories[category].popularity,
-            category: categories[category].category,
-          })
-        }
-      })
-    return selectedCategories.sort(popularityDifference)
-  },
+  categories => Object.values(categories || {})
+    .filter(({ category }) => category && category !== '')
+    .map(({ category, popularity }) => ({
+      category,
+      popularity: WrappedBigNumber(popularity),
+    }))
+    .sort(popularityDifference),
 )
 
-const popularityDifference = (category1, category2) => category2.popularity - category1.popularity
+const popularityDifference = (category1, category2) => category1.popularity.isLessThan(category2.popularity)
