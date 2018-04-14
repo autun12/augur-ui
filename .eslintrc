@@ -4,7 +4,7 @@
     "mocha": true,
   },
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier"],
   "plugins": ["react", "import"],
   "parserOptions": {
     "ecmaFeatures": {
