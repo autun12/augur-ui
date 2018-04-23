@@ -188,21 +188,20 @@ export default class MarketOutcomeCandlestick extends Component {
     }
   }
 
-  drawCandlestick(options) {
+  drawCandlestick({
+    periodTimeSeries,
+    orderBookKeys,
+    outcomeBounds,
+    fixedPrecision,
+    sharedChartMargins,
+    marketMin,
+    marketMax,
+  }) {
     const {
       updateHoveredPeriod,
       updateHoveredPrice,
       updateSeletedOrderProperties,
     } = this.props
-    const {
-      periodTimeSeries,
-      orderBookKeys,
-      outcomeBounds,
-      fixedPrecision,
-      sharedChartMargins,
-      marketMin,
-      marketMax,
-    } = options
 
     if (this.drawContainer) {
       const drawParams = determineDrawParams({
@@ -345,18 +344,16 @@ export default class MarketOutcomeCandlestick extends Component {
   }
 }
 
-function determineDrawParams(options) {
-  const {
-    drawContainer,
-    outcomeBounds,
-    sharedChartMargins,
-    periodTimeSeries,
-    orderBookKeys,
-    fixedPrecision,
-    marketMin,
-    marketMax,
-  } = options
-
+function determineDrawParams({
+  drawContainer,
+  outcomeBounds,
+  sharedChartMargins,
+  periodTimeSeries,
+  orderBookKeys,
+  fixedPrecision,
+  marketMin,
+  marketMax,
+}) {
   // Dimensions/Positioning
   const chartDim = {
     ...sharedChartMargins,
@@ -431,13 +428,12 @@ function determineDrawParams(options) {
   }
 }
 
-function drawTicks(options) {
-  const {
-    orderBookKeys,
-    candleTicks,
-    drawParams,
-    fixedPrecision,
-  } = options
+function drawTicks({
+  orderBookKeys,
+  candleTicks,
+  drawParams,
+  fixedPrecision,
+}) {
 
   // Y axis
   //  Bounds
@@ -504,13 +500,11 @@ function drawTicks(options) {
     .text(d => d.toFixed(fixedPrecision))
 }
 
-function drawCandles(options) {
-  const {
-    periodTimeSeries,
-    candleChart,
-    drawParams,
-  } = options
-
+function drawCandles({
+  periodTimeSeries,
+  candleChart,
+  drawParams,
+}) {
   candleChart.selectAll('rect.candle')
     .data(periodTimeSeries)
     .enter().append('rect')
