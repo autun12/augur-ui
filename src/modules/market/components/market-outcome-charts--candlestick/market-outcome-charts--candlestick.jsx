@@ -20,7 +20,8 @@ export default class MarketOutcomeCandlestick extends Component {
     outcomeName: PropTypes.string,
     sharedChartMargins: PropTypes.object.isRequired,
     priceTimeSeries: PropTypes.array.isRequired,
-    selectedPeriod: PropTypes.object.isRequired,
+    selectedPeriod: PropTypes.number.isRequired,
+    selectedRange: PropTypes.number.isRequired,
     currentBlock: PropTypes.number.isRequired,
     fixedPrecision: PropTypes.number.isRequired,
     orderBookKeys: PropTypes.object.isRequired,
@@ -30,6 +31,7 @@ export default class MarketOutcomeCandlestick extends Component {
     updateHoveredPeriod: PropTypes.func.isRequired,
     updateSeletedOrderProperties: PropTypes.func.isRequired,
     updateSelectedPeriod: PropTypes.func.isRequired,
+    updateSelectedRange: PropTypes.func.isRequired,
     updateChartHeaderHeight: PropTypes.func.isRequired,
     hoveredPeriod: PropTypes.object.isRequired,
     isMobile: PropTypes.bool.isRequired,
@@ -61,6 +63,7 @@ export default class MarketOutcomeCandlestick extends Component {
       currentBlock,
       priceTimeSeries,
       selectedPeriod,
+      selectedRange,
       marketMin,
       marketMax,
     } = this.props
@@ -68,6 +71,7 @@ export default class MarketOutcomeCandlestick extends Component {
     this.updatePeriodTimeSeries({
       priceTimeSeries,
       selectedPeriod,
+      selectedRange,
       currentBlock,
       marketMin,
       marketMax,
@@ -115,6 +119,7 @@ export default class MarketOutcomeCandlestick extends Component {
       this.updatePeriodTimeSeries({
         priceTimeSeries: nextProps.priceTimeSeries,
         selectedPeriod: nextProps.selectedPeriod,
+        selectedRange: nextProps.selectedRange,
         currenteBlock: nextProps.currentBlock,
         marketMin: nextProps.marketMin,
         marketMax: nextProps.marketMax,
@@ -313,8 +318,11 @@ export default class MarketOutcomeCandlestick extends Component {
       priceTimeSeries,
       fixedPrecision,
       updateSelectedPeriod,
+      updateSelectedRange,
       updateChartHeaderHeight,
       isMobile,
+      selectedPeriod,
+      selectedRange,
     } = this.props
 
     return (
@@ -329,7 +337,10 @@ export default class MarketOutcomeCandlestick extends Component {
           close={hoveredPeriod.close}
           priceTimeSeries={priceTimeSeries}
           fixedPrecision={fixedPrecision}
+          selectedPeriod={selectedPeriod}
+          selectedRange={selectedRange}
           updateSelectedPeriod={updateSelectedPeriod}
+          updateSelectedRange={updateSelectedRange}
           updateChartHeaderHeight={updateChartHeaderHeight}
         />
         <div

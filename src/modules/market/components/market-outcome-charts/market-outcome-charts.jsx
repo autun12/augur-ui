@@ -46,7 +46,8 @@ export default class MarketOutcomeCharts extends Component {
 
     this.state = {
       candleScrolled: true,
-      selectedPeriod: {},
+      selectedPeriod: -1,
+      selectedRange: -1,
       hoveredPeriod: {},
       hoveredDepth: [],
       hoveredPrice: null,
@@ -65,6 +66,7 @@ export default class MarketOutcomeCharts extends Component {
     this.updateHoveredPrice = this.updateHoveredPrice.bind(this)
     this.updateHoveredDepth = this.updateHoveredDepth.bind(this)
     this.updateSelectedPeriod = this.updateSelectedPeriod.bind(this)
+    this.updateSelectedRange = this.updateSelectedRange.bind(this)
     this.updateChartWidths = this.updateChartWidths.bind(this)
     this.debouncedUpdateChartWidths = debounce(this.updateChartWidths, 500)
     this.snapScrollHandler = this.snapScrollHandler.bind(this)
@@ -115,6 +117,12 @@ export default class MarketOutcomeCharts extends Component {
   updateSelectedPeriod(selectedPeriod) {
     this.setState({
       selectedPeriod,
+    })
+  }
+
+  updateSelectedRange(selectedRange) {
+    this.setState({
+      selectedRange,
     })
   }
 
@@ -200,6 +208,7 @@ export default class MarketOutcomeCharts extends Component {
                 priceTimeSeries={priceTimeSeries}
                 currentBlock={currentBlock}
                 selectedPeriod={s.selectedPeriod}
+                selectedRange={s.selectedRange}
                 fixedPrecision={fixedPrecision}
                 orderBookKeys={orderBookKeys}
                 marketMax={maxPrice}
@@ -209,6 +218,7 @@ export default class MarketOutcomeCharts extends Component {
                 updateHoveredPrice={this.updateHoveredPrice}
                 updateHoveredPeriod={this.updateHoveredPeriod}
                 updateSelectedPeriod={this.updateSelectedPeriod}
+                updateSelectedRange={this.updateSelectedRange}
                 updateSeletedOrderProperties={updateSeletedOrderProperties}
                 updateChartHeaderHeight={this.updateChartHeaderHeight}
               />
