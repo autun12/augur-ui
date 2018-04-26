@@ -20,7 +20,6 @@ import { BigNumber } from 'bignumber.js'
 
 export default class MarketOutcomeCharts extends Component {
   static propTypes = {
-    currentBlock: PropTypes.number,
     currentTimeInSeconds: PropTypes.number.isRequired,
     excludeCandlestick: PropTypes.bool,
     fixedPrecision: PropTypes.number.isRequired,
@@ -208,8 +207,8 @@ export default class MarketOutcomeCharts extends Component {
 
   render() {
     const {
+      currentTimeInSeconds,
       outcomeName,
-      currentBlock,
       hasOrders,
       hasPriceHistory,
       marketDepth,
@@ -242,11 +241,11 @@ export default class MarketOutcomeCharts extends Component {
               })}
             >
               <MarketOutcomeCandlestick
+                currentTimeInSeconds={currentTimeInSeconds}
                 outcomeName={outcomeName}
                 isMobile={isMobile}
                 sharedChartMargins={s.sharedChartMargins}
                 priceTimeSeries={s.priceTimeSeriesCandleStick}
-                currentBlock={currentBlock}
                 selectedPeriod={s.selectedPeriod}
                 selectedRange={s.selectedRange}
                 fixedPrecision={fixedPrecision}
