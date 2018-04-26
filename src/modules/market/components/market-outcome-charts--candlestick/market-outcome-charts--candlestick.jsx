@@ -14,6 +14,7 @@ import MarketOutcomeChartsHeaderCandlestick from 'modules/market/components/mark
 import { BUY, SELL } from 'modules/transactions/constants/types'
 
 import Styles from 'modules/market/components/market-outcome-charts--candlestick/market-outcome-charts--candlestick.styles'
+import { loadCandleStickData } from 'src/modules/market/actions/load-candlestick-data'
 
 export default class MarketOutcomeCandlestick extends Component {
   static propTypes = {
@@ -55,6 +56,7 @@ export default class MarketOutcomeCandlestick extends Component {
 
     this.drawCandlestick = this.drawCandlestick.bind(this)
     this.drawCandlestickOnResize = this.drawCandlestickOnResize.bind(this)
+    this.getData = this.getData.bind(this)
     this.updatePeriodTimeSeries = this.updatePeriodTimeSeries.bind(this)
   }
 
@@ -153,44 +155,15 @@ export default class MarketOutcomeCandlestick extends Component {
     window.removeEventListener('resize', this.drawCandlestickOnResize)
   }
 
-  updatePeriodTimeSeries(options) {
-    const {
-      priceTimeSeries,
-      selectedPeriod,
-      currentBlock,
-      marketMin,
-      marketMax,
-    } = options
+  getData() {
+    // this.props.selectedPeriod
+    loadCandleStickData({
+      marketId: '0xf233fa386ed168bc8cc74bc3156bfcaacc96ffe5'
+    }, (err, data) => console.log(err, data))
+  }
 
-    const derivePeriodTimeSeriesWorker = new DerivePeriodTimeSeries()
-
-    derivePeriodTimeSeriesWorker.postMessage({
-      priceTimeSeries,
-      selectedPeriod,
-      currentBlock,
-    })
-
-    derivePeriodTimeSeriesWorker.onmessage = (event) => {
-      let periodTimeSeries = event.data
-      if (event.data.length !== 0) {
-        periodTimeSeries = periodTimeSeries.reduce((p, period) => {
-          const currentPeriod = period
-
-          Object.entries(period).forEach(([key, value]) => {
-            if (key !== 'period') currentPeriod[key] = createBigNumber(value)
-          })
-
-          return [...p, currentPeriod]
-        }, [])
-      }
-
-      this.setState({
-        outcomeBounds: findPeriodSeriesBounds(periodTimeSeries, marketMin, marketMax),
-        periodTimeSeries,
-      })
-
-      derivePeriodTimeSeriesWorker.terminate()
-    }
+  updatePeriodTimeSeries() {
+    this.getData()
   }
 
   drawCandlestick({
