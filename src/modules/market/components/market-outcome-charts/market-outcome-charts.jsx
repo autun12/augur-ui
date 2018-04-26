@@ -90,12 +90,17 @@ export default class MarketOutcomeCharts extends Component {
     window.addEventListener('resize', this.debouncedUpdateChartWidths)
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (
       this.props.isMobile &&
       prevProps.isMobile !== this.props.isMobile
     ) {
       this.snapScrollHandler()
+    }
+
+    if (prevState.selectedPeriod !== this.state.selectedPeriod || prevState.selectedRange !== this.state.selectedRange) {
+      console.log('getData')
+      this.getData()
     }
   }
 
@@ -147,16 +152,12 @@ export default class MarketOutcomeCharts extends Component {
     this.setState({
       selectedPeriod,
     })
-
-    this.getData()
   }
 
   updateSelectedRange(selectedRange) {
     this.setState({
       selectedRange,
     })
-
-    this.getData()
   }
 
   updateChartWidths() { // NOTE -- utilized for the midpoint component's null state rendering
