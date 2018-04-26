@@ -521,13 +521,11 @@ function drawVolume(options) {
     .attr('class', 'period-volume')
 }
 
-function drawXAxisLabels(options) {
-  const {
-    periodTimeSeries,
-    candleChart,
-    drawParams,
-  } = options
-
+function drawXAxisLabels({
+  periodTimeSeries,
+  candleChart,
+  drawParams,
+}) {
   candleChart.append('g')
     .attr('id', 'candlestick-x-axis')
     .attr('transform', `translate(0, ${drawParams.containerHeight - drawParams.chartDim.bottom})`)
@@ -535,9 +533,7 @@ function drawXAxisLabels(options) {
     .select('path').remove()
 }
 
-function drawCrosshairs(options) {
-  const { candleTicks } = options
-
+function drawCrosshairs({ candleTicks }) {
   candleTicks.append('text')
     .attr('id', 'hovered_candlestick_price_label')
 
@@ -551,17 +547,15 @@ function drawCrosshairs(options) {
     .attr('class', 'crosshair')
 }
 
-function attachHoverClickHandlers(options) {
-  const {
-    updateHoveredPeriod,
-    updateHoveredPrice,
-    periodTimeSeries,
-    fixedPrecision,
-    candleChart,
-    drawParams,
-    updateSeletedOrderProperties,
-  } = options
-
+function attachHoverClickHandlers({
+  updateHoveredPeriod,
+  updateHoveredPrice,
+  periodTimeSeries,
+  fixedPrecision,
+  candleChart,
+  drawParams,
+  updateSeletedOrderProperties,
+}) {
   candleChart.append('rect')
     .attr('class', 'overlay')
     .attr('width', drawParams.drawableWidth)
