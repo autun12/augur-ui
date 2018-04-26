@@ -28,7 +28,6 @@ const mapStateToProps = (state, ownProps) => {
     selectedOutcome: outcome,
     isMobile: state.isMobile,
     currentTimeInSeconds: selectCurrentTimestampInSeconds(state),
-    currentBlock: state.blockchain.currentBlockNumber || 0,
     orderBook: cumulativeOrderBook,
     hasPriceHistory: priceTimeSeries.length !== 0,
     hasOrders: !isEmpty(cumulativeOrderBook[BIDS]) && !isEmpty(cumulativeOrderBook[ASKS]),
