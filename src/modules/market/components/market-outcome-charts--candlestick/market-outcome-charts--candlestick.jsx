@@ -7,14 +7,13 @@ import ReactFauxDOM from 'react-faux-dom'
 import { isEqual } from 'lodash'
 import { createBigNumber } from 'utils/create-big-number'
 
-import findPeriodSeriesBounds from 'modules/market/helpers/find-period-series-bounds'
-import DerivePeriodTimeSeries from 'modules/market/workers/derive-period-time-series.worker'
-import MarketOutcomeChartsHeaderCandlestick from 'modules/market/components/market-outcome-charts--header-candlestick/market-outcome-charts--header-candlestick'
+import MarketOutcomeChartsHeaderCandlestick
+  from 'modules/market/components/market-outcome-charts--header-candlestick/market-outcome-charts--header-candlestick'
 
 import { BUY, SELL } from 'modules/transactions/constants/types'
 
-import Styles from 'modules/market/components/market-outcome-charts--candlestick/market-outcome-charts--candlestick.styles'
-import { loadCandleStickData } from 'src/modules/market/actions/load-candlestick-data'
+import Styles
+  from 'modules/market/components/market-outcome-charts--candlestick/market-outcome-charts--candlestick.styles'
 
 export default class MarketOutcomeCandlestick extends Component {
   static propTypes = {
@@ -56,8 +55,6 @@ export default class MarketOutcomeCandlestick extends Component {
 
     this.drawCandlestick = this.drawCandlestick.bind(this)
     this.drawCandlestickOnResize = this.drawCandlestickOnResize.bind(this)
-    this.getData = this.getData.bind(this)
-    this.updatePeriodTimeSeries = this.updatePeriodTimeSeries.bind(this)
   }
 
   componentWillMount() {
@@ -155,15 +152,8 @@ export default class MarketOutcomeCandlestick extends Component {
     window.removeEventListener('resize', this.drawCandlestickOnResize)
   }
 
-  getData() {
-    // this.props.selectedPeriod
-    loadCandleStickData({
-      marketId: '0xf233fa386ed168bc8cc74bc3156bfcaacc96ffe5'
-    }, (err, data) => console.log(err, data))
-  }
-
   updatePeriodTimeSeries() {
-    this.getData()
+    console.log('updatePeriodTimeSeries', this.state)
   }
 
   drawCandlestick({
@@ -528,7 +518,7 @@ function drawVolume(options) {
     .attr('x', d => drawParams.xScale(d.period))
     .attr('y', d => yVolumeScale(d.volume.toNumber()))
     .attr('height', d => drawParams.containerHeight - drawParams.chartDim.bottom - yVolumeScale(d.volume.toNumber()))
-    .attr('width', d => drawParams.candleDim.width)
+    .attr('width', () => drawParams.candleDim.width)
     .attr('class', 'period-volume')
 }
 
