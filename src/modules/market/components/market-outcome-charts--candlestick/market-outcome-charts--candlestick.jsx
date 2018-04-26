@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CustomPropTypes from 'utils/custom-prop-types'
 import * as d3 from 'd3'
-import ReactFauxDOM from 'react-faux-dom'
+import { withFauxDOM } from 'react-faux-dom'
 
 import { isEqual } from 'lodash'
 import { createBigNumber } from 'utils/create-big-number'
@@ -15,8 +15,11 @@ import { BUY, SELL } from 'modules/transactions/constants/types'
 import Styles
   from 'modules/market/components/market-outcome-charts--candlestick/market-outcome-charts--candlestick.styles'
 
-export default class MarketOutcomeCandlestick extends Component {
+class MarketOutcomeCandlestick extends Component {
   static propTypes = {
+    candleTicksContainer: PropTypes.any,
+    candleChartContainer: PropTypes.any,
+    connectFauxDOM: PropTypes.func.isRequired,
     outcomeName: PropTypes.string,
     sharedChartMargins: PropTypes.object.isRequired,
     priceTimeSeries: PropTypes.array.isRequired,
@@ -42,8 +45,6 @@ export default class MarketOutcomeCandlestick extends Component {
     super(props)
 
     this.state = {
-      candleTicksContainer: null,
-      candleChartContainer: null,
       periodTimeSeries: [],
       chartWidth: 0,
       yScale: null,
@@ -185,11 +186,11 @@ export default class MarketOutcomeCandlestick extends Component {
 
       // Faux DOM
       //  Tick Element (Fixed)
-      const candleTicksContainer = new ReactFauxDOM.Element('div')
+      const candleTicksContainer = this.props.connectFauxDOM('div', 'candleTicksContainer')
       candleTicksContainer.setAttribute('class', `${Styles['MarketOutcomeCandlestick__ticks-container']}`)
       candleTicksContainer.setAttribute('key', 'candlestick_ticks_container')
       //  Chart Element (Scrollable)
-      const candleChartContainer = new ReactFauxDOM.Element('div')
+      const candleChartContainer = this.props.connectFauxDOM('div', 'candleChartContainer')
       candleChartContainer.setAttribute('key', 'candlestick_chart_container')
       candleChartContainer.setAttribute('id', 'candlestick_chart_container')
       candleChartContainer.setAttribute('class', `${Styles['MarketOutcomeCandlestick__chart-container']}`)
@@ -253,8 +254,6 @@ export default class MarketOutcomeCandlestick extends Component {
       this.setState({
         yScale: drawParams.yScale,
         chartWidth: drawParams.containerWidth,
-        candleTicksContainer: candleTicksContainer.toReact(),
-        candleChartContainer: candleChartContainer.toReact(),
       })
     }
   }
@@ -310,8 +309,8 @@ export default class MarketOutcomeCandlestick extends Component {
           ref={(drawContainer) => { this.drawContainer = drawContainer }}
           className={Styles.MarketOutcomeCandlestick__container}
         >
-          {this.state.candleTicksContainer}
-          {this.state.candleChartContainer}
+          {this.props.candleTicksContainer}
+          {this.props.candleChartContainer}
         </div>
       </section>
     )
@@ -618,3 +617,5 @@ function updateHoveredPriceCrosshair(hoveredPrice, yScale, chartWidth) {
       .text(hoveredPrice)
   }
 }
+
+export default withFauxDOM(MarketOutcomeCandlestick)
