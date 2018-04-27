@@ -17,6 +17,7 @@ import Styles from 'modules/market/components/market-outcome-charts/market-outco
 import { loadCandleStickData } from 'modules/market/actions/load-candlestick-data'
 
 import { BigNumber } from 'bignumber.js'
+import { PERIODS, RANGES } from 'src/modules/market/constants/permissible-periods'
 
 export default class MarketOutcomeCharts extends Component {
   static propTypes = {
@@ -51,8 +52,8 @@ export default class MarketOutcomeCharts extends Component {
 
     this.state = {
       candleScrolled: true,
-      selectedPeriod: -1,
-      selectedRange: -1,
+      selectedPeriod: PERIODS[0].period,
+      selectedRange: RANGES[2].range,
       hoveredPeriod: {},
       hoveredDepth: [],
       hoveredPrice: null,
