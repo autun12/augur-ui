@@ -7,8 +7,8 @@ const mutatePeriod = map(({ max, min, start, end, startTimestamp, volume }) => (
   period: new Date(startTimestamp * 1000),
   open: parseFloat(start),
   close: parseFloat(end),
-  min: parseFloat(min),
-  max: parseFloat(max),
+  low: parseFloat(min),
+  high: parseFloat(max),
   volume: parseFloat(volume),
 }))
 
@@ -33,6 +33,7 @@ export const loadCandleStickData = (options = {}, callback = logError) => {
   augur.augurNode.submitRequest('getMarketPriceCandlesticks', options, (err, data) => {
     if (err) return callback(err)
 
+    console.log('loadCandleStickData', data)
     const mutatedData = mutateOutcome(data)
     callback(null, mutatedData)
   })
