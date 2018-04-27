@@ -33,7 +33,6 @@ export const loadCandleStickData = (options = {}, callback = logError) => {
   augur.augurNode.submitRequest('getMarketPriceCandlesticks', options, (err, data) => {
     if (err) return callback(err)
 
-    console.log('loadCandleStickData', data)
     const mutatedData = mutateOutcome(data)
     callback(null, mutatedData)
   })

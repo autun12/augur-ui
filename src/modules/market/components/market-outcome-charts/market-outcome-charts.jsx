@@ -127,8 +127,6 @@ export default class MarketOutcomeCharts extends Component {
       outcome: selectedOutcome.id,
     }, (err, data) => {
       const priceTimeSeriesCandleStick = data[selectedOutcome.id] || []
-      console.log('getData', err, priceTimeSeriesCandleStick)
-
       this.setState({
         priceTimeSeriesCandleStick,
       })
