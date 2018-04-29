@@ -87,6 +87,11 @@ class MarketOutcomeCandlestick extends Component {
       marketMax,
     } = this.props
 
+    const candleTicksContainer = this.props.connectFauxDOM('div', 'candleTicksContainer')
+    const candleChartContainer = this.props.connectFauxDOM('div', 'candleChartContainer')
+    d3.select(candleTicksContainer).append('svg')
+    d3.select(candleChartContainer).append('svg')
+
     this.drawCandlestick({
       periodTimeSeries: this.state.periodTimeSeries,
       orderBookKeys,
@@ -200,11 +205,11 @@ class MarketOutcomeCandlestick extends Component {
       })
 
       const candleTicks = d3.select(candleTicksContainer)
-        .append('svg')
+        .select('svg')
         .attr('width', drawParams.containerWidth)
         .attr('height', drawParams.containerHeight)
       const candleChart = d3.select(candleChartContainer)
-        .append('svg')
+        .select('svg')
         .attr('id', 'candlestick_chart')
         .attr('height', drawParams.containerHeight)
         .attr('width', drawParams.drawableWidth)
