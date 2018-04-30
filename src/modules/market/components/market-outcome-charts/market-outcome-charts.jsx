@@ -126,8 +126,8 @@ export default class MarketOutcomeCharts extends Component {
     loadCandleStickData({
       marketId,
       period: selectedPeriod,
-      start: currentTimeInSeconds,
-      end: currentTimeInSeconds + selectedRange,
+      start: currentTimeInSeconds - selectedRange,
+      end: currentTimeInSeconds,
       outcome: selectedOutcome.id,
     }, (err, data) => {
       const priceTimeSeriesCandleStick = data[selectedOutcome.id] || []
