@@ -87,6 +87,10 @@ export default class MarketOutcomeCharts extends Component {
 
     this.snapScrollHandler()
 
+    if (this.props.selectedOutcome) {
+      this.getData()
+    }
+
     window.addEventListener('resize', this.debouncedUpdateChartWidths)
   }
 
@@ -98,8 +102,7 @@ export default class MarketOutcomeCharts extends Component {
       this.snapScrollHandler()
     }
 
-    if (prevState.selectedPeriod !== this.state.selectedPeriod || prevState.selectedRange !== this.state.selectedRange) {
-      console.log('getData')
+    if (prevState.selectedPeriod !== this.state.selectedPeriod || prevState.selectedRange !== this.state.selectedRange || prevProps.selectedOutcome.id !== this.props.selectedOutcome.id) {
       this.getData()
     }
   }
