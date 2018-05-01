@@ -22,32 +22,32 @@ class MarketOutcomeCandlestick extends Component {
     candleTicksContainer: PropTypes.any,
     candleChartContainer: PropTypes.any,
     connectFauxDOM: PropTypes.func.isRequired,
+    currentTimeInSeconds: PropTypes.number.isRequired,
+    drawFauxDOM: PropTypes.func.isRequired,
+    fixedPrecision: PropTypes.number.isRequired,
+    hoveredPeriod: PropTypes.object.isRequired,
+    hoveredPrice: PropTypes.any,
+    isMobile: PropTypes.bool.isRequired,
+    marketMax: CustomPropTypes.bigNumber,
+    marketMin: CustomPropTypes.bigNumber,
+    orderBookKeys: PropTypes.object.isRequired,
     outcomeName: PropTypes.string,
-    sharedChartMargins: PropTypes.object.isRequired,
     priceTimeSeries: PropTypes.array.isRequired,
     selectedPeriod: PropTypes.number.isRequired,
     selectedRange: PropTypes.number.isRequired,
-    currentBlock: PropTypes.number.isRequired,
-    fixedPrecision: PropTypes.number.isRequired,
-    orderBookKeys: PropTypes.object.isRequired,
-    marketMin: CustomPropTypes.bigNumber,
-    marketMax: CustomPropTypes.bigNumber,
-    updateHoveredPrice: PropTypes.func.isRequired,
+    sharedChartMargins: PropTypes.object.isRequired,
+    updateChartHeaderHeight: PropTypes.func.isRequired,
     updateHoveredPeriod: PropTypes.func.isRequired,
-    updateSeletedOrderProperties: PropTypes.func.isRequired,
+    updateHoveredPrice: PropTypes.func.isRequired,
     updateSelectedPeriod: PropTypes.func.isRequired,
     updateSelectedRange: PropTypes.func.isRequired,
-    updateChartHeaderHeight: PropTypes.func.isRequired,
-    hoveredPeriod: PropTypes.object.isRequired,
-    isMobile: PropTypes.bool.isRequired,
-    hoveredPrice: PropTypes.any,
+    updateSeletedOrderProperties: PropTypes.func.isRequired,
   }
 
   constructor(props) {
     super(props)
 
     this.state = {
-      periodTimeSeries: [],
       chartWidth: 0,
       yScale: null,
       outcomeBounds: {
@@ -58,26 +58,6 @@ class MarketOutcomeCandlestick extends Component {
 
     this.drawCandlestick = this.drawCandlestick.bind(this)
     this.drawCandlestickOnResize = this.drawCandlestickOnResize.bind(this)
-  }
-
-  componentWillMount() {
-    const {
-      currentBlock,
-      priceTimeSeries,
-      selectedPeriod,
-      selectedRange,
-      marketMin,
-      marketMax,
-    } = this.props
-
-    this.updatePeriodTimeSeries({
-      priceTimeSeries,
-      selectedPeriod,
-      selectedRange,
-      currentBlock,
-      marketMin,
-      marketMax,
-    })
   }
 
   componentDidMount() {
@@ -95,7 +75,6 @@ class MarketOutcomeCandlestick extends Component {
     d3.select(candleChartContainer).append('svg')
 
     this.drawCandlestick({
-      periodTimeSeries: this.state.periodTimeSeries,
       orderBookKeys,
       outcomeBounds: this.state.outcomeBounds,
       fixedPrecision,
@@ -107,65 +86,51 @@ class MarketOutcomeCandlestick extends Component {
     window.addEventListener('resize', this.drawCandlestickOnResize)
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  componentDidUpdate(prevProps, prevState) {
     const {
       fixedPrecision,
       hoveredPrice,
       orderBookKeys,
       priceTimeSeries,
-      selectedPeriod,
       sharedChartMargins,
       marketMin,
       marketMax,
     } = this.props
 
     if (
-      priceTimeSeries.length !== nextProps.priceTimeSeries.length ||
-      !isEqual(selectedPeriod, nextProps.selectedPeriod)
-    ) {
-      this.updatePeriodTimeSeries({
-        priceTimeSeries: nextProps.priceTimeSeries,
-        selectedPeriod: nextProps.selectedPeriod,
-        selectedRange: nextProps.selectedRange,
-        currenteBlock: nextProps.currentBlock,
-        marketMin: nextProps.marketMin,
-        marketMax: nextProps.marketMax,
-      })
-    }
-
-    if (
-      !isEqual(this.state.periodTimeSeries, nextState.periodTimeSeries) ||
-      !isEqual(this.state.outcomeBounds, nextState.outcomeBounds) ||
-      !isEqual(orderBookKeys, nextProps.orderBookKeys) ||
-      !isEqual(sharedChartMargins, nextProps.sharedChartMargins) ||
-      !marketMin.isEqualTo(nextProps.marketMin) ||
-      !marketMax.isEqualTo(nextProps.marketMax) ||
-      fixedPrecision !== nextProps.fixedPrecision
+      !isEqual(priceTimeSeries, prevProps.priceTimeSeries) ||
+      !isEqual(this.state.outcomeBounds, prevState.outcomeBounds) ||
+      !isEqual(orderBookKeys, prevProps.orderBookKeys) ||
+      !isEqual(sharedChartMargins, prevProps.sharedChartMargins) ||
+      !marketMin.isEqualTo(prevProps.marketMin) ||
+      !marketMax.isEqualTo(prevProps.marketMax) ||
+      fixedPrecision !== prevProps.fixedPrecision
     ) {
       this.drawCandlestick({
-        periodTimeSeries: nextState.periodTimeSeries,
-        orderBookKeys: nextProps.orderBookKeys,
-        outcomeBounds: nextState.outcomeBounds,
-        fixedPrecision: nextProps.fixedPrecision,
-        sharedChartMargins: nextProps.sharedChartMargins,
-        marketMin: nextProps.marketMin,
-        marketMax: nextProps.marketMax,
+        periodTimeSeries: priceTimeSeries,
+        orderBookKeys,
+        outcomeBounds: this.state.outcomeBounds,
+        fixedPrecision,
+        sharedChartMargins,
+        marketMin,
+        marketMax,
       })
     }
 
-    if (!isEqual(hoveredPrice, nextProps.hoveredPrice)) updateHoveredPriceCrosshair(hoveredPrice, this.state.yScale, this.state.chartWidth)
+    // if (!isEqual(hoveredPrice, prevProps.hoveredPrice)) updateHoveredPriceCrosshair(hoveredPrice, this.state.yScale, this.state.chartWidth)
+
+    if (!isEqual(prevProps.candleChartContainer, this.props.candleChartContainer)) {
+      const elem = document.getElementById('candlestick_chart_container')
+
+      elem.scrollTo(elem.scrollWidth, 0)
+    }
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.drawCandlestickOnResize)
   }
 
-  updatePeriodTimeSeries() {
-    console.log('updatePeriodTimeSeries', this.state)
-  }
-
   drawCandlestick({
-    periodTimeSeries,
     orderBookKeys,
     outcomeBounds,
     fixedPrecision,
@@ -174,6 +139,10 @@ class MarketOutcomeCandlestick extends Component {
     marketMax,
   }) {
     const {
+      currentTimeInSeconds,
+      priceTimeSeries,
+      selectedPeriod,
+      selectedRange,
       updateHoveredPeriod,
       updateHoveredPrice,
       updateSeletedOrderProperties,
@@ -181,14 +150,17 @@ class MarketOutcomeCandlestick extends Component {
 
     if (this.drawContainer) {
       const drawParams = determineDrawParams({
+        currentTimeInSeconds,
         drawContainer: this.drawContainer,
-        sharedChartMargins,
-        outcomeBounds,
-        periodTimeSeries,
-        orderBookKeys,
         fixedPrecision,
-        marketMin,
         marketMax,
+        marketMin,
+        orderBookKeys,
+        outcomeBounds,
+        priceTimeSeries,
+        selectedPeriod,
+        selectedRange,
+        sharedChartMargins,
       })
 
       // Faux DOM
@@ -218,27 +190,26 @@ class MarketOutcomeCandlestick extends Component {
 
       drawTicks({
         orderBookKeys,
-        periodTimeSeries,
         candleTicks,
         drawParams,
         fixedPrecision,
       })
 
       drawCandles({
-        periodTimeSeries,
+        periodTimeSeries: priceTimeSeries,
         candleChart,
         drawParams,
       })
 
       drawVolume({
         fixedPrecision,
-        periodTimeSeries,
+        periodTimeSeries: priceTimeSeries,
         candleChart,
         drawParams,
       })
 
       drawXAxisLabels({
-        periodTimeSeries,
+        periodTimeSeries: priceTimeSeries,
         candleChart,
         drawParams,
       })
@@ -250,7 +221,7 @@ class MarketOutcomeCandlestick extends Component {
       attachHoverClickHandlers({
         updateHoveredPeriod,
         updateHoveredPrice,
-        periodTimeSeries,
+        periodTimeSeries: priceTimeSeries,
         fixedPrecision,
         candleChart,
         drawParams,
@@ -272,7 +243,6 @@ class MarketOutcomeCandlestick extends Component {
       sharedChartMargins,
     } = this.props
     this.drawCandlestick({
-      periodTimeSeries: this.state.periodTimeSeries,
       orderBookKeys,
       outcomeBounds: this.state.outcomeBounds,
       fixedPrecision,
@@ -325,14 +295,17 @@ class MarketOutcomeCandlestick extends Component {
 }
 
 function determineDrawParams({
+  currentTimeInSeconds,
   drawContainer,
-  outcomeBounds,
-  sharedChartMargins,
-  periodTimeSeries,
-  orderBookKeys,
   fixedPrecision,
-  marketMin,
   marketMax,
+  marketMin,
+  orderBookKeys,
+  outcomeBounds,
+  priceTimeSeries,
+  selectedPeriod,
+  selectedRange,
+  sharedChartMargins,
 }) {
   // Dimensions/Positioning
   const chartDim = {
@@ -390,7 +363,7 @@ function determineDrawParams({
     .range([chartDim.left, drawableWidth - chartDim.left - chartDim.right])
 
   const yScale = d3.scaleLinear()
-    .domain(yDomain)
+    .domain(d3.extent(yDomain))
     .range([chartDim.top, containerHeight - chartDim.bottom])
 
   return {
