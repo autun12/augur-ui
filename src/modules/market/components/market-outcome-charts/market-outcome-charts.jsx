@@ -102,7 +102,7 @@ export default class MarketOutcomeCharts extends Component {
       this.snapScrollHandler()
     }
 
-    if (prevState.selectedPeriod !== this.state.selectedPeriod || prevState.selectedRange !== this.state.selectedRange || prevProps.selectedOutcome.id !== this.props.selectedOutcome.id) {
+    if (prevState.selectedPeriod !== this.state.selectedPeriod || prevState.selectedRange !== this.state.selectedRange || prevProps.selectedOutcome.id !== this.props.selectedOutcome.id || prevProps.currentTimeInSeconds !== this.props.currentTimeInSeconds) {
       this.getData()
     }
   }
