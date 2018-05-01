@@ -352,7 +352,10 @@ function determineDrawParams({
 
   // Domain
   //  X
-  const xDomain = map('period')(priceTimeSeries)
+  const xDomain = [
+    new Date((currentTimeInSeconds - selectedRange) * 1000),
+    new Date(currentTimeInSeconds * 1000),
+  ]
 
   const domainScaleWidth = ((candleDim.width + (candleDim.gap * 2)) * priceTimeSeries.length) - (candleDim.gap * 2)
   let drawableWidth = containerWidth
