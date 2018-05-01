@@ -7,7 +7,7 @@ import { withFauxDOM } from 'react-faux-dom'
 import { isEqual } from 'lodash'
 import { createBigNumber } from 'utils/create-big-number'
 
-import { map } from 'lodash/fp'
+import { compose, getOr, maxBy, minBy, pick, map } from 'lodash/fp'
 
 import MarketOutcomeChartsHeaderCandlestick
   from 'modules/market/components/market-outcome-charts--header-candlestick/market-outcome-charts--header-candlestick'
@@ -50,10 +50,6 @@ class MarketOutcomeCandlestick extends Component {
     this.state = {
       chartWidth: 0,
       yScale: null,
-      outcomeBounds: {
-        min: createBigNumber(0),
-        max: createBigNumber(0),
-      },
     }
 
     this.drawCandlestick = this.drawCandlestick.bind(this)
@@ -76,7 +72,6 @@ class MarketOutcomeCandlestick extends Component {
 
     this.drawCandlestick({
       orderBookKeys,
-      outcomeBounds: this.state.outcomeBounds,
       fixedPrecision,
       sharedChartMargins,
       marketMin,
@@ -99,7 +94,6 @@ class MarketOutcomeCandlestick extends Component {
 
     if (
       !isEqual(priceTimeSeries, prevProps.priceTimeSeries) ||
-      !isEqual(this.state.outcomeBounds, prevState.outcomeBounds) ||
       !isEqual(orderBookKeys, prevProps.orderBookKeys) ||
       !isEqual(sharedChartMargins, prevProps.sharedChartMargins) ||
       !marketMin.isEqualTo(prevProps.marketMin) ||
@@ -109,7 +103,6 @@ class MarketOutcomeCandlestick extends Component {
       this.drawCandlestick({
         periodTimeSeries: priceTimeSeries,
         orderBookKeys,
-        outcomeBounds: this.state.outcomeBounds,
         fixedPrecision,
         sharedChartMargins,
         marketMin,
@@ -132,7 +125,6 @@ class MarketOutcomeCandlestick extends Component {
 
   drawCandlestick({
     orderBookKeys,
-    outcomeBounds,
     fixedPrecision,
     sharedChartMargins,
     marketMin,
@@ -156,7 +148,6 @@ class MarketOutcomeCandlestick extends Component {
         marketMax,
         marketMin,
         orderBookKeys,
-        outcomeBounds,
         priceTimeSeries,
         selectedPeriod,
         selectedRange,
@@ -244,7 +235,6 @@ class MarketOutcomeCandlestick extends Component {
     } = this.props
     this.drawCandlestick({
       orderBookKeys,
-      outcomeBounds: this.state.outcomeBounds,
       fixedPrecision,
       sharedChartMargins,
     })
@@ -301,7 +291,6 @@ function determineDrawParams({
   marketMax,
   marketMin,
   orderBookKeys,
-  outcomeBounds,
   priceTimeSeries,
   selectedPeriod,
   selectedRange,
@@ -330,29 +319,28 @@ function determineDrawParams({
     new Date(currentTimeInSeconds * 1000),
   ]
 
-  const domainScaleWidth = ((candleDim.width + (candleDim.gap * 2)) * priceTimeSeries.length) - (candleDim.gap * 2)
-  let drawableWidth = containerWidth
+  const drawableWidth = containerWidth
 
-  // Determine the smaller scale
-  if (domainScaleWidth < containerWidth - chartDim.left - chartDim.right) { // expand domain
-    // Is determining what the synthetic domain min needs to be in order to properly scale the view for fixed spaced candles
-    if (xDomain.length !== 0) {
-      xDomain.push(xDomain[0] - (((xDomain[xDomain.length - 1] - xDomain[0]) * containerWidth) / domainScaleWidth))
-    }
-  } else {
-    drawableWidth = domainScaleWidth
-  }
+  const max = compose(
+    getOr(marketMax.toNumber(), 'high'),
+    maxBy('high'),
+  )(priceTimeSeries)
+
+  const min = compose(
+    getOr(marketMin.toNumber(), 'low'),
+    minBy('low'),
+  )(priceTimeSeries)
 
   //  Y
   // Determine bounding diff
   // This scale is off because it's only looking at the order book rather than the price history + scaling around the midpoint
-  const maxDiff = createBigNumber(orderBookKeys.mid.minus(outcomeBounds.max).toPrecision(15)).absoluteValue() // NOTE -- toPrecision to address an error when attempting to get the absolute value
-  const minDiff = createBigNumber(orderBookKeys.mid.minus(outcomeBounds.min).toPrecision(15)).absoluteValue()
+  const maxDiff = createBigNumber(orderBookKeys.mid.minus(max).toPrecision(15)).absoluteValue() // NOTE -- toPrecision to address an error when attempting to get the absolute value
+  const minDiff = createBigNumber(orderBookKeys.mid.minus(min).toPrecision(15)).absoluteValue()
   let boundDiff = maxDiff.gt(minDiff) ? maxDiff : minDiff
 
   const yDomain = [
-    createBigNumber(orderBookKeys.mid.plus(boundDiff).toFixed(fixedPrecision)).toNumber(),
-    createBigNumber(orderBookKeys.mid.minus(boundDiff).toFixed(fixedPrecision)).toNumber(),
+    max,
+    min,
   ]
 
   boundDiff = boundDiff.toNumber()
@@ -373,7 +361,6 @@ function determineDrawParams({
     chartDim,
     candleDim,
     boundDiff,
-    xDomain,
     yDomain,
     xScale,
     yScale,
