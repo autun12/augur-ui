@@ -1,10 +1,11 @@
+// Note: times are in seconds
 export const RANGES = [
   {
     range: 60,
     label: 'Past minute',
   },
   {
-    range: 360,
+    range: 3600,
     label: 'Past hour',
   },
   {
@@ -31,7 +32,7 @@ export const PERIODS = [
     label: 'Every minute',
   },
   {
-    period: 360,
+    period: 3600,
     label: 'Hourly',
   },
   {
