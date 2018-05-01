@@ -452,7 +452,7 @@ function drawCandles({
     .enter().append('rect')
     .attr('x', d => drawParams.xScale(d.period))
     .attr('y', d => drawParams.yScale(d3.max([d.open, d.close])))
-    .attr('height', d => drawParams.yScale(d3.min([d.open, d.close])) - drawParams.yScale(d3.max([d.open, d.close])))
+    .attr('height', d => drawParams.yScale(d3.max([d.open, d.close])) - drawParams.yScale(d3.min([d.open, d.close])))
     .attr('width', drawParams.candleDim.width)
     .attr('class', d => d.close > d.open ? 'up-period' : 'down-period') // eslint-disable-line no-confusing-arrow
 
