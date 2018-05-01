@@ -7,6 +7,8 @@ import { withFauxDOM } from 'react-faux-dom'
 import { isEqual } from 'lodash'
 import { createBigNumber } from 'utils/create-big-number'
 
+import { map } from 'lodash/fp'
+
 import MarketOutcomeChartsHeaderCandlestick
   from 'modules/market/components/market-outcome-charts--header-candlestick/market-outcome-charts--header-candlestick'
 
@@ -350,10 +352,9 @@ function determineDrawParams({
 
   // Domain
   //  X
-  const xDomain = periodTimeSeries.reduce((p, dataPoint) => [...p, dataPoint.period], [])
+  const xDomain = map('period')(priceTimeSeries)
 
-  const domainScaleWidth = ((candleDim.width + (candleDim.gap * 2)) * periodTimeSeries.length) - (candleDim.gap * 2)
-
+  const domainScaleWidth = ((candleDim.width + (candleDim.gap * 2)) * priceTimeSeries.length) - (candleDim.gap * 2)
   let drawableWidth = containerWidth
 
   // Determine the smaller scale
@@ -487,10 +488,10 @@ function drawCandles({
     .data(periodTimeSeries)
     .enter().append('rect')
     .attr('x', d => drawParams.xScale(d.period))
-    .attr('y', d => drawParams.yScale(d3.max([d.open.toNumber(), d.close.toNumber()])))
-    .attr('height', d => drawParams.yScale(d3.min([d.open.toNumber(), d.close.toNumber()])) - drawParams.yScale(d3.max([d.open.toNumber(), d.close.toNumber()])))
+    .attr('y', d => drawParams.yScale(d3.max([d.open, d.close])))
+    .attr('height', d => drawParams.yScale(d3.min([d.open, d.close])) - drawParams.yScale(d3.max([d.open, d.close])))
     .attr('width', drawParams.candleDim.width)
-    .attr('class', d => d.close.gt(d.open) ? 'up-period' : 'down-period') // eslint-disable-line no-confusing-arrow
+    .attr('class', d => d.close > d.open ? 'up-period' : 'down-period') // eslint-disable-line no-confusing-arrow
 
   candleChart.selectAll('line.stem')
     .data(periodTimeSeries)
@@ -510,7 +511,7 @@ function drawVolume(options) {
     drawParams,
   } = options
 
-  const yVolumeDomain = periodTimeSeries.reduce((p, dataPoint) => [...p, dataPoint.volume.toNumber()], [])
+  const yVolumeDomain = periodTimeSeries.reduce((p, dataPoint) => [...p, dataPoint.volume], [])
 
   const yVolumeScale = d3.scaleLinear()
     .domain(d3.extent(yVolumeDomain))
@@ -520,8 +521,8 @@ function drawVolume(options) {
     .data(periodTimeSeries)
     .enter().append('rect')
     .attr('x', d => drawParams.xScale(d.period))
-    .attr('y', d => yVolumeScale(d.volume.toNumber()))
-    .attr('height', d => drawParams.containerHeight - drawParams.chartDim.bottom - yVolumeScale(d.volume.toNumber()))
+    .attr('y', d => yVolumeScale(d.volume))
+    .attr('height', d => drawParams.containerHeight - drawParams.chartDim.bottom - yVolumeScale(d.volume))
     .attr('width', () => drawParams.candleDim.width)
     .attr('class', 'period-volume')
 }
@@ -592,7 +593,7 @@ function attachHoverClickHandlers({
     .attr('width', drawParams.candleDim.width + drawParams.candleDim.gap)
     .attr('class', 'period-hover')
     .on('mouseover', d => updateHoveredPeriod(d))
-    .on('mousemove', () => updateHoveredPrice(drawParams.yScale.invert(d3.mouse(d3.select('#candlestick_chart').node())[1]).toFixed(fixedPrecision)))
+    .on('mousemove', () => updateHoveredPrice(drawParams.yScale.invert(d3.mouse(d3.select('#candlestick_chart').node())[1])))
     .on('mouseout', () => {
       updateHoveredPeriod({})
       updateHoveredPrice(null)
