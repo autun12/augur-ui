@@ -109,7 +109,7 @@ class MarketOutcomeCandlestick extends Component {
       })
     }
 
-    // if (!isEqual(hoveredPrice, prevProps.hoveredPrice)) updateHoveredPriceCrosshair(hoveredPrice, this.state.yScale, this.state.chartWidth)
+    if (!isEqual(hoveredPrice, prevProps.hoveredPrice)) updateHoveredPriceCrosshair(hoveredPrice, this.state.yScale, this.state.chartWidth)
 
     if (!isEqual(prevProps.candleChartContainer, this.props.candleChartContainer)) {
       const elem = document.getElementById('candlestick_chart_container')
