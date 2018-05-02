@@ -23,6 +23,7 @@ class MarketOutcomeCandlestick extends Component {
     candleChartContainer: PropTypes.any,
     connectFauxDOM: PropTypes.func.isRequired,
     currentTimeInSeconds: PropTypes.number.isRequired,
+    drawFauxDOM: PropTypes.func.isRequired,
     fixedPrecision: PropTypes.number.isRequired,
     hoveredPeriod: PropTypes.object.isRequired,
     hoveredPrice: PropTypes.any,
@@ -217,6 +218,8 @@ class MarketOutcomeCandlestick extends Component {
         drawParams,
         updateSeletedOrderProperties,
       })
+
+      this.props.drawFauxDOM()
 
       // Set react components to state for render
       this.setState({
