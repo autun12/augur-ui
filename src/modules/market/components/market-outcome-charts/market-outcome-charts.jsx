@@ -133,6 +133,7 @@ export default class MarketOutcomeCharts extends Component {
       const priceTimeSeriesCandleStick = data[selectedOutcome.id] || []
       this.setState({
         priceTimeSeriesCandleStick,
+        hasPriceHistory: priceTimeSeriesCandleStick.length !== 0,
       })
     })
   }
@@ -212,7 +213,6 @@ export default class MarketOutcomeCharts extends Component {
       currentTimeInSeconds,
       outcomeName,
       hasOrders,
-      hasPriceHistory,
       marketDepth,
       maxPrice,
       minPrice,
@@ -307,7 +307,7 @@ export default class MarketOutcomeCharts extends Component {
           <MarketOutcomeMidpoint
             isMobile={isMobile}
             excludeCandlestick={excludeCandlestick}
-            hasPriceHistory={hasPriceHistory}
+            hasPriceHistory={s.hasPriceHistory}
             hasOrders={hasOrders}
             chartWidths={s.chartWidths}
             headerHeight={s.headerHeight}
