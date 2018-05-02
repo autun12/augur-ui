@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import ScrollSnap from 'scroll-snap'
+import logError from 'utils/log-error'
 
 import debounce from 'utils/debounce'
 
@@ -130,6 +131,8 @@ export default class MarketOutcomeCharts extends Component {
       end: currentTimeInSeconds,
       outcome: selectedOutcome.id,
     }, (err, data) => {
+      if (err) return logError(err)
+
       const priceTimeSeriesCandleStick = data[selectedOutcome.id] || []
       this.setState({
         priceTimeSeriesCandleStick,
