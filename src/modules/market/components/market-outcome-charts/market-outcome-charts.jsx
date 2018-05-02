@@ -53,7 +53,7 @@ export default class MarketOutcomeCharts extends Component {
     this.state = {
       candleScrolled: true,
       selectedPeriod: PERIODS[0].period,
-      selectedRange: RANGES[2].range,
+      selectedRange: RANGES[1].range,
       hoveredPeriod: {},
       hoveredDepth: [],
       hoveredPrice: null,
