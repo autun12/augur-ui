@@ -8,11 +8,10 @@ import { formatEther, formatShares, formatNumber } from "utils/format-number";
 
 describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
   describe("generateOutcomePositionSummary", () => {
-    const proxyquire = require("proxyquire");
     proxyquire.noPreserveCache().callThru();
 
     const test = t => {
-      it(t.description, () => {
+      test(t.description, () => {
         t.assertions();
       });
     };
@@ -185,7 +184,7 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
 
   describe("generateMarketsPositionsSummary", () => {
     const test = t => {
-      it(t.description, () => {
+      test(t.description, () => {
         t.assertions();
       });
     };
@@ -338,7 +337,7 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
 
   describe("generatePositionsSummary", () => {
     const test = t => {
-      it(t.description, () => {
+      test(t.description, () => {
         t.assertions();
       });
     };

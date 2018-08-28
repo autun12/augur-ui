@@ -6,7 +6,7 @@ import {
 describe("modules/my-positions/actions/clear-close-position-outcome.js", () => {
   describe("clearClosePositionTradeGroup", () => {
     const test = t => {
-      it(t.description, () => {
+      test(t.description, () => {
         t.assertions(
           clearClosePositionOutcome(t.arguments.marketId, t.arguments.outcomeId)
         );

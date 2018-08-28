@@ -1,6 +1,5 @@
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import proxyquire from "proxyquire";
 import sinon from "sinon";
 import { createBigNumber } from "utils/create-big-number";
 
@@ -64,7 +63,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
     });
 
     const test = t =>
-      it(t.description, () => {
+      test(t.description, () => {
         const store = mockStore(t.state || {});
         sinon
           .stub(mockPlaceTrade, "placeTrade")
@@ -256,7 +255,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
 
   describe("getBestFill", () => {
     const test = t =>
-      it(t.description, () => {
+      test(t.description, () => {
         const bestFill = action.getBestFill(
           t.state.orderBook,
           t.arguments.side,

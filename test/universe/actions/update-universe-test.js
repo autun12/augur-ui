@@ -1,4 +1,3 @@
-import proxyquire from "proxyquire";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import testState from "test/testState";
@@ -13,7 +12,7 @@ describe(`modules/universe/actions/update-universe.js`, () => {
     "../../../src/modules/universe/actions/update-universe.js",
     {}
   );
-  it("should dispatch UPDATE_UNIVERSE action", () => {
+  test("should dispatch UPDATE_UNIVERSE action", () => {
     store.dispatch(
       action.updateUniverse({
         currentPeriod: 20,

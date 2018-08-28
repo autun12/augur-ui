@@ -5,16 +5,16 @@ export default function(navItem, label = "Nav Item") {
     assert.isDefined(navItem);
     assert.isObject(navItem);
 
-    it("label", () => {
+    test("label", () => {
       assert.isDefined(navItem.label);
       assert.isString(navItem.label);
     });
 
-    it("link", () => {
+    test("link", () => {
       assertLink(navItem.link, "portfolio.navItem.link");
     });
 
-    it("page", () => {
+    test("page", () => {
       assert.isDefined(navItem.page);
       assert.isString(navItem.page);
     });

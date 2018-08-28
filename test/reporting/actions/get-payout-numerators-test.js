@@ -1,5 +1,3 @@
-import proxyquire from "proxyquire";
-
 import {
   YES_NO,
   CATEGORICAL,
@@ -12,7 +10,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   proxyquire.noPreserveCache().noCallThru();
 
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };

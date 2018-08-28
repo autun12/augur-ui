@@ -10,7 +10,7 @@ describe("modules/my-markets/reducers/market-creator-fees.js", () => {
     data: null
   };
 
-  it("should return the default parameter state", () => {
+  test("should return the default parameter state", () => {
     assert.deepEqual(
       reducer(undefined, { type: null, data: null }),
       {},
@@ -18,7 +18,7 @@ describe("modules/my-markets/reducers/market-creator-fees.js", () => {
     );
   });
 
-  it("should return an object with a first update", () => {
+  test("should return an object with a first update", () => {
     action.data = {
       "0xtest1": "a big num"
     };
@@ -34,7 +34,7 @@ describe("modules/my-markets/reducers/market-creator-fees.js", () => {
     );
   });
 
-  it("should return an object with a second update", () => {
+  test("should return an object with a second update", () => {
     state = action.data;
 
     action.data = {
@@ -53,7 +53,7 @@ describe("modules/my-markets/reducers/market-creator-fees.js", () => {
     );
   });
 
-  it("should return an object with an updated value", () => {
+  test("should return an object with an updated value", () => {
     state = expected;
 
     action.data = {

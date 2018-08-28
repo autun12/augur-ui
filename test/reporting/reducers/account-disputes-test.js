@@ -10,7 +10,7 @@ import reducer from "modules/reporting/reducers/account-disputes-state";
 
 describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };

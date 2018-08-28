@@ -1,5 +1,3 @@
-import { describe, it, beforeEach, afterEach } from "mocha";
-
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 import realStore from "src/store";
@@ -93,7 +91,7 @@ describe("modules/app/actions/init-augur.js", () => {
     }
   });
 
-  before(() => {
+  beforeAll(() => {
     process.env.ETHEREUM_NETWORK = "test";
   });
 
@@ -110,12 +108,12 @@ describe("modules/app/actions/init-augur.js", () => {
     store.clearActions();
   });
 
-  after(() => {
+  afterAll(() => {
     delete process.env.ETHEREUM_NETWORK;
   });
 
   describe("initAugur", () => {
-    const test = t => it(t.description, done => t.assertions(done));
+    const test = t => test(t.description, done => t.assertions(done));
 
     test({
       description: "Should InitAugur successfully, with logged in account",
@@ -307,7 +305,7 @@ describe("modules/app/actions/init-augur.js", () => {
       }
     });
     describe("connectAugur", () => {
-      const test = t => it(t.description, done => t.assertions(done));
+      const test = t => test(t.description, done => t.assertions(done));
 
       test({
         description:

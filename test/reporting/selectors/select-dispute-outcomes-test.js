@@ -10,12 +10,12 @@ import selectDisputeOutcomes, {
 
 describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
 
-  after(() => {
+  afterAll(() => {
     RewireAPI.__ResetDependency__("calculatePayoutNumeratorsValue");
   });
 

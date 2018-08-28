@@ -5,7 +5,7 @@ import marketDisputeOutcomes, {
 } from "modules/reporting/selectors/select-market-dispute-outcomes";
 
 describe(`modules/reports/selectors/select-market-dispute-outcomes.js`, () => {
-  const test = t => it(t.description, done => t.assertions(done));
+  const test = t => test(t.description, done => t.assertions(done));
 
   describe("default method", () => {
     test({

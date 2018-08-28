@@ -7,7 +7,7 @@ import calculatePayoutNumeratorsValue from "utils/calculate-payout-numerators-va
 
 describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };

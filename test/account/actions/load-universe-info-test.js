@@ -1,6 +1,3 @@
-import { describe, it } from "mocha";
-import { assert } from "chai";
-
 import { YES_NO } from "modules/markets/constants/market-types";
 import {
   loadUniverseInfo,
@@ -8,7 +5,7 @@ import {
 } from "modules/account/actions/load-universe-info";
 
 describe("modules/account/actions/load-universe-info.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   describe("loadUniverseInfo", () => {
     test({
@@ -66,7 +63,7 @@ describe("modules/account/actions/load-universe-info.js", () => {
           api: {
             Universe: {
               getParentUniverse: (args, callback) => {
-                assert.deepEqual(args, {
+                expect(args).toEqual({
                   tx: { to: "0xGENESIS" }
                 });
                 return callback(
@@ -81,8 +78,8 @@ describe("modules/account/actions/load-universe-info.js", () => {
           },
           augurNode: {
             submitRequest: (methodName, args, callback) => {
-              assert.equal(methodName, "getUniversesInfo");
-              assert.deepEqual(args, {
+              expect(methodName).toEqual("getUniversesInfo");
+              expect(args).toEqual({
                 universe: "0xGENESIS",
                 account: "0xACCOUNT"
               });
@@ -121,11 +118,7 @@ describe("modules/account/actions/load-universe-info.js", () => {
         };
 
         loadUniverseInfo(actual => {
-          assert.deepEqual(
-            actual,
-            expected,
-            `Didn't return the expected object`
-          );
+          expect(actual).toEqual(expected);
         })(null, getState);
       }
     });

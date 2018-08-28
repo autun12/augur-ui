@@ -12,11 +12,11 @@ describe("toggle-member-of-array", () => {
       result = toggleMemberOfArray(stack, needle);
     });
 
-    it("should remove just the needle", () => {
+    test("should remove just the needle", () => {
       assert.deepEqual(result, [noiseValue]);
     });
 
-    it("should return a new array (not strictly equal)", () => {
+    test("should return a new array (not strictly equal)", () => {
       assert.notStrictEqual(result, stack);
     });
   });
@@ -27,11 +27,11 @@ describe("toggle-member-of-array", () => {
       result = toggleMemberOfArray(stack, needle);
     });
 
-    it("should add the needle to the array", () => {
+    test("should add the needle to the array", () => {
       assert.deepEqual(result, [noiseValue, needle]);
     });
 
-    it("should return a new array (not strictly equal)", () => {
+    test("should return a new array (not strictly equal)", () => {
       assert.notStrictEqual(result, stack);
     });
   });

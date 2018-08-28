@@ -1,4 +1,3 @@
-import proxyquire from "proxyquire";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import realSelector from "modules/trade/selectors/trade-in-progress";
@@ -22,7 +21,7 @@ describe(`modules/trade/selectors/trade-in-progress.js`, () => {
     }
   );
 
-  it(`should return tradesInProgress[selectedMarketId] if available`, () => {
+  test(`should return tradesInProgress[selectedMarketId] if available`, () => {
     assert.equal(
       selector.default(),
       "this is a test",
@@ -30,10 +29,13 @@ describe(`modules/trade/selectors/trade-in-progress.js`, () => {
     );
   });
 
-  it(`should return undefined if tradesInProgress[selectedMarketId] doesn't exist`, () => {
-    assert.isUndefined(
-      realSelector(),
-      `isn't undefined as expected with blank state`
-    );
-  });
+  test(
+    `should return undefined if tradesInProgress[selectedMarketId] doesn't exist`,
+    () => {
+      assert.isUndefined(
+        realSelector(),
+        `isn't undefined as expected with blank state`
+      );
+    }
+  );
 });

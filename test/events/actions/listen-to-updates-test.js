@@ -1,4 +1,3 @@
-import { describe, it } from "mocha";
 import mockStore from "test/mockStore";
 import {
   listenToUpdates,
@@ -21,7 +20,7 @@ describe("events/actions/listen-to-updates", () => {
       NODES_ETHEREUM_ON_SET: { type: "NODES_ETHEREUM_ON_SET" }
     };
     const test = t =>
-      it(t.description, () => {
+      test(t.description, () => {
         const store = mockStore.mockStore({});
         RewireListenToUpdates.__Rewire__("augur", {
           events: {
@@ -138,7 +137,7 @@ describe("events/actions/listen-to-updates", () => {
   });
   describe("MarketState", () => {
     const test = t =>
-      it(t.description, () => {
+      test(t.description, () => {
         const store = mockStore.mockStore(t.state);
         RewireLogHandlers.__Rewire__("loadMarketsInfo", marketIds => ({
           type: "LOAD_MARKETS_INFO",
@@ -176,7 +175,7 @@ describe("events/actions/listen-to-updates", () => {
   });
   describe("InitialReportSubmitted", () => {
     const test = t =>
-      it(t.description, () => {
+      test(t.description, () => {
         const store = mockStore.mockStore(t.state);
         RewireLogHandlers.__Rewire__("loadMarketsInfo", marketIds => ({
           type: "LOAD_MARKETS_INFO",

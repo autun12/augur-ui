@@ -1,8 +1,5 @@
-import { describe, it, before } from "mocha";
-
 import myMarketsSummaryAssertions from "assertions/my-markets-summary";
 import sinon from "sinon";
-import proxyquire from "proxyquire";
 import * as mockStore from "test/mockStore";
 
 describe("modules/my-markets/selectors/my-markets-summary", () => {
@@ -49,22 +46,22 @@ describe("modules/my-markets/selectors/my-markets-summary", () => {
     totalValue: 21
   };
 
-  before(() => {
+  beforeAll(() => {
     actual = proxiedSelector.default();
   });
 
-  it(`should call 'selectMyMarkets' once`, () => {
+  test(`should call 'selectMyMarkets' once`, () => {
     assert(
       spiedMyMarkets.calledOnce,
       `Didn't call 'selectMyMarkets' once as expected`
     );
   });
 
-  it(`should return the correct object`, () => {
+  test(`should return the correct object`, () => {
     assert.deepEqual(expected, actual, `Didn't return the expected object`);
   });
 
-  it("should return the correct object to augur-ui-react-components", () => {
+  test("should return the correct object to augur-ui-react-components", () => {
     myMarketsSummaryAssertions(actual);
   });
 });

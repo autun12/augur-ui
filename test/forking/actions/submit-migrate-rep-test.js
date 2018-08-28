@@ -1,6 +1,3 @@
-import { describe, it } from "mocha";
-import { assert } from "chai";
-
 import { YES_NO } from "modules/markets/constants/market-types";
 import {
   submitMigrateREP,
@@ -8,7 +5,7 @@ import {
 } from "modules/forking/actions/submit-migrate-rep";
 
 describe("modules/forking/actions/submit-migrate-rep.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   describe("submitMigrateREP", () => {
     test({
@@ -37,7 +34,7 @@ describe("modules/forking/actions/submit-migrate-rep.js", () => {
           api: {
             Universe: {
               getReputationToken: (args, callback) => {
-                assert.deepEqual(args, {
+                expect(args).toEqual({
                   tx: { to: "0xUNIVERSE" }
                 });
                 return callback(null, "0xREP_TOKEN");
@@ -45,17 +42,14 @@ describe("modules/forking/actions/submit-migrate-rep.js", () => {
             },
             ReputationToken: {
               migrateOutByPayout: args => {
-                assert.deepEqual(args.tx, {
+                expect(args.tx).toEqual({
                   to: "0xREP_TOKEN",
                   estimateGas: false
                 });
-                assert.equal(args.meta, "META");
-                assert.equal(args._invalid, false);
-                assert.deepEqual(
-                  args._payoutNumerators.map(n => n.toString()),
-                  ["0", "10000"]
-                );
-                assert.equal(args._attotokens, 42);
+                expect(args.meta).toEqual("META");
+                expect(args._invalid).toEqual(false);
+                expect(args._payoutNumerators.map(n => n.toString())).toEqual(["0", "10000"]);
+                expect(args._attotokens).toEqual(42);
               }
             }
           }

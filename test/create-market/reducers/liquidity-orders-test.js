@@ -10,7 +10,7 @@ import {
 
 describe("modules/create-market/reducers/liquidity-orders.js", () => {
   const test = t => {
-    it(t.describe, () => {
+    test(t.describe, () => {
       t.assertions();
     });
   };

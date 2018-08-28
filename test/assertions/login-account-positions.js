@@ -3,12 +3,12 @@ export default function(loginAccountPositions) {
     assert.isDefined(loginAccountPositions);
     assert.isObject(loginAccountPositions);
 
-    it("markets", () => {
+    test("markets", () => {
       assert.isDefined(loginAccountPositions.markets);
       assert.isArray(loginAccountPositions.markets);
     });
 
-    it("summary", () => {
+    test("summary", () => {
       assert.isDefined(loginAccountPositions.summary);
       assert.isObject(loginAccountPositions.summary);
     });

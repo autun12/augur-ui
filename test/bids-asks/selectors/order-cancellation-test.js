@@ -1,4 +1,3 @@
-import proxyquire from "proxyquire";
 import mocks from "test/mockStore";
 
 describe("modules/bids-asks/selectors/order-cancellation.js", () => {
@@ -12,7 +11,7 @@ describe("modules/bids-asks/selectors/order-cancellation.js", () => {
     }
   ).default;
 
-  it("should select correct values", () => {
+  test("should select correct values", () => {
     const orderCancellation = orderCancellationSelector();
     assert.isFunction(orderCancellation.cancelOrder);
     assert.propertyVal(orderCancellation, "an orderId", "a status");

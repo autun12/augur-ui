@@ -3,44 +3,53 @@ import * as notificationLevels from "src/modules/notifications/constants";
 
 describe("modules/notifications/actions/update-notifications", () => {
   describe("addNotification", () => {
-    it("should return nothing when the notifications param is null/undefined", () => {
-      const actual = updateNotifications.addNotification();
-      const expected = undefined;
+    test(
+      "should return nothing when the notifications param is null/undefined",
+      () => {
+        const actual = updateNotifications.addNotification();
+        const expected = undefined;
 
-      assert.strictEqual(actual, expected, `Didn't return the expected result`);
-    });
+        assert.strictEqual(actual, expected, `Didn't return the expected result`);
+      }
+    );
 
-    it("should return the expected object when a notification is passed in", () => {
-      const actual = updateNotifications.addNotification({});
+    test(
+      "should return the expected object when a notification is passed in",
+      () => {
+        const actual = updateNotifications.addNotification({});
 
-      const expected = {
-        type: updateNotifications.ADD_NOTIFICATION,
-        data: {
-          notification: {
-            level: notificationLevels.INFO,
-            seen: false
+        const expected = {
+          type: updateNotifications.ADD_NOTIFICATION,
+          data: {
+            notification: {
+              level: notificationLevels.INFO,
+              seen: false
+            }
           }
-        }
-      };
+        };
 
-      assert.deepEqual(actual, expected, `Didn't return the expected result`);
-    });
+        assert.deepEqual(actual, expected, `Didn't return the expected result`);
+      }
+    );
 
-    it("should default notification level to the 'INFO' constant", () => {
+    test("should default notification level to the 'INFO' constant", () => {
       const actual = updateNotifications.addNotification({});
       assert.equal(actual.data.notification.level, notificationLevels.INFO);
     });
 
-    it("should override the default notification level with the value passed in the notification object param", () => {
-      const actual = updateNotifications.addNotification({
-        level: notificationLevels.CRITICAL
-      });
-      assert.equal(actual.data.notification.level, notificationLevels.CRITICAL);
-    });
+    test(
+      "should override the default notification level with the value passed in the notification object param",
+      () => {
+        const actual = updateNotifications.addNotification({
+          level: notificationLevels.CRITICAL
+        });
+        assert.equal(actual.data.notification.level, notificationLevels.CRITICAL);
+      }
+    );
   });
 
   describe("removeNotification", () => {
-    it("should return the expected object", () => {
+    test("should return the expected object", () => {
       const actual = updateNotifications.removeNotification(1);
 
       const expected = {
@@ -53,7 +62,7 @@ describe("modules/notifications/actions/update-notifications", () => {
   });
 
   describe("updateNotification", () => {
-    it("should should return the expected object", () => {
+    test("should should return the expected object", () => {
       const actual = updateNotifications.updateNotification(1, {
         testing: "test"
       });
@@ -73,7 +82,7 @@ describe("modules/notifications/actions/update-notifications", () => {
   });
 
   describe("clearNotifications", () => {
-    it("should return the expected object", () => {
+    test("should return the expected object", () => {
       const actual = updateNotifications.clearNotifications();
 
       const expected = {
@@ -86,12 +95,12 @@ describe("modules/notifications/actions/update-notifications", () => {
     });
 
     describe("notificationLevel", () => {
-      it("should default to the 'INFO' constant", () => {
+      test("should default to the 'INFO' constant", () => {
         const actual = updateNotifications.clearNotifications();
         assert.equal(actual.data.level, notificationLevels.INFO);
       });
 
-      it("should pass notificationLevel", () => {
+      test("should pass notificationLevel", () => {
         const actual = updateNotifications.clearNotifications(
           notificationLevels.CRITICAL
         );

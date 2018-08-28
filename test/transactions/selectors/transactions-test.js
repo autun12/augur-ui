@@ -1,4 +1,3 @@
-import proxyquire from "proxyquire";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
@@ -20,7 +19,7 @@ describe(`modules/transactions/selectors/transactions.js`, () => {
   const mockStore = configureMockStore(middlewares);
 
   const test = t =>
-    it(t.description, () => {
+    test(t.description, () => {
       const store = mockStore(t.state);
       t.assertions(store);
     });

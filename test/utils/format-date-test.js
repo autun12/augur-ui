@@ -6,7 +6,7 @@ import {
 } from "utils/format-date";
 
 describe("utils/format-date", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: `should return false`,

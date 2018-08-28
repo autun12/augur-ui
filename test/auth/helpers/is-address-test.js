@@ -1,7 +1,7 @@
 import isAddress from "modules/auth/helpers/is-address";
 
 describe("is-address", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
   test({
     description: "It should return false for non-addressy values",
     assertions: () => {

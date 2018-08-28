@@ -34,7 +34,7 @@ describe("src/modules/market/helpers/order-for-market-depth.js", () => {
     };
   });
 
-  it("should add a starting point to asks and bids", () => {
+  test("should add a starting point to asks and bids", () => {
     const { asks, bids } = orderForMarketDepth(exampleOrderBook);
 
     assert.lengthOf(asks, 3);

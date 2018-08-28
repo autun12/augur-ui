@@ -1,6 +1,3 @@
-import { describe, it, afterEach } from "mocha";
-
-import proxyquire from "proxyquire";
 import sinon from "sinon";
 import mocks from "test/mockStore";
 import { CANCEL_ORDER, BID, ASK } from "modules/transactions/constants/types";
@@ -52,7 +49,7 @@ describe("modules/bids-asks/actions/cancel-order.js", () => {
   });
 
   describe("cancelOrder", () => {
-    it(`shouldn't dispatch if order doesn't exist`, () => {
+    test(`shouldn't dispatch if order doesn't exist`, () => {
       store.dispatch(
         cancelOrderModule.cancelOrder("nonExistingOrderId", "testMarketId", BID)
       );

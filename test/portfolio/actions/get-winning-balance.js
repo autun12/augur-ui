@@ -8,7 +8,7 @@ describe("modules/portfolio/actions/get-winning-balance.js", () => {
   const mockStore = configureMockStore(middlewares);
 
   const test = t =>
-    it(t.description, () => {
+    test(t.description, () => {
       const store = mockStore(t.state || {});
 
       t.assertions(store);

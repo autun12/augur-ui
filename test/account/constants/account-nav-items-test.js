@@ -6,7 +6,7 @@ import {
 } from "modules/routes/constants/views";
 
 describe("modules/account/constants/account-nav-items.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: `should return the expected constants`,

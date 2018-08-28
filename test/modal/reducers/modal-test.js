@@ -4,7 +4,7 @@ import { UPDATE_MODAL } from "modules/modal/actions/update-modal";
 import { CLOSE_MODAL } from "modules/modal/actions/close-modal";
 
 describe("modules/modal/reducers/modal", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: "should return the DEFAULT_STATE",

@@ -8,7 +8,7 @@ import { createBigNumber } from "src/utils/create-big-number";
 
 describe(`modules/reporting/helpers/progress-calculations.js`, () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };

@@ -4,7 +4,7 @@ import fillDisputeOutcomeProgess, {
 
 describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };

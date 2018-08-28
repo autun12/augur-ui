@@ -1,7 +1,7 @@
 import * as modalTypes from "modules/modal/constants/modal-types";
 
 describe("modules/modal/constants/modal-types", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: `should return the expected value 'MODAL_LEDGER'`,

@@ -8,7 +8,7 @@ import loginAccount, {
 import { formatRep, formatEther } from "utils/format-number";
 
 describe(`modules/auth/selectors/login-account.js`, () => {
-  const test = t => it(t.description, done => t.assertions(done));
+  const test = t => test(t.description, done => t.assertions(done));
 
   describe("default", () => {
     test({
@@ -39,7 +39,7 @@ describe(`modules/auth/selectors/login-account.js`, () => {
     // eslint-disable-line func-names, prefer-arrow-callback
     const stubbedGenerateDownloadAccountLink = sinon.stub();
 
-    before(() => {
+    beforeAll(() => {
       loginAccountRewireAPI.__Rewire__(
         "generateDownloadAccountLink",
         stubbedGenerateDownloadAccountLink
@@ -57,7 +57,7 @@ describe(`modules/auth/selectors/login-account.js`, () => {
       stubbedGenerateDownloadAccountLink.reset();
     });
 
-    after(() => {
+    afterAll(() => {
       loginAccountRewireAPI.__ResetDependency__("generateDownloadAccountLink");
       loginAccountRewireAPI.__ResetDependency__("augur");
     });

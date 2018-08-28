@@ -9,7 +9,7 @@ describe(`modules/auth/reducers/login-account.js`, () => {
   let action;
   const thisTestState = Object.assign({}, testState);
 
-  it(`should updated the logged in account`, () => {
+  test(`should updated the logged in account`, () => {
     action = {
       type: UPDATE_LOGIN_ACCOUNT,
       data: {
@@ -32,7 +32,7 @@ describe(`modules/auth/reducers/login-account.js`, () => {
     );
   });
 
-  it(`should clear the logged in account`, () => {
+  test(`should clear the logged in account`, () => {
     action = {
       type: CLEAR_LOGIN_ACCOUNT
     };

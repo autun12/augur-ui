@@ -2,9 +2,8 @@ import { selectCategories } from "modules/categories/selectors/categories";
 
 describe(`modules/categories/selectors/categories.js`, () => {
   const test = t =>
-    it(t.description, () =>
-      t.assertions(selectCategories({ categories: t.categories }))
-    );
+    test(t.description, () =>
+      t.assertions(selectCategories({ categories: t.categories })));
   test({
     description: "no categories",
     categories: {},

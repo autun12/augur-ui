@@ -11,7 +11,7 @@ import {
 import mocks from "test/mockStore";
 
 describe("modules/auth/actions/ledger-ethereum-hook-actions.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
   const { store } = mocks;
 
   afterEach(() => {

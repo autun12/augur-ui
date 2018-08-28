@@ -1,7 +1,7 @@
 import * as views from "modules/routes/constants/views";
 
 describe("modules/app/constants/views", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: `should return the expected value 'DEFAULT_VIEW'`,

@@ -1,6 +1,5 @@
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
-import proxyquire from "proxyquire";
 
 describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, () => {
   proxyquire.noPreserveCache().noCallThru();
@@ -8,7 +7,7 @@ describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, (
   const mockStore = configureMockStore(middlewares);
 
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       const store = mockStore(t.state || {});
       t.assertions(store);
     });
@@ -48,7 +47,7 @@ describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, (
     });
   });
 
-  it(`should return no user open orders markets`, () => {
+  test(`should return no user open orders markets`, () => {
     const {
       selectAllUserOpenOrderMarkets
     } = require("modules/user-open-orders/selectors/select-account-order-markets");
@@ -67,7 +66,7 @@ describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, (
     assert.lengthOf(selectAllUserOpenOrderMarkets, []);
   });
 
-  it(`should return one user open orders markets`, () => {
+  test(`should return one user open orders markets`, () => {
     const {
       selectAllUserOpenOrderMarkets
     } = require("modules/user-open-orders/selectors/select-account-order-markets");
@@ -110,7 +109,7 @@ describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, (
     });
   });
 
-  it(`should return no user open orders markets because not logged in`, () => {
+  test(`should return no user open orders markets because not logged in`, () => {
     const {
       selectAllUserOpenOrderMarkets
     } = require("modules/user-open-orders/selectors/select-account-order-markets");

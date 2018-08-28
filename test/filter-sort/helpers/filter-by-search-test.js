@@ -2,7 +2,7 @@ import mocks from "test/mockStore";
 import { filterBySearch } from "modules/filter-sort/helpers/filter-by-search";
 
 describe("modules/filter-sort/helpers/filter-by-search.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
   const { state } = mocks;
   const defaultKeys = ["description", ["outcomes", "description"], ["tags"]];
   const defaultItems = [

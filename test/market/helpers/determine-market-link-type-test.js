@@ -11,7 +11,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
   const account = { address: "userId" };
 
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };

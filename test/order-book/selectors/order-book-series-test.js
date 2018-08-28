@@ -9,7 +9,7 @@ import { formatEther, formatShares } from "utils/format-number";
 
 describe("modules/order-book/selectors/order-book-series", () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };

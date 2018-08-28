@@ -6,7 +6,7 @@ import { CLEAR_LOGIN_ACCOUNT } from "modules/auth/actions/update-login-account";
 
 describe("modules/my-positions/reducers/account-trades.js", () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };

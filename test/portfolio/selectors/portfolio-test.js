@@ -1,9 +1,6 @@
-import { describe, it, before } from "mocha";
-
 import portfolioAssertions from "assertions/portfolio";
 
 import sinon from "sinon";
-import proxyquire from "proxyquire";
 
 describe("modules/portfolio/selectors/portfolio", () => {
   proxyquire.noPreserveCache().noCallThru();
@@ -24,18 +21,18 @@ describe("modules/portfolio/selectors/portfolio", () => {
     }
   );
 
-  before(() => {
+  beforeAll(() => {
     actual = proxiedSelector.default();
   });
 
-  it(`should call 'selectPortfolioTotals' once`, () => {
+  test(`should call 'selectPortfolioTotals' once`, () => {
     assert(
       stubbedPortfolioTotals.calledOnce,
       `Didn't call 'selectPortfolioTotals' once as expected`
     );
   });
 
-  it(`should return the correct object to augur-ui-react-components`, () => {
+  test(`should return the correct object to augur-ui-react-components`, () => {
     portfolioAssertions(actual);
   });
 });

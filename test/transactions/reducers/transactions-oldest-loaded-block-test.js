@@ -4,7 +4,7 @@ import { UPDATE_TRANSACTIONS_OLDEST_LOADED_BLOCK } from "modules/transactions/ac
 import { CLEAR_LOGIN_ACCOUNT } from "modules/auth/actions/update-login-account";
 
 describe("modules/transactions/reducers/transactions-oldest-loaded-block", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: `should return the default state`,

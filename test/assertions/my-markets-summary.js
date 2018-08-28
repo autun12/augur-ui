@@ -12,7 +12,7 @@ export function assertMyMarketsSummary(summary) {
     assert.isDefined(summary);
     assert.isObject(summary);
 
-    it("numMarkets", () => {
+    test("numMarkets", () => {
       assert.isDefined(summary.numMarkets);
       assert.isNumber(summary.numMarkets);
     });

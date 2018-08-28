@@ -1,13 +1,10 @@
-import { describe, it } from "mocha";
-import { assert } from "chai";
-
 import {
   migrateMarketThroughFork,
   __RewireAPI__ as ReWireModule
 } from "modules/forking/actions/migrate-market-through-fork";
 
 describe("modules/forking/actions/migrate-market-through-fork.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   describe("migrateMarketThroughFork", () => {
     test({
@@ -25,7 +22,7 @@ describe("modules/forking/actions/migrate-market-through-fork.js", () => {
           api: {
             Market: {
               migrateThroughOneFork: args => {
-                assert.deepEqual(args.tx, {
+                expect(args.tx).toEqual({
                   to: "0xMARKET",
                   estimateGas: false
                 });

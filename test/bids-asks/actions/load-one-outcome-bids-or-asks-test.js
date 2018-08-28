@@ -1,4 +1,3 @@
-import proxyquire from "proxyquire";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 
@@ -10,7 +9,7 @@ const constants = { ORDER_STATE: { OPEN: "OPEN" } };
 describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
   proxyquire.noPreserveCache();
   const test = t =>
-    it(t.description, done => {
+    test(t.description, done => {
       const store = configureMockStore([thunk])({ ...t.mock.state });
       const loadOneOutcomeBidsOrAsks = proxyquire(
         "../../../src/modules/bids-asks/actions/load-one-outcome-bids-or-asks",

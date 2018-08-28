@@ -8,7 +8,7 @@ import { clearLoginAccount } from "modules/auth/actions/update-login-account";
 import reducer from "modules/auth/reducers/ledger-status";
 
 describe(`modules/auth/reducers/ledger-status.js`, () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: "It should return the default state on unrecognized action",

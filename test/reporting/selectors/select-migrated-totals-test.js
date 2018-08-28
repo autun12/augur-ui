@@ -10,12 +10,12 @@ import selectMigratedTotals, {
 
 describe(`modules/reporting/selectors/select-migrated-totals.js`, () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
 
-  after(() => {
+  afterAll(() => {
     RewireAPI.__ResetDependency__("formatAttoRep");
   });
 

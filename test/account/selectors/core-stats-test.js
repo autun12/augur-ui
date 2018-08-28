@@ -11,7 +11,7 @@ import coreStats, {
 import { ZERO } from "modules/trade/constants/numbers";
 
 describe("modules/account/selectors/core-stats", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   describe("default", () => {
     test({

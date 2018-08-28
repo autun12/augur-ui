@@ -3,7 +3,7 @@ import isAugurJSVersionsEqual, {
 } from "modules/auth/helpers/is-augurjs-versions-equal";
 
 describe("modules/auth/helpers/is-augurjs-versions-equal", () => {
-  const test = t => it(t.description, async () => t.assertions());
+  const test = t => test(t.description, async () => t.assertions());
 
   afterEach(() => {
     isAugurJSVersionsEqualAPI.__ResetDependency__("augur");

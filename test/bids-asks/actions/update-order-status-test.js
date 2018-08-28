@@ -1,6 +1,3 @@
-import { describe, it, afterEach } from "mocha";
-
-import proxyquire from "proxyquire";
 import mocks from "test/mockStore";
 import { CLOSE_DIALOG_CLOSING } from "modules/market/constants/close-dialog-status";
 import { BUY } from "modules/transactions/constants/types";
@@ -13,7 +10,7 @@ describe("modules/bids-asks/actions/update-order-status.js", () => {
     store.clearActions();
   });
   describe("updateOrderStatus", () => {
-    it(`shouldn't dispatch if order cannot be found`, () => {
+    test(`shouldn't dispatch if order cannot be found`, () => {
       store.dispatch(
         updateOrderStatus(
           "nonExistingOrderId",
@@ -35,7 +32,7 @@ describe("modules/bids-asks/actions/update-order-status.js", () => {
       );
       assert.lengthOf(store.getActions(), 0);
     });
-    it(`should dispatch action`, () => {
+    test(`should dispatch action`, () => {
       store.dispatch(
         updateOrderStatus(
           "0xdbd851cc394595f9c50f32c1554059ec343471b49f84a4b72c44589a25f70ff3",

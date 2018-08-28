@@ -38,12 +38,12 @@ describe(`modules/create-market/actions/liquidity-management.js`, () => {
     }
   };
 
-  after(() => {
+  afterAll(() => {
     liquidityManagementRequireAPI.__ResetDependency__("augur");
   });
 
   const test = t =>
-    it(t.description, () => {
+    test(t.description, () => {
       liquidityManagementRequireAPI.__Rewire__("augur", {
         ...augur,
         api: {

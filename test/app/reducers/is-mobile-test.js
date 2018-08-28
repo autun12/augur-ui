@@ -2,7 +2,7 @@ import isMobileReducer from "modules/app/reducers/is-mobile";
 import { UPDATE_IS_MOBILE } from "modules/app/actions/update-is-mobile";
 
 describe("modules/app/reducers/is-mobile.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: `should return the default state`,

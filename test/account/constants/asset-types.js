@@ -1,7 +1,7 @@
 import { ETH, REP } from "modules/account/constants/asset-types";
 
 describe("modules/account/constants/asset-types.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: `ETH should return the expected string`,

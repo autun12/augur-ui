@@ -1,5 +1,3 @@
-import proxyquire from "proxyquire";
-
 import { createBigNumber } from "utils/create-big-number";
 
 import * as mockStore from "test/mockStore";
@@ -141,7 +139,7 @@ describe("modules/portfolio/selectors/login-account-markets", () => {
     }
   ];
 
-  it("should return the expected array", () => {
+  test("should return the expected array", () => {
     assert.deepEqual(actual, expected, `Didn't return the expected array`);
   });
 

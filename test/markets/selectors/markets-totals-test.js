@@ -1,5 +1,3 @@
-import { describe, it, beforeEach, afterEach } from "mocha";
-import proxyquire from "proxyquire";
 import sinon from "sinon";
 import * as mockStore from "test/mockStore";
 import marketsTotalsAssertions from "assertions/markets-totals";
@@ -216,7 +214,7 @@ describe(`modules/markets/selectors/markets-totals.js`, () => {
     store.clearActions();
   });
 
-  it(`should return the market totals for selected market`, () => {
+  test(`should return the market totals for selected market`, () => {
     const actual = selector.default();
     marketsTotalsAssertions(actual);
   });

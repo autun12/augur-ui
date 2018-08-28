@@ -1,4 +1,3 @@
-import { describe, it } from "mocha";
 import mockStore from "test/mockStore";
 import {
   reInitAugur,
@@ -8,7 +7,7 @@ import {
 describe("app/actions/re-init-augur", () => {
   const mockHistory = { push: arg => assert.deepEqual(arg, "/categories") };
   const test = t =>
-    it(t.description, done => {
+    test(t.description, done => {
       let connectAugurCallCount = 0;
       const store = mockStore.mockStore(t.state);
       RewireReInitAugur.__Rewire__(

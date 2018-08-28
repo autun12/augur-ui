@@ -5,7 +5,7 @@ import reducer from "modules/app/reducers/blockchain";
 describe(`modules/app/reducers/blockchain.js`, () => {
   const thisTestState = Object.assign({}, testState);
 
-  it(`should update the blockchain in state`, () => {
+  test(`should update the blockchain in state`, () => {
     const action = {
       type: UPDATE_BLOCKCHAIN,
       data: {

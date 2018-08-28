@@ -4,7 +4,7 @@ describe("modules/trade/helpers/has-user-enough-funds.js", () => {
   const hasUserEnoughFunds = require("../../../src/modules/trade/helpers/has-user-enough-funds")
     .default;
 
-  it(`should return false if user doesn't have enough money`, () => {
+  test(`should return false if user doesn't have enough money`, () => {
     assert.isFalse(
       hasUserEnoughFunds([], { address: "address", ether: undefined })
     );
@@ -26,7 +26,7 @@ describe("modules/trade/helpers/has-user-enough-funds.js", () => {
     );
   });
 
-  it(`should return false if user has no id defined`, () => {
+  test(`should return false if user has no id defined`, () => {
     assert.isFalse(hasUserEnoughFunds([], { address: null, ether: undefined }));
     assert.isFalse(
       hasUserEnoughFunds([], { address: undefined, ether: undefined })
@@ -45,7 +45,7 @@ describe("modules/trade/helpers/has-user-enough-funds.js", () => {
     );
   });
 
-  it(`should return false if there is no logged in user`, () => {
+  test(`should return false if there is no logged in user`, () => {
     assert.isFalse(hasUserEnoughFunds([], undefined));
     assert.isFalse(hasUserEnoughFunds([], null));
     assert.isFalse(hasUserEnoughFunds([], {}));
@@ -63,7 +63,7 @@ describe("modules/trade/helpers/has-user-enough-funds.js", () => {
     );
   });
 
-  it("should return true if user has enough money", () => {
+  test("should return true if user has enough money", () => {
     assert.isTrue(
       hasUserEnoughFunds([{ side: "buy", totalCost: formatEther("10") }], {
         address: "address",

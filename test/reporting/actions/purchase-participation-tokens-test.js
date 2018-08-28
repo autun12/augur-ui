@@ -1,5 +1,3 @@
-import { describe, it, afterEach } from "mocha";
-
 import mockStore from "test/mockStore";
 import speedomatic from "speedomatic";
 import { formatGasCostToEther } from "utils/format-number";
@@ -10,7 +8,7 @@ import {
 } from "modules/reporting/actions/purchase-participation-tokens";
 
 describe("purchase participation tokens tests", () => {
-  const test = t => it(t.description, done => t.assertions(done));
+  const test = t => test(t.description, done => t.assertions(done));
   const { store } = mockStore;
 
   const ACTIONS = {

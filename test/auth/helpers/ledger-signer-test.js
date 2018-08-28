@@ -19,7 +19,7 @@ describe("modules/auth/helpers/ledger-signer", () => {
   __RewireAPI__.__Rewire__("updateModal", stubbedUpdateModal);
   __RewireAPI__.__Rewire__("closeModal", stubbedCloseModal);
 
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   beforeEach(() => {
     ledgerLib = {

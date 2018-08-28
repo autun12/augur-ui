@@ -4,7 +4,7 @@ import {
 } from "modules/bids-asks/actions/update-order-book";
 
 describe(`modules/bids-asks/actions/update-order-book.js`, () => {
-  it(`should fire the UPDATE_ORDER_BOOK action with data`, () => {
+  test(`should fire the UPDATE_ORDER_BOOK action with data`, () => {
     const marketId = "MARKET_1";
     const outcome = 3;
     const orderTypeLabel = "buy";

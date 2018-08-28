@@ -1,4 +1,3 @@
-import proxyquire from "proxyquire";
 import {
   PENDING,
   SUCCESS,
@@ -20,7 +19,7 @@ describe(`modules/transactions/selectors/is-transaction-working.js`, () => {
     }
   );
 
-  it(`should check if a transaction is working`, () => {
+  test(`should check if a transaction is working`, () => {
     let { transactionsData } = state;
     actual = selector.selectIsWorking({ transactionsData });
 

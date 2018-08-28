@@ -1,13 +1,12 @@
 import { createBigNumber } from "utils/create-big-number";
 
-import proxyquire from "proxyquire";
 import sinon from "sinon";
 import { SCALAR } from "../../../src/modules/markets/constants/market-types";
 
 describe(`modules/my-positions/selectors/winning-positions.js`, () => {
   proxyquire.noPreserveCache().noCallThru();
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       const Speedomatic = { bignum: () => {} };
       const SelectLoginAccountPositions = () =>
         t.selectors.loginAccountPositions;

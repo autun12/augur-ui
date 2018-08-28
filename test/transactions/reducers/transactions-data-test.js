@@ -8,7 +8,7 @@ describe(`modules/transactions/reducers/transactions-data.js`, () => {
 
   const state = Object.assign({}, testState);
 
-  it(`should update transactions data in state`, () => {
+  test(`should update transactions data in state`, () => {
     action = {
       type: "UPDATE_TRANSACTIONS_DATA",
       transactionsData: {
@@ -35,7 +35,7 @@ describe(`modules/transactions/reducers/transactions-data.js`, () => {
     assert.deepEqual(test, out, `Didn't update transactionData as expected`);
   });
 
-  it(`should delete transaction`, () => {
+  test(`should delete transaction`, () => {
     action = {
       type: "DELETE_TRANSACTION",
       transactionId: "transaction2"
@@ -63,7 +63,7 @@ describe(`modules/transactions/reducers/transactions-data.js`, () => {
     );
   });
 
-  it(`should clear transactions on clear login account`, () => {
+  test(`should clear transactions on clear login account`, () => {
     action = {
       type: "CLEAR_LOGIN_ACCOUNT"
     };

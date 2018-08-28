@@ -5,7 +5,7 @@ describe(`modules/bids-asks/helpers/select-order-book.js`, () => {
     selectAggregateOrderBook
   } = require("../../../src/modules/bids-asks/helpers/select-order-book");
 
-  it(`should return empty order book for no orders`, () => {
+  test(`should return empty order book for no orders`, () => {
     const orderBook = selectAggregateOrderBook("1", null, {});
 
     assert.isArray(orderBook.bids);
@@ -14,7 +14,7 @@ describe(`modules/bids-asks/helpers/select-order-book.js`, () => {
     assert.lengthOf(orderBook.asks, 0);
   });
 
-  it(`should return aggregate sorted orders for specified outcome`, () => {
+  test(`should return aggregate sorted orders for specified outcome`, () => {
     const orderBook = selectAggregateOrderBook(
       "1",
       {

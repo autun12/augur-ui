@@ -5,7 +5,7 @@ export default function(portfolioTotals) {
     assert.isDefined(portfolioTotals);
     assert.isObject(portfolioTotals);
 
-    it("net", () => {
+    test("net", () => {
       assert.isDefined(portfolioTotals.netChange);
       assertFormattedNumber(
         portfolioTotals.netChange,

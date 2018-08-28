@@ -7,7 +7,7 @@ import {
 import { isLoading } from "modules/app/selectors/is-loading";
 
 describe(`modules/app/selectors/is-loading.js`, () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: `empty should be false`,
