@@ -15,6 +15,6 @@ describe("modules/bids-asks/selectors/order-cancellation.js", () => {
     const orderCancellation = orderCancellationSelector();
     assert.isFunction(orderCancellation.cancelOrder);
     assert.propertyVal(orderCancellation, "an orderId", "a status");
-    assert.lengthOf(Object.keys(orderCancellation), 2);
+    expect(Object.keys(orderCancellation)).toHaveLength(2);
   });
 });

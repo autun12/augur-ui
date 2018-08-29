@@ -76,12 +76,10 @@ describe("loadReporting action", () => {
         callbackArgs
       ) => {
         const c = submitRequestStub.getCall(callIndex);
-        assert.ok(
-          c.calledWith(method, {
-            reportingState,
-            ...expectedParams
-          })
-        );
+        expect(c.calledWith(method, {
+          reportingState,
+          ...expectedParams
+        })).toBeTruthy();
         c.args[2](null, callbackArgs);
       };
 
@@ -153,7 +151,7 @@ describe("loadReporting action", () => {
       ];
       const actual = store.getActions();
       // actions include load market info actions
-      assert.lengthOf(actual, 6);
+      expect(actual).toHaveLength(6);
       assert.deepEqual(actual, expected, "Did not get correct actions");
     }
   );

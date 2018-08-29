@@ -30,7 +30,7 @@ describe("src/utils/wrapped-big-number.js", () => {
 
   test("should return a bignumber", () => {
     const result = createBigNumber("2500");
-    assert.instanceOf(result, BigNumber);
+    expect(result).toBeInstanceOf(BigNumber);
     assert.isNotOk(spy.called);
   });
 

@@ -37,8 +37,8 @@ describe("src/modules/market/helpers/order-for-market-depth.js", () => {
   test("should add a starting point to asks and bids", () => {
     const { asks, bids } = orderForMarketDepth(exampleOrderBook);
 
-    assert.lengthOf(asks, 3);
-    assert.lengthOf(bids, 3);
+    expect(asks).toHaveLength(3);
+    expect(bids).toHaveLength(3);
 
     assert.equal("0", asks[0][0].toString());
     assert.equal("0.35", asks[0][1]);

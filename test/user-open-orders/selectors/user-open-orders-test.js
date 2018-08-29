@@ -61,11 +61,11 @@ describe(`modules/user-open-orders/selectors/user-open-orders.js`, () => {
       }
     };
 
-    assert.lengthOf(selectUserOpenOrders("1", orderBooks), 0);
+    expect(selectUserOpenOrders("1", orderBooks)).toHaveLength(0);
   });
 
   test(`should return no user open orders if there are no orders`, () => {
-    assert.lengthOf(selectUserOpenOrders("1", "bobMarket"), 0);
+    expect(selectUserOpenOrders("1", "bobMarket")).toHaveLength(0);
   });
 
   test(
@@ -116,7 +116,7 @@ describe(`modules/user-open-orders/selectors/user-open-orders.js`, () => {
           }
         }
       };
-      assert.lengthOf(selectUserOpenOrders("1", orderBooks), 0);
+      expect(selectUserOpenOrders("1", orderBooks)).toHaveLength(0);
     }
   );
 
@@ -198,7 +198,7 @@ describe(`modules/user-open-orders/selectors/user-open-orders.js`, () => {
       };
 
       const userOpenOrders = selectUserOpenOrders("MARKET_ID", "1", orderBooks);
-      assert.lengthOf(userOpenOrders, 6);
+      expect(userOpenOrders).toHaveLength(6);
 
       const results = [
         {

@@ -30,7 +30,7 @@ describe("report dispute component", () => {
           const cmp = shallow(
             <ReportingDispute {...props} doesUserHaveRep={doesUserHaveRep} />
           );
-          assert.lengthOf(cmp.find("ReportDisputeNoRepState"), 0);
+          expect(cmp.find("ReportDisputeNoRepState")).toHaveLength(0);
         });
       });
 
@@ -43,7 +43,7 @@ describe("report dispute component", () => {
           const cmp = shallow(
             <ReportingDispute {...props} doesUserHaveRep={doesUserHaveRep} />
           );
-          assert.lengthOf(cmp.find("ReportDisputeNoRepState"), 1);
+          expect(cmp.find("ReportDisputeNoRepState")).toHaveLength(1);
         });
       });
     });

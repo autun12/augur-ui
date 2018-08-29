@@ -68,13 +68,13 @@ describe("portfolio-reports", () => {
 
       describe("ETH total", () => {
         test("should display as '-'", () => {
-          assert.include(Cmp.html(), "<span>ETH</span><span>-</span>");
+          expect(Cmp.html()).toContain("<span>ETH</span><span>-</span>");
         });
       });
 
       describe("REP total", () => {
         test("should display as '-'", () => {
-          assert.include(Cmp.html(), "<span>REP</span><span>-</span>");
+          expect(Cmp.html()).toContain("<span>REP</span><span>-</span>");
         });
       });
 

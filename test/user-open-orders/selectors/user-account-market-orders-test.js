@@ -41,7 +41,7 @@ describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, (
         const userOpenOrderMarkets = selectAllUserOpenOrderMarkets(
           store.getState()
         );
-        assert.lengthOf(userOpenOrderMarkets, 1);
+        expect(userOpenOrderMarkets).toHaveLength(1);
         expect(userOpenOrderMarkets).toEqual(["bobMarket"]);
       }
     });
@@ -60,10 +60,10 @@ describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, (
         const userOpenOrderMarkets = selectAllUserOpenOrderMarkets(
           store.getState()
         );
-        assert.lengthOf(userOpenOrderMarkets, 0);
+        expect(userOpenOrderMarkets).toHaveLength(0);
       }
     });
-    assert.lengthOf(selectAllUserOpenOrderMarkets, []);
+    expect(selectAllUserOpenOrderMarkets).toHaveLength([]);
   });
 
   test(`should return one user open orders markets`, () => {
@@ -103,7 +103,7 @@ describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, (
       },
       assertions: store => {
         const userOpenOrderMarkets = selectAllUserOpenOrderMarkets();
-        assert.lengthOf(userOpenOrderMarkets, 1);
+        expect(userOpenOrderMarkets).toHaveLength(1);
         expect(userOpenOrderMarkets).toEqual(["bobMarket"]);
       }
     });
@@ -146,7 +146,7 @@ describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, (
       },
       assertions: store => {
         const userOpenOrderMarkets = selectAllUserOpenOrderMarkets();
-        assert.lengthOf(userOpenOrderMarkets, 0);
+        expect(userOpenOrderMarkets).toHaveLength(0);
       }
     });
   });

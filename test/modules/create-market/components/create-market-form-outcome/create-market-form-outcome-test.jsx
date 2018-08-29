@@ -156,7 +156,7 @@ describe("create-market-form-outcome", () => {
             newMarket
           });
 
-          assert.include(cmp.text(), validationMessage);
+          expect(cmp.text()).toContain(validationMessage);
         });
       });
     });

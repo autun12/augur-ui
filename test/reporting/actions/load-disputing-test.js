@@ -65,12 +65,10 @@ describe("loadDisputing action", () => {
 
       const checkCall = (callIndex, method, reportingState, callbackArgs) => {
         const c = submitRequestStub.getCall(callIndex);
-        assert.ok(
-          c.calledWith(method, {
-            reportingState,
-            ...expectedParams
-          })
-        );
+        expect(c.calledWith(method, {
+          reportingState,
+          ...expectedParams
+        })).toBeTruthy();
         c.args[2](null, callbackArgs);
       };
 
@@ -86,7 +84,7 @@ describe("loadDisputing action", () => {
       ]);
 
       const actual = store.getActions();
-      assert.lengthOf(actual, 2);
+      expect(actual).toHaveLength(2);
     }
   );
 

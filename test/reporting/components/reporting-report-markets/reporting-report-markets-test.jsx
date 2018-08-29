@@ -18,12 +18,12 @@ describe("reporting-report-markets", () => {
     });
 
     test("should display the passed in title", () => {
-      assert.include(cmp.text(), exampleTitle);
+      expect(cmp.text()).toContain(exampleTitle);
     });
 
     describe("when items array is empty", () => {
       test("should render no markets found component", () => {
-        assert.lengthOf(cmp.find(NoMarketsFound), 1);
+        expect(cmp.find(NoMarketsFound)).toHaveLength(1);
       });
     });
 
@@ -52,7 +52,7 @@ describe("reporting-report-markets", () => {
             boundedLength={3}
           />
         );
-        assert.lengthOf(cmp.find(ConnectedMarketPreview), 3);
+        expect(cmp.find(ConnectedMarketPreview)).toHaveLength(3);
       });
     });
 
@@ -95,7 +95,7 @@ describe("reporting-report-markets", () => {
         <NoMarketsFound message={message} lower={1} boundedLength={3} />
       );
 
-      assert.include(cmp.text(), message);
+      expect(cmp.text()).toContain(message);
     });
   });
 });

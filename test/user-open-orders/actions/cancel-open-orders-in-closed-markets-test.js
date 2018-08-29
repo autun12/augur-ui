@@ -3,7 +3,6 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
 describe(`modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const mockStore = configureMockStore([thunk]);
   const test = t => {
     test(t.description, () => {

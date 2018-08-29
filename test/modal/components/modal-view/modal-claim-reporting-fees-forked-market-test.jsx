@@ -63,22 +63,19 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          assert.include(
-            Cmp.html(),
-            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
-          );
+          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
         });
       });
 
       describe("REP field", () => {
         test("should match expected claimable REP value", () => {
-          assert.include(Cmp.html(), "<span>Rep</span><span>-</span>");
+          expect(Cmp.html()).toContain("<span>Rep</span><span>-</span>");
         });
       });
 
       describe("ETH field", () => {
         test("should match expected claimable ETH value", () => {
-          assert.include(Cmp.html(), "<span>Eth</span><span>-</span>");
+          expect(Cmp.html()).toContain("<span>Eth</span><span>-</span>");
         });
       });
 
@@ -105,7 +102,7 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Gas field", () => {
         test("should be zero", () => {
-          assert.include(Cmp.html(), "<span>Gas</span><span>0</span>");
+          expect(Cmp.html()).toContain("<span>Gas</span><span>0</span>");
         });
       });
 
@@ -138,22 +135,19 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          assert.include(
-            Cmp.html(),
-            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
-          );
+          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
         });
       });
 
       describe("REP field", () => {
         test("should match expected claimable REP value", () => {
-          assert.include(Cmp.html(), "<span>Rep</span><span>-</span>");
+          expect(Cmp.html()).toContain("<span>Rep</span><span>-</span>");
         });
       });
 
       describe("ETH field", () => {
         test("should match expected claimable ETH value", () => {
-          assert.include(Cmp.html(), "<span>Eth</span><span>0.1230</span>");
+          expect(Cmp.html()).toContain("<span>Eth</span><span>0.1230</span>");
         });
       });
 
@@ -180,7 +174,7 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Gas field", () => {
         test("should match expected claimable Gas value", () => {
-          assert.include(Cmp.html(), "<span>Gas</span><span>0</span>");
+          expect(Cmp.html()).toContain("<span>Gas</span><span>0</span>");
         });
       });
 
@@ -213,22 +207,19 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          assert.include(
-            Cmp.html(),
-            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
-          );
+          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
         });
       });
 
       describe("REP field", () => {
         test("should match expected claimable REP value", () => {
-          assert.include(Cmp.html(), "<span>Rep</span><span>2.0000</span>");
+          expect(Cmp.html()).toContain("<span>Rep</span><span>2.0000</span>");
         });
       });
 
       describe("ETH field", () => {
         test("should match expected claimable ETH value", () => {
-          assert.include(Cmp.html(), "<span>Eth</span><span>-</span>");
+          expect(Cmp.html()).toContain("<span>Eth</span><span>-</span>");
         });
       });
 
@@ -255,7 +246,7 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Gas field", () => {
         test("should match expected claimable Gas value", () => {
-          assert.include(Cmp.html(), "<span>Gas</span><span>0</span>");
+          expect(Cmp.html()).toContain("<span>Gas</span><span>0</span>");
         });
       });
 
@@ -291,22 +282,19 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          assert.include(
-            Cmp.html(),
-            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
-          );
+          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
         });
       });
 
       describe("REP field", () => {
         test("should match expected claimable REP value", () => {
-          assert.include(Cmp.html(), "<span>Rep</span><span>2.0000</span>");
+          expect(Cmp.html()).toContain("<span>Rep</span><span>2.0000</span>");
         });
       });
 
       describe("ETH field", () => {
         test("should match expected claimable ETH value", () => {
-          assert.include(Cmp.html(), "<span>Eth</span><span>0.1230</span>");
+          expect(Cmp.html()).toContain("<span>Eth</span><span>0.1230</span>");
         });
       });
 
@@ -333,7 +321,7 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Gas field", () => {
         test("should match expected claimable Gas value", () => {
-          assert.include(Cmp.html(), "<span>Gas</span><span>0</span>");
+          expect(Cmp.html()).toContain("<span>Gas</span><span>0</span>");
         });
       });
 

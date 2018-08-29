@@ -20,7 +20,7 @@ describe("modules/bids-asks/actions/update-order-status.js", () => {
           BUY
         )
       );
-      assert.lengthOf(store.getActions(), 0);
+      expect(store.getActions()).toHaveLength(0);
       store.dispatch(
         updateOrderStatus(
           "orderId",
@@ -30,7 +30,7 @@ describe("modules/bids-asks/actions/update-order-status.js", () => {
           BUY
         )
       );
-      assert.lengthOf(store.getActions(), 0);
+      expect(store.getActions()).toHaveLength(0);
     });
     test(`should dispatch action`, () => {
       store.dispatch(

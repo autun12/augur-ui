@@ -72,9 +72,10 @@ module.exports = {
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    "^.+\\.styles$": "<rootDir>/test/mockStyle.js",
+    "^.+\\.styles?$": "<rootDir>/test/mockStyle.js",
     "^src/(.*)$": "<rootDir>/src/$1",
-    "^(modules|utils|services)/(.*)$": "<rootDir>/src/$1/$2"
+    "^(config|modules|utils|services)/(.*)$": "<rootDir>/src/$1/$2",
+    "^test/(.*)$": "<rootDir>/test/$1"
   },
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -135,7 +136,7 @@ module.exports = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ["<rootDir>/test/**/?(*.)+(spec|test).js?(x)"]
+  testMatch: ["<rootDir>/test/**/*+(spec|test).js?(x)"]
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [

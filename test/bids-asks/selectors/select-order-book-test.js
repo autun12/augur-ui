@@ -10,8 +10,8 @@ describe(`modules/bids-asks/helpers/select-order-book.js`, () => {
 
     expect(Array.isArray(orderBook.bids)).toBe(true);
     expect(Array.isArray(orderBook.asks)).toBe(true);
-    assert.lengthOf(orderBook.bids, 0);
-    assert.lengthOf(orderBook.asks, 0);
+    expect(orderBook.bids).toHaveLength(0);
+    expect(orderBook.asks).toHaveLength(0);
   });
 
   test(`should return aggregate sorted orders for specified outcome`, () => {
@@ -105,8 +105,8 @@ describe(`modules/bids-asks/helpers/select-order-book.js`, () => {
       {}
     );
 
-    assert.lengthOf(orderBook.bids, 3);
-    assert.lengthOf(orderBook.asks, 4);
+    expect(orderBook.bids).toHaveLength(3);
+    expect(orderBook.asks).toHaveLength(4);
 
     assert.deepEqual(
       orderBook.bids[0],

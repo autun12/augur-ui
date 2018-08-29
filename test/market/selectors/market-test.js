@@ -4,7 +4,6 @@ import * as mockStore from "test/mockStore";
 import marketAssertions from "assertions/market";
 
 describe(`modules/market/selectors/market.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const { store } = mockStore.default;
 
   const { loginAccount } = store.getState();
@@ -19,7 +18,7 @@ describe(`modules/market/selectors/market.js`, () => {
     .callsFake(() => 10);
 
   const selector = jest.mock(
-    "../../../src/modules/market/selectors/market.js",
+    "modules/market/selectors/market.js",
     {
       "../../../store": store,
       // make selectors/user-open-orders-summary use the same store as selectors/market.js
