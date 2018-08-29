@@ -23,7 +23,7 @@ describe("market report state", () => {
   describe("default state", () => {
     test("should return an object with empty arrays", () => {
       const result = reducer(undefined, { type: ActionTypes.INIT });
-      assert.deepEqual(defaultState, result);
+      expect(defaultState).toEqual(result);
     });
   });
 
@@ -36,17 +36,14 @@ describe("market report state", () => {
           type: UPDATE_UPCOMING_DESIGNATED_REPORTING_MARKETS,
           data: payload
         });
-        assert.deepEqual(
-          {
-            designated: [],
-            open: [],
-            upcoming: payload,
-            awaiting: [],
-            dispute: [],
-            resolved: []
-          },
-          result
-        );
+        expect({
+          designated: [],
+          open: [],
+          upcoming: payload,
+          awaiting: [],
+          dispute: [],
+          resolved: []
+        }).toEqual(result);
       });
     });
 
@@ -56,17 +53,14 @@ describe("market report state", () => {
           type: UPDATE_DESIGNATED_REPORTING_MARKETS,
           data: payload
         });
-        assert.deepEqual(
-          {
-            designated: payload,
-            open: [],
-            upcoming: [],
-            awaiting: [],
-            dispute: [],
-            resolved: []
-          },
-          result
-        );
+        expect({
+          designated: payload,
+          open: [],
+          upcoming: [],
+          awaiting: [],
+          dispute: [],
+          resolved: []
+        }).toEqual(result);
       });
     });
 
@@ -76,17 +70,14 @@ describe("market report state", () => {
           type: UPDATE_OPEN_REPORTING_MARKETS,
           data: payload
         });
-        assert.deepEqual(
-          {
-            designated: [],
-            open: payload,
-            upcoming: [],
-            awaiting: [],
-            dispute: [],
-            resolved: []
-          },
-          result
-        );
+        expect({
+          designated: [],
+          open: payload,
+          upcoming: [],
+          awaiting: [],
+          dispute: [],
+          resolved: []
+        }).toEqual(result);
       });
     });
 
@@ -96,17 +87,14 @@ describe("market report state", () => {
           type: UPDATE_AWAITING_DISPUTE_MARKETS,
           data: payload
         });
-        assert.deepEqual(
-          {
-            designated: [],
-            open: [],
-            upcoming: [],
-            resolved: [],
-            awaiting: payload,
-            dispute: []
-          },
-          result
-        );
+        expect({
+          designated: [],
+          open: [],
+          upcoming: [],
+          resolved: [],
+          awaiting: payload,
+          dispute: []
+        }).toEqual(result);
       });
     });
 
@@ -116,17 +104,14 @@ describe("market report state", () => {
           type: UPDATE_CROWD_DISPUTE_MARKETS,
           data: payload
         });
-        assert.deepEqual(
-          {
-            designated: [],
-            open: [],
-            upcoming: [],
-            resolved: [],
-            awaiting: [],
-            dispute: payload
-          },
-          result
-        );
+        expect({
+          designated: [],
+          open: [],
+          upcoming: [],
+          resolved: [],
+          awaiting: [],
+          dispute: payload
+        }).toEqual(result);
       });
     });
 
@@ -136,17 +121,14 @@ describe("market report state", () => {
           type: UPDATE_RESOLVED_REPORTING_MARKETS,
           data: payload
         });
-        assert.deepEqual(
-          {
-            designated: [],
-            open: [],
-            upcoming: [],
-            resolved: payload,
-            awaiting: [],
-            dispute: []
-          },
-          result
-        );
+        expect({
+          designated: [],
+          open: [],
+          upcoming: [],
+          resolved: payload,
+          awaiting: [],
+          dispute: []
+        }).toEqual(result);
       });
     });
 
@@ -156,7 +138,7 @@ describe("market report state", () => {
           { randomattr: [] },
           { type: RESET_STATE, data: payload }
         );
-        assert.deepEqual(defaultState, result);
+        expect(defaultState).toEqual(result);
       });
     });
   });

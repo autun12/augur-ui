@@ -17,18 +17,18 @@ describe("reporting-report-markets", () => {
       cmp = shallow(<ReportSection title={exampleTitle} items={[]} />);
     });
 
-    it("should display the passed in title", () => {
+    test("should display the passed in title", () => {
       assert.include(cmp.text(), exampleTitle);
     });
 
     describe("when items array is empty", () => {
-      it("should render no markets found component", () => {
+      test("should render no markets found component", () => {
         assert.lengthOf(cmp.find(NoMarketsFound), 1);
       });
     });
 
     describe("when items array is not empty", () => {
-      it("should render markets component", () => {
+      test("should render markets component", () => {
         const items = [
           {
             id: 1,
@@ -57,7 +57,7 @@ describe("reporting-report-markets", () => {
     });
 
     describe("when items array is already sorted", () => {
-      it("should render markets in given order (timestamp)", () => {
+      test("should render markets in given order (timestamp)", () => {
         const items = [
           {
             id: 1,
@@ -83,13 +83,13 @@ describe("reporting-report-markets", () => {
         );
         const sections = cmp.find(ConnectedMarketPreview);
         const result = sections.map(x => x.props().id);
-        assert.deepEqual([1, 2, 3], result);
+        expect([1, 2, 3]).toEqual(result);
       });
     });
   });
 
   describe("NoMarketFound", () => {
-    it("should display the message passed in", () => {
+    test("should display the message passed in", () => {
       const message = "some message";
       const cmp = shallow(
         <NoMarketsFound message={message} lower={1} boundedLength={3} />

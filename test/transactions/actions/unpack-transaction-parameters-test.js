@@ -2,7 +2,7 @@ describe(`modules/transactions/actions/unpack-transaction-parameters.js`, () => 
   proxyquire.noPreserveCache().noCallThru();
   const test = t => {
     test(t.description, () => {
-      const action = proxyquire(
+      const action = jest.mock(
         "../../../src/modules/transactions/actions/unpack-transaction-parameters.js",
         {}
       );
@@ -59,7 +59,7 @@ describe(`modules/transactions/actions/unpack-transaction-parameters.js`, () => 
       }
     },
     assertions: output => {
-      assert.deepEqual(output, {
+      expect(output).toEqual({
         amount: "0x4563918244f40000",
         price: "0x6f05b59d3b20000",
         market:
@@ -140,7 +140,7 @@ describe(`modules/transactions/actions/unpack-transaction-parameters.js`, () => 
       }
     },
     assertions: output => {
-      assert.deepEqual(output, {
+      expect(output).toEqual({
         amount: "0x4563918244f40000",
         price: "0x6f05b59d3b20000",
         market:
@@ -176,7 +176,7 @@ describe(`modules/transactions/actions/unpack-transaction-parameters.js`, () => 
       }
     },
     assertions: output => {
-      assert.deepEqual(output, {
+      expect(output).toEqual({
         type: "emergencyStop"
       });
     }

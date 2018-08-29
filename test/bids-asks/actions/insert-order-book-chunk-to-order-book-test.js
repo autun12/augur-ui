@@ -6,7 +6,7 @@ describe(`modules/bids-asks/actions/insert-order-book-chunk-to-order-book.js`, (
   const test = t =>
     test(t.description, () => {
       const store = configureMockStore([thunk])({});
-      const insertOrderBookChunkToOrderBook = proxyquire(
+      const insertOrderBookChunkToOrderBook = jest.mock(
         "../../../src/modules/bids-asks/actions/insert-order-book-chunk-to-order-book",
         {
           "./clear-order-book-on-first-chunk": t.stub.clearOrderBookOnFirstChunk
@@ -45,7 +45,7 @@ describe(`modules/bids-asks/actions/insert-order-book-chunk-to-order-book.js`, (
       }
     },
     assertions: actions => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "CLEAR_ORDER_BOOK_ON_FIRST_CHUNK",
           marketId: "MARKET_0",

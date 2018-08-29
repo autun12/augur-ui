@@ -4,7 +4,7 @@ describe("modules/bids-asks/selectors/order-cancellation.js", () => {
   proxyquire.noPreserveCache().noCallThru();
 
   const { store } = mocks;
-  const orderCancellationSelector = proxyquire(
+  const orderCancellationSelector = jest.mock(
     "../../../src/modules/bids-asks/selectors/order-cancellation",
     {
       "../../../store": store

@@ -94,7 +94,7 @@ describe("create-market-form-outcome", () => {
 
     describe("tick size field", () => {
       describe("when less tha zero", () => {
-        it("should render validation message", () => {
+        test("should render validation message", () => {
           tickSizeInput.simulate("change", { target: { value: "-7" } });
           const newMarketObj = updateNewMarketSpy.args[0][0];
 
@@ -114,11 +114,11 @@ describe("create-market-form-outcome", () => {
           newMarketObj = updateNewMarketSpy.args[0][0];
         });
 
-        it("should update market with new value", () => {
+        test("should update market with new value", () => {
           assert.equal(newMarketObj.tickSize, 0);
         });
 
-        it("should set validation message to true", () => {
+        test("should set validation message to true", () => {
           assert.equal(
             newMarketObj.validations[newMarketObj.currentStep].tickSize,
             "Tick size is required."
@@ -134,11 +134,11 @@ describe("create-market-form-outcome", () => {
           newMarketObj = updateNewMarketSpy.args[0][0];
         });
 
-        it("should update market with new value", () => {
+        test("should update market with new value", () => {
           assert.equal(newMarketObj.tickSize, 1000);
         });
 
-        it("should set validation message to true", () => {
+        test("should set validation message to true", () => {
           assert.isTrue(
             newMarketObj.validations[newMarketObj.currentStep].tickSize
           );
@@ -146,7 +146,7 @@ describe("create-market-form-outcome", () => {
       });
 
       describe("validation message", () => {
-        it("should render into the dom tree when provided", () => {
+        test("should render into the dom tree when provided", () => {
           const validationMessage = "Some fancy validation message";
           newMarket.validations[
             newMarket.currentStep

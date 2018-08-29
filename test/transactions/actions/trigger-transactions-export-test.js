@@ -10,7 +10,7 @@ describe(`modules/transactions/actions/trigger-transactions-export.js`, () => {
   const test = t => {
     test(t.description, () => {
       const store = mockStore(t.state);
-      const action = proxyquire(
+      const action = jest.mock(
         "../../../src/modules/transactions/actions/trigger-transactions-export",
         {
           "../selectors/transactions": t.transactionsSelector,

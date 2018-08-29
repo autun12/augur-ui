@@ -6,6 +6,7 @@ parser: babel-eslint
 extends:
 - plugin:react/recommended
 - plugin:prettier/recommended
+- plugin:jest/recommended
 - airbnb
 - prettier
 - prettier/react
@@ -18,7 +19,7 @@ settings:
       - ".jsx"
       - ".less"
 globals:
-  assert: true
+  jest/globals: true
 rules:
   no-eq-null: 0
   no-console: 0

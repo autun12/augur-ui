@@ -3,12 +3,11 @@ import thunk from "redux-thunk";
 import testState from "test/testState";
 
 describe(`modules/app/actions/update-blockchain.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
   const state = Object.assign({}, testState);
   const store = mockStore(state);
-  const action = proxyquire(
+  const action = jest.mock(
     "../../../src/modules/app/actions/update-blockchain.js",
     {}
   );
@@ -19,7 +18,7 @@ describe(`modules/app/actions/update-blockchain.js`, () => {
         currentBlockTimestamp: 4886718345
       })
     );
-    assert.deepEqual(store.getActions(), [
+    expect(store.getActions()).toEqual([
       {
         type: "UPDATE_BLOCKCHAIN",
         data: {

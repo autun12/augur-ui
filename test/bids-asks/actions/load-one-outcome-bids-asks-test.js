@@ -6,7 +6,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
   const test = t =>
     test(t.description, done => {
       const store = configureMockStore([thunk])({});
-      const loadOneOutcomeBidsAsks = proxyquire(
+      const loadOneOutcomeBidsAsks = jest.mock(
         "../../../src/modules/bids-asks/actions/load-one-outcome-bids-asks",
         {
           "./load-one-outcome-bids-or-asks": t.stub.loadOneOutcomeBidsOrAsks
@@ -33,7 +33,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.strictEqual(err, "must specify market ID and outcome: null 3");
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -52,7 +52,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
         err,
         "must specify market ID and outcome: MARKET_0 null"
       );
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -76,7 +76,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.isNull(err);
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "LOAD_ONE_OUTCOME_BIDS_OR_ASKS",
           marketId: "MARKET_0",
@@ -113,7 +113,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.strictEqual(err, "ERROR_MESSAGE");
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "LOAD_ONE_OUTCOME_BIDS_OR_ASKS",
           marketId: "MARKET_0",

@@ -14,7 +14,7 @@ describe("modules/portfolio/selectors/portfolio", () => {
 
   const stubbedPortfolioTotals = sinon.stub(selectors, "selectPortfolioTotals");
 
-  const proxiedSelector = proxyquire(
+  const proxiedSelector = jest.mock(
     "../../../src/modules/portfolio/selectors/portfolio",
     {
       "./portfolio-totals": stubbedPortfolioTotals

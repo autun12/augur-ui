@@ -9,7 +9,7 @@ describe(`modules/auth/actions/logout.js`, () => {
   const fakeAugurJS = { augur: { rpc: {} } };
   const store = mockStore(testState);
   fakeAugurJS.augur.rpc.clear = () => {};
-  const action = proxyquire("../../../src/modules/auth/actions/logout", {
+  const action = jest.mock("../../../src/modules/auth/actions/logout", {
     "../../../services/augurjs": fakeAugurJS
   });
 

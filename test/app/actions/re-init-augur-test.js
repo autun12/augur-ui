@@ -14,9 +14,9 @@ describe("app/actions/re-init-augur", () => {
         "connectAugur",
         (history, env, isInitialConnection, cb) => {
           connectAugurCallCount += 1;
-          assert.deepEqual(history, t.params.history);
+          expect(history).toEqual(t.params.history);
           assert.isFalse(isInitialConnection);
-          assert.deepEqual(env, store.getState().env);
+          expect(env).toEqual(store.getState().env);
           // fail the first 3 attempts and then finally pass empty cb.
           if (connectAugurCallCount > 3) {
             cb();
@@ -28,7 +28,7 @@ describe("app/actions/re-init-augur", () => {
         }
       );
       RewireReInitAugur.__Rewire__("debounce", (func, wait) => {
-        assert.deepEqual(wait, 3000);
+        expect(wait).toEqual(3000);
         assert.isFunction(func);
         return func;
       });

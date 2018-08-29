@@ -5,7 +5,7 @@ export default function(loginAccountPositions) {
 
     test("markets", () => {
       assert.isDefined(loginAccountPositions.markets);
-      assert.isArray(loginAccountPositions.markets);
+      expect(Array.isArray(loginAccountPositions.markets)).toBe(true);
     });
 
     test("summary", () => {

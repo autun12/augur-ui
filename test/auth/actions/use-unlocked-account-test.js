@@ -27,7 +27,7 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
         updateIsLoggedAndLoadAccountData: () => {}
       };
       const IsGlobalWeb3 = { default: () => {} };
-      const action = proxyquire(
+      const action = jest.mock(
         "../../../src/modules/auth/actions/use-unlocked-account.js",
         {
           "../../../services/augurjs": AugurJS,
@@ -82,7 +82,7 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
     },
     assertions: (err, actions) => {
       assert.strictEqual(err, "no account address");
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -97,8 +97,8 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
       isGlobalWeb3: () => false
     },
     assertions: (err, actions) => {
-      assert.deepEqual(err, MOCK_ERROR);
-      assert.deepEqual(actions, [
+      expect(err).toEqual(MOCK_ERROR);
+      expect(actions).toEqual([
         {
           type: "IS_GLOBAL_WEB3",
           data: { isGlobalWeb3: false }
@@ -123,7 +123,7 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
     },
     assertions: (err, actions) => {
       assert.isNull(err);
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "IS_GLOBAL_WEB3",
           data: { isGlobalWeb3: false }
@@ -146,7 +146,7 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
     },
     assertions: (err, actions) => {
       assert.isNull(err);
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "IS_GLOBAL_WEB3",
           data: { isGlobalWeb3: true }
@@ -173,7 +173,7 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
       isGlobalWeb3: () => false
     },
     assertions: (err, actions) => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "IS_GLOBAL_WEB3",
           data: { isGlobalWeb3: false }

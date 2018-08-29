@@ -20,7 +20,7 @@ describe(`modules/bids-asks/reducers/is-first-order-book-chunk-loaded.js`, () =>
       }
     },
     assertions: output => {
-      assert.deepEqual(output, {
+      expect(output).toEqual({
         MARKET_0: { 3: { buy: false } },
         MARKET_1: { 1: { buy: false } }
       });
@@ -42,7 +42,7 @@ describe(`modules/bids-asks/reducers/is-first-order-book-chunk-loaded.js`, () =>
       }
     },
     assertions: output => {
-      assert.deepEqual(output, {
+      expect(output).toEqual({
         MARKET_0: { 3: { buy: true } },
         MARKET_1: { 1: { buy: false } }
       });

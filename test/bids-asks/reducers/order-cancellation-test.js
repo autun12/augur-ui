@@ -11,7 +11,7 @@ describe("modules/bids-asks/reducers/order-cancellation.js", () => {
       status: "a status"
     });
 
-    assert.deepEqual(newState, { "an orderId": "a status" });
+    expect(newState).toEqual({ "an orderId": "a status" });
     assert.notStrictEqual(currentState, newState);
   });
 });

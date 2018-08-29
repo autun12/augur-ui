@@ -42,7 +42,7 @@ describe("modules/bids-asks/actions/update-order-status.js", () => {
           BUY
         )
       );
-      assert.deepEqual(store.getActions(), [
+      expect(store.getActions()).toEqual([
         {
           type: "UPDATE_ORDER_STATUS",
           orderId:

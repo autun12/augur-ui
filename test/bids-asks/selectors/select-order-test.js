@@ -29,7 +29,7 @@ describe("modules/bids-asks/selectors/select-order.js", () => {
         }
       }
     });
-    assert.deepEqual(order, {
+    expect(order).toEqual({
       amount: "1.1111",
       fullPrecisionAmount: "1.1111111",
       price: "0.7778",

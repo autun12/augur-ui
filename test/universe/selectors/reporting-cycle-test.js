@@ -5,7 +5,7 @@ describe(`modules/universe/selectors/reporting-cycle.js`, () => {
       const AugurJS = {
         augur: t.stub.augur
       };
-      const selector = proxyquire(
+      const selector = jest.mock(
         "../../../src/modules/universe/selectors/reporting-cycle.js",
         {
           "../../../services/augurjs": AugurJS
@@ -35,7 +35,7 @@ describe(`modules/universe/selectors/reporting-cycle.js`, () => {
       }
     },
     assertions: reportingCycle => {
-      assert.deepEqual(reportingCycle, {
+      expect(reportingCycle).toEqual({
         currentReportingPeriodPercentComplete: 51,
         reportingCycleTimeRemaining: "in a minute"
       });
@@ -63,7 +63,7 @@ describe(`modules/universe/selectors/reporting-cycle.js`, () => {
       }
     },
     assertions: reportingCycle => {
-      assert.deepEqual(reportingCycle, {
+      expect(reportingCycle).toEqual({
         currentReportingPeriodPercentComplete: 0,
         reportingCycleTimeRemaining: "in a month"
       });
@@ -91,7 +91,7 @@ describe(`modules/universe/selectors/reporting-cycle.js`, () => {
       }
     },
     assertions: reportingCycle => {
-      assert.deepEqual(reportingCycle, {
+      expect(reportingCycle).toEqual({
         currentReportingPeriodPercentComplete: 100,
         reportingCycleTimeRemaining: "a few seconds ago"
       });

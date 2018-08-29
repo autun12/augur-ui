@@ -25,7 +25,7 @@ describe(`modules/markets/reducers/markets-data.js`, () => {
         category: "potent potables"
       },
       assertions: reducedData => {
-        assert.deepEqual(reducedData, {
+        expect(reducedData).toEqual({
           "0xa1": {
             id: "0xa1",
             category: undefined
@@ -55,7 +55,7 @@ describe(`modules/markets/reducers/markets-data.js`, () => {
         category: "potent potables"
       },
       assertions: reducedData => {
-        assert.deepEqual(reducedData, {
+        expect(reducedData).toEqual({
           "0xa1": {
             id: "0xa1",
             category: "potent potables"
@@ -85,7 +85,7 @@ describe(`modules/markets/reducers/markets-data.js`, () => {
         category: undefined
       },
       assertions: reducedData => {
-        assert.deepEqual(reducedData, {
+        expect(reducedData).toEqual({
           "0xa1": {
             id: "0xa1",
             category: undefined
@@ -115,7 +115,7 @@ describe(`modules/markets/reducers/markets-data.js`, () => {
         category: "potent potables"
       },
       assertions: reducedData => {
-        assert.deepEqual(reducedData, {
+        expect(reducedData).toEqual({
           "0xa1": {
             id: "0xa1",
             category: "potent potables"

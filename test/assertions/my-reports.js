@@ -4,7 +4,7 @@ import assertFormattedDate from "assertions/common/formatted-date";
 export default function(reports) {
   describe(`loginAccountReports.reports' shape`, () => {
     assert.isDefined(reports);
-    assert.isArray(reports);
+    expect(Array.isArray(reports)).toBe(true);
 
     reports.forEach(report => {
       assertAccountReport(report);

@@ -3,8 +3,7 @@ import {
   addOrphanedOrder,
   dismissOrphanedOrder,
   removeOrphanedOrder,
-  cancelOrphanedOrder,
-  __RewireAPI__ as cancelOrphanedOrderRequireAPI
+  cancelOrphanedOrder
 } from "src/modules/orphaned-orders/actions";
 import { RESET_STATE } from "src/modules/app/actions/reset-state";
 
@@ -14,25 +13,22 @@ describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
     test("should be an empty array", () => {
       const actual = OrphanedOrdersReducer([], {});
 
-      assert.isArray(actual);
-      assert.isEmpty(actual);
+      expect(Array.isArray(actual)).toBe(true);
+      expect(actual).toHaveLength(0);
     });
   });
 
   describe("ADD_ORPHANED_ORDER", () => {
-    test(
-      "should push the data payload onto the state with an added dismissed property",
-      () => {
-        const action = addOrphanedOrder({ orderId: "12345" });
-        const actual = OrphanedOrdersReducer([], action);
-        assert.deepEqual(actual, [
-          {
-            dismissed: false,
-            orderId: "12345"
-          }
-        ]);
-      }
-    );
+    test("should push the data payload onto the state with an added dismissed property", () => {
+      const action = addOrphanedOrder({ orderId: "12345" });
+      const actual = OrphanedOrdersReducer([], action);
+      expect(actual).toEqual([
+        {
+          dismissed: false,
+          orderId: "12345"
+        }
+      ]);
+    });
 
     test("should do nothing if an order exists with the same orderId", () => {
       // I'm back door testing action creators here.
@@ -48,7 +44,7 @@ describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
         action
       );
 
-      assert.deepEqual(actual, [
+      expect(actual).toEqual([
         {
           dismissed: false,
           orderId: "12345",
@@ -76,7 +72,7 @@ describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
         dismissOrphanedOrder({ orderId: "12345" })
       );
 
-      assert.deepEqual(actual, [
+      expect(actual).toEqual([
         {
           dismissed: false,
           orderId: "54321",
@@ -104,7 +100,7 @@ describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
         action
       );
 
-      assert.deepEqual(actual, []);
+      expect(actual).toEqual([]);
     });
   });
 
@@ -122,23 +118,17 @@ describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
         }
       );
 
-      assert.deepEqual(actual, []);
+      expect(actual).toEqual([]);
     });
   });
 
   describe("CANCEL_ORDER", () => {
     test("should return to the default state", () => {
-      cancelOrphanedOrderRequireAPI.__Rewire__(
-        "selectCurrentTimestampInSeconds",
-        () => {}
-      );
-      cancelOrphanedOrderRequireAPI.__Rewire__("augur", {
-        api: {
-          CancelOrder: () => {}
-        }
-      });
+      jest.mock("src/select-state");
+      jest.mock("services/augurjs");
+
       cancelOrphanedOrder({ orderId: "12345" }, actual => {
-        assert.deepEqual(actual, []);
+        expect(actual).toEqual([]);
       });
     });
   });

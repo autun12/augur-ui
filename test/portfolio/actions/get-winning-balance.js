@@ -28,7 +28,7 @@ describe("modules/portfolio/actions/get-winning-balance.js", () => {
       augurNode: {
         submitRequest: (methodName, args, callback) => {
           assert.equal(methodName, "getWinningBalance");
-          assert.deepEqual(args, {
+          expect(args).toEqual({
             marketIds: ["0xdeadbeef"],
             account: "0xb0b"
           });

@@ -18,7 +18,7 @@ export default function(orderCancellation) {
 
     test("orderCancellation.cancellationStatuses", () => {
       assert.isObject(orderCancellation.cancellationStatuses);
-      assert.deepEqual(orderCancellation.cancellationStatuses, {
+      expect(orderCancellation.cancellationStatuses).toEqual({
         CANCELLATION_CONFIRMATION: "CANCELLATION_CONFIRMATION",
         CANCELLING: "CANCELLING",
         CANCELLED: "CANCELLED",

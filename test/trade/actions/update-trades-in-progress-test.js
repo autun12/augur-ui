@@ -113,7 +113,7 @@ describe("modules/trade/actions/update-trades-in-progress.js", () => {
       .stub()
       .returns(state.marketsData.testYesNoMarketId);
 
-    const action = proxyquire(
+    const action = jest.mock(
       "../../../src/modules/trade/actions/update-trades-in-progress",
       {
         "../../../store": store,
@@ -482,7 +482,7 @@ describe("modules/trade/actions/update-trades-in-progress.js", () => {
       .stub()
       .returns(state.marketsData.testCategoricalMarketId);
 
-    const action = proxyquire(
+    const action = jest.mock(
       "../../../src/modules/trade/actions/update-trades-in-progress",
       {
         "../../../store": store,
@@ -862,7 +862,7 @@ describe("modules/trade/actions/update-trades-in-progress.js", () => {
       .stub()
       .returns(state.marketsData.testScalarMarketId);
 
-    const action = proxyquire(
+    const action = jest.mock(
       "../../../src/modules/trade/actions/update-trades-in-progress",
       {
         "../../../store": store,

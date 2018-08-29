@@ -26,7 +26,7 @@ describe("report dispute component", () => {
           doesUserHaveRep = true;
         });
 
-        it("should not render ReportDisputeNoRepState component", () => {
+        test("should not render ReportDisputeNoRepState component", () => {
           const cmp = shallow(
             <ReportingDispute {...props} doesUserHaveRep={doesUserHaveRep} />
           );
@@ -39,7 +39,7 @@ describe("report dispute component", () => {
           doesUserHaveRep = false;
         });
 
-        it("should render ReportDisputeNoRepState component", () => {
+        test("should render ReportDisputeNoRepState component", () => {
           const cmp = shallow(
             <ReportingDispute {...props} doesUserHaveRep={doesUserHaveRep} />
           );

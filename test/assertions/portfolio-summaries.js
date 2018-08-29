@@ -1,7 +1,7 @@
 export default function(portfolioSummaries) {
   describe(`portfolio's summaries shape`, () => {
     assert.isDefined(portfolioSummaries);
-    assert.isArray(portfolioSummaries);
+    expect(Array.isArray(portfolioSummaries)).toBe(true);
 
     portfolioSummaries.forEach(summary => {
       assertSummary(summary);

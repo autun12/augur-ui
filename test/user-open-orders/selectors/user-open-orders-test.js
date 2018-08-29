@@ -17,7 +17,7 @@ describe(`modules/user-open-orders/selectors/user-open-orders.js`, () => {
     }
   };
   const store = mockStore(state);
-  const { selectUserOpenOrders } = proxyquire(
+  const { selectUserOpenOrders } = jest.mock(
     "../../../src/modules/user-open-orders/selectors/user-open-orders",
     {
       "../../../store": store
@@ -29,7 +29,7 @@ describe(`modules/user-open-orders/selectors/user-open-orders.js`, () => {
       loginAccount: {}
     };
     const store = mockStore(state);
-    const { selectUserOpenOrders } = proxyquire(
+    const { selectUserOpenOrders } = jest.mock(
       "../../../src/modules/user-open-orders/selectors/user-open-orders",
       {
         "../../../store": store

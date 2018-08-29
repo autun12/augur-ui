@@ -45,7 +45,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
     })
   };
 
-  const action = proxyquire(
+  const action = jest.mock(
     "../../../src/modules/my-positions/actions/close-position.js",
     {
       "../../trade/actions/update-trades-in-progress": mockUpdateTradesInProgress,
@@ -280,7 +280,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
         userAddress: "0xUSERADDRESS"
       },
       assertions: bestFill => {
-        assert.deepEqual(bestFill, {
+        expect(bestFill).toEqual({
           amountOfShares: createBigNumber(0),
           price: createBigNumber(0)
         });
@@ -300,7 +300,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
         userAddress: "0xUSERADDRESS"
       },
       assertions: bestFill => {
-        assert.deepEqual(bestFill, {
+        expect(bestFill).toEqual({
           amountOfShares: createBigNumber(0),
           price: createBigNumber(0)
         });
@@ -336,7 +336,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
         userAddress: "0xUSERADDRESS"
       },
       assertions: bestFill => {
-        assert.deepEqual(bestFill, {
+        expect(bestFill).toEqual({
           amountOfShares: createBigNumber(10),
           price: createBigNumber(0.11)
         });
@@ -372,7 +372,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
         userAddress: "0xUSERADDRESS"
       },
       assertions: bestFill => {
-        assert.deepEqual(bestFill, {
+        expect(bestFill).toEqual({
           amountOfShares: createBigNumber(3),
           price: createBigNumber(0.1)
         });
@@ -408,7 +408,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
         userAddress: "0xUSERADDRESS"
       },
       assertions: bestFill => {
-        assert.deepEqual(bestFill, {
+        expect(bestFill).toEqual({
           amountOfShares: createBigNumber(10),
           price: createBigNumber(0.2)
         });
@@ -444,7 +444,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
         userAddress: "0xUSERADDRESS"
       },
       assertions: bestFill => {
-        assert.deepEqual(bestFill, {
+        expect(bestFill).toEqual({
           amountOfShares: createBigNumber(3),
           price: createBigNumber(0.11)
         });

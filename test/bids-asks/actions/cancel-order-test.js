@@ -14,7 +14,7 @@ describe("modules/bids-asks/actions/cancel-order.js", () => {
     }
   };
   const updateOrderStatus = actionCreator();
-  const cancelOrderModule = proxyquire(
+  const cancelOrderModule = jest.mock(
     "../../../src/modules/bids-asks/actions/cancel-order",
     {
       "../../../services/augurjs": {
@@ -68,7 +68,7 @@ describe("modules/bids-asks/actions/cancel-order.js", () => {
         )
       );
 
-      assert.deepEqual(store.getActions(), []);
+      expect(store.getActions()).toEqual([]);
     });
   });
 });

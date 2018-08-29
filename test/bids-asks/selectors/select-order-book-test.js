@@ -8,8 +8,8 @@ describe(`modules/bids-asks/helpers/select-order-book.js`, () => {
   test(`should return empty order book for no orders`, () => {
     const orderBook = selectAggregateOrderBook("1", null, {});
 
-    assert.isArray(orderBook.bids);
-    assert.isArray(orderBook.asks);
+    expect(Array.isArray(orderBook.bids)).toBe(true);
+    expect(Array.isArray(orderBook.asks)).toBe(true);
     assert.lengthOf(orderBook.bids, 0);
     assert.lengthOf(orderBook.asks, 0);
   });

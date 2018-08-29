@@ -5,7 +5,7 @@ export default function(loginAccountReports) {
 
     test("reports", () => {
       assert.isDefined(loginAccountReports.reports);
-      assert.isArray(loginAccountReports.reports);
+      expect(Array.isArray(loginAccountReports.reports)).toBe(true);
     });
 
     test("summary", () => {

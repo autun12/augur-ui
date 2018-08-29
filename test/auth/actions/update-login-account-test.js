@@ -9,7 +9,7 @@ describe(`modules/auth/actions/update-login-account.js`, () => {
     test(t.description, () => {
       const store = mockStore(t.state);
       const UpdateFromAddress = { updateFromAddress: () => {} };
-      const action = proxyquire(
+      const action = jest.mock(
         "../../../src/modules/auth/actions/update-login-account.js",
         {
           "../../contracts/actions/update-contract-api": UpdateFromAddress

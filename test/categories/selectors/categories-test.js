@@ -8,7 +8,7 @@ describe(`modules/categories/selectors/categories.js`, () => {
     description: "no categories",
     categories: {},
     assertions: output => {
-      assert.deepEqual(output, []);
+      expect(output).toEqual([]);
     }
   });
   test({
@@ -20,7 +20,7 @@ describe(`modules/categories/selectors/categories.js`, () => {
       }
     },
     assertions: output => {
-      assert.deepEqual(output, [{ category: "testing", popularity: 10 }]);
+      expect(output).toEqual([{ category: "testing", popularity: 10 }]);
     }
   });
   test({
@@ -36,7 +36,7 @@ describe(`modules/categories/selectors/categories.js`, () => {
       }
     },
     assertions: output => {
-      assert.deepEqual(output, [
+      expect(output).toEqual([
         { category: "testing", popularity: 10 },
         { category: "backflips", popularity: 2 }
       ]);
@@ -55,7 +55,7 @@ describe(`modules/categories/selectors/categories.js`, () => {
       }
     },
     assertions: output => {
-      assert.deepEqual(output, [
+      expect(output).toEqual([
         { category: "testing", popularity: 10 },
         { category: "frontflips", popularity: 10 }
       ]);
@@ -78,7 +78,7 @@ describe(`modules/categories/selectors/categories.js`, () => {
       }
     },
     assertions: output => {
-      assert.deepEqual(output, [
+      expect(output).toEqual([
         { category: "testing", popularity: 10 },
         { category: "sideflips", popularity: 5 },
         { category: "backflips", popularity: 2 }
@@ -102,7 +102,7 @@ describe(`modules/categories/selectors/categories.js`, () => {
       }
     },
     assertions: output => {
-      assert.deepEqual(output, [
+      expect(output).toEqual([
         { category: "testing", popularity: 10 },
         { category: "frontflips", popularity: 10 },
         { category: "backflips", popularity: 2 }
@@ -126,7 +126,7 @@ describe(`modules/categories/selectors/categories.js`, () => {
       }
     },
     assertions: output => {
-      assert.deepEqual(output, [
+      expect(output).toEqual([
         { category: "testing", popularity: 10 },
         { category: "twirling", popularity: 10 },
         { category: "frontflips", popularity: 10 }
@@ -155,7 +155,7 @@ describe(`modules/categories/selectors/categories.js`, () => {
       }
     },
     assertions: output => {
-      assert.deepEqual(output, [
+      expect(output).toEqual([
         { category: "testing", popularity: 10 },
         { category: "twirling", popularity: 10 },
         { category: "frontflips", popularity: 10 }

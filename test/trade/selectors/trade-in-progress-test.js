@@ -14,7 +14,7 @@ describe(`modules/trade/selectors/trade-in-progress.js`, () => {
   };
   const store = mockStore(testState);
 
-  const selector = proxyquire(
+  const selector = jest.mock(
     "../../../src/modules/trade/selectors/trade-in-progress",
     {
       "../../../store": store

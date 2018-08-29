@@ -28,7 +28,7 @@ describe("modules/auth/actions/ledger-ethereum-hook-actions.js", () => {
           data: LEDGER_STATES.CONNECT_LEDGER
         }
       ];
-      assert.deepEqual(store.getActions(), expected);
+      expect(store.getActions()).toEqual(expected);
     }
   });
   test({
@@ -41,7 +41,7 @@ describe("modules/auth/actions/ledger-ethereum-hook-actions.js", () => {
           data: LEDGER_STATES.OPEN_APP
         }
       ];
-      assert.deepEqual(store.getActions(), expected);
+      expect(store.getActions()).toEqual(expected);
     }
   });
   test({
@@ -54,7 +54,7 @@ describe("modules/auth/actions/ledger-ethereum-hook-actions.js", () => {
           data: LEDGER_STATES.SWITCH_MODE
         }
       ];
-      assert.deepEqual(store.getActions(), expected);
+      expect(store.getActions()).toEqual(expected);
     }
   });
   test({
@@ -75,7 +75,7 @@ describe("modules/auth/actions/ledger-ethereum-hook-actions.js", () => {
           }
         }
       ];
-      assert.deepEqual(store.getActions(), expected);
+      expect(store.getActions()).toEqual(expected);
     }
   });
 });

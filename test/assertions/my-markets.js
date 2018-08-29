@@ -4,7 +4,7 @@ import assertFormattedDate from "assertions/common/formatted-date";
 export default function(myMarkets) {
   describe(`myMarkets' shape`, () => {
     assert.isDefined(myMarkets);
-    assert.isArray(myMarkets);
+    expect(Array.isArray(myMarkets)).toBe(true);
 
     myMarkets.forEach(market => {
       assertMyMarkets(market);

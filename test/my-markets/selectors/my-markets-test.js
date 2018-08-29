@@ -18,7 +18,7 @@ describe("modules/portfolio/selectors/login-account-markets", () => {
 
   const MarketsAll = () => allMarkets;
 
-  const proxiedSelector = proxyquire(
+  const proxiedSelector = jest.mock(
     "../../../src/modules/my-markets/selectors/my-markets",
     {
       "../../../store": store,
@@ -144,7 +144,7 @@ describe("modules/portfolio/selectors/login-account-markets", () => {
   });
 
   // it('should deliver the expected shape to augur-ui-react-components', () => {
-  //   const proxiedSelector = proxyquire('../../../src/modules/my-markets/selectors/my-markets', {
+  //   const proxiedSelector = jest.mock('../../../src/modules/my-markets/selectors/my-markets', {
   //     '../../../store': store,
   //     '../../markets/selectors/markets-all': MarketsAll
   //   })

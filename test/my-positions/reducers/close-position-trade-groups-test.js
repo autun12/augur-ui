@@ -31,7 +31,7 @@ describe("modules/my-positions/reducers/close-position-trade-groups.js", () => {
       action: {},
       defaultState: true,
       assertions: res => {
-        assert.deepEqual(res, {});
+        expect(res).toEqual({});
       }
     });
 
@@ -39,7 +39,7 @@ describe("modules/my-positions/reducers/close-position-trade-groups.js", () => {
       description: "should return the existing state",
       action: {},
       assertions: res => {
-        assert.deepEqual(res, {
+        expect(res).toEqual({
           "0xMarketID1": {
             0: ["0x00000TradeGroupID1", "0x00000TradeGroupID2"]
           }
@@ -57,7 +57,7 @@ describe("modules/my-positions/reducers/close-position-trade-groups.js", () => {
         tradeGroupId: "0x00000TradeGroupID3"
       },
       assertions: res => {
-        assert.deepEqual(res, {
+        expect(res).toEqual({
           "0xMarketID1": {
             0: [
               "0x00000TradeGroupID1",
@@ -86,7 +86,7 @@ describe("modules/my-positions/reducers/close-position-trade-groups.js", () => {
         outcomeId: "3"
       },
       assertions: res => {
-        assert.deepEqual(res, {
+        expect(res).toEqual({
           "0xMarketID1": {
             0: ["0x00000TradeGroupID1", "0x00000TradeGroupID2"],
             1: ["0x00000TradeGroupID3"]
@@ -115,7 +115,7 @@ describe("modules/my-positions/reducers/close-position-trade-groups.js", () => {
         outcomeId: "0"
       },
       assertions: res => {
-        assert.deepEqual(res, {
+        expect(res).toEqual({
           "0xMarketID1": {
             0: ["0x00000TradeGroupID1", "0x00000TradeGroupID2"],
             1: ["0x00000TradeGroupID3"]

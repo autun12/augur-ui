@@ -97,7 +97,7 @@ describe(`modules/reports/reducers/reports.js`, () => {
         }
       },
       assertions: reduced => {
-        assert.deepEqual(reduced, {
+        expect(reduced).toEqual({
           "0xb1": {
             "0xe1": {
               marketId: "0xe1",
@@ -138,7 +138,7 @@ describe(`modules/reports/reducers/reports.js`, () => {
         }
       },
       assertions: reduced => {
-        assert.deepEqual(reduced, {
+        expect(reduced).toEqual({
           "0xb1": {
             "0xe1": {
               marketId: "0xe1",
@@ -181,7 +181,7 @@ describe(`modules/reports/reducers/reports.js`, () => {
         }
       },
       assertions: reduced => {
-        assert.deepEqual(reduced, {
+        expect(reduced).toEqual({
           "0xb1": {
             "0xe1": {
               marketId: "0xe1",
@@ -209,7 +209,7 @@ describe(`modules/reports/reducers/reports.js`, () => {
         reports: {}
       },
       assertions: reduced => {
-        assert.deepEqual(reduced, {
+        expect(reduced).toEqual({
           "0xb1": {
             "0xe1": {
               marketId: "0xe1",

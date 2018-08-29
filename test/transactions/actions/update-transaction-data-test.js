@@ -9,7 +9,7 @@ describe(`modules/transactions/actions/update-transactions-data.js`, () => {
   let out;
   const state = Object.assign({}, testState);
   const store = mockStore(state);
-  const action = proxyquire(
+  const action = jest.mock(
     "../../../src/modules/transactions/actions/update-transactions-data",
     {}
   );

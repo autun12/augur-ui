@@ -23,7 +23,7 @@ describe("modules/my-markets/selectors/my-markets-summary", () => {
     selectMarketCreatorFeesState: () => marketCreatorFees
   };
 
-  const proxiedMyMarkets = proxyquire(
+  const proxiedMyMarkets = jest.mock(
     "../../../src/modules/my-markets/selectors/my-markets",
     {
       "../../markets/selectors/markets-all": MarketsAll,
@@ -34,7 +34,7 @@ describe("modules/my-markets/selectors/my-markets-summary", () => {
 
   const spiedMyMarkets = sinon.spy(proxiedMyMarkets, "default");
 
-  const proxiedSelector = proxyquire(
+  const proxiedSelector = jest.mock(
     "../../../src/modules/my-markets/selectors/my-markets-summary",
     {
       "./my-markets": proxiedMyMarkets

@@ -195,7 +195,7 @@ describe(`modules/markets/selectors/markets-totals.js`, () => {
       totalCost
     }));
 
-  const selector = proxyquire(
+  const selector = jest.mock(
     "../../../src/modules/markets/selectors/markets-totals.js",
     {
       "../../../store": store,

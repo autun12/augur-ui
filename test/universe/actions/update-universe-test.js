@@ -8,7 +8,7 @@ describe(`modules/universe/actions/update-universe.js`, () => {
   const mockStore = configureMockStore(middlewares);
   const state = Object.assign({}, testState);
   const store = mockStore(state);
-  const action = proxyquire(
+  const action = jest.mock(
     "../../../src/modules/universe/actions/update-universe.js",
     {}
   );
@@ -22,7 +22,7 @@ describe(`modules/universe/actions/update-universe.js`, () => {
         periodLength: 900
       })
     );
-    assert.deepEqual(store.getActions(), [
+    expect(store.getActions()).toEqual([
       {
         type: "UPDATE_UNIVERSE",
         universe: {

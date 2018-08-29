@@ -15,7 +15,7 @@ describe(`modules/transactions/selectors/transactions-totals.js`, () => {
     const Transactions = {
       selectTransactions: () => []
     };
-    const selector = proxyquire(
+    const selector = jest.mock(
       "../../../src/modules/transactions/selectors/transactions-totals",
       {
         "./transactions": Transactions
@@ -56,7 +56,7 @@ describe(`modules/transactions/selectors/transactions-totals.js`, () => {
         }
       ]
     };
-    const selector = proxyquire(
+    const selector = jest.mock(
       "../../../src/modules/transactions/selectors/transactions-totals",
       {
         "./transactions": Transactions

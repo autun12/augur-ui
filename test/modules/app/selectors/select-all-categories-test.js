@@ -35,6 +35,6 @@ describe("src/modules/app/selectors/select-all-categories.js", () => {
       "CATEGORY-WITHOUT-TAGS": []
     };
 
-    assert.deepEqual(result, expected);
+    expect(result).toEqual(expected);
   });
 });

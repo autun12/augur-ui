@@ -15,16 +15,16 @@ describe("events/actions/disconnect-handlers", () => {
         RewireReInitAugur.__Rewire__(
           "connectAugur",
           (history, env, isInitialConnection, cb) => {
-            assert.deepEqual(history, t.params.history);
+            expect(history).toEqual(t.params.history);
             assert.isFalse(isInitialConnection);
-            assert.deepEqual(env, store.getState().env);
+            expect(env).toEqual(store.getState().env);
             cb();
             // just to confirm this is actually called.
             return { type: "CONNECT_AUGUR" };
           }
         );
         RewireReInitAugur.__Rewire__("debounce", (func, wait) => {
-          assert.deepEqual(wait, 3000);
+          expect(wait).toEqual(3000);
           assert.isFunction(func);
           return cb => {
             // flip the connection.isReconnectionPaused value, should go from false to true, then true to false on the 2nd call.
@@ -110,16 +110,16 @@ describe("events/actions/disconnect-handlers", () => {
         RewireDisconnectHandlers.__Rewire__(
           "connectAugur",
           (history, env, isInitialConnection, cb) => {
-            assert.deepEqual(history, mockHistory);
+            expect(history).toEqual(mockHistory);
             assert.isFalse(isInitialConnection);
-            assert.deepEqual(env, store.getState().env);
+            expect(env).toEqual(store.getState().env);
             cb();
             // just to confirm this is actually called.
             return { type: "CONNECT_AUGUR" };
           }
         );
         RewireDisconnectHandlers.__Rewire__("debounce", (func, wait) => {
-          assert.deepEqual(wait, 3000);
+          expect(wait).toEqual(3000);
           assert.isFunction(func);
           return cb => {
             // flip the connection.isReconnectionPaused value, should go from false to true, then true to false on the 2nd call.

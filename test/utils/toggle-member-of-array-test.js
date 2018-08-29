@@ -13,7 +13,7 @@ describe("toggle-member-of-array", () => {
     });
 
     test("should remove just the needle", () => {
-      assert.deepEqual(result, [noiseValue]);
+      expect(result).toEqual([noiseValue]);
     });
 
     test("should return a new array (not strictly equal)", () => {
@@ -28,7 +28,7 @@ describe("toggle-member-of-array", () => {
     });
 
     test("should add the needle to the array", () => {
-      assert.deepEqual(result, [noiseValue, needle]);
+      expect(result).toEqual([noiseValue, needle]);
     });
 
     test("should return a new array (not strictly equal)", () => {

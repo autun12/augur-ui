@@ -13,7 +13,7 @@ describe(`modules/trade/actions/place-trade.js`, () => {
     sinon
       .stub(SelectMarket, "selectMarket")
       .callsFake(marketId => store.getState().marketsData[marketId]);
-    const action = proxyquire(
+    const action = jest.mock(
       "../../../src/modules/trade/actions/place-trade.js",
       {
         "../../market/selectors/market": SelectMarket
@@ -52,7 +52,7 @@ describe(`modules/trade/actions/place-trade.js`, () => {
     sinon
       .stub(SelectMarket, "selectMarket")
       .callsFake(marketId => store.getState().marketsData[marketId]);
-    const action = proxyquire(
+    const action = jest.mock(
       "../../../src/modules/trade/actions/place-trade.js",
       {
         "../../market/selectors/market": SelectMarket
@@ -95,7 +95,7 @@ describe(`modules/trade/actions/place-trade.js`, () => {
         onSent(null, "0");
         return checkAllownaceActionObject;
       });
-    const action = proxyquire(
+    const action = jest.mock(
       "../../../src/modules/trade/actions/place-trade.js",
       {
         "../../market/selectors/market": SelectMarket,
@@ -124,9 +124,9 @@ describe(`modules/trade/actions/place-trade.js`, () => {
       `first action wasn't a call to checkAllowanceActionObject`
     );
     assert.isObject(approvalAction);
-    assert.deepEqual(approvalAction.type, "UPDATE_MODAL");
+    expect(approvalAction.type).toEqual("UPDATE_MODAL");
     assert.isObject(approvalAction.data);
-    assert.deepEqual(approvalAction.data.type, "MODAL_ACCOUNT_APPROVAL");
+    expect(approvalAction.data.type).toEqual("MODAL_ACCOUNT_APPROVAL");
     assert.isFunction(approvalAction.data.approveCallback);
     store.clearActions();
   });
@@ -159,7 +159,7 @@ describe(`modules/trade/actions/place-trade.js`, () => {
         assert.isFunction(params.onSuccess);
         assert.isFunction(params.onFailed);
       });
-      const action = proxyquire(
+      const action = jest.mock(
         "../../../src/modules/trade/actions/place-trade.js",
         {
           "../../market/selectors/market": SelectMarket,

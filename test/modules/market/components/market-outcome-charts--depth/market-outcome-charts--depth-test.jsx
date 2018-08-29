@@ -28,49 +28,49 @@ describe("src/modules/market/components/market-outcome-charts--depth/market-outc
   };
 
   describe("price 0.19", () => {
-    before(() => {
+    beforeAll(() => {
       price = 0.19;
       result = nearestCompletelyFillingOrder(price, marketDepth);
     });
 
-    it("should return an order with depth 0.006", () => {
+    test("should return an order with depth 0.006", () => {
       assert.strictEqual(result[0].toNumber(), 0.006);
     });
 
-    it("should return the order with matching price", () => {
+    test("should return the order with matching price", () => {
       assert.strictEqual(result[1], price);
     });
 
-    it("should return an order that is selectable", () => {
+    test("should return an order that is selectable", () => {
       assert.isTrue(result[3]);
     });
 
-    it("should be a bid order", () => {
+    test("should be a bid order", () => {
       assert.strictEqual(result[4], BIDS);
     });
   });
 
   describe("price 0.4", () => {
-    before(() => {
+    beforeAll(() => {
       price = 0.4;
       result = nearestCompletelyFillingOrder(price, marketDepth);
     });
 
-    it("should return the order with matching price", () => {
+    test("should return the order with matching price", () => {
       assert.strictEqual(result[1], price);
     });
 
-    it("should return an asks order", () => {
+    test("should return an asks order", () => {
       assert.strictEqual(result[4], ASKS);
     });
   });
 
   describe("undefined price", () => {
-    before(() => {
+    beforeAll(() => {
       result = nearestCompletelyFillingOrder(undefined, marketDepth);
     });
 
-    it("should return undefined", () => {
+    test("should return undefined", () => {
       assert.isNull(result);
     });
   });
@@ -91,7 +91,7 @@ describe("src/modules/market/components/market-outcome-charts--depth/market-outc
       ]
     };
 
-    it("should work be selectable", () => {
+    test("should work be selectable", () => {
       price = 0.35;
       result = nearestCompletelyFillingOrder(price, marketDepth);
 

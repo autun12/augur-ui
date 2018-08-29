@@ -25,7 +25,7 @@ describe("modules/my-positions/actions/add-close-position-trade-group.js", () =>
         tradeGroupId: "0x00000TradeGroupId"
       },
       assertions: res => {
-        assert.deepEqual(res, {
+        expect(res).toEqual({
           type: ADD_CLOSE_POSITION_TRADE_GROUP,
           marketId: "0xMarketId",
           outcomeId: "1",

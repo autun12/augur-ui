@@ -42,7 +42,7 @@ describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, (
           store.getState()
         );
         assert.lengthOf(userOpenOrderMarkets, 1);
-        assert.deepEqual(userOpenOrderMarkets, ["bobMarket"]);
+        expect(userOpenOrderMarkets).toEqual(["bobMarket"]);
       }
     });
   });
@@ -104,7 +104,7 @@ describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, (
       assertions: store => {
         const userOpenOrderMarkets = selectAllUserOpenOrderMarkets();
         assert.lengthOf(userOpenOrderMarkets, 1);
-        assert.deepEqual(userOpenOrderMarkets, ["bobMarket"]);
+        expect(userOpenOrderMarkets).toEqual(["bobMarket"]);
       }
     });
   });

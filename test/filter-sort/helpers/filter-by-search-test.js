@@ -30,7 +30,7 @@ describe("modules/filter-sort/helpers/filter-by-search.js", () => {
   test({
     description: "should handle a search and not finding anything",
     assertions: () => {
-      assert.deepEqual(filterBySearch("augur", defaultKeys)(defaultItems), []);
+      expect(filterBySearch("augur", defaultKeys)(defaultItems)).toEqual([]);
     }
   });
 
@@ -40,10 +40,7 @@ describe("modules/filter-sort/helpers/filter-by-search.js", () => {
       // look against a key that i know is null in the test data, this should force parentValue = null and an early exit from checkArrayMatch
       const customKeys = defaultKeys;
       customKeys.push(["consensus"]);
-      assert.deepEqual(
-        filterBySearch("0xdeadbeef?", customKeys)(defaultItems),
-        []
-      );
+      expect(filterBySearch("0xdeadbeef?", customKeys)(defaultItems)).toEqual([]);
     }
   });
 
@@ -51,10 +48,7 @@ describe("modules/filter-sort/helpers/filter-by-search.js", () => {
     description:
       "should handle a search and finding markets because of description match",
     assertions: () => {
-      assert.deepEqual(
-        filterBySearch("test description", defaultKeys)(defaultItems),
-        ["testMarketId", "testMarketId2"]
-      );
+      expect(filterBySearch("test description", defaultKeys)(defaultItems)).toEqual(["testMarketId", "testMarketId2"]);
     }
   });
 
@@ -62,7 +56,7 @@ describe("modules/filter-sort/helpers/filter-by-search.js", () => {
     description:
       "should handle a search and finding a market because of tags match",
     assertions: () => {
-      assert.deepEqual(filterBySearch("tag2", defaultKeys)(defaultItems), [
+      expect(filterBySearch("tag2", defaultKeys)(defaultItems)).toEqual([
         "testMarketId2"
       ]);
     }
@@ -72,7 +66,7 @@ describe("modules/filter-sort/helpers/filter-by-search.js", () => {
     description:
       "should handle a search and finding a market because of outcomes match",
     assertions: () => {
-      assert.deepEqual(filterBySearch("outcome", defaultKeys)(defaultItems), [
+      expect(filterBySearch("outcome", defaultKeys)(defaultItems)).toEqual([
         "testMarketId"
       ]);
     }
@@ -83,7 +77,7 @@ describe("modules/filter-sort/helpers/filter-by-search.js", () => {
     assertions: () => {
       const customKeys = defaultKeys;
       customKeys.push(["outstandingShares", "full"]);
-      assert.deepEqual(filterBySearch("shares", customKeys)(defaultItems), [
+      expect(filterBySearch("shares", customKeys)(defaultItems)).toEqual([
         "testMarketId",
         "testMarketId2"
       ]);

@@ -1,8 +1,5 @@
 import React from "react";
 
-import { describe, it } from "mocha";
-import { assert } from "chai";
-
 import { shallow } from "enzyme";
 
 import TimeRemainingIndicatorWrapper from "src/modules/market/components/common/time-remaining-indicator/time-remaining-indicator";

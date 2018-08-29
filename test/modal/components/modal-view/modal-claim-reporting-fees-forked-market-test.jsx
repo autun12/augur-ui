@@ -5,7 +5,6 @@
 
 import React from "react";
 
-import { describe, it } from "mocha";
 import sinon from "sinon";
 import { shallow } from "enzyme";
 
@@ -63,7 +62,7 @@ describe("modal-claim-reporting-fees-forked-market", () => {
       });
 
       describe("Recipient field", () => {
-        it("should match expected recipient address", () => {
+        test("should match expected recipient address", () => {
           assert.include(
             Cmp.html(),
             "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
@@ -72,27 +71,27 @@ describe("modal-claim-reporting-fees-forked-market", () => {
       });
 
       describe("REP field", () => {
-        it("should match expected claimable REP value", () => {
+        test("should match expected claimable REP value", () => {
           assert.include(Cmp.html(), "<span>Rep</span><span>-</span>");
         });
       });
 
       describe("ETH field", () => {
-        it("should match expected claimable ETH value", () => {
+        test("should match expected claimable ETH value", () => {
           assert.include(Cmp.html(), "<span>Eth</span><span>-</span>");
         });
       });
 
       describe("claimReportingFeesForkedMarket function", () => {
-        it("should get called once with args ", () => {
+        test("should get called once with args ", () => {
           assert.isOk(claimReportingFeesForkedMarket);
         });
 
-        it("should receive one argument", () => {
-          assert.deepEqual(claimReportingFeesForkedMarket.args[0].length, 1);
+        test("should receive one argument", () => {
+          expect(claimReportingFeesForkedMarket.args[0].length).toEqual(1);
         });
 
-        it("should receive first argument that matches expected value", () => {
+        test("should receive first argument that matches expected value", () => {
           const expected = {
             forkedMarket,
             estimateGas: true,
@@ -100,18 +99,18 @@ describe("modal-claim-reporting-fees-forked-market", () => {
             onFailed: claimReportingFeesForkedMarket.args[0][0].onFailed,
             onSuccess: claimReportingFeesForkedMarket.args[0][0].onSuccess
           };
-          assert.deepEqual(claimReportingFeesForkedMarket.args[0][0], expected);
+          expect(claimReportingFeesForkedMarket.args[0][0]).toEqual(expected);
         });
       });
 
       describe("Gas field", () => {
-        it("should be zero", () => {
+        test("should be zero", () => {
           assert.include(Cmp.html(), "<span>Gas</span><span>0</span>");
         });
       });
 
       describe("Submit button", () => {
-        it("should be disabled", () => {
+        test("should be disabled", () => {
           const button = Cmp.find("button");
           assert.isOk(button.html().includes("disabled"));
         });
@@ -138,7 +137,7 @@ describe("modal-claim-reporting-fees-forked-market", () => {
       });
 
       describe("Recipient field", () => {
-        it("should match expected recipient address", () => {
+        test("should match expected recipient address", () => {
           assert.include(
             Cmp.html(),
             "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
@@ -147,27 +146,27 @@ describe("modal-claim-reporting-fees-forked-market", () => {
       });
 
       describe("REP field", () => {
-        it("should match expected claimable REP value", () => {
+        test("should match expected claimable REP value", () => {
           assert.include(Cmp.html(), "<span>Rep</span><span>-</span>");
         });
       });
 
       describe("ETH field", () => {
-        it("should match expected claimable ETH value", () => {
+        test("should match expected claimable ETH value", () => {
           assert.include(Cmp.html(), "<span>Eth</span><span>0.1230</span>");
         });
       });
 
       describe("claimReportingFeesForkedMarket function", () => {
-        it("should get called once with args ", () => {
+        test("should get called once with args ", () => {
           assert.isOk(claimReportingFeesForkedMarket);
         });
 
-        it("should receive one argument", () => {
-          assert.deepEqual(claimReportingFeesForkedMarket.args[0].length, 1);
+        test("should receive one argument", () => {
+          expect(claimReportingFeesForkedMarket.args[0].length).toEqual(1);
         });
 
-        it("should receive first argument that matches expected value", () => {
+        test("should receive first argument that matches expected value", () => {
           const expected = {
             forkedMarket,
             estimateGas: true,
@@ -175,18 +174,18 @@ describe("modal-claim-reporting-fees-forked-market", () => {
             onFailed: claimReportingFeesForkedMarket.args[0][0].onFailed,
             onSuccess: claimReportingFeesForkedMarket.args[0][0].onSuccess
           };
-          assert.deepEqual(claimReportingFeesForkedMarket.args[0][0], expected);
+          expect(claimReportingFeesForkedMarket.args[0][0]).toEqual(expected);
         });
       });
 
       describe("Gas field", () => {
-        it("should match expected claimable Gas value", () => {
+        test("should match expected claimable Gas value", () => {
           assert.include(Cmp.html(), "<span>Gas</span><span>0</span>");
         });
       });
 
       describe("Submit button", () => {
-        it("should not be disabled", () => {
+        test("should not be disabled", () => {
           const button = Cmp.find("button");
           assert.isNotOk(button.html().includes("disabled"));
         });
@@ -213,7 +212,7 @@ describe("modal-claim-reporting-fees-forked-market", () => {
       });
 
       describe("Recipient field", () => {
-        it("should match expected recipient address", () => {
+        test("should match expected recipient address", () => {
           assert.include(
             Cmp.html(),
             "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
@@ -222,27 +221,27 @@ describe("modal-claim-reporting-fees-forked-market", () => {
       });
 
       describe("REP field", () => {
-        it("should match expected claimable REP value", () => {
+        test("should match expected claimable REP value", () => {
           assert.include(Cmp.html(), "<span>Rep</span><span>2.0000</span>");
         });
       });
 
       describe("ETH field", () => {
-        it("should match expected claimable ETH value", () => {
+        test("should match expected claimable ETH value", () => {
           assert.include(Cmp.html(), "<span>Eth</span><span>-</span>");
         });
       });
 
       describe("claimReportingFeesForkedMarket function", () => {
-        it("should get called once with args ", () => {
+        test("should get called once with args ", () => {
           assert.isOk(claimReportingFeesForkedMarket);
         });
 
-        it("should receive one argument", () => {
-          assert.deepEqual(claimReportingFeesForkedMarket.args[0].length, 1);
+        test("should receive one argument", () => {
+          expect(claimReportingFeesForkedMarket.args[0].length).toEqual(1);
         });
 
-        it("should receive first argument that matches expected value", () => {
+        test("should receive first argument that matches expected value", () => {
           const expected = {
             forkedMarket,
             estimateGas: true,
@@ -250,18 +249,18 @@ describe("modal-claim-reporting-fees-forked-market", () => {
             onFailed: claimReportingFeesForkedMarket.args[0][0].onFailed,
             onSuccess: claimReportingFeesForkedMarket.args[0][0].onSuccess
           };
-          assert.deepEqual(claimReportingFeesForkedMarket.args[0][0], expected);
+          expect(claimReportingFeesForkedMarket.args[0][0]).toEqual(expected);
         });
       });
 
       describe("Gas field", () => {
-        it("should match expected claimable Gas value", () => {
+        test("should match expected claimable Gas value", () => {
           assert.include(Cmp.html(), "<span>Gas</span><span>0</span>");
         });
       });
 
       describe("Submit button", () => {
-        it("should not be disabled", () => {
+        test("should not be disabled", () => {
           const button = Cmp.find("button");
           assert.isNotOk(button.html().includes("disabled"));
         });
@@ -291,7 +290,7 @@ describe("modal-claim-reporting-fees-forked-market", () => {
       });
 
       describe("Recipient field", () => {
-        it("should match expected recipient address", () => {
+        test("should match expected recipient address", () => {
           assert.include(
             Cmp.html(),
             "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
@@ -300,27 +299,27 @@ describe("modal-claim-reporting-fees-forked-market", () => {
       });
 
       describe("REP field", () => {
-        it("should match expected claimable REP value", () => {
+        test("should match expected claimable REP value", () => {
           assert.include(Cmp.html(), "<span>Rep</span><span>2.0000</span>");
         });
       });
 
       describe("ETH field", () => {
-        it("should match expected claimable ETH value", () => {
+        test("should match expected claimable ETH value", () => {
           assert.include(Cmp.html(), "<span>Eth</span><span>0.1230</span>");
         });
       });
 
       describe("claimReportingFeesForkedMarket function", () => {
-        it("should get called once with args ", () => {
+        test("should get called once with args ", () => {
           assert.isOk(claimReportingFeesForkedMarket);
         });
 
-        it("should receive one argument", () => {
-          assert.deepEqual(claimReportingFeesForkedMarket.args[0].length, 1);
+        test("should receive one argument", () => {
+          expect(claimReportingFeesForkedMarket.args[0].length).toEqual(1);
         });
 
-        it("should receive first argument that matches expected value", () => {
+        test("should receive first argument that matches expected value", () => {
           const expected = {
             forkedMarket,
             estimateGas: true,
@@ -328,18 +327,18 @@ describe("modal-claim-reporting-fees-forked-market", () => {
             onFailed: claimReportingFeesForkedMarket.args[0][0].onFailed,
             onSuccess: claimReportingFeesForkedMarket.args[0][0].onSuccess
           };
-          assert.deepEqual(claimReportingFeesForkedMarket.args[0][0], expected);
+          expect(claimReportingFeesForkedMarket.args[0][0]).toEqual(expected);
         });
       });
 
       describe("Gas field", () => {
-        it("should match expected claimable Gas value", () => {
+        test("should match expected claimable Gas value", () => {
           assert.include(Cmp.html(), "<span>Gas</span><span>0</span>");
         });
       });
 
       describe("Submit button", () => {
-        it("should not be disabled", () => {
+        test("should not be disabled", () => {
           const button = Cmp.find("button");
           assert.isNotOk(button.html().includes("disabled"));
         });

@@ -28,8 +28,8 @@ describe("purchase participation tokens tests", () => {
           FeeWindow: {
             buy: p => {
               const { tx, _attotokens, onSent, onSuccess, onFailed } = p;
-              assert.deepEqual(tx, { to: "0xfeeWindow01", estimateGas: false });
-              assert.deepEqual(_attotokens, speedomatic.fix("10.25", "hex"));
+              expect(tx).toEqual({ to: "0xfeeWindow01", estimateGas: false });
+              expect(_attotokens).toEqual(speedomatic.fix("10.25", "hex"));
               assert.isFunction(onSent);
               assert.isFunction(onSuccess);
               assert.isFunction(onFailed);
@@ -40,7 +40,7 @@ describe("purchase participation tokens tests", () => {
         },
         reporting: {
           getFeeWindowCurrent: (p, cb) => {
-            assert.deepEqual(p, { universe: store.getState().universe.id });
+            expect(p).toEqual({ universe: store.getState().universe.id });
             assert.isFunction(cb);
             cb(null, { feeWindow: "0xfeeWindow01" });
           }
@@ -53,7 +53,7 @@ describe("purchase participation tokens tests", () => {
           assert.isNull(err);
           assert.isObject(res);
           const expectedActions = [ACTIONS.CLOSE_MODAL];
-          assert.deepEqual(store.getActions(), expectedActions);
+          expect(store.getActions()).toEqual(expectedActions);
           done();
         })
       );
@@ -69,8 +69,8 @@ describe("purchase participation tokens tests", () => {
           FeeWindow: {
             buy: p => {
               const { tx, _attotokens, onSent, onSuccess, onFailed } = p;
-              assert.deepEqual(tx, { to: "0xfeeWindow01", estimateGas: true });
-              assert.deepEqual(_attotokens, speedomatic.fix("10.25", "hex"));
+              expect(tx).toEqual({ to: "0xfeeWindow01", estimateGas: true });
+              expect(_attotokens).toEqual(speedomatic.fix("10.25", "hex"));
               assert.isFunction(onSent);
               assert.isFunction(onSuccess);
               assert.isFunction(onFailed);
@@ -81,7 +81,7 @@ describe("purchase participation tokens tests", () => {
         },
         reporting: {
           getFeeWindowCurrent: (p, cb) => {
-            assert.deepEqual(p, { universe: store.getState().universe.id });
+            expect(p).toEqual({ universe: store.getState().universe.id });
             assert.isFunction(cb);
             cb(null, { feeWindow: "0xfeeWindow01" });
           }
@@ -97,9 +97,9 @@ describe("purchase participation tokens tests", () => {
             { decimalsRounded: 4 },
             "0x2fdaf"
           );
-          assert.deepEqual(res, expectedResponse);
+          expect(res).toEqual(expectedResponse);
           const expectedActions = [];
-          assert.deepEqual(store.getActions(), expectedActions);
+          expect(store.getActions()).toEqual(expectedActions);
           done();
         })
       );
@@ -115,8 +115,8 @@ describe("purchase participation tokens tests", () => {
           FeeWindow: {
             buy: p => {
               const { tx, _attotokens, onSent, onSuccess, onFailed } = p;
-              assert.deepEqual(tx, { to: "0xfeeWindow01", estimateGas: true });
-              assert.deepEqual(_attotokens, speedomatic.fix("10.25", "hex"));
+              expect(tx).toEqual({ to: "0xfeeWindow01", estimateGas: true });
+              expect(_attotokens).toEqual(speedomatic.fix("10.25", "hex"));
               assert.isFunction(onSent);
               assert.isFunction(onSuccess);
               assert.isFunction(onFailed);
@@ -127,7 +127,7 @@ describe("purchase participation tokens tests", () => {
         },
         reporting: {
           getFeeWindowCurrent: (p, cb) => {
-            assert.deepEqual(p, { universe: store.getState().universe.id });
+            expect(p).toEqual({ universe: store.getState().universe.id });
             assert.isFunction(cb);
             cb(null, { feeWindow: "0xfeeWindow01" });
           }
@@ -138,9 +138,9 @@ describe("purchase participation tokens tests", () => {
       store.dispatch(
         purchaseParticipationTokens("10.25", true, (err, res) => {
           assert.isUndefined(res);
-          assert.deepEqual(err, { error: 1000, message: "Uh-Oh!" });
+          expect(err).toEqual({ error: 1000, message: "Uh-Oh!" });
           const expectedActions = [];
-          assert.deepEqual(store.getActions(), expectedActions);
+          expect(store.getActions()).toEqual(expectedActions);
           done();
         })
       );
@@ -160,7 +160,7 @@ describe("purchase participation tokens tests", () => {
         },
         reporting: {
           getFeeWindowCurrent: (p, cb) => {
-            assert.deepEqual(p, { universe: store.getState().universe.id });
+            expect(p).toEqual({ universe: store.getState().universe.id });
             assert.isFunction(cb);
             cb({ error: 1000, message: "Uh-Oh!" });
           }
@@ -171,9 +171,9 @@ describe("purchase participation tokens tests", () => {
       store.dispatch(
         purchaseParticipationTokens("10.25", true, (err, res) => {
           assert.isUndefined(res);
-          assert.deepEqual(err, { error: 1000, message: "Uh-Oh!" });
+          expect(err).toEqual({ error: 1000, message: "Uh-Oh!" });
           const expectedActions = [];
-          assert.deepEqual(store.getActions(), expectedActions);
+          expect(store.getActions()).toEqual(expectedActions);
           done();
         })
       );
@@ -198,7 +198,7 @@ describe("purchase participation tokens tests", () => {
         },
         reporting: {
           getFeeWindowCurrent: (p, cb) => {
-            assert.deepEqual(p, { universe: store.getState().universe.id });
+            expect(p).toEqual({ universe: store.getState().universe.id });
             assert.isFunction(cb);
             cb(null);
           }
@@ -209,9 +209,9 @@ describe("purchase participation tokens tests", () => {
       store.dispatch(
         purchaseParticipationTokens("10.25", false, (err, res) => {
           assert.isNull(err);
-          assert.deepEqual(res, "10.25");
+          expect(res).toEqual("10.25");
           const expectedActions = [];
-          assert.deepEqual(store.getActions(), expectedActions);
+          expect(store.getActions()).toEqual(expectedActions);
           done();
         })
       );

@@ -29,24 +29,24 @@ describe("ReportDisputeNoRepState", () => {
     });
 
     describe("message", () => {
-      it("should be rendered into the DOM", () => {
+      test("should be rendered into the DOM", () => {
         assert.include(cmp.text(), exampleMessage);
       });
     });
 
     describe("onClick", () => {
-      it("should fire when action button is clicked", () => {
+      test("should fire when action button is clicked", () => {
         btn.simulate("click");
         assert.ok(onClickSpy.called);
       });
     });
 
     describe("btnText", () => {
-      it('should default to "OK"', () => {
+      test('should default to "OK"', () => {
         assert.include(btn.text(), "OK");
       });
 
-      it("should appear in the body of the button", () => {
+      test("should appear in the body of the button", () => {
         const btnText = "some button text";
         cmp = shallow(
           <ReportDisputeNoRepState

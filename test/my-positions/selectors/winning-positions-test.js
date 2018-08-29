@@ -10,7 +10,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       const Speedomatic = { bignum: () => {} };
       const SelectLoginAccountPositions = () =>
         t.selectors.loginAccountPositions;
-      const selector = proxyquire(
+      const selector = jest.mock(
         "../../../src/modules/my-positions/selectors/winning-positions.js",
         {
           speedomatic: Speedomatic,
@@ -32,7 +32,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, []);
+      expect(selection).toEqual([]);
     }
   });
   test({
@@ -62,7 +62,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, [
+      expect(selection).toEqual([
         {
           id: "0xa1",
           description: "test market 1",
@@ -101,7 +101,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, [
+      expect(selection).toEqual([
         {
           id: "0xa1",
           description: "test market 1",
@@ -141,7 +141,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, [
+      expect(selection).toEqual([
         {
           id: "0xa1",
           description: "test market 1",
@@ -180,7 +180,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, [
+      expect(selection).toEqual([
         {
           id: "0xa1",
           description: "test market 1",
@@ -220,7 +220,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, [
+      expect(selection).toEqual([
         {
           id: "0xa1",
           description: "test market 1",
@@ -260,7 +260,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, [
+      expect(selection).toEqual([
         {
           id: "0xa1",
           description: "test market 1",
@@ -300,7 +300,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, [
+      expect(selection).toEqual([
         {
           id: "0xa1",
           description: "test market 1",
@@ -326,7 +326,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, []);
+      expect(selection).toEqual([]);
     }
   });
   test({
@@ -366,7 +366,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, [
+      expect(selection).toEqual([
         {
           id: "0xa2",
           description: "test market 2",
@@ -426,7 +426,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, [
+      expect(selection).toEqual([
         {
           id: "0xa2",
           description: "test market 2",
@@ -487,7 +487,7 @@ describe(`modules/my-positions/selectors/winning-positions.js`, () => {
       }
     },
     assertions: selection => {
-      assert.deepEqual(selection, [
+      expect(selection).toEqual([
         {
           id: "0xa3",
           description: "test market 3",

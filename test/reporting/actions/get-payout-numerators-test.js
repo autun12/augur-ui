@@ -56,12 +56,9 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
         );
         const expected = ["2500", "7500"];
         assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        assert.deepEqual(
-          createBigNumber(expected[0])
-            .plus(createBigNumber(expected[1]))
-            .toFixed(),
-          marketScalar.numTicks
-        );
+        expect(createBigNumber(expected[0])
+          .plus(createBigNumber(expected[1]))
+          .toFixed()).toEqual(marketScalar.numTicks);
       }
     });
   });
@@ -75,12 +72,9 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
         );
         const expected = ["450", "850"];
         assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        assert.deepEqual(
-          createBigNumber(expected[0])
-            .plus(createBigNumber(expected[1]))
-            .toFixed(),
-          marketScalarMin.numTicks
-        );
+        expect(createBigNumber(expected[0])
+          .plus(createBigNumber(expected[1]))
+          .toFixed()).toEqual(marketScalarMin.numTicks);
       }
     });
   });
@@ -94,12 +88,9 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
         );
         const expected = ["950", "350"];
         assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        assert.deepEqual(
-          createBigNumber(expected[0])
-            .plus(createBigNumber(expected[1]))
-            .toFixed(),
-          marketScalarMin.numTicks
-        );
+        expect(createBigNumber(expected[0])
+          .plus(createBigNumber(expected[1]))
+          .toFixed()).toEqual(marketScalarMin.numTicks);
       }
     });
   });
@@ -113,12 +104,9 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
         );
         const expected = ["5000", "5000"];
         assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        assert.deepEqual(
-          createBigNumber(expected[0])
-            .plus(createBigNumber(expected[1]))
-            .toFixed(),
-          marketScalar.numTicks
-        );
+        expect(createBigNumber(expected[0])
+          .plus(createBigNumber(expected[1]))
+          .toFixed()).toEqual(marketScalar.numTicks);
       }
     });
   });
@@ -132,12 +120,9 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
         );
         const expected = ["7500", "2500"];
         assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        assert.deepEqual(
-          createBigNumber(expected[0])
-            .plus(createBigNumber(expected[1]))
-            .toFixed(),
-          marketScalar.numTicks
-        );
+        expect(createBigNumber(expected[0])
+          .plus(createBigNumber(expected[1]))
+          .toFixed()).toEqual(marketScalar.numTicks);
       }
     });
   });
@@ -151,12 +136,9 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
         );
         const expected = ["5499", "4501"];
         assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        assert.deepEqual(
-          createBigNumber(expected[0])
-            .plus(createBigNumber(expected[1]))
-            .toFixed(),
-          marketScalar.numTicks
-        );
+        expect(createBigNumber(expected[0])
+          .plus(createBigNumber(expected[1]))
+          .toFixed()).toEqual(marketScalar.numTicks);
       }
     });
   });
@@ -170,12 +152,9 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
         );
         const expected = ["5000", "5000"];
         assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        assert.deepEqual(
-          createBigNumber(expected[0])
-            .plus(createBigNumber(expected[1]))
-            .toFixed(),
-          marketScalar.numTicks
-        );
+        expect(createBigNumber(expected[0])
+          .plus(createBigNumber(expected[1]))
+          .toFixed()).toEqual(marketScalar.numTicks);
       }
     });
   });

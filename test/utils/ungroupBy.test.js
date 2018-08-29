@@ -22,7 +22,7 @@ describe("src/utils/ungroupBy.js", () => {
         }
       };
 
-      assert.deepEqual(ungroupBy(obj, ["a", "b", "c"]), [
+      expect(ungroupBy(obj, ["a", "b", "c"])).toEqual([
         {
           a: "v1",
           b: "v2",
@@ -52,8 +52,8 @@ describe("src/utils/ungroupBy.js", () => {
     });
 
     test("should push the passed object onto results array", () => {
-      const result = ungroupBy(exampleObject, []);
-      assert.deepEqual(result, [
+      const results = ungroupBy(exampleObject, []);
+      expect(results).toEqual([
         {
           justSomeProperty: "justSomeProperty"
         }
@@ -70,7 +70,7 @@ describe("src/utils/ungroupBy.js", () => {
       };
       const results = ungroupBy(exampleObject, ["key1"]);
       console.log(results);
-      assert.deepEqual(results, [
+      expect(results).toEqual([
         {
           key1: "v1",
           v2: "justSomeProperty"
@@ -90,7 +90,7 @@ describe("src/utils/ungroupBy.js", () => {
         }
       };
       const results = ungroupBy(exampleObject, ["key1"]);
-      assert.deepEqual(results, [
+      expect(results).toEqual([
         {
           key1: "v1",
           v2: "justSomeProperty"
@@ -116,7 +116,7 @@ describe("src/utils/ungroupBy.js", () => {
         ]
       };
       const results = ungroupBy(exampleObject, ["key1"]);
-      assert.deepEqual(results, [
+      expect(results).toEqual([
         {
           key1: "v1",
           v2: "justSomeProperty"

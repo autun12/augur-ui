@@ -15,7 +15,7 @@ describe("modules/trade/helpers/generate-trade.js", () => {
   );
 
   test("should generate trade object", () => {
-    assert.deepEqual(trade, {
+    expect(trade).toEqual({
       limitPrice: "0.50",
       numShares: 5000,
       maxNumShares: {

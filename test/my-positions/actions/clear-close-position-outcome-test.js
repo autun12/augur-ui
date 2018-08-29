@@ -20,7 +20,7 @@ describe("modules/my-positions/actions/clear-close-position-outcome.js", () => {
         outcomeId: "1"
       },
       assertions: res => {
-        assert.deepEqual(res, {
+        expect(res).toEqual({
           type: CLEAR_CLOSE_POSITION_OUTCOME,
           marketId: "0xMarketId",
           outcomeId: "1"

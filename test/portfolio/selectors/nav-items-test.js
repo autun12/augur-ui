@@ -74,7 +74,7 @@ describe("modules/portfolio/selectors/nav-items", () => {
     .stub(selectors, "selectAllMarkets")
     .returns([]);
 
-  const proxiedSelector = proxyquire(
+  const proxiedSelector = jest.mock(
     "../../../src/modules/portfolio/selectors/portfolio-nav-items",
     {
       "../../my-positions/selectors/my-positions-summary": {

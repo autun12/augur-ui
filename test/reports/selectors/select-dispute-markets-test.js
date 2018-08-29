@@ -20,7 +20,7 @@ describe(`modules/reports/selectors/select-dispute-markets.js`, () => {
             isForking: false
           })
         };
-        const selector = proxyquire(
+        const selector = jest.mock(
           "../../../src/modules/reporting/selectors/select-dispute-markets.js",
           {
             "../../markets/selectors/markets-all": mockMarketsAll,
@@ -60,7 +60,7 @@ describe(`modules/reports/selectors/select-dispute-markets.js`, () => {
             isForking: false
           })
         };
-        const selector = proxyquire(
+        const selector = jest.mock(
           "../../../src/modules/reporting/selectors/select-dispute-markets.js",
           {
             "../../markets/selectors/markets-all": mockMarketsAll,
@@ -151,7 +151,7 @@ describe(`modules/reports/selectors/select-dispute-markets.js`, () => {
             isForking: false
           })
         };
-        const selector = proxyquire(
+        const selector = jest.mock(
           "../../../src/modules/reporting/selectors/select-dispute-markets.js",
           {
             "../../markets/selectors/markets-all": mockMarketsAll,

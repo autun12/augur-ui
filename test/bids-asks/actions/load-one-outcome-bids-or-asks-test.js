@@ -11,7 +11,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
   const test = t =>
     test(t.description, done => {
       const store = configureMockStore([thunk])({ ...t.mock.state });
-      const loadOneOutcomeBidsOrAsks = proxyquire(
+      const loadOneOutcomeBidsOrAsks = jest.mock(
         "../../../src/modules/bids-asks/actions/load-one-outcome-bids-or-asks",
         {
           "../../../services/augurjs": t.stub.augurjs,
@@ -60,7 +60,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
         err,
         "must specify market ID, outcome, and order type: undefined 3 sell"
       );
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -91,7 +91,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
         err,
         "must specify market ID, outcome, and order type: MARKET_0 undefined sell"
       );
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -122,7 +122,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
         err,
         "must specify market ID, outcome, and order type: MARKET_0 3 undefined"
       );
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -150,7 +150,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.strictEqual(err, "market MARKET_0 data not found");
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -192,7 +192,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.isNull(err);
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "UPDATE_IS_FIRST_ORDER_BOOK_CHUNK_LOADED",
           marketId: "MARKET_0",
@@ -258,7 +258,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.isNull(err);
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "UPDATE_IS_FIRST_ORDER_BOOK_CHUNK_LOADED",
           marketId: "MARKET_0",

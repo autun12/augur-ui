@@ -31,7 +31,7 @@ describe(`modules/bids-asks/actions/clear-order-book-on-first-chunk.js`, () => {
       }
     },
     assertions: actions => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "UPDATE_IS_FIRST_ORDER_BOOK_CHUNK_LOADED",
           marketId: "MARKET_0",
@@ -65,7 +65,7 @@ describe(`modules/bids-asks/actions/clear-order-book-on-first-chunk.js`, () => {
       }
     },
     assertions: actions => {
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
 });

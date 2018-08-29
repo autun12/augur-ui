@@ -25,7 +25,7 @@ describe(`modules/my-positions/actions/claim-trading-proceeds.js`, () => {
       const WinningPositions = sinon
         .stub()
         .returns(t.selectors.winningPositions);
-      const claimTradingProceeds = proxyquire(
+      const claimTradingProceeds = jest.mock(
         "../../../src/modules/my-positions/actions/claim-trading-proceeds.js",
         {
           "../../../services/augurjs": AugurJS,
@@ -80,7 +80,7 @@ describe(`modules/my-positions/actions/claim-trading-proceeds.js`, () => {
       winningPositions: []
     },
     assertions: actions => {
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
 
@@ -112,7 +112,7 @@ describe(`modules/my-positions/actions/claim-trading-proceeds.js`, () => {
       ]
     },
     assertions: actions => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "CLAIM_MARKETS_TRADING_PROCEEDS",
           _market: "0xa1"
@@ -151,7 +151,7 @@ describe(`modules/my-positions/actions/claim-trading-proceeds.js`, () => {
       winningPositions: []
     },
     assertions: actions => {
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
 
@@ -188,7 +188,7 @@ describe(`modules/my-positions/actions/claim-trading-proceeds.js`, () => {
       ]
     },
     assertions: actions => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "CLAIM_MARKETS_TRADING_PROCEEDS",
           _market: "0xa2"
@@ -248,7 +248,7 @@ describe(`modules/my-positions/actions/claim-trading-proceeds.js`, () => {
       ]
     },
     assertions: actions => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "CLAIM_MARKETS_TRADING_PROCEEDS",
           _market: "0xa2"
@@ -315,7 +315,7 @@ describe(`modules/my-positions/actions/claim-trading-proceeds.js`, () => {
       ]
     },
     assertions: actions => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "CLAIM_MARKETS_TRADING_PROCEEDS",
           _market: "0xa3"

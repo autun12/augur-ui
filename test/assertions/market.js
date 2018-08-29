@@ -80,7 +80,7 @@ export default function(market) {
     const { tags } = market;
     test("market.tags", () => {
       assert.isDefined(tags);
-      assert.isArray(tags);
+      expect(Array.isArray(tags)).toBe(true);
 
       tags.forEach((tag, i) => {
         test(`market.tags[${i}].name`, () => {
@@ -97,7 +97,7 @@ export default function(market) {
 
     test("market.outcomes", () => {
       assert.isDefined(market.outcomes);
-      assert.isArray(market.outcomes);
+      expect(Array.isArray(market.outcomes)).toBe(true);
 
       market.outcomes.forEach((outcome, i) => {
         test(`market.outcomes[${i}]`, () => {
@@ -179,12 +179,12 @@ export default function(market) {
 
         test(`market.outcomes[${i}].orderBook.bids`, () => {
           assert.isDefined(orderBook.bids);
-          assert.isArray(orderBook.bids);
+          expect(Array.isArray(orderBook.bids)).toBe(true);
         });
 
         test(`market.outcomes[${i}].orderBook.asks`, () => {
           assert.isDefined(orderBook.asks);
-          assert.isArray(orderBook.asks);
+          expect(Array.isArray(orderBook.asks)).toBe(true);
         });
 
         test(`market.outcomes[${i}].orderBook.topBid`, () => {
@@ -200,12 +200,12 @@ export default function(market) {
         const { userOpenOrders } = outcome;
         test(`market.outcomes[${i}].userOpenOrders`, () => {
           assert.isDefined(userOpenOrders);
-          assert.isArray(userOpenOrders);
+          expect(Array.isArray(userOpenOrders)).toBe(true);
         });
 
         test(`market.outcomes[${i}].userOpenOrders`, () => {
           assert.isDefined(userOpenOrders);
-          assert.isArray(userOpenOrders);
+          expect(Array.isArray(userOpenOrders)).toBe(true);
         });
 
         userOpenOrders.forEach((openOrder, j) => {
@@ -300,7 +300,7 @@ export default function(market) {
     const { tradeOrders } = tradeSummary;
     test("market.tradeSummary.tradeOrders", () => {
       assert.isDefined(tradeOrders);
-      assert.isArray(tradeOrders);
+      expect(Array.isArray(tradeOrders)).toBe(true);
     });
 
     tradeOrders.forEach((trade, i) => {

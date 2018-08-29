@@ -12,7 +12,7 @@ describe(`modules/transactions/selectors/is-transaction-working.js`, () => {
   let actual;
 
   const { state, store } = mockStore.default;
-  const selector = proxyquire(
+  const selector = jest.mock(
     "../../../src/modules/transactions/selectors/is-transactions-working",
     {
       "../../../store": store

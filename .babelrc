@@ -22,31 +22,5 @@
       ],
       "compact": false,
     },
-    "test": {
-      "presets": ["es2015", "stage-0", "react"],
-      "plugins": [
-        [
-          "@babel/plugin-transform-runtime",
-          {
-            "regenerator": true
-          }
-        ],
-        "rewire",
-        ["module-resolver", {
-          "root": ["./src", "./test"],
-          "alias": {
-            "src": "./src",
-            "test": "./test",
-            "assertions": "./test/assertions",
-            "config": "./src/config",
-            "assets": "./src/assets",
-            "modules": "./src/modules",
-            "utils": "./src/utils",
-            "services": "./src/services"
-          },
-          "extensions": [".js", ".jsx"]
-        }]
-      ]
-    },
   }
 }

@@ -12,7 +12,7 @@ describe(`modules/user-open-orders/selectors/user-open-orders-summary.js`, () =>
       loginAccount: {}
     };
     const store = mockStore(state);
-    const selectUserOpenOrdersSummary = proxyquire(
+    const selectUserOpenOrdersSummary = jest.mock(
       "../../../src/modules/user-open-orders/selectors/user-open-orders-summary",
       {
         "../../../store": store
@@ -29,7 +29,7 @@ describe(`modules/user-open-orders/selectors/user-open-orders-summary.js`, () =>
       }
     };
     const store = mockStore(state);
-    const selectUserOpenOrdersSummary = proxyquire(
+    const selectUserOpenOrdersSummary = jest.mock(
       "../../../src/modules/user-open-orders/selectors/user-open-orders-summary",
       {
         "../../../store": store
@@ -60,6 +60,6 @@ describe(`modules/user-open-orders/selectors/user-open-orders-summary.js`, () =>
     const expected = {
       openOrdersCount: formatNumber(9, { denomination: "Open Orders" })
     };
-    assert.deepEqual(selectUserOpenOrdersSummary(outcomes), expected);
+    expect(selectUserOpenOrdersSummary(outcomes)).toEqual(expected);
   });
 });

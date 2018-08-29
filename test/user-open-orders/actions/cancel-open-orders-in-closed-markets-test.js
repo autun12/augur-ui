@@ -10,7 +10,7 @@ describe(`modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.
       const store = mockStore(t.state);
       const CancelOrder = { cancelOrder: () => {} };
       const { openOrders } = t;
-      const cancelOpenOrdersInClosedMarkets = proxyquire(
+      const cancelOpenOrdersInClosedMarkets = jest.mock(
         "../../../src/modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.js",
         {
           "../../bids-asks/actions/cancel-order": CancelOrder,
@@ -41,7 +41,7 @@ describe(`modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.
     description: "no open orders",
     openOrders: [],
     assertions: actions => {
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -64,7 +64,7 @@ describe(`modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.
       }
     ],
     assertions: actions => {
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -87,7 +87,7 @@ describe(`modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.
       }
     ],
     assertions: actions => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "CANCEL_ORDER",
           params: {
@@ -124,7 +124,7 @@ describe(`modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.
       }
     ],
     assertions: actions => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "CANCEL_ORDER",
           params: {
@@ -189,7 +189,7 @@ describe(`modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.
       }
     ],
     assertions: actions => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "CANCEL_ORDER",
           params: {
@@ -272,7 +272,7 @@ describe(`modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.
       }
     ],
     assertions: actions => {
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "CANCEL_ORDER",
           params: {

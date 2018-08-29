@@ -10,7 +10,7 @@ describe(`modules/auth/actions/update-is-logged-and-load-account-data.js`, () =>
       const store = mockStore(t.state);
       const AugurJS = { augur: { rpc: { clear: () => {} } } };
       const LoadAccountData = { loadAccountData: () => {} };
-      const action = proxyquire(
+      const action = jest.mock(
         "../../../src/modules/auth/actions/update-is-logged-and-load-account-data.js",
         {
           "../../../services/augurjs": AugurJS,

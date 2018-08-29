@@ -111,7 +111,7 @@ describe(`modules/markets/selectors/markets-all.js`, () => {
     .stub(mockMarket, "selectMarketReport")
     .callsFake((marketId, universeReports) => ({}));
 
-  const selector = proxyquire(
+  const selector = jest.mock(
     "../../../src/modules/markets/selectors/markets-all.js",
     {
       "../../market/selectors/market": mockMarket,

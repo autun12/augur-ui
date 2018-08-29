@@ -8,7 +8,7 @@ describe(`modules/bids-asks/actions/load-bids-asks.js`, () => {
   const test = t =>
     test(t.description, done => {
       const store = configureMockStore([thunk])({ ...t.mock.state });
-      const loadBidsAsks = proxyquire(
+      const loadBidsAsks = jest.mock(
         "../../../src/modules/bids-asks/actions/load-bids-asks",
         {
           "./load-one-outcome-bids-asks": t.stub.loadOneOutcomeBidsAsks
@@ -37,7 +37,7 @@ describe(`modules/bids-asks/actions/load-bids-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.strictEqual(err, "must specify market ID: undefined");
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -55,7 +55,7 @@ describe(`modules/bids-asks/actions/load-bids-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.strictEqual(err, "market MARKET_0 data not found");
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -75,7 +75,7 @@ describe(`modules/bids-asks/actions/load-bids-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.strictEqual(err, "market MARKET_0 numOutcomes not found");
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -104,7 +104,7 @@ describe(`modules/bids-asks/actions/load-bids-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.isNull(err);
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "LOAD_ONE_OUTCOME_BIDS_ASKS",
           marketId: "MARKET_0",
@@ -140,7 +140,7 @@ describe(`modules/bids-asks/actions/load-bids-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.isNull(err);
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "LOAD_ONE_OUTCOME_BIDS_ASKS",
           marketId: "MARKET_0",
@@ -181,7 +181,7 @@ describe(`modules/bids-asks/actions/load-bids-asks.js`, () => {
     },
     assertions: (err, actions) => {
       assert.strictEqual(err, "ERROR_MESSAGE");
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "LOAD_ONE_OUTCOME_BIDS_ASKS",
           marketId: "MARKET_0",

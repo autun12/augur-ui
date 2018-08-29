@@ -38,7 +38,7 @@ describe("modules/app/actions/get-augur-node-network-id.js", () => {
     assertions: (err, augurNodeNetworkId, actions) => {
       assert.isNull(err);
       assert.strictEqual(augurNodeNetworkId, "4");
-      assert.deepEqual(actions, []);
+      expect(actions).toEqual([]);
     }
   });
   test({
@@ -56,7 +56,7 @@ describe("modules/app/actions/get-augur-node-network-id.js", () => {
     assertions: (err, augurNodeNetworkId, actions) => {
       assert.isNull(err);
       assert.strictEqual(augurNodeNetworkId, "4");
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         {
           type: "UPDATE_AUGUR_NODE_NETWORK_ID",
           augurNodeNetworkId: "4"
