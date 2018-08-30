@@ -62,7 +62,7 @@ describe("modules/notifications/selectors/notifications", () => {
         ]
       };
 
-      assert.deepEqual(actual, expected, `Didn't return the expected object`);
+      expect(actual).toEqual(expected);
     });
   });
 

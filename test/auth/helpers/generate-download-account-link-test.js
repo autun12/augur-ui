@@ -47,7 +47,7 @@ describe("modules/auth/helpers/generate-download-account-link.js", () => {
         downloadAccountFileName: "0xtest"
       };
 
-      assert.deepEqual(actual, expected, `didn't return the expected object`);
+      expect(actual).toEqual(expected);
       assert(
         Speedomatic.byteArrayToHexString.calledOnce,
         `didn't call 'speedomatic.byteArrayToHexString' once as exptected`

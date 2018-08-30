@@ -1,5 +1,4 @@
 describe(`modules/universe/selectors/reporting-cycle.js`, () => {
-  proxyquire.noPreserveCache();
   const test = t =>
     test(t.description, () => {
       const AugurJS = {

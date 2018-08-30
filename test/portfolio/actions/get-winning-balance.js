@@ -27,7 +27,7 @@ describe("modules/portfolio/actions/get-winning-balance.js", () => {
     __RewireAPI__.__Rewire__("augur", {
       augurNode: {
         submitRequest: (methodName, args, callback) => {
-          assert.equal(methodName, "getWinningBalance");
+          expect(methodName).toEqual("getWinningBalance");
           expect(args).toEqual({
             marketIds: ["0xdeadbeef"],
             account: "0xb0b"
@@ -82,7 +82,7 @@ describe("modules/portfolio/actions/get-winning-balance.js", () => {
           }
         ];
 
-        assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+        expect(actual).toEqual(expected);
       }
     });
   });

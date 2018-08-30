@@ -1,16 +1,16 @@
 export default function(loginAccountPositions) {
   describe(`loginAccountPositions' shape`, () => {
-    assert.isDefined(loginAccountPositions);
-    assert.isObject(loginAccountPositions);
+    expect(loginAccountPositions).toBeDefined();
+    expect(typeof loginAccountPositions).toBe("object");
 
     test("markets", () => {
-      assert.isDefined(loginAccountPositions.markets);
+      expect(loginAccountPositions.markets).toBeDefined();
       expect(Array.isArray(loginAccountPositions.markets)).toBe(true);
     });
 
     test("summary", () => {
-      assert.isDefined(loginAccountPositions.summary);
-      assert.isObject(loginAccountPositions.summary);
+      expect(loginAccountPositions.summary).toBeDefined();
+      expect(typeof loginAccountPositions.summary).toBe("object");
     });
   });
 }

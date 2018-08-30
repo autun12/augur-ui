@@ -20,8 +20,7 @@ describe(`modules/reports/selectors/select-awaiting-dispute-markets.js`, () => {
 
         marketsAwaitingDispute();
 
-        assert.isTrue(
-          stubbedSelectMarketsAwaitingDispute.calledOnce,
+        expect(stubbedSelectMarketsAwaitingDispute.calledOnce).toBeTruthy(
           `didn't call 'selectMarketsAwaitingDispute' once as expected`
         );
 
@@ -40,7 +39,7 @@ describe(`modules/reports/selectors/select-awaiting-dispute-markets.js`, () => {
 
         const expected = [];
 
-        assert.deepEqual(actual, expected, `didn't return the expected result`);
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -184,7 +183,7 @@ describe(`modules/reports/selectors/select-awaiting-dispute-markets.js`, () => {
           }
         ];
 
-        assert.deepEqual(actual, expected, `didn't return the expected result`);
+        expect(actual).toEqual(expected);
 
         __RewireAPI__.__ResetDependency__("constants");
 

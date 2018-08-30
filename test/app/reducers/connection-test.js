@@ -13,11 +13,7 @@ describe(`modules/app/reducers/connection.js`, () => {
     const expectedOutput = Object.assign({}, thisTestState.connection, {
       isConnected: true
     });
-    assert.deepEqual(
-      reducer(thisTestState.connection, action),
-      expectedOutput,
-      `Didn't update the connection information`
-    );
+    expect(reducer(thisTestState.connection, action)).toEqual(expectedOutput);
   });
 
   test(`should update the Augur Node connection in state`, () => {
@@ -28,28 +24,17 @@ describe(`modules/app/reducers/connection.js`, () => {
     const expectedOutput = Object.assign({}, thisTestState.connection, {
       isConnectedToAugurNode: true
     });
-    assert.deepEqual(
-      reducer(thisTestState.connection, action),
-      expectedOutput,
-      `Didn't update the connection information`
-    );
+    expect(reducer(thisTestState.connection, action)).toEqual(expectedOutput);
   });
 
-  test(
-    `should update the isReconnectionPaused variable in the connection object in state`,
-    () => {
-      const action = {
-        type: updateConnection.UPDATE_IS_RECONNECTION_PAUSED,
-        isReconnectionPaused: true
-      };
-      const expectedOutput = Object.assign({}, thisTestState.connection, {
-        isReconnectionPaused: true
-      });
-      assert.deepEqual(
-        reducer(thisTestState.connection, action),
-        expectedOutput,
-        `Didn't update the connection information`
-      );
-    }
-  );
+  test(`should update the isReconnectionPaused variable in the connection object in state`, () => {
+    const action = {
+      type: updateConnection.UPDATE_IS_RECONNECTION_PAUSED,
+      isReconnectionPaused: true
+    };
+    const expectedOutput = Object.assign({}, thisTestState.connection, {
+      isReconnectionPaused: true
+    });
+    expect(reducer(thisTestState.connection, action)).toEqual(expectedOutput);
+  });
 });

@@ -63,11 +63,7 @@ describe("modules/markets/actions/load-user-markets.js", () => {
 
         const expected = [];
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `Dispatched Actions when none should have been.`
-        );
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -82,11 +78,7 @@ describe("modules/markets/actions/load-user-markets.js", () => {
           loadUserMarkets((err, marketsArray) => {
             const expectedError = { error: "error message" };
 
-            assert.deepEqual(
-              err,
-              expectedError,
-              `Didn't reutrn the expected error object`
-            );
+            expect(err).toEqual(expectedError);
             assert.isUndefined(
               marketsArray,
               `Expected marketsArray to be undefined`
@@ -98,11 +90,7 @@ describe("modules/markets/actions/load-user-markets.js", () => {
 
         const expected = [];
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `Dispatched Actions when none should have been.`
-        );
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -118,11 +106,7 @@ describe("modules/markets/actions/load-user-markets.js", () => {
             const expectedMarketsArray = ["0xabc1", "0xabc2", "0xabc3"];
 
             assert.isNull(err, `Error return value wasn't null as expected.`);
-            assert.deepEqual(
-              marketsArray,
-              expectedMarketsArray,
-              `Unexpected markets array returned to callback`
-            );
+            expect(marketsArray).toEqual(expectedMarketsArray);
           })
         );
 
@@ -141,11 +125,7 @@ describe("modules/markets/actions/load-user-markets.js", () => {
           }
         ];
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `Dispatched Actions when none should have been.`
-        );
+        expect(actual).toEqual(expected);
       }
     });
   });

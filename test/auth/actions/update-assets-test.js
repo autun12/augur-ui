@@ -207,11 +207,7 @@ describe("modules/auth/actions/update-assets.js", () => {
                 err,
                 `didn't call the callback with the expected error`
               );
-              assert.deepEqual(
-                balances,
-                testValue,
-                `didn't call the callback with the expected balances`
-              );
+              expect(balances).toEqual(testValue);
             });
             store.dispatch(updateAssets(callbackStub.callback));
             done();

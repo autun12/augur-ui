@@ -2,7 +2,6 @@ import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 
 describe(`modules/user-open-orders/selectors/select-account-order-markets.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
 

@@ -98,11 +98,10 @@ describe("create-market-form-outcome", () => {
           tickSizeInput.simulate("change", { target: { value: "-7" } });
           const newMarketObj = updateNewMarketSpy.args[0][0];
 
-          assert.equal(newMarketObj.tickSize, "-7");
-          assert.equal(
-            newMarketObj.validations[newMarketObj.currentStep].tickSize,
-            "Tick size cannot be negative."
-          );
+          expect(newMarketObj.tickSize).toEqual("-7");
+          expect(
+            newMarketObj.validations[newMarketObj.currentStep].tickSize
+          ).toEqual("Tick size cannot be negative.");
         });
       });
 
@@ -115,14 +114,13 @@ describe("create-market-form-outcome", () => {
         });
 
         test("should update market with new value", () => {
-          assert.equal(newMarketObj.tickSize, 0);
+          expect(newMarketObj.tickSize).toEqual(0);
         });
 
         test("should set validation message to true", () => {
-          assert.equal(
-            newMarketObj.validations[newMarketObj.currentStep].tickSize,
-            "Tick size is required."
-          );
+          expect(
+            newMarketObj.validations[newMarketObj.currentStep].tickSize
+          ).toEqual("Tick size is required.");
         });
       });
 
@@ -135,13 +133,13 @@ describe("create-market-form-outcome", () => {
         });
 
         test("should update market with new value", () => {
-          assert.equal(newMarketObj.tickSize, 1000);
+          expect(newMarketObj.tickSize).toEqual(1000);
         });
 
         test("should set validation message to true", () => {
-          assert.isTrue(
+          expect(
             newMarketObj.validations[newMarketObj.currentStep].tickSize
-          );
+          ).toBeTruthy();
         });
       });
 

@@ -1,23 +1,17 @@
 export default function(reportableOutcomes) {
   describe(`reportableOutcomes' shape`, () => {
-    assert.isDefined(reportableOutcomes, `'reportableOutcomes' is not defined`);
-    assert.isArray(reportableOutcomes, `'reportableOutcomes' is not an array`);
+    expect(reportableOutcomes).toBeDefined();
+    expect(Array.isArray(reportableOutcomes)).toBe(true);
 
     reportableOutcomes.forEach(outcome => {
       test("id", () => {
-        assert.isDefined(outcome.id, `reportableOutcomes' id is not defined`);
-        assert.isString(outcome.id, `reportableOutcomes' id is not a string`);
+        expect(outcome.id).toBeDefined();
+        expect(typeof outcome.id).toBe("string");
       });
 
       test("name", () => {
-        assert.isDefined(
-          outcome.name,
-          `reportableOutcomes' name is not defined`
-        );
-        assert.isString(
-          outcome.name,
-          `reportableOutcomes' name is not a string`
-        );
+        expect(outcome.name).toBeDefined();
+        expect(typeof outcome.name).toBe("string");
       });
     });
   });

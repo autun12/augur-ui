@@ -3,7 +3,6 @@ import thunk from "redux-thunk";
 import testState from "test/testState";
 
 describe(`modules/auth/actions/logout.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
   const fakeAugurJS = { augur: { rpc: {} } };
@@ -20,10 +19,6 @@ describe(`modules/auth/actions/logout.js`, () => {
       }
     ];
     store.dispatch(action.logout());
-    assert.deepEqual(
-      store.getActions(),
-      expectedOutput,
-      `It didn't logout as expected`
-    );
+    expect(store.getActions()).toEqual(expectedOutput);
   });
 });

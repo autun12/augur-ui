@@ -17,7 +17,7 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
       const actual = accountTrades(undefined, { type: null });
       const expected = {};
 
-      assert.deepEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -30,7 +30,7 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
       );
       const expected = {};
 
-      assert.deepEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -43,7 +43,7 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
       );
       const expected = {};
 
-      assert.deepEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -71,7 +71,7 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
         }
       };
 
-      assert.deepEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -136,7 +136,7 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
         }
       };
 
-      assert.deepEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -204,7 +204,7 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
         }
       };
 
-      assert.deepEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 });

@@ -15,7 +15,7 @@ describe(`modules/app/selectors/is-loading.js`, () => {
       const value = {};
       const actual = isLoading(value);
 
-      assert.strictEqual(actual, false, `didn't return expected value`);
+      expect(actual).toBe(false);
     }
   });
 
@@ -29,7 +29,7 @@ describe(`modules/app/selectors/is-loading.js`, () => {
 
       const actual = isLoading(value);
 
-      assert.strictEqual(actual, false, `didn't return expected value`);
+      expect(actual).toBe(false);
     }
   });
 
@@ -44,7 +44,7 @@ describe(`modules/app/selectors/is-loading.js`, () => {
 
       const actual = isLoading(value);
 
-      assert.strictEqual(actual, true, `didn't return expected value`);
+      expect(actual).toBe(true);
     }
   });
 
@@ -58,7 +58,7 @@ describe(`modules/app/selectors/is-loading.js`, () => {
 
       const actual = isLoading(value);
 
-      assert.strictEqual(actual, true, `didn't return expected value`);
+      expect(actual).toBe(true);
     }
   });
 });

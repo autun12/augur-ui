@@ -58,35 +58,34 @@ describe("loadDisputing action", () => {
     loadDisputingRewire.__ResetDependency__("loadMarketsDisputeInfo");
   });
 
-  test(
-    "should load upcoming dispute markets for a given user in side the given universe",
-    () => {
-      store.dispatch(loadDisputing());
+  test("should load upcoming dispute markets for a given user in side the given universe", () => {
+    store.dispatch(loadDisputing());
 
-      const checkCall = (callIndex, method, reportingState, callbackArgs) => {
-        const c = submitRequestStub.getCall(callIndex);
-        expect(c.calledWith(method, {
+    const checkCall = (callIndex, method, reportingState, callbackArgs) => {
+      const c = submitRequestStub.getCall(callIndex);
+      expect(
+        c.calledWith(method, {
           reportingState,
           ...expectedParams
-        })).toBeTruthy();
-        c.args[2](null, callbackArgs);
-      };
+        })
+      ).toBeTruthy();
+      c.args[2](null, callbackArgs);
+    };
 
-      checkCall(
-        0,
-        "getMarkets",
-        constants.REPORTING_STATE.CROWDSOURCING_DISPUTE,
-        ["1111"]
-      );
-      checkCall(1, "getMarkets", constants.REPORTING_STATE.AWAITING_NEXT_WINDOW, [
-        "2222",
-        "3333"
-      ]);
+    checkCall(
+      0,
+      "getMarkets",
+      constants.REPORTING_STATE.CROWDSOURCING_DISPUTE,
+      ["1111"]
+    );
+    checkCall(1, "getMarkets", constants.REPORTING_STATE.AWAITING_NEXT_WINDOW, [
+      "2222",
+      "3333"
+    ]);
 
-      const actual = store.getActions();
-      expect(actual).toHaveLength(2);
-    }
-  );
+    const actual = store.getActions();
+    expect(actual).toHaveLength(2);
+  });
 
   describe("upon error", () => {
     let callback;

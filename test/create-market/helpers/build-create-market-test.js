@@ -90,15 +90,9 @@ describe("modules/create-market/helpers/build-create-market", () => {
         _feePerEthInWei: "0x470de4df820000"
       };
 
-      assert.deepEqual(
-        actual.formattedNewMarket,
-        expected,
-        `Didn't form the formattedNewMarket object as expected`
-      );
-      assert.deepEqual(
-        actual.createMarket,
-        mockAugur.createMarket.createCategoricalMarket,
-        `Didn't form the method object as expected`
+      expect(actual.formattedNewMarket).toEqual(expected);
+      expect(actual.createMarket).toEqual(
+        mockAugur.createMarket.createCategoricalMarket
       );
     }
   });
@@ -158,15 +152,9 @@ describe("modules/create-market/helpers/build-create-market", () => {
         _feePerEthInWei: "0x470de4df820000"
       };
 
-      assert.deepEqual(
-        actual.formattedNewMarket,
-        expected,
-        `Didn't form the formattedNewMarket object as expected`
-      );
-      assert.deepEqual(
-        actual.createMarket,
-        mockAugur.createMarket.createYesNoMarket,
-        `Didn't form the method object as expected`
+      expect(actual.formattedNewMarket).toEqual(expected);
+      expect(actual.createMarket).toEqual(
+        mockAugur.createMarket.createYesNoMarket
       );
     }
   });
@@ -234,15 +222,9 @@ describe("modules/create-market/helpers/build-create-market", () => {
         _feePerEthInWei: "0x470de4df820000"
       };
 
-      assert.deepEqual(
-        actual.formattedNewMarket,
-        expected,
-        `Didn't form the formattedNewMarket object as expected`
-      );
-      assert.deepEqual(
-        actual.createMarket,
-        mockAugur.createMarket.createScalarMarket,
-        `Didn't form the method object as expected`
+      expect(actual.formattedNewMarket).toEqual(expected);
+      expect(actual.createMarket).toEqual(
+        mockAugur.createMarket.createScalarMarket
       );
     }
   });

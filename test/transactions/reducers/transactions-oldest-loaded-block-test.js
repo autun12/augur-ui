@@ -13,7 +13,7 @@ describe("modules/transactions/reducers/transactions-oldest-loaded-block", () =>
 
       const expected = null;
 
-      assert.strictEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toBe(expected);
     }
   });
 
@@ -29,7 +29,7 @@ describe("modules/transactions/reducers/transactions-oldest-loaded-block", () =>
 
       const expected = 1;
 
-      assert.strictEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toBe(expected);
     }
   });
 
@@ -42,7 +42,7 @@ describe("modules/transactions/reducers/transactions-oldest-loaded-block", () =>
 
       const expected = null;
 
-      assert.strictEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toBe(expected);
     }
   });
 });

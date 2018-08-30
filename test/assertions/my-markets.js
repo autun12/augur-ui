@@ -3,7 +3,7 @@ import assertFormattedDate from "assertions/common/formatted-date";
 
 export default function(myMarkets) {
   describe(`myMarkets' shape`, () => {
-    assert.isDefined(myMarkets);
+    expect(myMarkets).toBeDefined();
     expect(Array.isArray(myMarkets)).toBe(true);
 
     myMarkets.forEach(market => {
@@ -15,35 +15,35 @@ export default function(myMarkets) {
 export function assertMyMarkets(market) {
   describe(`myMarket's shape`, () => {
     test("id", () => {
-      assert.isDefined(market.id);
-      assert.isString(market.id);
+      expect(market.id).toBeDefined();
+      expect(typeof market.id).toBe("string");
     });
 
     test("description", () => {
-      assert.isDefined(market.description);
-      assert.isString(market.description);
+      expect(market.description).toBeDefined();
+      expect(typeof market.description).toBe("string");
     });
 
     test("endTime", () => {
-      assert.isDefined(market.endTime);
+      expect(market.endTime).toBeDefined();
 
       assertFormattedDate(market.endTime, "loginAccountMarkets.endTime");
     });
 
     test("fees", () => {
-      assert.isDefined(market.fees);
+      expect(market.fees).toBeDefined();
 
       assertFormattedNumber(market.fees, "loginAccountMarkets.fees");
     });
 
     test("volume", () => {
-      assert.isDefined(market.volume);
+      expect(market.volume).toBeDefined();
 
       assertFormattedNumber(market.volume, "loginAccountMarkets.volume");
     });
 
     test("numberOfTrades", () => {
-      assert.isDefined(market.numberOfTrades);
+      expect(market.numberOfTrades).toBeDefined();
 
       assertFormattedNumber(
         market.numberOfTrades,
@@ -52,7 +52,7 @@ export function assertMyMarkets(market) {
     });
 
     test("averageTradeSize", () => {
-      assert.isDefined(market.averageTradeSize);
+      expect(market.averageTradeSize).toBeDefined();
 
       assertFormattedNumber(
         market.averageTradeSize,
@@ -61,7 +61,7 @@ export function assertMyMarkets(market) {
     });
 
     test("openVolume", () => {
-      assert.isDefined(market.openVolume);
+      expect(market.openVolume).toBeDefined();
 
       assertFormattedNumber(
         market.openVolume,

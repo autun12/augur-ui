@@ -1,6 +1,6 @@
 export default function(loginAccountMarkets) {
   describe(`loginAccountMarket's shape`, () => {
-    assert.isDefined(loginAccountMarkets);
-    assert.isObject(loginAccountMarkets);
+    expect(loginAccountMarkets).toBeDefined();
+    expect(typeof loginAccountMarkets).toBe("object");
   });
 }

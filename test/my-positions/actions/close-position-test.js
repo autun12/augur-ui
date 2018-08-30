@@ -6,8 +6,6 @@ import { createBigNumber } from "utils/create-big-number";
 import { BUY, SELL } from "modules/transactions/constants/types";
 
 describe("modules/my-positions/actions/close-position.js", () => {
-  proxyquire.noPreserveCache().noCallThru();
-
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
 
@@ -106,11 +104,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
           { type: MOCK_ACTION_TYPES.CLEAR_CLOSE_POSITION_OUTCOME },
           { type: MOCK_ACTION_TYPES.ADD_CLOSE_POSITION_TRADE_GROUP }
         ];
-        assert.deepEqual(
-          actual,
-          expected,
-          `Didn't dispatch the expected actions`
-        );
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -177,11 +171,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
           { type: MOCK_ACTION_TYPES.CLEAR_CLOSE_POSITION_OUTCOME },
           { type: MOCK_ACTION_TYPES.ADD_CLOSE_POSITION_TRADE_GROUP }
         ];
-        assert.deepEqual(
-          actual,
-          expected,
-          `Didn't dispatch the expected actions`
-        );
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -244,11 +234,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
           { type: MOCK_ACTION_TYPES.CLEAR_CLOSE_POSITION_OUTCOME },
           { type: MOCK_ACTION_TYPES.ADD_CLOSE_POSITION_TRADE_GROUP }
         ];
-        assert.deepEqual(
-          actual,
-          expected,
-          `Didn't dispatch the expected actions`
-        );
+        expect(actual).toEqual(expected);
       }
     });
   });

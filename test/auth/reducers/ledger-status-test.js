@@ -13,27 +13,35 @@ describe(`modules/auth/reducers/ledger-status.js`, () => {
   test({
     description: "It should return the default state on unrecognized action",
     assertions: () => {
-      expect(reducer(undefined, { type: "unrecognized" })).toEqual(NOT_CONNECTED);
+      expect(reducer(undefined, { type: "unrecognized" })).toEqual(
+        NOT_CONNECTED
+      );
     }
   });
   test({
     description: "It should return the default state on reset-state action",
     assertions: () => {
-      expect(reducer(ATTEMPTING_CONNECTION, resetState())).toEqual(NOT_CONNECTED);
+      expect(reducer(ATTEMPTING_CONNECTION, resetState())).toEqual(
+        NOT_CONNECTED
+      );
     }
   });
   test({
     description:
       "It should return the default state on clear login account action",
     assertions: () => {
-      expect(reducer(ATTEMPTING_CONNECTION, clearLoginAccount())).toEqual(NOT_CONNECTED);
+      expect(reducer(ATTEMPTING_CONNECTION, clearLoginAccount())).toEqual(
+        NOT_CONNECTED
+      );
     }
   });
   test({
     description:
       "It should return the update the ledger status on UPDATE_LEDGER_STATUS action",
     assertions: () => {
-      expect(reducer(NOT_CONNECTED, updateLedgerStatus(ATTEMPTING_CONNECTION))).toEqual(ATTEMPTING_CONNECTION);
+      expect(
+        reducer(NOT_CONNECTED, updateLedgerStatus(ATTEMPTING_CONNECTION))
+      ).toEqual(ATTEMPTING_CONNECTION);
     }
   });
 });

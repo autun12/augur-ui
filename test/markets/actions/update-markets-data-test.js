@@ -17,7 +17,7 @@ describe(`modules/markets/actions/update-markets-data.js`, () => {
         }
       };
 
-      assert.deepEqual(actual, expected, `didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -30,7 +30,7 @@ describe(`modules/markets/actions/update-markets-data.js`, () => {
         type: updateMarketsDataReducer.CLEAR_MARKETS_DATA
       };
 
-      assert.deepEqual(actual, expected, `didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -48,7 +48,7 @@ describe(`modules/markets/actions/update-markets-data.js`, () => {
         category: "cat1"
       };
 
-      assert.deepEqual(actual, expected, `didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -66,7 +66,7 @@ describe(`modules/markets/actions/update-markets-data.js`, () => {
         repBalance: 10
       };
 
-      assert.deepEqual(actual, expected, `didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -85,7 +85,7 @@ describe(`modules/markets/actions/update-markets-data.js`, () => {
         frozenSharesValue: 5
       };
 
-      assert.deepEqual(actual, expected, `didn't return the expected value`);
+      expect(actual).toEqual(expected);
     }
   });
 });

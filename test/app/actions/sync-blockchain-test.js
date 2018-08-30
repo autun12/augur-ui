@@ -48,24 +48,17 @@ describe(`modules/app/actions/sync-blockchain.js`, () => {
     ReWireModule.__ResetDependency__("augur", "updateBlockchain");
   });
 
-  test(
-    "rpc.block set: should sync with blockchain using rpc.block.number",
-    done => {
-      AugurJS.rpc.block = { number: 10000, timestamp: "0x123456789" };
-      const out = [
-        {
-          type: "UPDATE_BLOCKCHAIN",
-          data: dataReturned
-        }
-      ];
-      store.dispatch(syncBlockchain());
-      assert.deepEqual(
-        store.getActions(),
-        out,
-        `Didn't dispatch the expected actions`
-      );
+  test("rpc.block set: should sync with blockchain using rpc.block.number", done => {
+    AugurJS.rpc.block = { number: 10000, timestamp: "0x123456789" };
+    const out = [
+      {
+        type: "UPDATE_BLOCKCHAIN",
+        data: dataReturned
+      }
+    ];
+    store.dispatch(syncBlockchain());
+    expect(store.getActions()).toEqual(out);
 
-      done();
-    }
-  );
+    done();
+  });
 });

@@ -32,7 +32,7 @@ describe(`modules/transactions/reducers/transactions-data.js`, () => {
       }
     };
     test = reducer(state.transactionsData, action);
-    assert.deepEqual(test, out, `Didn't update transactionData as expected`);
+    expect(test).toEqual(out);
   });
 
   test(`should delete transaction`, () => {
@@ -51,16 +51,12 @@ describe(`modules/transactions/reducers/transactions-data.js`, () => {
       }
     };
     test = reducer(state.transactionsData, action);
-    assert.deepEqual(
-      test,
-      {
-        transaction1: {
-          data: "data1",
-          id: "transaction1"
-        }
-      },
-      `Failed to delete transaction as expected`
-    );
+    expect(test).toEqual({
+      transaction1: {
+        data: "data1",
+        id: "transaction1"
+      }
+    });
   });
 
   test(`should clear transactions on clear login account`, () => {
@@ -69,10 +65,6 @@ describe(`modules/transactions/reducers/transactions-data.js`, () => {
     };
     out = {};
     test = reducer(state.transactionsData, action);
-    assert.deepEqual(
-      test,
-      out,
-      `Didn't clear transactionsData when clearing the login account`
-    );
+    expect(test).toEqual(out);
   });
 });

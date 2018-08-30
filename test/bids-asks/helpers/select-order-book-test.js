@@ -38,7 +38,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           asks: []
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -60,7 +60,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           asks: ["test"]
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
 
         selectOrderBookRewireAPI.__ResetDependency__(
           "selectAggregatePricePoints"
@@ -97,11 +97,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
 
         const expected = null;
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `didn't return the expected top bid`
-        );
+        expect(actual).toBe(expected);
 
         done();
       }
@@ -114,11 +110,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
 
         const expected = null;
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `didn't return the expected top bid`
-        );
+        expect(actual).toBe(expected);
 
         done();
       }
@@ -134,11 +126,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           price: "0.4"
         };
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `didn't return the expected top bid`
-        );
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -153,11 +141,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           price: "0.3"
         };
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `didn't return the expected top bid`
-        );
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -190,11 +174,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
 
         const expected = null;
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `didn't return the expected top bid`
-        );
+        expect(actual).toBe(expected);
 
         done();
       }
@@ -207,11 +187,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
 
         const expected = null;
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `didn't return the expected top bid`
-        );
+        expect(actual).toBe(expected);
 
         done();
       }
@@ -227,11 +203,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           price: "0.5"
         };
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `didn't return the expected top bid`
-        );
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -246,11 +218,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           price: "0.6"
         };
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `didn't return the expected top bid`
-        );
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -268,7 +236,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
 
         const expected = [];
 
-        assert.deepEqual(actual, expected, `didn't return the expected array`);
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -284,7 +252,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
 
         const expected = [];
 
-        assert.deepEqual(actual, expected, `didn't return the expected array`);
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -374,7 +342,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           }
         ];
 
-        assert.deepEqual(actual, expected, `didn't return the expected array`);
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -409,7 +377,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           }
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -449,7 +417,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           }
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -495,7 +463,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           }
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -530,7 +498,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
           }
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
 
         done();
       }
@@ -556,11 +524,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
 
         const expected = -1;
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `didn't return the expected number`
-        );
+        expect(actual).toBe(expected);
 
         done();
       }
@@ -586,11 +550,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
 
         const expected = 1;
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `didn't return the expected number`
-        );
+        expect(actual).toBe(expected);
 
         done();
       }

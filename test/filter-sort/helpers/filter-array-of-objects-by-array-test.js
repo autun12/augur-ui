@@ -12,7 +12,7 @@ describe("src/modules/filter-sort/helpers/filter-array-of-objects-by-array.js", 
     });
 
     test("should return identity function", () => {
-      assert.equal(result, identity);
+      expect(result).toEqual(identity);
     });
   });
 
@@ -22,7 +22,7 @@ describe("src/modules/filter-sort/helpers/filter-array-of-objects-by-array.js", 
     });
 
     test("should return identity function", () => {
-      assert.equal(result, identity);
+      expect(result).toEqual(identity);
     });
   });
 
@@ -32,7 +32,7 @@ describe("src/modules/filter-sort/helpers/filter-array-of-objects-by-array.js", 
     });
 
     test("should return identity function", () => {
-      assert.equal(result, identity);
+      expect(result).toEqual(identity);
     });
   });
 
@@ -49,7 +49,7 @@ describe("src/modules/filter-sort/helpers/filter-array-of-objects-by-array.js", 
     });
 
     test("should return a filter function", () => {
-      assert.isFunction(filterPredicateFn);
+      expect(typeof filterPredicateFn).toBe("function");
     });
 
     describe("when passed an object that has one matching members", () => {
@@ -60,7 +60,7 @@ describe("src/modules/filter-sort/helpers/filter-array-of-objects-by-array.js", 
       });
 
       test("should be true", () => {
-        assert.isOk(result);
+        expect(result).toBeTruthy();
       });
     });
 
@@ -72,7 +72,7 @@ describe("src/modules/filter-sort/helpers/filter-array-of-objects-by-array.js", 
       });
 
       test("should be true", () => {
-        assert.isOk(result);
+        expect(result).toBeTruthy();
       });
     });
 
@@ -84,7 +84,7 @@ describe("src/modules/filter-sort/helpers/filter-array-of-objects-by-array.js", 
       });
 
       test("should be true", () => {
-        assert.isNotOk(result);
+        expect(result).toBeFalsy();
       });
     });
 
@@ -94,7 +94,7 @@ describe("src/modules/filter-sort/helpers/filter-array-of-objects-by-array.js", 
       });
 
       test("should be false", () => {
-        assert.isNotOk(result);
+        expect(result).toBeFalsy();
       });
     });
   });

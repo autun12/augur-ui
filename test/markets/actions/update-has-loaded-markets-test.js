@@ -19,7 +19,7 @@ describe("modules/markets/actions/update-has-loaded-markets.js", () => {
         hasLoadedMarkets: true
       };
 
-      assert.deepEqual(action, expected, `Didn't return the expected object`);
+      expect(action).toEqual(expected);
     }
   });
 });

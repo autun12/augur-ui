@@ -1,12 +1,12 @@
 export default function(transactionsTotals) {
-  assert.isObject(transactionsTotals);
+  expect(typeof transactionsTotals).toBe("object");
 
-  assert.isString(transactionsTotals.title);
-  assert.isString(transactionsTotals.shortTitle);
+  expect(typeof transactionsTotals.title).toBe("string");
+  expect(typeof transactionsTotals.shortTitle).toBe("string");
 
-  assert.isNumber(transactionsTotals.numWorking);
-  assert.isNumber(transactionsTotals.numPending);
-  assert.isNumber(transactionsTotals.numComplete);
-  assert.isNumber(transactionsTotals.numWorkingAndPending);
-  assert.isNumber(transactionsTotals.numTotal);
+  expect(typeof transactionsTotals.numWorking).toBe("number");
+  expect(typeof transactionsTotals.numPending).toBe("number");
+  expect(typeof transactionsTotals.numComplete).toBe("number");
+  expect(typeof transactionsTotals.numWorkingAndPending).toBe("number");
+  expect(typeof transactionsTotals.numTotal).toBe("number");
 }

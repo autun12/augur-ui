@@ -13,7 +13,7 @@ describe("modules/notifications/reducers/notifications", () => {
   test("should return the default state", () => {
     const actual = notifications(undefined, {});
     const expected = [];
-    assert.deepEqual(actual, expected, `Didn't return the expected array`);
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected array for type ADD_NOTIFICATION", () => {
@@ -30,7 +30,7 @@ describe("modules/notifications/reducers/notifications", () => {
         id: "0xTEST"
       }
     ];
-    assert.deepEqual(actual, expected, `Didn't return the expected array`);
+    expect(actual).toEqual(expected);
   });
 
   test("should return non dup array for type ADD_NOTIFICATION", () => {
@@ -54,7 +54,7 @@ describe("modules/notifications/reducers/notifications", () => {
         id: "0xTEST"
       }
     ];
-    assert.deepEqual(actual, expected, `Didn't return the expected array`);
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected array for type REMOVE_NOTIFICATION", () => {
@@ -72,7 +72,7 @@ describe("modules/notifications/reducers/notifications", () => {
 
     const expected = [];
 
-    assert.deepEqual(actual, expected, `Didn't return the expected array`);
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected array for type UPDATE_NOTIFICATION", () => {
@@ -110,7 +110,7 @@ describe("modules/notifications/reducers/notifications", () => {
       }
     ];
 
-    assert.deepEqual(actual, expected, `Didn't return the expected array`);
+    expect(actual).toEqual(expected);
   });
 
   describe("CLEAR_NOTIFICATIONS action", () => {
@@ -141,7 +141,7 @@ describe("modules/notifications/reducers/notifications", () => {
         }
       ];
 
-      assert.deepEqual(actual, expected, `Didn't return the expected array`);
+      expect(actual).toEqual(expected);
     });
   });
 });

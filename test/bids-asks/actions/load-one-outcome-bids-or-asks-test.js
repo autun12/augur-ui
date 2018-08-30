@@ -7,7 +7,6 @@ const marketsData = { MARKET_0: { minPrice: "0", maxPrice: "1" } };
 const constants = { ORDER_STATE: { OPEN: "OPEN" } };
 
 describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
-  proxyquire.noPreserveCache();
   const test = t =>
     test(t.description, done => {
       const store = configureMockStore([thunk])({ ...t.mock.state });
@@ -47,17 +46,16 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
         augur: {
           constants,
           trading: {
-            getOrders: () => assert.fail()
+            getOrders: () => expect(false).toBeTruthy()
           }
         }
       },
       insertOrderBookChunkToOrderBook: {
-        default: () => () => assert.fail()
+        default: () => () => expect(false).toBeTruthy()
       }
     },
     assertions: (err, actions) => {
-      assert.strictEqual(
-        err,
+      expect(err).toBe(
         "must specify market ID, outcome, and order type: undefined 3 sell"
       );
       expect(actions).toEqual([]);
@@ -78,17 +76,16 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
         augur: {
           constants,
           trading: {
-            getOrders: () => assert.fail()
+            getOrders: () => expect(false).toBeTruthy()
           }
         }
       },
       insertOrderBookChunkToOrderBook: {
-        default: () => () => assert.fail()
+        default: () => () => expect(false).toBeTruthy()
       }
     },
     assertions: (err, actions) => {
-      assert.strictEqual(
-        err,
+      expect(err).toBe(
         "must specify market ID, outcome, and order type: MARKET_0 undefined sell"
       );
       expect(actions).toEqual([]);
@@ -109,17 +106,16 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
         augur: {
           constants,
           trading: {
-            getOrders: () => assert.fail()
+            getOrders: () => expect(false).toBeTruthy()
           }
         }
       },
       insertOrderBookChunkToOrderBook: {
-        default: () => () => assert.fail()
+        default: () => () => expect(false).toBeTruthy()
       }
     },
     assertions: (err, actions) => {
-      assert.strictEqual(
-        err,
+      expect(err).toBe(
         "must specify market ID, outcome, and order type: MARKET_0 3 undefined"
       );
       expect(actions).toEqual([]);
@@ -140,16 +136,16 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
         augur: {
           constants,
           trading: {
-            getOrders: () => assert.fail()
+            getOrders: () => expect(false).toBeTruthy()
           }
         }
       },
       insertOrderBookChunkToOrderBook: {
-        default: () => () => assert.fail()
+        default: () => () => expect(false).toBeTruthy()
       }
     },
     assertions: (err, actions) => {
-      assert.strictEqual(err, "market MARKET_0 data not found");
+      expect(err).toBe("market MARKET_0 data not found");
       expect(actions).toEqual([]);
     }
   });
@@ -191,7 +187,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
       }
     },
     assertions: (err, actions) => {
-      assert.isNull(err);
+      expect(err).toBeNull();
       expect(actions).toEqual([
         {
           type: "UPDATE_IS_FIRST_ORDER_BOOK_CHUNK_LOADED",
@@ -257,7 +253,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
       }
     },
     assertions: (err, actions) => {
-      assert.isNull(err);
+      expect(err).toBeNull();
       expect(actions).toEqual([
         {
           type: "UPDATE_IS_FIRST_ORDER_BOOK_CHUNK_LOADED",

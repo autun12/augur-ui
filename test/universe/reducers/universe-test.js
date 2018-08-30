@@ -17,10 +17,6 @@ describe(`modules/universe/reducers/universe.js`, () => {
       thisTestState.universe,
       action.universe
     );
-    assert.deepEqual(
-      reducer(thisTestState.universe, action),
-      expectedOutput,
-      `Didn't update the universe object correctly`
-    );
+    expect(reducer(thisTestState.universe, action)).toEqual(expectedOutput);
   });
 });

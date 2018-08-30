@@ -42,11 +42,7 @@ describe("modules/create-market/actions/update-new-market.js", () => {
         }
       ];
 
-      assert.deepEqual(
-        actions,
-        expectedActions,
-        `Didn't dispatch the expected actions`
-      );
+      expect(actions).toEqual(expectedActions);
     }
   });
 
@@ -62,7 +58,7 @@ describe("modules/create-market/actions/update-new-market.js", () => {
         }
       };
 
-      assert.deepEqual(action, expected, `Didn't return the expected object`);
+      expect(action).toEqual(expected);
     }
   });
 
@@ -78,7 +74,7 @@ describe("modules/create-market/actions/update-new-market.js", () => {
         }
       };
 
-      assert.deepEqual(action, expected, `Didn't return the expected object`);
+      expect(action).toEqual(expected);
     }
   });
 
@@ -94,7 +90,7 @@ describe("modules/create-market/actions/update-new-market.js", () => {
         }
       };
 
-      assert.deepEqual(action, expected, `Didn't return the expected object`);
+      expect(action).toEqual(expected);
     }
   });
 
@@ -107,7 +103,7 @@ describe("modules/create-market/actions/update-new-market.js", () => {
         type: CLEAR_NEW_MARKET
       };
 
-      assert.deepEqual(action, expected, `Didn't return the expected object`);
+      expect(action).toEqual(expected);
     }
   });
 });

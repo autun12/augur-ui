@@ -10,7 +10,7 @@ describe("utils/trim-string", () => {
 
       const expected = null;
 
-      assert.strictEqual(actual, expected, `didn't return 'null' as expected`);
+      expect(actual).toBe(expected);
     }
   });
 
@@ -21,11 +21,7 @@ describe("utils/trim-string", () => {
 
       const expected = "stri...";
 
-      assert.strictEqual(
-        actual,
-        expected,
-        `didn't return the expected trimmed string`
-      );
+      expect(actual).toBe(expected);
     }
   });
 });

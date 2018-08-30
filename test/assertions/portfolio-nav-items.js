@@ -2,7 +2,7 @@ import assertNavItem from "assertions/common/nav-item";
 
 export default function(portfolioNavItems) {
   describe(`portfolio's navItems state`, () => {
-    assert.isDefined(portfolioNavItems);
+    expect(portfolioNavItems).toBeDefined();
     expect(Array.isArray(portfolioNavItems)).toBe(true);
 
     portfolioNavItems.forEach(navItem => {

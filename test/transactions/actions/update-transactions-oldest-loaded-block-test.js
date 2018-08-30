@@ -19,7 +19,7 @@ describe("modules/transactions/actions/update-transactinos-oldest-loaded-block.j
           }
         };
 
-        assert.deepEqual(actual, expected, `Didn't return the expected object`);
+        expect(actual).toEqual(expected);
       }
     });
   });

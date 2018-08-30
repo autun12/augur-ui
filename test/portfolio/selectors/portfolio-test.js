@@ -3,8 +3,6 @@ import portfolioAssertions from "assertions/portfolio";
 import sinon from "sinon";
 
 describe("modules/portfolio/selectors/portfolio", () => {
-  proxyquire.noPreserveCache().noCallThru();
-
   let actual;
 
   const selectors = {

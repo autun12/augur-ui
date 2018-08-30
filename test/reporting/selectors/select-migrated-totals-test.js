@@ -183,7 +183,7 @@ describe(`modules/reporting/selectors/select-migrated-totals.js`, () => {
         marketScalar.reportableOutcomes,
         totals
       );
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -303,7 +303,7 @@ describe(`modules/reporting/selectors/select-migrated-totals.js`, () => {
         marketScalar.reportableOutcomes,
         totals
       );
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -332,7 +332,7 @@ describe(`modules/reporting/selectors/select-migrated-totals.js`, () => {
         }
       ];
 
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -393,7 +393,7 @@ describe(`modules/reporting/selectors/select-migrated-totals.js`, () => {
           isInvalid: true
         }
       ];
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -410,7 +410,7 @@ describe(`modules/reporting/selectors/select-migrated-totals.js`, () => {
           isInvalid: true
         }
       ];
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 });

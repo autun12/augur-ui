@@ -8,7 +8,6 @@ import marketsAssertions from "assertions/markets";
 let allMarkets; // eslint-disable-line import/no-mutable-exports
 
 describe(`modules/markets/selectors/markets-all.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
   const state = Object.assign({}, testState, {

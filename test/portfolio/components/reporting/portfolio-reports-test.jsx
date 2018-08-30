@@ -62,7 +62,7 @@ describe("portfolio-reports", () => {
     describe("and the Portfolio: Reporting page is loaded", () => {
       describe("getReportingFees function", () => {
         test("should get called once with args ", () => {
-          assert.isOk(getReportingFees);
+          expect(getReportingFees).toBeTruthy();
         });
       });
 
@@ -81,14 +81,13 @@ describe("portfolio-reports", () => {
       describe("claim-reporting-fees-nonforked-markets-button", () => {
         test("should be disabled", () => {
           const button = Cmp.find("button");
-          assert.isOk(button.html().includes("disabled"));
+          expect(button.html().includes("disabled")).toBeTruthy();
         });
       });
 
       describe("claim-reporting-fees-forked-market-button", () => {
         test("should not exist", () => {
-          assert.notInclude(
-            Cmp.html(),
+          expect(Cmp.html()).not.toContain(
             '<button class="market-portfolio-card-styles_MarketCard__action-footer-light">Claim</button>'
           );
         });

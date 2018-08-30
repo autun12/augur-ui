@@ -10,52 +10,52 @@ export default function(market) {
 
   describe("market state", () => {
     test("market", () => {
-      assert.isDefined(market);
-      assert.isObject(market);
+      expect(market).toBeDefined();
+      expect(typeof market).toBe("object");
     });
 
     test("market.id", () => {
-      assert.isDefined(market.id);
-      assert.isString(market.id);
+      expect(market.id).toBeDefined();
+      expect(typeof market.id).toBe("string");
     });
 
     test("market.author", () => {
-      assert.isDefined(market.author);
-      assert.isString(market.author);
+      expect(market.author).toBeDefined();
+      expect(typeof market.author).toBe("string");
     });
 
     test("market.marketType", () => {
-      assert.isDefined(market.marketType);
-      assert.isString(market.marketType);
+      expect(market.marketType).toBeDefined();
+      expect(typeof market.marketType).toBe("string");
     });
 
     test("market.description", () => {
-      assert.isDefined(market.description);
-      assert.isString(market.description);
+      expect(market.description).toBeDefined();
+      expect(typeof market.description).toBe("string");
     });
 
     test("market.details", () => {
-      assert.isDefined(market.details);
-      assert.isString(market.details);
+      expect(market.details).toBeDefined();
+      expect(typeof market.details).toBe("string");
     });
 
     test("market.endTime", () => {
-      assert.isDefined(market.endTime);
+      expect(market.endTime).toBeDefined();
       assertFormattedDate(market.endTime, "market.endTime");
     });
 
     test("market.creationTime", () => {
-      assert.isDefined(market.creationTime);
+      expect(market.creationTime).toBeDefined();
       assertFormattedDate(market.creationTime, "market.creationTime");
     });
 
     test("market.endTimeLabel", () => {
-      assert.isDefined(market.endTimeLabel);
-      assert.isString(market.endTimeLabel);
+      expect(market.endTimeLabel).toBeDefined();
+      expect(typeof market.endTimeLabel).toBe("string");
     });
 
     test("market.settlementFeePercent", () => {
-      assert.isDefined(market.settlementFeePercent);
+      expect(market.settlementFeePercent).toBeDefined();
       assertFormattedNumber(
         market.settlementFeePercent,
         "market.settlementFeePercent"
@@ -63,70 +63,70 @@ export default function(market) {
     });
 
     test("market.volume", () => {
-      assert.isDefined(market.volume);
+      expect(market.volume).toBeDefined();
       assertFormattedNumber(market.volume, "market.volume");
     });
 
     test("market.isOpen", () => {
-      assert.isDefined(market.isOpen);
-      assert.isBoolean(market.isOpen);
+      expect(market.isOpen).toBeDefined();
+      expect(typeof market.isOpen).toBe("boolean");
     });
 
     test("market.isPendingReport", () => {
-      assert.isDefined(market.isPendingReport);
-      assert.isBoolean(market.isPendingReport);
+      expect(market.isPendingReport).toBeDefined();
+      expect(typeof market.isPendingReport).toBe("boolean");
     });
 
     const { tags } = market;
     test("market.tags", () => {
-      assert.isDefined(tags);
+      expect(tags).toBeDefined();
       expect(Array.isArray(tags)).toBe(true);
 
       tags.forEach((tag, i) => {
         test(`market.tags[${i}].name`, () => {
-          assert.isDefined(tag.name);
-          assert.isString(tag.name);
+          expect(tag.name).toBeDefined();
+          expect(typeof tag.name).toBe("string");
         });
 
         test(`market.tags[${i}].onCLick`, () => {
-          assert.isDefined(tag.onClick);
-          assert.isFunction(tag.onClick);
+          expect(tag.onClick).toBeDefined();
+          expect(typeof tag.onClick).toBe("function");
         });
       });
     });
 
     test("market.outcomes", () => {
-      assert.isDefined(market.outcomes);
+      expect(market.outcomes).toBeDefined();
       expect(Array.isArray(market.outcomes)).toBe(true);
 
       market.outcomes.forEach((outcome, i) => {
         test(`market.outcomes[${i}]`, () => {
-          assert.isDefined(outcome);
-          assert.isObject(outcome);
+          expect(outcome).toBeDefined();
+          expect(typeof outcome).toBe("object");
         });
 
         test(`market.outcomes[${i}].id`, () => {
-          assert.isDefined(outcome.id);
-          assert.isString(outcome.id);
+          expect(outcome.id).toBeDefined();
+          expect(typeof outcome.id).toBe("string");
         });
 
         test(`market.outcomes[${i}].name`, () => {
-          assert.isDefined(outcome.name);
-          assert.isString(outcome.name);
+          expect(outcome.name).toBeDefined();
+          expect(typeof outcome.name).toBe("string");
         });
 
         test(`market.outcomes[${i}].marketId`, () => {
-          assert.isDefined(outcome.marketId);
-          assert.isString(outcome.marketId);
+          expect(outcome.marketId).toBeDefined();
+          expect(typeof outcome.marketId).toBe("string");
         });
 
         test(`market.outcomes[${i}].lastPrice`, () => {
-          assert.isDefined(outcome.lastPrice);
+          expect(outcome.lastPrice).toBeDefined();
           assertFormattedNumber(outcome.lastPrice, "outcome.lastPrice");
         });
 
         test(`market.outcomes[${i}].lastPricePercent`, () => {
-          assert.isDefined(outcome.lastPricePercent);
+          expect(outcome.lastPricePercent).toBeDefined();
           assertFormattedNumber(
             outcome.lastPricePercent,
             "outcome.lastPricePercent"
@@ -135,114 +135,114 @@ export default function(market) {
 
         const { trade } = outcome;
         test(`market.outcomes[${i}].trade`, () => {
-          assert.isDefined(trade);
-          assert.isObject(trade);
+          expect(trade).toBeDefined();
+          expect(typeof trade).toBe("object");
         });
 
         test(`market.outcomes[${i}].trade.side`, () => {
-          assert.isDefined(trade.side);
-          assert.isString(trade.side);
+          expect(trade.side).toBeDefined();
+          expect(typeof trade.side).toBe("string");
         });
 
         test(`market.outcomes[${i}].trade.numShares`, () => {
-          assert.isDefined(trade.numShares);
-          assert.isNumber(trade.numShares);
+          expect(trade.numShares).toBeDefined();
+          expect(typeof trade.numShares).toBe("number");
         });
 
         test(`market.outcomes[${i}].trade.maxNumShares`, () => {
-          assert.isDefined(trade.maxNumShares);
-          assert.isNumber(trade.maxNumShares);
+          expect(trade.maxNumShares).toBeDefined();
+          expect(typeof trade.maxNumShares).toBe("number");
         });
 
         test(`market.outcomes[${i}].trade.limitPrice`, () => {
-          assert.isDefined(trade.limitPrice);
-          assert.isNumber(trade.limitPrice);
+          expect(trade.limitPrice).toBeDefined();
+          expect(typeof trade.limitPrice).toBe("number");
         });
 
         test(`market.outcomes[${i}].trade.tradeSummary`, () => {
           // NOTE -- shallow check here due to deep check further down of the same selector method
-          assert.isDefined(trade.tradeSummary);
-          assert.isObject(trade.tradeSummary);
+          expect(trade.tradeSummary).toBeDefined();
+          expect(typeof trade.tradeSummary).toBe("object");
         });
 
         test(`market.outcomes[${i}].trade.updateTradeOrder`, () => {
-          assert.isDefined(trade.updateTradeOrder);
-          assert.isFunction(trade.updateTradeOrder);
+          expect(trade.updateTradeOrder).toBeDefined();
+          expect(typeof trade.updateTradeOrder).toBe("function");
         });
 
         const { orderBook } = outcome;
         test(`market.outcomes[${i}].orderBook`, () => {
           // NOTE -- shallow check here due to deep check further down of the same selector method
-          assert.isDefined(orderBook);
-          assert.isObject(orderBook);
+          expect(orderBook).toBeDefined();
+          expect(typeof orderBook).toBe("object");
         });
 
         test(`market.outcomes[${i}].orderBook.bids`, () => {
-          assert.isDefined(orderBook.bids);
+          expect(orderBook.bids).toBeDefined();
           expect(Array.isArray(orderBook.bids)).toBe(true);
         });
 
         test(`market.outcomes[${i}].orderBook.asks`, () => {
-          assert.isDefined(orderBook.asks);
+          expect(orderBook.asks).toBeDefined();
           expect(Array.isArray(orderBook.asks)).toBe(true);
         });
 
         test(`market.outcomes[${i}].orderBook.topBid`, () => {
           // NOTE -- shallow check here due to deep check further down of the same selector method
-          assert.isDefined(outcome.topBid);
+          expect(outcome.topBid).toBeDefined();
         });
 
         test(`market.outcomes[${i}].orderBook.topAsk`, () => {
           // NOTE -- shallow check here due to deep check further down of the same selector method
-          assert.isDefined(outcome.topAsk);
+          expect(outcome.topAsk).toBeDefined();
         });
 
         const { userOpenOrders } = outcome;
         test(`market.outcomes[${i}].userOpenOrders`, () => {
-          assert.isDefined(userOpenOrders);
+          expect(userOpenOrders).toBeDefined();
           expect(Array.isArray(userOpenOrders)).toBe(true);
         });
 
         test(`market.outcomes[${i}].userOpenOrders`, () => {
-          assert.isDefined(userOpenOrders);
+          expect(userOpenOrders).toBeDefined();
           expect(Array.isArray(userOpenOrders)).toBe(true);
         });
 
         userOpenOrders.forEach((openOrder, j) => {
           test(`market.outcomes[${i}].userOpenOrders[${j}]`, () => {
-            assert.isDefined(openOrder);
-            assert.isObject(openOrder);
+            expect(openOrder).toBeDefined();
+            expect(typeof openOrder).toBe("object");
           });
 
           test(`market.outcomes[${i}].userOpenOrders[${j}].id`, () => {
-            assert.isDefined(openOrder.id);
-            assert.isObject(openOrder.id);
+            expect(openOrder.id).toBeDefined();
+            expect(typeof openOrder.id).toBe("object");
           });
 
           test(`market.outcomes[${i}].userOpenOrders[${j}].marketId`, () => {
-            assert.isDefined(openOrder.marketId);
-            assert.isString(openOrder.marketId);
+            expect(openOrder.marketId).toBeDefined();
+            expect(typeof openOrder.marketId).toBe("string");
           });
 
           test(`market.outcomes[${i}].userOpenOrders[${j}].outcomeName`, () => {
-            assert.isDefined(openOrder.outcomeName);
-            assert.isString(openOrder.outcomeName);
+            expect(openOrder.outcomeName).toBeDefined();
+            expect(typeof openOrder.outcomeName).toBe("string");
           });
 
           test(`market.outcomes[${i}].userOpenOrders[${j}].type`, () => {
-            assert.isDefined(openOrder.type);
-            assert.isString(openOrder.type);
+            expect(openOrder.type).toBeDefined();
+            expect(typeof openOrder.type).toBe("string");
           });
 
           test(`market.outcomes[${i}].userOpenOrders[${j}].avgPrice`, () => {
-            assert.isDefined(openOrder.avgPrice);
-            assert.isObject(openOrder.avgPrice);
+            expect(openOrder.avgPrice).toBeDefined();
+            expect(typeof openOrder.avgPrice).toBe("object");
             assertFormattedNumber(openOrder.avgPrice, "openOrder.avgPrice");
           });
 
           test(`market.outcomes[${i}].userOpenOrders[${j}].unmatchedShares`, () => {
-            assert.isDefined(openOrder.unmatchedShares);
-            assert.isObject(openOrder.unmatchedShares);
+            expect(openOrder.unmatchedShares).toBeDefined();
+            expect(typeof openOrder.unmatchedShares).toBe("object");
             assertFormattedNumber(
               openOrder.unmatchedShares,
               "openOrder.unmatchedShares"
@@ -258,106 +258,97 @@ export default function(market) {
 
     const indeterminateItem =
       market.reportableOutcomes[market.reportableOutcomes.length - 1];
-    test(
-      "market.reportableOutcomes[market.reportableOutcomes.length - 1] (indeterminateItem)",
-      () => {
-        assert.isDefined(indeterminateItem);
-        assert.isObject(indeterminateItem);
-      }
-    );
+    test("market.reportableOutcomes[market.reportableOutcomes.length - 1] (indeterminateItem)", () => {
+      expect(indeterminateItem).toBeDefined();
+      expect(typeof indeterminateItem).toBe("object");
+    });
 
-    test(
-      "market.reportableOutcomes[market.reportableOutcomes.length - 1] (indeterminateItem.id)",
-      () => {
-        assert.isDefined(indeterminateItem.id);
-        assert.isString(indeterminateItem.id);
-      }
-    );
+    test("market.reportableOutcomes[market.reportableOutcomes.length - 1] (indeterminateItem.id)", () => {
+      expect(indeterminateItem.id).toBeDefined();
+      expect(typeof indeterminateItem.id).toBe("string");
+    });
 
-    test(
-      "market.reportableOutcomes[market.reportableOutcomes.length - 1] (indeterminateItem.name)",
-      () => {
-        assert.isDefined(indeterminateItem.name);
-        assert.isString(indeterminateItem.name);
-      }
-    );
+    test("market.reportableOutcomes[market.reportableOutcomes.length - 1] (indeterminateItem.name)", () => {
+      expect(indeterminateItem.name).toBeDefined();
+      expect(typeof indeterminateItem.name).toBe("string");
+    });
 
     const { tradeSummary } = market;
     test("market.tradeSummary", () => {
-      assert.isDefined(tradeSummary);
-      assert.isObject(tradeSummary);
+      expect(tradeSummary).toBeDefined();
+      expect(typeof tradeSummary).toBe("object");
     });
 
     test("market.tradeSummary.totalGas", () => {
-      assert.isDefined(tradeSummary.totalGas);
+      expect(tradeSummary.totalGas).toBeDefined();
       assertFormattedNumber(tradeSummary.totalGas, "tradeSummary.totalGas");
     });
 
     test("market.tradeSummary.hasUserEnoughFunds", () => {
-      assert.isBoolean(tradeSummary.hasUserEnoughFunds);
+      expect(typeof tradeSummary.hasUserEnoughFunds).toBe("boolean");
     });
 
     const { tradeOrders } = tradeSummary;
     test("market.tradeSummary.tradeOrders", () => {
-      assert.isDefined(tradeOrders);
+      expect(tradeOrders).toBeDefined();
       expect(Array.isArray(tradeOrders)).toBe(true);
     });
 
     tradeOrders.forEach((trade, i) => {
       test(`market.tradeSummary.tradeOrders${i}.shares`, () => {
-        assert.isDefined(trade.shares);
-        assert.isObject(trade.shares);
+        expect(trade.shares).toBeDefined();
+        expect(typeof trade.shares).toBe("object");
         assertFormattedNumber(trade.shares, "trade.shares");
       });
 
       test(`market.tradeSummary.tradeOrders${i}.limitPrice`, () => {
-        assert.isDefined(trade.limitPrice);
-        assert.isNumber(trade.limitPrice);
+        expect(trade.limitPrice).toBeDefined();
+        expect(typeof trade.limitPrice).toBe("number");
       });
 
       test(`market.tradeSummary.tradeOrders${i}.ether`, () => {
-        assert.isDefined(trade.ether);
-        assert.isObject(trade.ether);
+        expect(trade.ether).toBeDefined();
+        expect(typeof trade.ether).toBe("object");
         assertFormattedNumber(trade.ether, "trade.ether");
       });
 
       test(`market.tradeSummary.tradeOrders${i}.gas`, () => {
-        assert.isDefined(trade.gas);
-        assert.isObject(trade.gas);
+        expect(trade.gas).toBeDefined();
+        expect(typeof trade.gas).toBe("object");
       });
       test(`market.tradeSummary.tradeOrders${i}.gas.value`, () => {
-        assert.isDefined(trade.gas.value);
-        assert.isNumber(trade.gas.value);
+        expect(trade.gas.value).toBeDefined();
+        expect(typeof trade.gas.value).toBe("number");
       });
 
       test(`market.tradeSummary.tradeOrders${i}.data`, () => {
-        assert.isDefined(trade.data);
-        assert.isObject(trade.data);
+        expect(trade.data).toBeDefined();
+        expect(typeof trade.data).toBe("object");
       });
 
       test(`market.tradeSummary.tradeOrders${i}.data.marketId`, () => {
-        assert.isDefined(trade.data.marketId);
-        assert.isString(trade.data.marketId);
+        expect(trade.data.marketId).toBeDefined();
+        expect(typeof trade.data.marketId).toBe("string");
       });
 
       test(`market.tradeSummary.tradeOrders${i}.data.outcomeId`, () => {
-        assert.isDefined(trade.data.outcomeId);
-        assert.isString(trade.data.outcomeId);
+        expect(trade.data.outcomeId).toBeDefined();
+        expect(typeof trade.data.outcomeId).toBe("string");
       });
 
       test(`market.tradeSummary.tradeOrders${i}.description`, () => {
-        assert.isDefined(trade.description);
-        assert.isString(trade.description);
+        expect(trade.description).toBeDefined();
+        expect(typeof trade.description).toBe("string");
       });
 
       test(`market.tradeSummary.tradeOrders${i}.data.outcomeName`, () => {
-        assert.isDefined(trade.data.outcomeName);
-        assert.isString(trade.data.outcomeName);
+        expect(trade.data.outcomeName).toBeDefined();
+        expect(typeof trade.data.outcomeName).toBe("string");
       });
 
       test(`market.tradeSummary.tradeOrders${i}.data.avgPrice`, () => {
-        assert.isDefined(trade.data.avgPrice);
-        assert.isObject(trade.data.avgPrice);
+        expect(trade.data.avgPrice).toBeDefined();
+        expect(typeof trade.data.avgPrice).toBe("object");
         assertFormattedNumber(trade.data.avgPrice, "trade.data.avgPrice");
       });
     });
@@ -368,12 +359,12 @@ export default function(market) {
     // })
 
     test("market.userOpenOrdersSummary", () => {
-      assert.isDefined(market.userOpenOrdersSummary);
-      assert.isObject(market.userOpenOrdersSummary);
+      expect(market.userOpenOrdersSummary).toBeDefined();
+      expect(typeof market.userOpenOrdersSummary).toBe("object");
     });
 
     test("market.userOpenOrdersSummary.openOrdersCount", () => {
-      assert.isDefined(market.userOpenOrdersSummary.openOrdersCount);
+      expect(market.userOpenOrdersSummary.openOrdersCount).toBeDefined();
       assertFormattedNumber(
         market.userOpenOrdersSummary.openOrdersCount,
         "market.userOpenOrdersSummary.openOrdersCount"
@@ -382,12 +373,12 @@ export default function(market) {
 
     const { myPositionsSummary } = market;
     test("market.myPositionsSummary", () => {
-      assert.isDefined(myPositionsSummary);
-      assert.isObject(myPositionsSummary);
+      expect(myPositionsSummary).toBeDefined();
+      expect(typeof myPositionsSummary).toBe("object");
     });
 
     test("market.myPositionsSummary.numPositions", () => {
-      assert.isDefined(myPositionsSummary.numPositions);
+      expect(myPositionsSummary.numPositions).toBeDefined();
       assertFormattedNumber(
         myPositionsSummary.numPositions,
         "myPositionsSummary.numPositions"
@@ -395,7 +386,7 @@ export default function(market) {
     });
 
     test("market.myPositionsSummary.qtyShares", () => {
-      assert.isDefined(myPositionsSummary.qtyShares);
+      expect(myPositionsSummary.qtyShares).toBeDefined();
       assertFormattedNumber(
         myPositionsSummary.qtyShares,
         "myPositionsSummary.qtyShares"
@@ -403,7 +394,7 @@ export default function(market) {
     });
 
     test("market.myPositionsSummary.purchasePrice", () => {
-      assert.isDefined(myPositionsSummary.purchasePrice);
+      expect(myPositionsSummary.purchasePrice).toBeDefined();
       assertFormattedNumber(
         myPositionsSummary.purchasePrice,
         "myPositionsSummary.purchasePrice"
@@ -411,7 +402,7 @@ export default function(market) {
     });
 
     test("market.myPositionsSummary.realizedNet", () => {
-      assert.isDefined(myPositionsSummary.realizedNet);
+      expect(myPositionsSummary.realizedNet).toBeDefined();
       assertFormattedNumber(
         myPositionsSummary.realizedNet,
         "myPositionsSummary.realizedNet"
@@ -419,7 +410,7 @@ export default function(market) {
     });
 
     test("market.myPositionsSummary.unrealizedNet", () => {
-      assert.isDefined(myPositionsSummary.unrealizedNet);
+      expect(myPositionsSummary.unrealizedNet).toBeDefined();
       assertFormattedNumber(
         myPositionsSummary.unrealizedNet,
         "myPositionsSummary.unrealizedNet"
@@ -427,7 +418,7 @@ export default function(market) {
     });
 
     test("market.myPositionsSummary.totalNet", () => {
-      assert.isDefined(myPositionsSummary.totalNet);
+      expect(myPositionsSummary.totalNet).toBeDefined();
       assertFormattedNumber(
         myPositionsSummary.totalNet,
         "myPositionsSummary.totalNet"
@@ -436,19 +427,19 @@ export default function(market) {
 
     const { report } = market;
     test("market.report", () => {
-      assert.isDefined(report);
-      assert.isObject(report);
+      expect(report).toBeDefined();
+      expect(typeof report).toBe("object");
     });
 
     test("market.report.onSubmitReport", () => {
-      assert.isDefined(report.onSubmitReport);
-      assert.isFunction(report.onSubmitReport);
+      expect(report.onSubmitReport).toBeDefined();
+      expect(typeof report.onSubmitReport).toBe("function");
     });
 
     const { onSubmitPlaceTrade } = market;
     test("market.onSubmitPlaceTrade", () => {
-      assert.isDefined(onSubmitPlaceTrade);
-      assert.isFunction(onSubmitPlaceTrade);
+      expect(onSubmitPlaceTrade).toBeDefined();
+      expect(typeof onSubmitPlaceTrade).toBe("function");
     });
   });
 }

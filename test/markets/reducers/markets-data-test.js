@@ -222,21 +222,9 @@ describe(`modules/markets/reducers/markets-data.js`, () => {
         type: "UPDATE_MARKETS_DATA",
         marketsData: marketsData2
       };
-      assert.deepEqual(
-        reducer(curMarketsData1, action),
-        expectedOutput,
-        `didn't add a new market to markets data`
-      );
-      assert.deepEqual(
-        reducer(curMarketsData2, action),
-        expectedOutput,
-        `didn't update a market in markets data`
-      );
-      assert.deepEqual(
-        reducer(undefined, action2),
-        expectedOutput,
-        `didn't get the correct output when marketsData is empty`
-      );
+      expect(reducer(curMarketsData1, action)).toEqual(expectedOutput);
+      expect(reducer(curMarketsData2, action)).toEqual(expectedOutput);
+      expect(reducer(undefined, action2)).toEqual(expectedOutput);
     });
   });
 });

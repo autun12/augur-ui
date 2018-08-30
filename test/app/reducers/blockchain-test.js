@@ -17,10 +17,6 @@ describe(`modules/app/reducers/blockchain.js`, () => {
       thisTestState.blockchain,
       action.data
     );
-    assert.deepEqual(
-      reducer(thisTestState.blockchain, action),
-      expectedOutput,
-      `Didn't update the blockchain information`
-    );
+    expect(reducer(thisTestState.blockchain, action)).toEqual(expectedOutput);
   });
 });

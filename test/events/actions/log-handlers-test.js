@@ -105,7 +105,7 @@ describe("modules/events/actions/log-handlers.js", () => {
           }
         ];
 
-        assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -130,7 +130,7 @@ describe("modules/events/actions/log-handlers.js", () => {
 
         const expected = [];
 
-        assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -152,7 +152,7 @@ describe("modules/events/actions/log-handlers.js", () => {
         store.dispatch(handleTokensMintedLog(log));
         const actual = store.getActions();
         const expected = [{ type: ACTIONS.LOAD_REPORTING_WINDOW }];
-        assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -174,7 +174,7 @@ describe("modules/events/actions/log-handlers.js", () => {
         store.dispatch(handleTokensMintedLog(log));
         const actual = store.getActions();
         const expected = [];
-        assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -218,7 +218,7 @@ describe("modules/events/actions/log-handlers.js", () => {
             }
           }
         ];
-        assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -243,7 +243,7 @@ describe("modules/events/actions/log-handlers.js", () => {
         store.dispatch(handleTradingProceedsClaimedLog(log));
         const actual = store.getActions();
         const expected = [];
-        assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+        expect(actual).toEqual(expected);
       }
     });
   });

@@ -3,7 +3,6 @@ import sinon from "sinon";
 import thunk from "redux-thunk";
 
 describe(`modules/auth/actions/update-is-logged-and-load-account-data.js`, () => {
-  proxyquire.noPreserveCache();
   const mockStore = configureMockStore([thunk]);
   const test = t =>
     test(t.description, () => {
@@ -39,7 +38,7 @@ describe(`modules/auth/actions/update-is-logged-and-load-account-data.js`, () =>
       accountType: "unlockedEthereumNode"
     },
     assertions: actions =>
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         { type: "AUGURJS_RPC_CLEAR" },
         { type: "CLEAR_LOGIN_ACCOUNT" },
         { type: "UPDATE_IS_LOGGED", data: { isLogged: true } },
@@ -64,7 +63,7 @@ describe(`modules/auth/actions/update-is-logged-and-load-account-data.js`, () =>
       accountType: "metaMask"
     },
     assertions: actions =>
-      assert.deepEqual(actions, [
+      expect(actions).toEqual([
         { type: "AUGURJS_RPC_CLEAR" },
         { type: "CLEAR_LOGIN_ACCOUNT" },
         { type: "UPDATE_IS_LOGGED", data: { isLogged: true } },

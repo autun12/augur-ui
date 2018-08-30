@@ -1,23 +1,27 @@
 export default function(orderCancellation) {
   describe("orderCancellation", () => {
     test("orderCancellation", () => {
-      assert.isObject(orderCancellation);
+      expect(typeof orderCancellation).toBe("object");
     });
 
     test("orderCancellation.cancelOrder", () => {
-      assert.isFunction(orderCancellation.cancelOrder);
+      expect(typeof orderCancellation.cancelOrder).toBe("function");
     });
 
     test("orderCancellation.abortCancelOrderConfirmation", () => {
-      assert.isFunction(orderCancellation.abortCancelOrderConfirmation);
+      expect(typeof orderCancellation.abortCancelOrderConfirmation).toBe(
+        "function"
+      );
     });
 
     test("orderCancellation.showCancelOrderConfirmation", () => {
-      assert.isFunction(orderCancellation.showCancelOrderConfirmation);
+      expect(typeof orderCancellation.showCancelOrderConfirmation).toBe(
+        "function"
+      );
     });
 
     test("orderCancellation.cancellationStatuses", () => {
-      assert.isObject(orderCancellation.cancellationStatuses);
+      expect(typeof orderCancellation.cancellationStatuses).toBe("object");
       expect(orderCancellation.cancellationStatuses).toEqual({
         CANCELLATION_CONFIRMATION: "CANCELLATION_CONFIRMATION",
         CANCELLING: "CANCELLING",

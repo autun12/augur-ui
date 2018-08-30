@@ -1,5 +1,4 @@
 describe(`utils/base-58.js`, () => {
-  proxyquire.noPreserveCache();
   const base58 = jest.mock("../../src/utils/base-58.js", {});
   describe("base58Decode", () => {
     const test = t =>
@@ -30,7 +29,9 @@ describe(`utils/base-58.js`, () => {
         description: "this is a test object"
       },
       assertions: encoded => {
-        expect(encoded).toEqual("kpXKnbi9Czht5bSPbpf7QoYiDWDF8UWZzmWiCrM7xoE4rbkZ7WmpM4dq9WLki1F8Qhg4bcBYtE8");
+        expect(encoded).toEqual(
+          "kpXKnbi9Czht5bSPbpf7QoYiDWDF8UWZzmWiCrM7xoE4rbkZ7WmpM4dq9WLki1F8Qhg4bcBYtE8"
+        );
       }
     });
   });

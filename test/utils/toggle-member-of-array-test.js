@@ -17,7 +17,7 @@ describe("toggle-member-of-array", () => {
     });
 
     test("should return a new array (not strictly equal)", () => {
-      assert.notStrictEqual(result, stack);
+      expect(result).not.toEqual(stack);
     });
   });
 
@@ -32,7 +32,7 @@ describe("toggle-member-of-array", () => {
     });
 
     test("should return a new array (not strictly equal)", () => {
-      assert.notStrictEqual(result, stack);
+      expect(result).not.toEqual(stack);
     });
   });
 });

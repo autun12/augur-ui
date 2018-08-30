@@ -22,8 +22,8 @@ describe("modules/auth/helpers/is-augurjs-versions-equal", () => {
       });
 
       return isAugurJSVersionsEqual().then(res => {
-        assert.isObject(res);
-        assert.isFalse(res.isEqual);
+        expect(typeof res).toBe("object");
+        expect(res.isEqual).toBeFalsy();
         assert.isUndefined(res.augurNode);
         expect(res.augurjs).toEqual("helloWorld");
       });
@@ -43,8 +43,8 @@ describe("modules/auth/helpers/is-augurjs-versions-equal", () => {
       });
 
       return isAugurJSVersionsEqual().then(res => {
-        assert.isObject(res);
-        assert.isFalse(res.isEqual);
+        expect(typeof res).toBe("object");
+        expect(res.isEqual).toBeFalsy();
         expect(res.augurNode).toEqual("goodbyeWorld");
         expect(res.augurjs).toEqual("helloWorld");
       });
@@ -63,8 +63,8 @@ describe("modules/auth/helpers/is-augurjs-versions-equal", () => {
         }
       });
       return isAugurJSVersionsEqual().then(res => {
-        assert.isObject(res);
-        assert.isTrue(res.isEqual);
+        expect(typeof res).toBe("object");
+        expect(res.isEqual).toBeTruthy();
         expect(res.augurNode).toEqual("helloWorld");
         expect(res.augurjs).toEqual("helloWorld");
       });

@@ -26,11 +26,7 @@ describe("modules/reports/selectors/reportable-outcomes.js", () => {
       }
     ];
 
-    assert.deepEqual(
-      actual,
-      expected,
-      `expected array for a yes/no  market was not returned`
-    );
+    expect(actual).toEqual(expected);
     // assertions.reportableOutcomes(actual);
   });
 
@@ -66,11 +62,7 @@ describe("modules/reports/selectors/reportable-outcomes.js", () => {
       }
     ];
 
-    assert.deepEqual(
-      actual,
-      expected,
-      `expected array for a CATEGORICAL market was not returned`
-    );
+    expect(actual).toEqual(expected);
     reportableOutcomesAssertions(actual);
   });
 
@@ -78,10 +70,6 @@ describe("modules/reports/selectors/reportable-outcomes.js", () => {
     actual = selectReportableOutcomes(null);
     expected = [];
 
-    assert.deepEqual(
-      actual,
-      expected,
-      `expected array for a DEFAULT case was not returned`
-    );
+    expect(actual).toEqual(expected);
   });
 });

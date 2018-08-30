@@ -30,7 +30,7 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
 
         const expected = "selectPositionsPlusAsks";
 
-        assert.strictEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toBe(expected);
       }
     });
   });
@@ -55,11 +55,7 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
 
         const expected = null;
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `Didn't return the expected value`
-        );
+        expect(actual).toBe(expected);
       }
     });
 
@@ -81,7 +77,7 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
           "0xMARKETID": {}
         };
 
-        assert.deepEqual(actual, expected, `Didn't return the expected object`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -107,7 +103,7 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
           "0xMARKETID": "selectMarketPositionPlusAsks"
         };
 
-        assert.deepEqual(actual, expected, `Didn't return the expected object`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -124,7 +120,7 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
 
         const expected = {};
 
-        assert.deepEqual(actual, expected, `Didn't return the expected object`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -141,7 +137,7 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
           1: "2"
         };
 
-        assert.deepEqual(actual, expected, `Didn't return the expected object`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -156,7 +152,7 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
 
         const expected = ZERO;
 
-        assert.deepEqual(actual, expected, `Didn't return the expected value`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -167,7 +163,7 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
 
         const expected = ZERO;
 
-        assert.deepEqual(actual, expected, `Didn't return the expected value`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -199,7 +195,7 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
 
         const expected = createBigNumber("2");
 
-        assert.deepEqual(actual, expected, `Didn't return the expected value`);
+        expect(actual).toEqual(expected);
       }
     });
   });

@@ -34,10 +34,7 @@ describe("modules/portfolio/actions/collect-market-creator-fees.js", () => {
               MailboxAddresses,
               `Didn't get the expected params`
             );
-            assert.isFunction(
-              cb,
-              `Callback provided isn't a function as expected`
-            );
+            expect(typeof cb).toBe("function");
             if (params._owner === MailboxAddresses[0]) {
               cb(null, speedomatic.fix(20, "string"));
             } else {
@@ -52,10 +49,7 @@ describe("modules/portfolio/actions/collect-market-creator-fees.js", () => {
               MarketIds,
               `Didn't get the expected params`
             );
-            assert.isFunction(
-              cb,
-              `Callback provided isn't a function as expected`
-            );
+            expect(typeof cb).toBe("function");
             if (params.tx.to === MarketIds[0]) {
               cb(null, MailboxAddresses[0]);
             } else {
@@ -66,23 +60,10 @@ describe("modules/portfolio/actions/collect-market-creator-fees.js", () => {
         Mailbox: {
           withdrawEther: p => {
             // this should only ever get called by that first Market Mailbox, and not the second.
-            assert.deepEqual(
-              p.tx,
-              { to: MailboxAddresses[0] },
-              `Attempted to call withdrawEther with unexpected params`
-            );
-            assert.isFunction(
-              p.onSent,
-              `onSent provided to withdrawEther isn't a function.`
-            );
-            assert.isFunction(
-              p.onSuccess,
-              `onSuccess provided to withdrawEther isn't a function.`
-            );
-            assert.isFunction(
-              p.onFailed,
-              `onFailed provided to withdrawEther isn't a function.`
-            );
+            expect(p.tx).toEqual({ to: MailboxAddresses[0] });
+            expect(typeof p.onSent).toBe("function");
+            expect(typeof p.onSuccess).toBe("function");
+            expect(typeof p.onFailed).toBe("function");
             p.onSuccess();
           }
         }
@@ -95,7 +76,7 @@ describe("modules/portfolio/actions/collect-market-creator-fees.js", () => {
               MailboxAddresses,
               `Didn't receive the expected params to augur.rpc.eth.balance`
             );
-            assert.isFunction(cb, `Callback provided isn't a function`);
+            expect(typeof cb).toBe("function");
             // allows to test against mailboxes with currency and without.
             if (params[0] === MailboxAddresses[0]) {
               cb(null, speedomatic.fix(10.5, "string"));
@@ -133,11 +114,7 @@ describe("modules/portfolio/actions/collect-market-creator-fees.js", () => {
             MarketIds[0],
             (err, amountOfEthToBeCollected) => {
               assert.isNull(err, `Didn't return null for error as expected`);
-              assert.deepEqual(
-                amountOfEthToBeCollected,
-                "30.5",
-                `Expected the amount of ETH to be collected from market to be '30.5'`
-              );
+              expect(amountOfEthToBeCollected).toEqual("30.5");
             }
           )
         );
@@ -159,7 +136,7 @@ describe("modules/portfolio/actions/collect-market-creator-fees.js", () => {
           }
         ];
 
-        assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -177,11 +154,7 @@ describe("modules/portfolio/actions/collect-market-creator-fees.js", () => {
             MarketIds[1],
             (err, amountOfEthToBeCollected) => {
               assert.isNull(err, `Didn't return null for error as expected`);
-              assert.deepEqual(
-                amountOfEthToBeCollected,
-                "0",
-                `Expected the amount of ETH to be collected from market to be '0'`
-              );
+              expect(amountOfEthToBeCollected).toEqual("0");
             }
           )
         );
@@ -190,7 +163,7 @@ describe("modules/portfolio/actions/collect-market-creator-fees.js", () => {
 
         const expected = [];
 
-        assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+        expect(actual).toEqual(expected);
       }
     });
   });

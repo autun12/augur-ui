@@ -29,89 +29,36 @@ describe("events/actions/listen-to-updates", () => {
             stopAugurNodeEventListeners: () =>
               store.dispatch(ACTIONS.STOP_AUGUR_NODE_EVENT_LISTENERS),
             startBlockListeners: listeners => {
-              assert.isFunction(
-                listeners.onAdded,
-                `Didn't pass a function to startBlockListeners.onAdded as expected.`
-              );
-              assert.isFunction(
-                listeners.onRemoved,
-                `Didn't pass a function to startBlockListeners.onRemoved as expected.`
-              );
+              expect(typeof listeners.onAdded).toBe("function");
+              expect(typeof listeners.onRemoved).toBe("function");
               store.dispatch(ACTIONS.START_BLOCK_LISTENERS);
             },
             startAugurNodeEventListeners: listeners => {
-              assert.isFunction(
-                listeners.MarketState,
-                `Didn't pass a function to startAugurNodeListeners.MarketState as expected.`
-              );
-              assert.isFunction(
-                listeners.InitialReportSubmitted,
-                `Didn't pass a function to startAugurNodeListeners.InitialReportSubmitted as expected.`
-              );
-              assert.isFunction(
-                listeners.MarketCreated,
-                `Didn't pass a function to startAugurNodeListeners.MarketCreated as expected.`
-              );
-              assert.isFunction(
-                listeners.TokensTransferred,
-                `Didn't pass a function to startAugurNodeListeners.TokensTransferred as expected.`
-              );
-              assert.isFunction(
-                listeners.OrderCanceled,
-                `Didn't pass a function to startAugurNodeListeners.OrderCanceled as expected.`
-              );
-              assert.isFunction(
-                listeners.OrderCreated,
-                `Didn't pass a function to startAugurNodeListeners.OrderCreated as expected.`
-              );
-              assert.isFunction(
-                listeners.OrderFilled,
-                `Didn't pass a function to startAugurNodeListeners.OrderFilled as expected.`
-              );
-              assert.isFunction(
-                listeners.TradingProceedsClaimed,
-                `Didn't pass a function to startAugurNodeListeners.TradingProceedsClaimed as expected.`
-              );
-              assert.isFunction(
-                listeners.MarketFinalized,
-                `Didn't pass a function to startAugurNodeListeners.MarketFinalized as expected.`
-              );
-              assert.isFunction(
-                listeners.UniverseForked,
-                `Didn't pass a function to startAugurNodeListeners.UniverseForked as expected.`
-              );
-              assert.isFunction(
-                listeners.FeeWindowCreated,
-                `Didn't pass a function to startAugurNodeListeners.FeeWindowCreated as expected.`
-              );
+              expect(typeof listeners.MarketState).toBe("function");
+              expect(typeof listeners.InitialReportSubmitted).toBe("function");
+              expect(typeof listeners.MarketCreated).toBe("function");
+              expect(typeof listeners.TokensTransferred).toBe("function");
+              expect(typeof listeners.OrderCanceled).toBe("function");
+              expect(typeof listeners.OrderCreated).toBe("function");
+              expect(typeof listeners.OrderFilled).toBe("function");
+              expect(typeof listeners.TradingProceedsClaimed).toBe("function");
+              expect(typeof listeners.MarketFinalized).toBe("function");
+              expect(typeof listeners.UniverseForked).toBe("function");
+              expect(typeof listeners.FeeWindowCreated).toBe("function");
               store.dispatch(ACTIONS.START_AUGUR_NODE_EVENT_LISTENERS);
             },
             nodes: {
               augur: {
                 on: (label, onDisconnect) => {
-                  assert.strictEqual(
-                    label,
-                    "disconnect",
-                    `expected the disconnect label to be passed to augur.nodes.augur.on`
-                  );
-                  assert.isFunction(
-                    onDisconnect,
-                    `Expected augur.nodes.augur.on to have a function passed as the second argument.`
-                  );
+                  expect(label).toBe("disconnect");
+                  expect(typeof onDisconnect).toBe("function");
                   store.dispatch(ACTIONS.NODES_AUGUR_ON_SET);
                 }
               },
               ethereum: {
                 on: (label, onDisconnect) => {
-                  assert.strictEqual(
-                    label,
-                    "disconnect",
-                    `expected the disconnect label to be passed to augur.nodes.ethereum.on`
-                  );
-                  assert.isFunction(
-                    onDisconnect,
-                    `Expected augur.nodes.ethereum.on to have a function passed as the second argument.`
-                  );
+                  expect(label).toBe("disconnect");
+                  expect(typeof onDisconnect).toBe("function");
                   store.dispatch(ACTIONS.NODES_ETHEREUM_ON_SET);
                 }
               }
@@ -125,7 +72,7 @@ describe("events/actions/listen-to-updates", () => {
       description:
         "it should handle clearing all listeners then setting all listeners when called.",
       assertions: actions =>
-        assert.deepEqual(actions, [
+        expect(actions).toEqual([
           ACTIONS.STOP_BLOCK_LISTENERS,
           ACTIONS.STOP_AUGUR_NODE_EVENT_LISTENERS,
           ACTIONS.START_BLOCK_LISTENERS,
@@ -168,7 +115,7 @@ describe("events/actions/listen-to-updates", () => {
         }
       },
       assertions: actions =>
-        assert.deepEqual(actions, [
+        expect(actions).toEqual([
           { type: "LOAD_MARKETS_INFO", marketIds: ["MARKET_ADDRESS"] }
         ])
     });
@@ -224,7 +171,7 @@ describe("events/actions/listen-to-updates", () => {
         }
       },
       assertions: actions =>
-        assert.deepEqual(actions, [
+        expect(actions).toEqual([
           { type: "LOAD_MARKETS_INFO", marketIds: ["MARKET_ADDRESS"] },
           { type: "UPDATE_UNCLAIMED_DATA", marketIds: ["MARKET_ADDRESS"] },
           { type: "LOAD_REPORTING" }
@@ -255,7 +202,7 @@ describe("events/actions/listen-to-updates", () => {
         }
       },
       assertions: actions =>
-        assert.deepEqual(actions, [
+        expect(actions).toEqual([
           { type: "LOAD_MARKETS_INFO", marketIds: ["MARKET_ADDRESS"] },
           { type: "UPDATE_UNCLAIMED_DATA", marketIds: ["MARKET_ADDRESS"] },
           { type: "LOAD_REPORTING" },

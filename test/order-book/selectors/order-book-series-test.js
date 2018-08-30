@@ -21,11 +21,7 @@ describe("modules/order-book/selectors/order-book-series", () => {
 
       const expected = { [BIDS]: [], [ASKS]: [] };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected orderBookSeries`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -69,11 +65,7 @@ describe("modules/order-book/selectors/order-book-series", () => {
         [ASKS]: [[0.5, 20], [0.6, 30]]
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected orderBookSeries`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 });

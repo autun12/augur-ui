@@ -1,6 +1,6 @@
 export default function(portfolio) {
   describe("portfolio state", () => {
-    assert.isDefined(portfolio);
-    assert.isObject(portfolio);
+    expect(portfolio).toBeDefined();
+    expect(typeof portfolio).toBe("object");
   });
 }

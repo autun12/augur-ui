@@ -34,19 +34,19 @@ describe("src/modules/market/components/market-outcome-charts--depth/market-outc
     });
 
     test("should return an order with depth 0.006", () => {
-      assert.strictEqual(result[0].toNumber(), 0.006);
+      expect(result[0].toNumber()).toBe(0.006);
     });
 
     test("should return the order with matching price", () => {
-      assert.strictEqual(result[1], price);
+      expect(result[1]).toBe(price);
     });
 
     test("should return an order that is selectable", () => {
-      assert.isTrue(result[3]);
+      expect(result[3]).toBeTruthy();
     });
 
     test("should be a bid order", () => {
-      assert.strictEqual(result[4], BIDS);
+      expect(result[4]).toBe(BIDS);
     });
   });
 
@@ -57,11 +57,11 @@ describe("src/modules/market/components/market-outcome-charts--depth/market-outc
     });
 
     test("should return the order with matching price", () => {
-      assert.strictEqual(result[1], price);
+      expect(result[1]).toBe(price);
     });
 
     test("should return an asks order", () => {
-      assert.strictEqual(result[4], ASKS);
+      expect(result[4]).toBe(ASKS);
     });
   });
 
@@ -71,7 +71,7 @@ describe("src/modules/market/components/market-outcome-charts--depth/market-outc
     });
 
     test("should return undefined", () => {
-      assert.isNull(result);
+      expect(result).toBeNull();
     });
   });
 
@@ -95,7 +95,7 @@ describe("src/modules/market/components/market-outcome-charts--depth/market-outc
       price = 0.35;
       result = nearestCompletelyFillingOrder(price, marketDepth);
 
-      assert.isTrue(result[3]);
+      expect(result[3]).toBeTruthy();
     });
   });
 });

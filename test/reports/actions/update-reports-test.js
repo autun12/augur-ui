@@ -48,10 +48,6 @@ describe(`modules/reports/actions/update-reports.js`, () => {
 
     store.dispatch(action.updateReports(test));
 
-    assert.deepEqual(
-      store.getActions(),
-      out,
-      `Didn't dispatch the UPDATE_REPORTS action`
-    );
+    expect(store.getActions()).toEqual(out);
   });
 });

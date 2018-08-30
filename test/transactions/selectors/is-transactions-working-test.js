@@ -8,7 +8,6 @@ import * as mockStore from "test/mockStore";
 import isTransactionsWorkingAssertions from "assertions/is-transactions-working";
 
 describe(`modules/transactions/selectors/is-transaction-working.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   let actual;
 
   const { state, store } = mockStore.default;
@@ -23,8 +22,7 @@ describe(`modules/transactions/selectors/is-transaction-working.js`, () => {
     let { transactionsData } = state;
     actual = selector.selectIsWorking({ transactionsData });
 
-    assert.isFalse(
-      actual,
+    expect(actual).toBeFalsy(
       `Didn't mark the transaction as not working when status was ${FAILED}.`
     );
 
@@ -35,8 +33,7 @@ describe(`modules/transactions/selectors/is-transaction-working.js`, () => {
       }
     };
     actual = selector.selectIsWorking({ transactionsData });
-    assert.isFalse(
-      actual,
+    expect(actual).toBeFalsy(
       `Didn't mark the transaction as not working when status was ${SUCCESS}.`
     );
 
@@ -47,8 +44,7 @@ describe(`modules/transactions/selectors/is-transaction-working.js`, () => {
       }
     };
     actual = selector.selectIsWorking({ transactionsData });
-    assert.isFalse(
-      actual,
+    expect(actual).toBeFalsy(
       `Didn't mark the transaction as not working when status was ${PENDING}.`
     );
 
@@ -59,8 +55,7 @@ describe(`modules/transactions/selectors/is-transaction-working.js`, () => {
       }
     };
     actual = selector.selectIsWorking({ transactionsData });
-    assert.isFalse(
-      actual,
+    expect(actual).toBeFalsy(
       `Didn't mark the transaction as not working when status was ${INTERRUPTED}.`
     );
 
@@ -73,8 +68,7 @@ describe(`modules/transactions/selectors/is-transaction-working.js`, () => {
     actual = selector.selectIsWorking({ transactionsData });
 
     isTransactionsWorkingAssertions(actual);
-    assert.isTrue(
-      actual,
+    expect(actual).toBeTruthy(
       `Didn't mark the transaction as working when status was test.`
     );
   });

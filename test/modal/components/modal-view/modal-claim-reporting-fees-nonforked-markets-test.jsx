@@ -87,7 +87,7 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
 
       describe("claimReportingFeesNonforkedMarkets function", () => {
         test("should get called once with args ", () => {
-          assert.isOk(claimReportingFeesNonforkedMarkets);
+          expect(claimReportingFeesNonforkedMarkets).toBeTruthy();
         });
 
         test("should receive one argument", () => {
@@ -119,7 +119,7 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
       describe("Submit button", () => {
         test("should be disabled", () => {
           const button = Cmp.find("button");
-          assert.isOk(button.html().includes("disabled"));
+          expect(button.html().includes("disabled")).toBeTruthy();
         });
       });
     });
@@ -169,7 +169,7 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
 
       describe("claimReportingFeesNonforkedMarkets function", () => {
         test("should get called once with args ", () => {
-          assert.isOk(claimReportingFeesNonforkedMarkets);
+          expect(claimReportingFeesNonforkedMarkets).toBeTruthy();
         });
 
         test("should receive one argument", () => {
@@ -201,7 +201,7 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
       describe("Submit button", () => {
         test("should not be disabled", () => {
           const button = Cmp.find("button");
-          assert.isNotOk(button.html().includes("disabled"));
+          expect(button.html().includes("disabled")).toBeFalsy();
         });
       });
     });
@@ -251,7 +251,7 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
 
       describe("claimReportingFeesNonforkedMarkets function", () => {
         test("should get called once with args ", () => {
-          assert.isOk(claimReportingFeesNonforkedMarkets);
+          expect(claimReportingFeesNonforkedMarkets).toBeTruthy();
         });
 
         test("should receive one argument", () => {
@@ -283,7 +283,7 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
       describe("Submit button", () => {
         test("should not be disabled", () => {
           const button = Cmp.find("button");
-          assert.isNotOk(button.html().includes("disabled"));
+          expect(button.html().includes("disabled")).toBeFalsy();
         });
       });
     });
@@ -336,7 +336,7 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
 
       describe("claimReportingFeesNonforkedMarkets function", () => {
         test("should get called once with args ", () => {
-          assert.isOk(claimReportingFeesNonforkedMarkets);
+          expect(claimReportingFeesNonforkedMarkets).toBeTruthy();
         });
 
         test("should receive one argument", () => {
@@ -368,7 +368,7 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
       describe("Submit button", () => {
         test("should not be disabled", () => {
           const button = Cmp.find("button");
-          assert.isNotOk(button.html().includes("disabled"));
+          expect(button.html().includes("disabled")).toBeFalsy();
         });
       });
     });

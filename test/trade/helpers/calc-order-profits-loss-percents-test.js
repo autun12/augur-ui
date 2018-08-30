@@ -15,7 +15,7 @@ describe("modules/trade/helpers/calc-order-profit-loss-percents.js", () => {
 
       const expected = null;
 
-      assert.strictEqual(actual, expected, `didn't return the expected value`);
+      expect(actual).toBe(expected);
     }
   });
 
@@ -33,7 +33,7 @@ describe("modules/trade/helpers/calc-order-profit-loss-percents.js", () => {
 
       const expected = null;
 
-      assert.strictEqual(actual, expected, `didn't return the expected value`);
+      expect(actual).toBe(expected);
     }
   });
 
@@ -51,7 +51,7 @@ describe("modules/trade/helpers/calc-order-profit-loss-percents.js", () => {
 
       const expected = null;
 
-      assert.strictEqual(actual, expected, `didn't return the expected value`);
+      expect(actual).toBe(expected);
     }
   });
 
@@ -68,11 +68,7 @@ describe("modules/trade/helpers/calc-order-profit-loss-percents.js", () => {
         potentialLossPercent: createBigNumber("100")
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `didn't return the expected profit and loss values`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -97,11 +93,7 @@ describe("modules/trade/helpers/calc-order-profit-loss-percents.js", () => {
         potentialLossPercent: createBigNumber("100")
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `didn't return the expected profit and loss values`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -126,11 +118,7 @@ describe("modules/trade/helpers/calc-order-profit-loss-percents.js", () => {
         potentialLossPercent: createBigNumber("100")
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `didn't return the expected profit and loss values`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -155,11 +143,7 @@ describe("modules/trade/helpers/calc-order-profit-loss-percents.js", () => {
         potentialLossPercent: createBigNumber("100")
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `didn't return the expected profit and loss values`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 });

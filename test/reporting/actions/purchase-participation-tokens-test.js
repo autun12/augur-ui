@@ -30,9 +30,9 @@ describe("purchase participation tokens tests", () => {
               const { tx, _attotokens, onSent, onSuccess, onFailed } = p;
               expect(tx).toEqual({ to: "0xfeeWindow01", estimateGas: false });
               expect(_attotokens).toEqual(speedomatic.fix("10.25", "hex"));
-              assert.isFunction(onSent);
-              assert.isFunction(onSuccess);
-              assert.isFunction(onFailed);
+              expect(typeof onSent).toBe("function");
+              expect(typeof onSuccess).toBe("function");
+              expect(typeof onFailed).toBe("function");
               onSent();
               onSuccess({});
             }
@@ -41,7 +41,7 @@ describe("purchase participation tokens tests", () => {
         reporting: {
           getFeeWindowCurrent: (p, cb) => {
             expect(p).toEqual({ universe: store.getState().universe.id });
-            assert.isFunction(cb);
+            expect(typeof cb).toBe("function");
             cb(null, { feeWindow: "0xfeeWindow01" });
           }
         },
@@ -50,8 +50,8 @@ describe("purchase participation tokens tests", () => {
 
       store.dispatch(
         purchaseParticipationTokens("10.25", false, (err, res) => {
-          assert.isNull(err);
-          assert.isObject(res);
+          expect(err).toBeNull();
+          expect(typeof res).toBe("object");
           const expectedActions = [ACTIONS.CLOSE_MODAL];
           expect(store.getActions()).toEqual(expectedActions);
           done();
@@ -71,9 +71,9 @@ describe("purchase participation tokens tests", () => {
               const { tx, _attotokens, onSent, onSuccess, onFailed } = p;
               expect(tx).toEqual({ to: "0xfeeWindow01", estimateGas: true });
               expect(_attotokens).toEqual(speedomatic.fix("10.25", "hex"));
-              assert.isFunction(onSent);
-              assert.isFunction(onSuccess);
-              assert.isFunction(onFailed);
+              expect(typeof onSent).toBe("function");
+              expect(typeof onSuccess).toBe("function");
+              expect(typeof onFailed).toBe("function");
               onSent();
               onSuccess("0xdeadbeef");
             }
@@ -82,7 +82,7 @@ describe("purchase participation tokens tests", () => {
         reporting: {
           getFeeWindowCurrent: (p, cb) => {
             expect(p).toEqual({ universe: store.getState().universe.id });
-            assert.isFunction(cb);
+            expect(typeof cb).toBe("function");
             cb(null, { feeWindow: "0xfeeWindow01" });
           }
         },
@@ -91,7 +91,7 @@ describe("purchase participation tokens tests", () => {
 
       store.dispatch(
         purchaseParticipationTokens("10.25", true, (err, res) => {
-          assert.isNull(err);
+          expect(err).toBeNull();
           const expectedResponse = formatGasCostToEther(
             "0xdeadbeef",
             { decimalsRounded: 4 },
@@ -117,9 +117,9 @@ describe("purchase participation tokens tests", () => {
               const { tx, _attotokens, onSent, onSuccess, onFailed } = p;
               expect(tx).toEqual({ to: "0xfeeWindow01", estimateGas: true });
               expect(_attotokens).toEqual(speedomatic.fix("10.25", "hex"));
-              assert.isFunction(onSent);
-              assert.isFunction(onSuccess);
-              assert.isFunction(onFailed);
+              expect(typeof onSent).toBe("function");
+              expect(typeof onSuccess).toBe("function");
+              expect(typeof onFailed).toBe("function");
               onSent();
               onFailed({ error: 1000, message: "Uh-Oh!" });
             }
@@ -128,7 +128,7 @@ describe("purchase participation tokens tests", () => {
         reporting: {
           getFeeWindowCurrent: (p, cb) => {
             expect(p).toEqual({ universe: store.getState().universe.id });
-            assert.isFunction(cb);
+            expect(typeof cb).toBe("function");
             cb(null, { feeWindow: "0xfeeWindow01" });
           }
         },
@@ -154,14 +154,14 @@ describe("purchase participation tokens tests", () => {
         api: {
           FeeWindow: {
             buy: p => {
-              assert.isNull("we should never hit this.");
+              expect("we should never hit this.").toBeNull();
             }
           }
         },
         reporting: {
           getFeeWindowCurrent: (p, cb) => {
             expect(p).toEqual({ universe: store.getState().universe.id });
-            assert.isFunction(cb);
+            expect(typeof cb).toBe("function");
             cb({ error: 1000, message: "Uh-Oh!" });
           }
         },
@@ -187,7 +187,7 @@ describe("purchase participation tokens tests", () => {
         api: {
           FeeWindow: {
             buy: p => {
-              assert.isNull("we should never hit this.");
+              expect("we should never hit this.").toBeNull();
             }
           },
           Universe: {
@@ -199,7 +199,7 @@ describe("purchase participation tokens tests", () => {
         reporting: {
           getFeeWindowCurrent: (p, cb) => {
             expect(p).toEqual({ universe: store.getState().universe.id });
-            assert.isFunction(cb);
+            expect(typeof cb).toBe("function");
             cb(null);
           }
         },
@@ -208,7 +208,7 @@ describe("purchase participation tokens tests", () => {
 
       store.dispatch(
         purchaseParticipationTokens("10.25", false, (err, res) => {
-          assert.isNull(err);
+          expect(err).toBeNull();
           expect(res).toEqual("10.25");
           const expectedActions = [];
           expect(store.getActions()).toEqual(expectedActions);

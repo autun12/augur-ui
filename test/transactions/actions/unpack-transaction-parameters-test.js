@@ -1,5 +1,4 @@
 describe(`modules/transactions/actions/unpack-transaction-parameters.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const test = t => {
     test(t.description, () => {
       const action = jest.mock(

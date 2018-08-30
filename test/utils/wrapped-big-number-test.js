@@ -19,28 +19,27 @@ describe("src/utils/wrapped-big-number.js", () => {
   test("should console an error when a undefined is passed", () => {
     const result = createBigNumber(undefined);
     assert.isUndefined(result);
-    assert.isOk(spy.called);
+    expect(spy.called).toBeTruthy();
   });
 
   test("should console an error when a null value is passed", () => {
     const result = createBigNumber(null);
     assert.isUndefined(result);
-    assert.isOk(spy.called);
+    expect(spy.called).toBeTruthy();
   });
 
   test("should return a bignumber", () => {
     const result = createBigNumber("2500");
     expect(result).toBeInstanceOf(BigNumber);
-    assert.isNotOk(spy.called);
+    expect(spy.called).toBeFalsy();
   });
 
   test("should act like a big number", () => {
-    assert.equal(
+    expect(
       createBigNumber(2)
         .plus(createBigNumber(4))
-        .toString(),
-      "6"
-    );
+        .toString()
+    ).toEqual("6");
   });
 
   test("should sort like a big number", () => {
@@ -49,6 +48,6 @@ describe("src/utils/wrapped-big-number.js", () => {
     const result = myObjectArray.sort((a, b) =>
       createBigNumber(a.value).isLessThan(createBigNumber(b.value))
     );
-    assert.deepEqual(result, expected, "was not sorted correctly");
+    expect(result).toEqual(expected);
   });
 });

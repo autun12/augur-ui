@@ -32,7 +32,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 13.4993,
         percentageAccount: 0
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -51,7 +51,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 47.6625,
         percentageAccount: 52.3374
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -70,7 +70,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 52.3374,
         percentageAccount: 0
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -90,7 +90,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 3.4372,
         percentageAccount: 2.1183
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -110,7 +110,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 50,
         percentageAccount: 10
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -130,7 +130,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 0,
         percentageAccount: 50
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -150,7 +150,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 50,
         percentageAccount: 0
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -170,7 +170,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 75,
         percentageAccount: 0
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -190,7 +190,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 50,
         percentageAccount: 0
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -210,7 +210,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 0,
         percentageAccount: 0
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -224,7 +224,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 0,
         percentageAccount: 0
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -238,7 +238,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
         percentageComplete: 0,
         percentageAccount: 0
       };
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 });

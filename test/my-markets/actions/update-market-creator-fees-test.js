@@ -14,10 +14,6 @@ describe("modules/my-markets/actions/update-market-creator-fees.js", () => {
   };
 
   test("should return the expected object", () => {
-    assert.deepEqual(
-      actual,
-      expected,
-      `updateMarketCreatorFees didn't return the expected object`
-    );
+    expect(actual).toEqual(expected);
   });
 });

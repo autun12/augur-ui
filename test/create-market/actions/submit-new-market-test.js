@@ -108,17 +108,12 @@ describe("modules/create-market/actions/submit-new-market", () => {
     buildCreateMarket: buildCreateMarketSuccess,
     assertions: store => {
       store.dispatch(submitNewMarket(store.getState().newMarket, history));
-      assert.isTrue(
-        history.push.calledOnce,
+      expect(history.push.calledOnce).toBeTruthy(
         `didn't push a new path to history`
       );
       const actual = store.getActions();
       const expected = [pendingTransaction, clearNewMarket];
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't dispatch the expected actions`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -144,15 +139,10 @@ describe("modules/create-market/actions/submit-new-market", () => {
       store.dispatch(submitNewMarket(store.getState().newMarket, history));
       const actual = store.getActions();
       const expected = [pendingTransaction, clearNewMarket];
-      assert.isTrue(
-        history.push.calledOnce,
+      expect(history.push.calledOnce).toBeTruthy(
         `didn't push a new path to history`
       );
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't dispatch the expected actions`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -350,20 +340,11 @@ describe("modules/create-market/actions/submit-new-market", () => {
         clearNewMarket,
         addMarketLiquidityOrders
       ];
-      assert.isTrue(
-        history.push.calledOnce,
+      expect(history.push.calledOnce).toBeTruthy(
         `didn't push a new path to history`
       );
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't dispatch the expected actions`
-      );
-      assert.deepEqual(
-        ordersCreated,
-        0,
-        `created orders when it shouldn't have.`
-      );
+      expect(actual).toEqual(expected);
+      expect(ordersCreated).toEqual(0);
     }
   });
 
@@ -393,15 +374,10 @@ describe("modules/create-market/actions/submit-new-market", () => {
         clearNewMarket,
         invalidateMarketCreation
       ];
-      assert.isTrue(
-        history.push.calledOnce,
+      expect(history.push.calledOnce).toBeTruthy(
         `didn't push a new path to history`
       );
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't dispatch the expected actions`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 });

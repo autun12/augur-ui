@@ -11,11 +11,7 @@ describe("modules/my-markets/reducers/market-creator-fees.js", () => {
   };
 
   test("should return the default parameter state", () => {
-    assert.deepEqual(
-      reducer(undefined, { type: null, data: null }),
-      {},
-      `didn't return the default parameter state`
-    );
+    expect(reducer(undefined, { type: null, data: null })).toEqual({});
   });
 
   test("should return an object with a first update", () => {
@@ -27,11 +23,7 @@ describe("modules/my-markets/reducers/market-creator-fees.js", () => {
       ...action.data
     };
 
-    assert.deepEqual(
-      reducer(state, action),
-      expected,
-      `didn't return the expected initially update object`
-    );
+    expect(reducer(state, action)).toEqual(expected);
   });
 
   test("should return an object with a second update", () => {
@@ -46,11 +38,7 @@ describe("modules/my-markets/reducers/market-creator-fees.js", () => {
       ...action.data
     };
 
-    assert.deepEqual(
-      reducer(state, action),
-      expected,
-      `didn't return the expected object with a second update`
-    );
+    expect(reducer(state, action)).toEqual(expected);
   });
 
   test("should return an object with an updated value", () => {
@@ -65,10 +53,6 @@ describe("modules/my-markets/reducers/market-creator-fees.js", () => {
       ...action.data
     };
 
-    assert.deepEqual(
-      reducer(state, action),
-      expected,
-      `didn't return the expected object with an updated value`
-    );
+    expect(reducer(state, action)).toEqual(expected);
   });
 });

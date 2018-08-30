@@ -47,7 +47,7 @@ describe("modules/app/actions/verify-matching-network-ids.js", () => {
       }
     },
     assertions: (err, expectedNetworkId) => {
-      assert.isNull(err);
+      expect(err).toBeNull();
       assert.isUndefined(expectedNetworkId);
     }
   });
@@ -64,8 +64,8 @@ describe("modules/app/actions/verify-matching-network-ids.js", () => {
       }
     },
     assertions: (err, expectedNetworkId) => {
-      assert.isNull(err);
-      assert.strictEqual(expectedNetworkId, "4");
+      expect(err).toBeNull();
+      expect(expectedNetworkId).toBe("4");
     }
   });
   test({
@@ -81,8 +81,8 @@ describe("modules/app/actions/verify-matching-network-ids.js", () => {
       }
     },
     assertions: (err, expectedNetworkId) => {
-      assert.isNull(err);
-      assert.strictEqual(expectedNetworkId, "4");
+      expect(err).toBeNull();
+      expect(expectedNetworkId).toBe("4");
     }
   });
   test({
@@ -99,7 +99,7 @@ describe("modules/app/actions/verify-matching-network-ids.js", () => {
       }
     },
     assertions: (err, expectedNetworkId) => {
-      assert.isNull(err);
+      expect(err).toBeNull();
       assert.isUndefined(expectedNetworkId);
     }
   });
@@ -117,8 +117,8 @@ describe("modules/app/actions/verify-matching-network-ids.js", () => {
       }
     },
     assertions: (err, expectedNetworkId) => {
-      assert.isNull(err);
-      assert.strictEqual(expectedNetworkId, "1");
+      expect(err).toBeNull();
+      expect(expectedNetworkId).toBe("1");
     }
   });
   test({
@@ -127,7 +127,7 @@ describe("modules/app/actions/verify-matching-network-ids.js", () => {
     stub: {
       isGlobalWeb3: () => false,
       getAugurNodeNetworkId: callback => callback(null, "4"),
-      getMetaMaskNetworkId: () => assert.fail(),
+      getMetaMaskNetworkId: () => expect(false).toBeTruthy(),
       augur: {
         rpc: {
           getNetworkID: () => null,
@@ -136,8 +136,7 @@ describe("modules/app/actions/verify-matching-network-ids.js", () => {
       }
     },
     assertions: (err, expectedNetworkId) => {
-      assert.strictEqual(
-        err,
+      expect(err).toBe(
         'One or more network IDs not found: {"augurNode":"4","middleware":null}'
       );
       assert.isUndefined(expectedNetworkId);

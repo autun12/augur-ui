@@ -3,7 +3,6 @@ import sinon from "sinon";
 import thunk from "redux-thunk";
 
 describe(`modules/auth/actions/update-login-account.js`, () => {
-  proxyquire.noPreserveCache();
   const mockStore = configureMockStore([thunk]);
   const test = t => {
     test(t.description, () => {
@@ -41,7 +40,7 @@ describe(`modules/auth/actions/update-login-account.js`, () => {
           address: "0xb0b"
         }
       ];
-      assert.deepEqual(actions, output, `The action fired incorrectly`);
+      expect(actions).toEqual(output);
     }
   });
   test({
@@ -55,7 +54,7 @@ describe(`modules/auth/actions/update-login-account.js`, () => {
           type: "CLEAR_LOGIN_ACCOUNT"
         }
       ];
-      assert.deepEqual(actions, output, `The action fired incorrectly`);
+      expect(actions).toEqual(output);
     }
   });
 });

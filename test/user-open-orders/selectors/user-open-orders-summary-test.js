@@ -3,7 +3,6 @@ import thunk from "redux-thunk";
 import { formatNumber } from "utils/format-number";
 
 describe(`modules/user-open-orders/selectors/user-open-orders-summary.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
 
@@ -19,7 +18,7 @@ describe(`modules/user-open-orders/selectors/user-open-orders-summary.js`, () =>
       }
     ).default;
 
-    assert.isNull(selectUserOpenOrdersSummary([]));
+    expect(selectUserOpenOrdersSummary([])).toBeNull();
   });
 
   test(`should return summary for user`, () => {

@@ -59,11 +59,11 @@ describe("src/modules/market/helpers/get-default-range-period-durations.js", () 
     });
 
     test("should return first period with a true isDefault attribute", () => {
-      assert.equal(result.period, 3600);
+      expect(result.period).toEqual(3600);
     });
 
     test("should return first range with a true isDefault attribute", () => {
-      assert.equal(result.range, 86400);
+      expect(result.range).toEqual(86400);
     });
   });
 });

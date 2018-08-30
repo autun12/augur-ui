@@ -55,9 +55,8 @@ describe("modules/my-positions/selectors/close-position-status", () => {
         }
       };
 
-      assert.deepEqual(res, expected, `Didn't return the expected object`);
-      assert.isTrue(
-        clearTradeCalled,
+      expect(res).toEqual(expected);
+      expect(clearTradeCalled).toBeTruthy(
         `Didn't call delay clear trade group ids`
       );
     }
@@ -87,9 +86,8 @@ describe("modules/my-positions/selectors/close-position-status", () => {
           0: CLOSE_DIALOG_CLOSING
         }
       };
-      assert.deepEqual(res, expected, `Didn't return the expected object`);
-      assert.isTrue(
-        clearTradeCalled,
+      expect(res).toEqual(expected);
+      expect(clearTradeCalled).toBeTruthy(
         `Didn't call delay clear trade group ids`
       );
     }
@@ -117,7 +115,7 @@ describe("modules/my-positions/selectors/close-position-status", () => {
         }
       };
 
-      assert.deepEqual(res, expected, `Didn't return the expected object`);
+      expect(res).toEqual(expected);
     }
   });
 
@@ -151,7 +149,7 @@ describe("modules/my-positions/selectors/close-position-status", () => {
         }
       };
 
-      assert.deepEqual(res, expected, `Didn't return the expected object`);
+      expect(res).toEqual(expected);
     }
   });
 
@@ -185,7 +183,7 @@ describe("modules/my-positions/selectors/close-position-status", () => {
         }
       };
 
-      assert.deepEqual(res, expected, `Didn't return the expected object`);
+      expect(res).toEqual(expected);
     }
   });
 
@@ -218,9 +216,8 @@ describe("modules/my-positions/selectors/close-position-status", () => {
         }
       };
 
-      assert.deepEqual(res, expected, `Didn't return the expected object`);
-      assert.isTrue(
-        clearTradeCalled,
+      expect(res).toEqual(expected);
+      expect(clearTradeCalled).toBeTruthy(
         `Didn't call delay clear trade group ids`
       );
     }
@@ -256,7 +253,7 @@ describe("modules/my-positions/selectors/close-position-status", () => {
         }
       };
 
-      assert.deepEqual(res, expected, `Didn't return the expected object`);
+      expect(res).toEqual(expected);
     }
   });
 
@@ -282,7 +279,7 @@ describe("modules/my-positions/selectors/close-position-status", () => {
         }
       };
 
-      assert.deepEqual(res, expected, `Didn't return the expected object`);
+      expect(res).toEqual(expected);
     }
   });
 });

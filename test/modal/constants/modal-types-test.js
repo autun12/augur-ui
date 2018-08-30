@@ -8,11 +8,7 @@ describe("modules/modal/constants/modal-types", () => {
     assertions: () => {
       const expected = "MODAL_LEDGER";
 
-      assert.strictEqual(
-        modalTypes.MODAL_LEDGER,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(modalTypes.MODAL_LEDGER).toBe(expected);
     }
   });
   test({
@@ -20,11 +16,7 @@ describe("modules/modal/constants/modal-types", () => {
     assertions: () => {
       const expected = "MODAL_UPORT";
 
-      assert.strictEqual(
-        modalTypes.MODAL_UPORT,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(modalTypes.MODAL_UPORT).toBe(expected);
     }
   });
   test({
@@ -32,11 +24,7 @@ describe("modules/modal/constants/modal-types", () => {
     assertions: () => {
       const expected = "MODAL_NETWORK_MISMATCH";
 
-      assert.strictEqual(
-        modalTypes.MODAL_NETWORK_MISMATCH,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(modalTypes.MODAL_NETWORK_MISMATCH).toBe(expected);
     }
   });
   test({
@@ -44,11 +32,7 @@ describe("modules/modal/constants/modal-types", () => {
     assertions: () => {
       const expected = "MODAL_NETWORK_DISCONNECTED";
 
-      assert.strictEqual(
-        modalTypes.MODAL_NETWORK_DISCONNECTED,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(modalTypes.MODAL_NETWORK_DISCONNECTED).toBe(expected);
     }
   });
 });

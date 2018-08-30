@@ -7,7 +7,7 @@ describe("modules/app/actions/update-connection.js", () => {
       type: action.UPDATE_CONNECTION_STATUS,
       isConnected: true
     };
-    assert.deepEqual(test, out, `Didn't produce the expected action object`);
+    expect(test).toEqual(out);
   });
 
   test(`should update the augur node connection status`, () => {
@@ -16,7 +16,7 @@ describe("modules/app/actions/update-connection.js", () => {
       type: action.UPDATE_AUGUR_NODE_CONNECTION_STATUS,
       isConnected: true
     };
-    assert.deepEqual(test, out, `Didn't produce the expected action object`);
+    expect(test).toEqual(out);
   });
 
   test(`should update the augur node network id`, () => {
@@ -25,7 +25,7 @@ describe("modules/app/actions/update-connection.js", () => {
       type: action.UPDATE_AUGUR_NODE_NETWORK_ID,
       augurNodeNetworkId: "4"
     };
-    assert.deepEqual(test, out, `Didn't produce the expected action object`);
+    expect(test).toEqual(out);
   });
 
   test(`should update the isReconnectionPaused variable`, () => {
@@ -34,6 +34,6 @@ describe("modules/app/actions/update-connection.js", () => {
       type: action.UPDATE_IS_RECONNECTION_PAUSED,
       isReconnectionPaused: true
     };
-    assert.deepEqual(test, out, `Didn't produce the expected action object`);
+    expect(test).toEqual(out);
   });
 });

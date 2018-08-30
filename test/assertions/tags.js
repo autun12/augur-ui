@@ -1,27 +1,24 @@
 export default function(tags) {
-  assert.isDefined(tags, `filters isn't defined`);
-  assert.isArray(tags, `filters isn't an array`);
+  expect(tags).toBeDefined();
+  expect(Array.isArray(tags)).toBe(true);
 
   tags.forEach(tag => {
-    assert.isDefined(tag, `[0].options[0] isn't defined`);
-    assert.isObject(tag, `[0].options[0] isn't a object`);
+    expect(tag).toBeDefined();
+    expect(typeof tag).toBe("object");
 
-    assert.isDefined(tag.name, `[0].options[0].name isn't defined`);
-    assert.isString(tag.name, `[0].options[0].name isn't a string`);
+    expect(tag.name).toBeDefined();
+    expect(typeof tag.name).toBe("string");
 
-    assert.isDefined(tag.value, `[0].options[0].value isn't defined`);
-    assert.isString(tag.value, `[0].options[0].value isn't a string`);
+    expect(tag.value).toBeDefined();
+    expect(typeof tag.value).toBe("string");
 
-    assert.isDefined(tag.numMatched, `[0].options[0].numMatched isn't defined`);
-    assert.isNumber(tag.numMatched, `[0].options[0].numMatched isn't a number`);
+    expect(tag.numMatched).toBeDefined();
+    expect(typeof tag.numMatched).toBe("number");
 
-    assert.isDefined(tag.isSelected, `[0].options[0].isSelected isn't defined`);
-    assert.isBoolean(
-      tag.isSelected,
-      `[0].options[0].isSelected isn't a boolean`
-    );
+    expect(tag.isSelected).toBeDefined();
+    expect(typeof tag.isSelected).toBe("boolean");
 
-    assert.isDefined(tag.onClick, `[0].options[0].onClick isn't defined`);
-    assert.isFunction(tag.onClick, `[0].options[0].onClick isn't a function`);
+    expect(tag.onClick).toBeDefined();
+    expect(typeof tag.onClick).toBe("function");
   });
 }

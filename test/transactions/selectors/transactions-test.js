@@ -13,8 +13,6 @@ import { formatShares, formatEther, formatRep } from "utils/format-number";
 import { formatDate } from "utils/format-date";
 
 describe(`modules/transactions/selectors/transactions.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
-
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
 
@@ -38,7 +36,7 @@ describe(`modules/transactions/selectors/transactions.js`, () => {
 
       const expected = "selectTransactions";
 
-      assert.strictEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toBe(expected);
     }
   });
 
@@ -270,7 +268,7 @@ describe(`modules/transactions/selectors/transactions.js`, () => {
         }
       ];
 
-      assert.deepEqual(actual, expected, `Didn't return the expected object`);
+      expect(actual).toEqual(expected);
     }
   });
 });

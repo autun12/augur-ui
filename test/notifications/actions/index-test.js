@@ -3,49 +3,42 @@ import * as notificationLevels from "src/modules/notifications/constants";
 
 describe("modules/notifications/actions/update-notifications", () => {
   describe("addNotification", () => {
-    test(
-      "should return nothing when the notifications param is null/undefined",
-      () => {
-        const actual = updateNotifications.addNotification();
-        const expected = undefined;
+    test("should return nothing when the notifications param is null/undefined", () => {
+      const actual = updateNotifications.addNotification();
+      const expected = undefined;
 
-        assert.strictEqual(actual, expected, `Didn't return the expected result`);
-      }
-    );
+      expect(actual).toBe(expected);
+    });
 
-    test(
-      "should return the expected object when a notification is passed in",
-      () => {
-        const actual = updateNotifications.addNotification({});
+    test("should return the expected object when a notification is passed in", () => {
+      const actual = updateNotifications.addNotification({});
 
-        const expected = {
-          type: updateNotifications.ADD_NOTIFICATION,
-          data: {
-            notification: {
-              level: notificationLevels.INFO,
-              seen: false
-            }
+      const expected = {
+        type: updateNotifications.ADD_NOTIFICATION,
+        data: {
+          notification: {
+            level: notificationLevels.INFO,
+            seen: false
           }
-        };
+        }
+      };
 
-        assert.deepEqual(actual, expected, `Didn't return the expected result`);
-      }
-    );
+      expect(actual).toEqual(expected);
+    });
 
     test("should default notification level to the 'INFO' constant", () => {
       const actual = updateNotifications.addNotification({});
-      assert.equal(actual.data.notification.level, notificationLevels.INFO);
+      expect(actual.data.notification.level).toEqual(notificationLevels.INFO);
     });
 
-    test(
-      "should override the default notification level with the value passed in the notification object param",
-      () => {
-        const actual = updateNotifications.addNotification({
-          level: notificationLevels.CRITICAL
-        });
-        assert.equal(actual.data.notification.level, notificationLevels.CRITICAL);
-      }
-    );
+    test("should override the default notification level with the value passed in the notification object param", () => {
+      const actual = updateNotifications.addNotification({
+        level: notificationLevels.CRITICAL
+      });
+      expect(actual.data.notification.level).toEqual(
+        notificationLevels.CRITICAL
+      );
+    });
   });
 
   describe("removeNotification", () => {
@@ -57,7 +50,7 @@ describe("modules/notifications/actions/update-notifications", () => {
         data: 1
       };
 
-      assert.deepEqual(actual, expected, `Didn't return the expected object`);
+      expect(actual).toEqual(expected);
     });
   });
 
@@ -77,7 +70,7 @@ describe("modules/notifications/actions/update-notifications", () => {
         }
       };
 
-      assert.deepEqual(actual, expected, `Didn't return the expected object`);
+      expect(actual).toEqual(expected);
     });
   });
 
@@ -91,20 +84,20 @@ describe("modules/notifications/actions/update-notifications", () => {
           level: notificationLevels.INFO
         }
       };
-      assert.deepEqual(actual, expected, `Didn't return the expected object`);
+      expect(actual).toEqual(expected);
     });
 
     describe("notificationLevel", () => {
       test("should default to the 'INFO' constant", () => {
         const actual = updateNotifications.clearNotifications();
-        assert.equal(actual.data.level, notificationLevels.INFO);
+        expect(actual.data.level).toEqual(notificationLevels.INFO);
       });
 
       test("should pass notificationLevel", () => {
         const actual = updateNotifications.clearNotifications(
           notificationLevels.CRITICAL
         );
-        assert.equal(actual.data.level, notificationLevels.CRITICAL);
+        expect(actual.data.level).toEqual(notificationLevels.CRITICAL);
       });
     });
   });

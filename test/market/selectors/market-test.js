@@ -17,26 +17,23 @@ describe(`modules/market/selectors/market.js`, () => {
     .stub(stubbedAugurJS, "getMarketCreatorFeesCollected")
     .callsFake(() => 10);
 
-  const selector = jest.mock(
-    "modules/market/selectors/market.js",
-    {
-      "../../../store": store,
-      // make selectors/user-open-orders-summary use the same store as selectors/market.js
-      "../../user-open-orders/selectors/user-open-orders-summary": jest.mock(
-        "../../../src/modules/user-open-orders/selectors/user-open-orders-summary",
-        {
-          "../../../store": store
-        }
-      ),
-      "../../../modules/my-markets/selectors/my-markets": jest.mock(
-        "../../../src/modules/my-markets/selectors/my-markets",
-        {
-          "../../../services/augurjs": stubbedAugurJS,
-          "../../../selectors": stubbedSelectors
-        }
-      )
-    }
-  );
+  const selector = jest.mock("modules/market/selectors/market.js", {
+    "../../../store": store,
+    // make selectors/user-open-orders-summary use the same store as selectors/market.js
+    "../../user-open-orders/selectors/user-open-orders-summary": jest.mock(
+      "../../../src/modules/user-open-orders/selectors/user-open-orders-summary",
+      {
+        "../../../store": store
+      }
+    ),
+    "../../../modules/my-markets/selectors/my-markets": jest.mock(
+      "../../../src/modules/my-markets/selectors/my-markets",
+      {
+        "../../../services/augurjs": stubbedAugurJS,
+        "../../../selectors": stubbedSelectors
+      }
+    )
+  });
 
   beforeEach(() => {
     store.clearActions();

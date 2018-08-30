@@ -65,11 +65,9 @@ describe(`modules/create-market/actions/liquidity-management.js`, () => {
     state: stateData,
     assertions: store => {
       store.dispatch(loadPendingLiquidityOrders({}));
-      assert.deepEqual(
-        store.getActions(),
-        [{ type: LOAD_PENDING_LIQUIDITY_ORDERS, data: {} }],
-        `expected to dispatch LOAD_PENDING_LIQUIDITY_ORDERS`
-      );
+      expect(store.getActions()).toEqual([
+        { type: LOAD_PENDING_LIQUIDITY_ORDERS, data: {} }
+      ]);
     }
   });
 
@@ -86,11 +84,9 @@ describe(`modules/create-market/actions/liquidity-management.js`, () => {
         }
       };
       store.dispatch(addMarketLiquidityOrders(data));
-      assert.deepEqual(
-        store.getActions(),
-        [{ type: ADD_MARKET_LIQUIDITY_ORDERS, data }],
-        `expected to dispatch ADD_MARKET_LIQUIDITY_ORDERS`
-      );
+      expect(store.getActions()).toEqual([
+        { type: ADD_MARKET_LIQUIDITY_ORDERS, data }
+      ]);
     }
   });
 
@@ -100,11 +96,9 @@ describe(`modules/create-market/actions/liquidity-management.js`, () => {
     assertions: store => {
       const data = "marketId";
       store.dispatch(clearMarketLiquidityOrders(data));
-      assert.deepEqual(
-        store.getActions(),
-        [{ type: CLEAR_ALL_MARKET_ORDERS, data }],
-        `expected to dispatch CLEAR_ALL_MARKET_ORDERS`
-      );
+      expect(store.getActions()).toEqual([
+        { type: CLEAR_ALL_MARKET_ORDERS, data }
+      ]);
     }
   });
 
@@ -125,11 +119,9 @@ describe(`modules/create-market/actions/liquidity-management.js`, () => {
         updates: { onSent: true, txHash: "0xdeadbeef", orderId: "0xOrderId" }
       };
       store.dispatch(updateLiquidityOrder(data));
-      assert.deepEqual(
-        store.getActions(),
-        [{ type: UPDATE_LIQUIDITY_ORDER, data }],
-        `expected to dispatch UPDATE_LIQUIDITY_ORDER`
-      );
+      expect(store.getActions()).toEqual([
+        { type: UPDATE_LIQUIDITY_ORDER, data }
+      ]);
     }
   });
 
@@ -158,11 +150,9 @@ describe(`modules/create-market/actions/liquidity-management.js`, () => {
         orderId: 0
       };
       store.dispatch(removeLiquidityOrder(data));
-      assert.deepEqual(
-        store.getActions(),
-        [{ type: REMOVE_LIQUIDITY_ORDER, data }],
-        `expected to dispatch REMOVE_LIQUIDITY_ORDER`
-      );
+      expect(store.getActions()).toEqual([
+        { type: REMOVE_LIQUIDITY_ORDER, data }
+      ]);
     }
   });
 
@@ -190,40 +180,36 @@ describe(`modules/create-market/actions/liquidity-management.js`, () => {
         log: null
       };
       store.dispatch(startOrderSending(data));
-      assert.deepEqual(
-        store.getActions(),
-        [
-          {
-            type: "UPDATE_LIQUIDITY_ORDER",
-            data: {
-              marketId: "marketId",
-              order: {
-                quantity: "3",
-                price: "0.5",
-                type: "bid",
-                estimatedCost: "1.5",
-                index: 0
-              },
-              orderId: 0,
-              outcomeId: 1,
-              updates: {
-                onSent: true,
-                txhash: "0xdeadbeef",
-                orderId: "0x1"
-              }
-            }
-          },
-          {
-            type: "REMOVE_LIQUIDITY_ORDER",
-            data: {
-              marketId: "marketId",
-              orderId: 0,
-              outcomeId: 1
+      expect(store.getActions()).toEqual([
+        {
+          type: "UPDATE_LIQUIDITY_ORDER",
+          data: {
+            marketId: "marketId",
+            order: {
+              quantity: "3",
+              price: "0.5",
+              type: "bid",
+              estimatedCost: "1.5",
+              index: 0
+            },
+            orderId: 0,
+            outcomeId: 1,
+            updates: {
+              onSent: true,
+              txhash: "0xdeadbeef",
+              orderId: "0x1"
             }
           }
-        ],
-        `expected to dispatch UPDATE_LIQUIDITY_ORDER & REMOVE_LIQUIDITY_ORDER`
-      );
+        },
+        {
+          type: "REMOVE_LIQUIDITY_ORDER",
+          data: {
+            marketId: "marketId",
+            orderId: 0,
+            outcomeId: 1
+          }
+        }
+      ]);
     }
   });
 });

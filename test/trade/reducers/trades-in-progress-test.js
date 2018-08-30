@@ -28,11 +28,7 @@ describe(`modules/trade/reducers/trade-in-progress.js`, () => {
 
     const expectedState = {};
 
-    assert.deepEqual(
-      reducer(testState, testAction),
-      expectedState,
-      `reducer doesn't produce the expected state`
-    );
+    expect(reducer(testState, testAction)).toEqual(expectedState);
   });
 
   test(`should be able to update a trade in progress`, () => {
@@ -62,11 +58,7 @@ describe(`modules/trade/reducers/trade-in-progress.js`, () => {
       }
     };
 
-    assert.deepEqual(
-      reducer(testState, testAction),
-      expectedState,
-      `reducer doesn't produce the expected state`
-    );
+    expect(reducer(testState, testAction)).toEqual(expectedState);
   });
 
   test(`should be able to clear a trade in progress`, () => {
@@ -85,10 +77,6 @@ describe(`modules/trade/reducers/trade-in-progress.js`, () => {
       MarketID2: {}
     };
 
-    assert.deepEqual(
-      reducer(testState, testAction),
-      expectedState,
-      `reducer doesn't produce the expected state`
-    );
+    expect(reducer(testState, testAction)).toEqual(expectedState);
   });
 });

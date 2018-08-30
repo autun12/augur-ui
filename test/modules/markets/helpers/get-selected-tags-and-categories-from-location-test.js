@@ -20,17 +20,14 @@ describe("src/modules/markets/helpers/get-tags-and-categories-from-location.js",
       );
     });
 
-    test(
-      "should return an object with the relevant parsed data in an object",
-      () => {
-        expect(result).toEqual({
-          category: "Augur",
-          keywords: "test keywords",
-          tags: ["Ethereum", "trading"],
-          balanceOfSearchParams: {}
-        });
-      }
-    );
+    test("should return an object with the relevant parsed data in an object", () => {
+      expect(result).toEqual({
+        category: "Augur",
+        keywords: "test keywords",
+        tags: ["Ethereum", "trading"],
+        balanceOfSearchParams: {}
+      });
+    });
   });
 
   describe("no tags", () => {
@@ -53,17 +50,14 @@ describe("src/modules/markets/helpers/get-tags-and-categories-from-location.js",
       result = composedGetTagsAndCategoriesFromLocation("");
     });
 
-    test(
-      "should return an object with a null category and empty tags array",
-      () => {
-        expect(result).toEqual({
-          category: undefined,
-          keywords: undefined,
-          tags: [],
-          balanceOfSearchParams: {}
-        });
-      }
-    );
+    test("should return an object with a null category and empty tags array", () => {
+      expect(result).toEqual({
+        category: undefined,
+        keywords: undefined,
+        tags: [],
+        balanceOfSearchParams: {}
+      });
+    });
   });
 
   describe("no keywords", () => {

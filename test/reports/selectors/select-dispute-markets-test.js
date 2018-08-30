@@ -1,6 +1,4 @@
 describe(`modules/reports/selectors/select-dispute-markets.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
-
   const test = t => {
     test(t.description, () => {
       t.assertions();
@@ -29,7 +27,7 @@ describe(`modules/reports/selectors/select-dispute-markets.js`, () => {
         );
 
         const actual = selector.selectMarketsInDispute();
-        assert.deepEqual(actual, [], `Didn't call the expected method`);
+        expect(actual).toEqual([]);
       }
     });
   });
@@ -69,7 +67,7 @@ describe(`modules/reports/selectors/select-dispute-markets.js`, () => {
         );
 
         const actual = selector.selectMarketsInDispute();
-        assert.deepEqual(actual, [], `Didn't return the expected array`);
+        expect(actual).toEqual([]);
       }
     });
   });
@@ -222,7 +220,7 @@ describe(`modules/reports/selectors/select-dispute-markets.js`, () => {
           }
         ];
 
-        assert.deepEqual(actual, expected, `Didn't return the expected array`);
+        expect(actual).toEqual(expected);
       }
     });
   });

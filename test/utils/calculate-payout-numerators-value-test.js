@@ -54,7 +54,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "75";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -69,7 +69,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "75";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -84,7 +84,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "73";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -99,7 +99,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "25";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -114,7 +114,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "50";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -129,7 +129,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "25";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -144,7 +144,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "45.01";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -159,7 +159,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           true
         );
         const expected = null;
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -174,7 +174,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "0";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -189,7 +189,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "1";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -204,7 +204,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           true
         );
         const expected = null;
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -219,7 +219,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "0";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -234,7 +234,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "3";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -249,7 +249,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           false
         );
         const expected = "6";
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -264,7 +264,7 @@ describe(`modules/reporting/actions/calculate-payout-numerators-value.js`, () =>
           true
         );
         const expected = null;
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });

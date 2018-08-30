@@ -4,7 +4,6 @@ import { BUY } from "modules/transactions/constants/types";
 import { updateOrderStatus } from "modules/bids-asks/actions/update-order-status";
 
 describe("modules/bids-asks/actions/update-order-status.js", () => {
-  proxyquire.noPreserveCache();
   const store = mocks.mockStore(mocks.state);
   afterEach(() => {
     store.clearActions();

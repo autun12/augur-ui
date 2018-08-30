@@ -169,11 +169,7 @@ describe("modules/app/actions/init-augur.js", () => {
           { type: "SET_LOGIN_ACCOUNT" }
         ];
 
-        assert.deepEqual(
-          store.getActions(),
-          expected,
-          `Didn't fire the expected actions`
-        );
+        expect(store.getActions()).toEqual(expected);
       }
     });
     test({
@@ -230,11 +226,7 @@ describe("modules/app/actions/init-augur.js", () => {
           { type: "LOGOUT" }
         ];
 
-        assert.deepEqual(
-          store.getActions(),
-          expected,
-          `Didn't fire the expected actions`
-        );
+        expect(store.getActions()).toEqual(expected);
       }
     });
     test({
@@ -297,11 +289,7 @@ describe("modules/app/actions/init-augur.js", () => {
           { type: "LOGOUT" }
         ];
 
-        assert.deepEqual(
-          store.getActions(),
-          expected,
-          `Didn't fire the expected actions`
-        );
+        expect(store.getActions()).toEqual(expected);
       }
     });
     describe("connectAugur", () => {
@@ -361,11 +349,7 @@ describe("modules/app/actions/init-augur.js", () => {
             { type: "SET_LOGIN_ACCOUNT" }
           ];
 
-          assert.deepEqual(
-            store.getActions(),
-            expected,
-            `Didn't fire the expected actions`
-          );
+          expect(store.getActions()).toEqual(expected);
         }
       });
       test({
@@ -419,11 +403,7 @@ describe("modules/app/actions/init-augur.js", () => {
             { type: "LOAD_UNIVERSE" }
           ];
 
-          assert.deepEqual(
-            store.getActions(),
-            expected,
-            `Didn't fire the expected actions`
-          );
+          expect(store.getActions()).toEqual(expected);
         }
       });
       test({
@@ -463,32 +443,24 @@ describe("modules/app/actions/init-augur.js", () => {
                 err,
                 "callback passed to connectAugur had a first argument when expecting null."
               );
-              assert.deepEqual(
-                connInfo,
-                {
-                  ethereumNode: {
-                    ...ethereumNodeConnectionInfo,
-                    contracts: {},
-                    abi: {
-                      functions: {},
-                      events: {}
-                    }
-                  },
-                  augurNode: undefined
+              expect(connInfo).toEqual({
+                ethereumNode: {
+                  ...ethereumNodeConnectionInfo,
+                  contracts: {},
+                  abi: {
+                    functions: {},
+                    events: {}
+                  }
                 },
-                `Didn't return the expected connection info object on error.`
-              );
+                augurNode: undefined
+              });
               done();
             })
           );
 
           const expected = [];
 
-          assert.deepEqual(
-            store.getActions(),
-            expected,
-            `Didn't fire the expected actions`
-          );
+          expect(store.getActions()).toEqual(expected);
         }
       });
       test({
@@ -522,25 +494,17 @@ describe("modules/app/actions/init-augur.js", () => {
                 err,
                 "callback passed to connectAugur had a first argument when expecting null."
               );
-              assert.deepEqual(
-                connInfo,
-                {
-                  ethereumNode: undefined,
-                  augurNode: augurNodeWS
-                },
-                `Didn't return the expected connection info object on error.`
-              );
+              expect(connInfo).toEqual({
+                ethereumNode: undefined,
+                augurNode: augurNodeWS
+              });
               done();
             })
           );
 
           const expected = [];
 
-          assert.deepEqual(
-            store.getActions(),
-            expected,
-            `Didn't fire the expected actions`
-          );
+          expect(store.getActions()).toEqual(expected);
         }
       });
       test({
@@ -572,30 +536,21 @@ describe("modules/app/actions/init-augur.js", () => {
 
           store.dispatch(
             connectAugur({}, mockEnv, false, (err, connInfo) => {
-              assert.deepEqual(
-                err,
-                { error: 2000, message: "There was a mistake." },
-                `callback passed to connectAugur didn't recieve the expected error object.`
-              );
-              assert.deepEqual(
-                connInfo,
-                {
-                  ethereumNode: undefined,
-                  augurNode: undefined
-                },
-                `Didn't return the expected connection info object on error.`
-              );
+              expect(err).toEqual({
+                error: 2000,
+                message: "There was a mistake."
+              });
+              expect(connInfo).toEqual({
+                ethereumNode: undefined,
+                augurNode: undefined
+              });
               done();
             })
           );
 
           const expected = [];
 
-          assert.deepEqual(
-            store.getActions(),
-            expected,
-            `Didn't fire the expected actions`
-          );
+          expect(store.getActions()).toEqual(expected);
         }
       });
     });

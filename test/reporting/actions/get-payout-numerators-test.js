@@ -7,8 +7,6 @@ import { getPayoutNumerators } from "modules/reporting/selectors/get-payout-nume
 import { createBigNumber } from "utils/create-big-number";
 
 describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
-
   const test = t => {
     test(t.description, () => {
       t.assertions();
@@ -55,10 +53,12 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n.toString()
         );
         const expected = ["2500", "7500"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        expect(createBigNumber(expected[0])
-          .plus(createBigNumber(expected[1]))
-          .toFixed()).toEqual(marketScalar.numTicks);
+        expect(actual).toEqual(expected);
+        expect(
+          createBigNumber(expected[0])
+            .plus(createBigNumber(expected[1]))
+            .toFixed()
+        ).toEqual(marketScalar.numTicks);
       }
     });
   });
@@ -71,10 +71,12 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n => n.toString()
         );
         const expected = ["450", "850"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        expect(createBigNumber(expected[0])
-          .plus(createBigNumber(expected[1]))
-          .toFixed()).toEqual(marketScalarMin.numTicks);
+        expect(actual).toEqual(expected);
+        expect(
+          createBigNumber(expected[0])
+            .plus(createBigNumber(expected[1]))
+            .toFixed()
+        ).toEqual(marketScalarMin.numTicks);
       }
     });
   });
@@ -87,10 +89,12 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n => n.toString()
         );
         const expected = ["950", "350"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        expect(createBigNumber(expected[0])
-          .plus(createBigNumber(expected[1]))
-          .toFixed()).toEqual(marketScalarMin.numTicks);
+        expect(actual).toEqual(expected);
+        expect(
+          createBigNumber(expected[0])
+            .plus(createBigNumber(expected[1]))
+            .toFixed()
+        ).toEqual(marketScalarMin.numTicks);
       }
     });
   });
@@ -103,10 +107,12 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n.toString()
         );
         const expected = ["5000", "5000"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        expect(createBigNumber(expected[0])
-          .plus(createBigNumber(expected[1]))
-          .toFixed()).toEqual(marketScalar.numTicks);
+        expect(actual).toEqual(expected);
+        expect(
+          createBigNumber(expected[0])
+            .plus(createBigNumber(expected[1]))
+            .toFixed()
+        ).toEqual(marketScalar.numTicks);
       }
     });
   });
@@ -119,10 +125,12 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n.toString()
         );
         const expected = ["7500", "2500"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        expect(createBigNumber(expected[0])
-          .plus(createBigNumber(expected[1]))
-          .toFixed()).toEqual(marketScalar.numTicks);
+        expect(actual).toEqual(expected);
+        expect(
+          createBigNumber(expected[0])
+            .plus(createBigNumber(expected[1]))
+            .toFixed()
+        ).toEqual(marketScalar.numTicks);
       }
     });
   });
@@ -135,10 +143,12 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n => n.toString()
         );
         const expected = ["5499", "4501"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        expect(createBigNumber(expected[0])
-          .plus(createBigNumber(expected[1]))
-          .toFixed()).toEqual(marketScalar.numTicks);
+        expect(actual).toEqual(expected);
+        expect(
+          createBigNumber(expected[0])
+            .plus(createBigNumber(expected[1]))
+            .toFixed()
+        ).toEqual(marketScalar.numTicks);
       }
     });
   });
@@ -151,10 +161,12 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n.toString()
         );
         const expected = ["5000", "5000"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
-        expect(createBigNumber(expected[0])
-          .plus(createBigNumber(expected[1]))
-          .toFixed()).toEqual(marketScalar.numTicks);
+        expect(actual).toEqual(expected);
+        expect(
+          createBigNumber(expected[0])
+            .plus(createBigNumber(expected[1]))
+            .toFixed()
+        ).toEqual(marketScalar.numTicks);
       }
     });
   });
@@ -167,7 +179,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n.toString()
         );
         const expected = ["10000", "0"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -180,7 +192,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n.toString()
         );
         const expected = ["0", "10000"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -193,7 +205,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n.toString()
         );
         const expected = ["5000", "5000"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -206,7 +218,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n.toString()
         );
         const expected = ["10003", "0", "0", "0", "0", "0", "0"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -219,7 +231,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n.toString()
         );
         const expected = ["0", "0", "0", "10003", "0", "0", "0"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -232,7 +244,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           n.toString()
         );
         const expected = ["0", "0", "0", "0", "0", "0", "10003"];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -253,7 +265,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
           "1429",
           "1429"
         ];
-        assert.deepEqual(actual, expected, `Didn't call the expected method`);
+        expect(actual).toEqual(expected);
       }
     });
   });

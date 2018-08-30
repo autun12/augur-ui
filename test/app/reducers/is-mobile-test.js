@@ -11,7 +11,7 @@ describe("modules/app/reducers/is-mobile.js", () => {
 
       const expected = false;
 
-      assert.strictEqual(actual, expected, `didn't return the expected value`);
+      expect(actual).toBe(expected);
     }
   });
 
@@ -27,7 +27,7 @@ describe("modules/app/reducers/is-mobile.js", () => {
 
       const expected = false;
 
-      assert.strictEqual(actual, expected, `didn't return the expected value`);
+      expect(actual).toBe(expected);
     }
   });
 });

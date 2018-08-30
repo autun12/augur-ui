@@ -22,11 +22,7 @@ describe("modules/create-market/reducers/liquidity-orders.js", () => {
 
       const expected = {};
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected default value`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -37,11 +33,7 @@ describe("modules/create-market/reducers/liquidity-orders.js", () => {
 
       const expected = "testing";
 
-      assert.equal(
-        actual,
-        expected,
-        `Didn't return the expected existing value`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -62,11 +54,7 @@ describe("modules/create-market/reducers/liquidity-orders.js", () => {
 
       const expected = data;
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected existing value`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -92,11 +80,7 @@ describe("modules/create-market/reducers/liquidity-orders.js", () => {
         }
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected updated pending orders`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -123,11 +107,7 @@ describe("modules/create-market/reducers/liquidity-orders.js", () => {
         }
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected updated pending orders`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -168,11 +148,7 @@ describe("modules/create-market/reducers/liquidity-orders.js", () => {
 
       const expected = {};
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected updated pending orders`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -252,11 +228,7 @@ describe("modules/create-market/reducers/liquidity-orders.js", () => {
           ]
         }
       };
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected updated pending orders`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -320,11 +292,7 @@ describe("modules/create-market/reducers/liquidity-orders.js", () => {
           ]
         }
       };
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected updated pending orders`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -404,11 +372,7 @@ describe("modules/create-market/reducers/liquidity-orders.js", () => {
           ]
         }
       };
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected updated pending orders`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -439,11 +403,7 @@ describe("modules/create-market/reducers/liquidity-orders.js", () => {
 
       const expected = {};
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected updated pending orders`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 });

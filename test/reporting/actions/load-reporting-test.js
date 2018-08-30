@@ -63,98 +63,97 @@ describe("loadReporting action", () => {
     loadReportingRewire.__ResetDependency__("loadMarketsInfoIfNotLoaded");
   });
 
-  test(
-    "should load upcoming designated markets for a given user in side the given universe",
-    () => {
-      store.dispatch(loadReporting());
+  test("should load upcoming designated markets for a given user in side the given universe", () => {
+    store.dispatch(loadReporting());
 
-      const checkCall = (
-        callIndex,
-        method,
-        reportingState,
-        expectedParams,
-        callbackArgs
-      ) => {
-        const c = submitRequestStub.getCall(callIndex);
-        expect(c.calledWith(method, {
+    const checkCall = (
+      callIndex,
+      method,
+      reportingState,
+      expectedParams,
+      callbackArgs
+    ) => {
+      const c = submitRequestStub.getCall(callIndex);
+      expect(
+        c.calledWith(method, {
           reportingState,
           ...expectedParams
-        })).toBeTruthy();
-        c.args[2](null, callbackArgs);
-      };
+        })
+      ).toBeTruthy();
+      c.args[2](null, callbackArgs);
+    };
 
-      checkCall(
-        0,
-        "getMarkets",
-        constants.REPORTING_STATE.PRE_REPORTING,
-        {
-          sortBy: "endTime",
-          universe: universeAddress,
-          designatedReporter: loginAccountAddress
-        },
-        ["1111"]
-      );
-      checkCall(
-        1,
-        "getMarkets",
-        constants.REPORTING_STATE.DESIGNATED_REPORTING,
-        {
-          sortBy: "endTime",
-          universe: universeAddress,
-          designatedReporter: loginAccountAddress
-        },
-        ["2222", "3333"]
-      );
+    checkCall(
+      0,
+      "getMarkets",
+      constants.REPORTING_STATE.PRE_REPORTING,
+      {
+        sortBy: "endTime",
+        universe: universeAddress,
+        designatedReporter: loginAccountAddress
+      },
+      ["1111"]
+    );
+    checkCall(
+      1,
+      "getMarkets",
+      constants.REPORTING_STATE.DESIGNATED_REPORTING,
+      {
+        sortBy: "endTime",
+        universe: universeAddress,
+        designatedReporter: loginAccountAddress
+      },
+      ["2222", "3333"]
+    );
 
-      checkCall(
-        2,
-        "getMarkets",
-        constants.REPORTING_STATE.OPEN_REPORTING,
-        {
-          sortBy: "endTime",
-          universe: universeAddress
-        },
-        ["4444"]
-      );
+    checkCall(
+      2,
+      "getMarkets",
+      constants.REPORTING_STATE.OPEN_REPORTING,
+      {
+        sortBy: "endTime",
+        universe: universeAddress
+      },
+      ["4444"]
+    );
 
-      const expected = [
-        {
-          data: ["1111"],
-          type: "UPDATE_UPCOMING_DESIGNATED_REPORTING_MARKETS"
+    const expected = [
+      {
+        data: ["1111"],
+        type: "UPDATE_UPCOMING_DESIGNATED_REPORTING_MARKETS"
+      },
+      {
+        data: {
+          marketIds: ["1111"]
         },
-        {
-          data: {
-            marketIds: ["1111"]
-          },
-          type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
+        type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
+      },
+      {
+        data: ["2222", "3333"],
+        type: "UPDATE_DESIGNATED_REPORTING_MARKETS"
+      },
+      {
+        data: {
+          marketIds: ["2222", "3333"]
         },
-        {
-          data: ["2222", "3333"],
-          type: "UPDATE_DESIGNATED_REPORTING_MARKETS"
+        type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
+      },
+      {
+        data: ["4444"],
+        type: "UPDATE_OPEN_REPORTING_MARKETS"
+      },
+      {
+        data: {
+          marketIds: ["4444"]
         },
-        {
-          data: {
-            marketIds: ["2222", "3333"]
-          },
-          type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
-        },
-        {
-          data: ["4444"],
-          type: "UPDATE_OPEN_REPORTING_MARKETS"
-        },
-        {
-          data: {
-            marketIds: ["4444"]
-          },
-          type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
-        }
-      ];
-      const actual = store.getActions();
-      // actions include load market info actions
-      expect(actual).toHaveLength(6);
-      assert.deepEqual(actual, expected, "Did not get correct actions");
-    }
-  );
+        type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
+      }
+    ];
+    const actual = store.getActions();
+    // actions include load market info actions
+    expect(actual).toHaveLength(6);
+    expect(actual).toEqual(expected);
+  });
 
   describe("upon error", () => {
     let callback;

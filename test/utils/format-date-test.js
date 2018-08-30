@@ -15,11 +15,7 @@ describe("utils/format-date", () => {
         (new Date(1521489481).getTimezoneOffset() / 60) * -1;
       const actual = formatDate(new Date(1521489481)).utcLocalOffset;
 
-      assert.strictEqual(
-        actual,
-        currenUtcOffset,
-        `didn't return ` + currenUtcOffset + ` as expected`
-      );
+      expect(actual).toBe(currenUtcOffset);
     }
   });
 
@@ -28,7 +24,7 @@ describe("utils/format-date", () => {
     assertions: () => {
       const actual = dateHasPassed(1522798696889, 11111111);
 
-      assert.strictEqual(actual, true, `didn't return true as expected`);
+      expect(actual).toBe(true);
     }
   });
 
@@ -37,7 +33,7 @@ describe("utils/format-date", () => {
     assertions: () => {
       const actual = dateHasPassed(1522798696889, 999999999999999);
 
-      assert.strictEqual(actual, false, `didn't return false as expected`);
+      expect(actual).toBe(false);
     }
   });
 
@@ -46,7 +42,7 @@ describe("utils/format-date", () => {
     assertions: () => {
       const actual = getDaysRemaining(11111, 11111);
 
-      assert.strictEqual(actual, 0, `didn't return 0 as expected`);
+      expect(actual).toBe(0);
     }
   });
 
@@ -55,7 +51,7 @@ describe("utils/format-date", () => {
     assertions: () => {
       const actual = getDaysRemaining(11111, 99999);
 
-      assert.strictEqual(actual, 0, `didn't return 0 as expected`);
+      expect(actual).toBe(0);
     }
   });
 
@@ -64,7 +60,7 @@ describe("utils/format-date", () => {
     assertions: () => {
       const actual = getDaysRemaining(null, 99999);
 
-      assert.strictEqual(actual, 0, `didn't return 0 as expected`);
+      expect(actual).toBe(0);
     }
   });
 
@@ -73,7 +69,7 @@ describe("utils/format-date", () => {
     assertions: () => {
       const actual = getDaysRemaining(99999, null);
 
-      assert.strictEqual(actual, 0, `didn't return 0 as expected`);
+      expect(actual).toBe(0);
     }
   });
 
@@ -82,7 +78,7 @@ describe("utils/format-date", () => {
     assertions: () => {
       const actual = getDaysRemaining(1520300344, 1519849696);
 
-      assert.strictEqual(actual, 5, `didn't return 5 as expected`);
+      expect(actual).toBe(5);
     }
   });
 
@@ -94,7 +90,7 @@ describe("utils/format-date", () => {
         formatDate(new Date(1519849696000)).timestamp
       );
 
-      assert.strictEqual(actual, 5, `didn't return 5 as expected`);
+      expect(actual).toBe(5);
     }
   });
 
@@ -103,7 +99,7 @@ describe("utils/format-date", () => {
     assertions: () => {
       const actual = getDaysRemaining(1520300344, 1520300300);
 
-      assert.strictEqual(actual, 0, `didn't return 0 as expected`);
+      expect(actual).toBe(0);
     }
   });
 
@@ -114,16 +110,8 @@ describe("utils/format-date", () => {
       const dateTime = "March 6, 2018 1:39 AM";
       const actual = convertUnixToFormattedDate(1520300344);
 
-      assert.strictEqual(
-        actual.formatted,
-        dateTime,
-        `didn't get correct format`
-      );
-      assert.strictEqual(
-        actual.timestamp,
-        timestamp,
-        `didn't get correct timestamp`
-      );
+      expect(actual.formatted).toBe(dateTime);
+      expect(actual.timestamp).toBe(timestamp);
     }
   });
 });

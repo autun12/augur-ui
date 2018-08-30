@@ -5,14 +5,16 @@ describe("modules/bids-asks/helpers/is-order-of-user.js", () => {
 
   describe("isOrderOfUser", () => {
     test("should return false if order is not of user", () => {
-      assert.isFalse(isOrderOfUser({ owner: "owner_address" }, null));
-      assert.isFalse(
+      expect(isOrderOfUser({ owner: "owner_address" }, null)).toBeFalsy();
+      expect(
         isOrderOfUser({ owner: "owner_address" }, "some other address")
-      );
+      ).toBeFalsy();
     });
 
     test("should return correct ", () => {
-      assert.isTrue(isOrderOfUser({ owner: "owner_address" }, "owner_address"));
+      expect(
+        isOrderOfUser({ owner: "owner_address" }, "owner_address")
+      ).toBeTruthy();
     });
   });
 });

@@ -5,7 +5,6 @@ import thunk from "redux-thunk";
 const MOCK_ERROR = { error: 42, message: "fail!" };
 
 describe(`modules/auth/actions/use-unlocked-account.js`, () => {
-  proxyquire.noPreserveCache();
   const mockStore = configureMockStore([thunk]);
   const test = t =>
     test(t.description, done => {
@@ -78,10 +77,10 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
       augur: {
         rpc: { isUnlocked: (address, callback) => callback(null, null) }
       },
-      isGlobalWeb3: () => assert.fail()
+      isGlobalWeb3: () => expect(false).toBeTruthy()
     },
     assertions: (err, actions) => {
-      assert.strictEqual(err, "no account address");
+      expect(err).toBe("no account address");
       expect(actions).toEqual([]);
     }
   });
@@ -122,7 +121,7 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
       isGlobalWeb3: () => false
     },
     assertions: (err, actions) => {
-      assert.isNull(err);
+      expect(err).toBeNull();
       expect(actions).toEqual([
         {
           type: "IS_GLOBAL_WEB3",
@@ -141,11 +140,13 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
       unlockedAddress: "0xb0b"
     },
     stub: {
-      augur: { rpc: { isUnlocked: (address, callback) => assert.fail() } },
+      augur: {
+        rpc: { isUnlocked: (address, callback) => expect(false).toBeTruthy() }
+      },
       isGlobalWeb3: () => true
     },
     assertions: (err, actions) => {
-      assert.isNull(err);
+      expect(err).toBeNull();
       expect(actions).toEqual([
         {
           type: "IS_GLOBAL_WEB3",

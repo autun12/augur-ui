@@ -16,11 +16,7 @@ describe("modules/markets/reducers/has-loaded-markets.js", () => {
 
       const expected = false;
 
-      assert.equal(
-        actual,
-        expected,
-        `Didn't return the expected default value`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -31,11 +27,7 @@ describe("modules/markets/reducers/has-loaded-markets.js", () => {
 
       const expected = true;
 
-      assert.equal(
-        actual,
-        expected,
-        `Didn't return the expected existing value`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -49,11 +41,7 @@ describe("modules/markets/reducers/has-loaded-markets.js", () => {
 
       const expected = false;
 
-      assert.equal(
-        actual,
-        expected,
-        `Didn't return the expected updated value`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 });

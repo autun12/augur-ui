@@ -30,82 +30,52 @@ describe(`store.js`, () => {
 
   test("should initialize with the correct default state", () => {
     assert.isOk(state, "state is not defined");
-    assert.isObject(state, "state is not a object");
+    expect(typeof state).toBe("object");
 
     assert.isOk(state.blockchain, "blockchain is not defined");
-    assert.isObject(state.blockchain, "blockchain is not an object");
-    assert.deepEqual(state.blockchain, {}, "blockchain is not an empty object");
+    expect(typeof state.blockchain).toBe("object");
+    expect(state.blockchain).toEqual({});
 
     assert.isOk(state.universe, "universe is not defined");
-    assert.isObject(state.universe, "universe is not an object");
-    assert.deepEqual(state.universe, {}, "universe is not an empty object");
+    expect(typeof state.universe).toBe("object");
+    expect(state.universe).toEqual({});
 
     assert.isOk(state.loginAccount, "loginAccount is not defined");
-    assert.isObject(state.loginAccount, "loginAccount is not an object");
-    assert.deepEqual(
-      state.loginAccount,
-      {},
-      "loginAccount is not an empty object"
-    );
+    expect(typeof state.loginAccount).toBe("object");
+    expect(state.loginAccount).toEqual({});
 
     assert.isOk(state.marketsData, "marketsData is not defined");
-    assert.isObject(state.marketsData, "marketsData is not an object");
-    assert.deepEqual(
-      state.marketsData,
-      {},
-      "marketsData is not an empty object"
-    );
+    expect(typeof state.marketsData).toBe("object");
+    expect(state.marketsData).toEqual({});
 
     assert.isOk(state.favorites, "favorites is not defined");
-    assert.isObject(state.favorites, "favorites is not an object");
-    assert.deepEqual(state.favorites, {}, "favorites is not an empty object");
+    expect(typeof state.favorites).toBe("object");
+    expect(state.favorites).toEqual({});
 
     assert.isOk(state.notifications, "notifications is not defined");
-    assert.isArray(state.notifications, "notifications is not an array");
-    assert.deepEqual(
-      state.notifications,
-      [],
-      "notifications is not an empty array"
-    );
+    expect(Array.isArray(state.notifications)).toBe(true);
+    expect(state.notifications).toEqual([]);
 
     assert.isOk(state.reports, "reports is not defined");
-    assert.isObject(state.reports, "reports is not an object");
-    assert.deepEqual(state.reports, {}, "reports is not an empty object");
+    expect(typeof state.reports).toBe("object");
+    expect(state.reports).toEqual({});
 
     assert.isOk(state.tradesInProgress, "tradesInProgress is not defined");
-    assert.isObject(
-      state.tradesInProgress,
-      "tradesInProgress is not an object"
-    );
-    assert.deepEqual(
-      state.tradesInProgress,
-      {},
-      "tradesInProgress is not an empty object"
-    );
+    expect(typeof state.tradesInProgress).toBe("object");
+    expect(state.tradesInProgress).toEqual({});
 
     assert.isOk(state.outcomesData, "outcomes is not defined");
-    assert.isObject(state.outcomesData, "outcomes is not an object");
-    assert.deepEqual(state.outcomesData, {}, "outcomes is not an empty object");
+    expect(typeof state.outcomesData).toBe("object");
+    expect(state.outcomesData).toEqual({});
 
     assert.isOk(state.orderBooks, "orderBooks is not defined");
-    assert.isObject(state.orderBooks, "orderBooks is not an object");
-    assert.deepEqual(state.orderBooks, {}, "orderBooks is not an empty object");
+    expect(typeof state.orderBooks).toBe("object");
+    expect(state.orderBooks).toEqual({});
 
-    assert.deepEqual(
-      state.accountTrades,
-      {},
-      "accountTrades is an empty object"
-    );
+    expect(state.accountTrades).toEqual({});
 
     assert.isOk(state.transactionsData, "transactionsData is not defined");
-    assert.isObject(
-      state.transactionsData,
-      "transactionsData is not an object"
-    );
-    assert.deepEqual(
-      state.transactionsData,
-      {},
-      "transactionsData is not an empty object"
-    );
+    expect(typeof state.transactionsData).toBe("object");
+    expect(state.transactionsData).toEqual({});
   });
 });

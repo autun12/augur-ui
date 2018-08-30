@@ -83,7 +83,7 @@ describe("modules/trade/helpers/generate-trade.js", () => {
       totalSharesUpToOrder: trade.totalSharesUpToOrder,
       updateTradeOrder: trade.updateTradeOrder // self reference for function
     });
-    assert.isFunction(trade.updateTradeOrder);
+    expect(typeof trade.updateTradeOrder).toBe("function");
   });
 
   // FIXME

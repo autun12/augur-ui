@@ -13,7 +13,7 @@ describe("modules/modal/reducers/modal", () => {
 
       const expected = {};
 
-      assert.deepEqual(actual, expected, `didn't return the expected object`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -26,7 +26,7 @@ describe("modules/modal/reducers/modal", () => {
         test: "TEST"
       };
 
-      assert.deepEqual(actual, expected, `didn't return the expected object`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -42,7 +42,7 @@ describe("modules/modal/reducers/modal", () => {
         test: "NEW"
       };
 
-      assert.deepEqual(actual, expected, `didn't return the expected object`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -54,7 +54,7 @@ describe("modules/modal/reducers/modal", () => {
 
       const expected = {};
 
-      assert.deepEqual(actual, expected, `didn't return the expected object`);
+      expect(actual).toEqual(expected);
     }
   });
 });

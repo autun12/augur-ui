@@ -45,10 +45,8 @@ describe(`modules/bids-asks/actions/update-order-book.js`, () => {
       orderTypeLabel,
       orderBook
     };
-    assert.deepEqual(
-      updateOrderBook(marketId, outcome, orderTypeLabel, orderBook),
-      expectedOutput,
-      `Updating order book didn't return the correct action!`
-    );
+    expect(
+      updateOrderBook(marketId, outcome, orderTypeLabel, orderBook)
+    ).toEqual(expectedOutput);
   });
 });

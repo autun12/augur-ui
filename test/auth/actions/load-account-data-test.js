@@ -3,7 +3,6 @@ import sinon from "sinon";
 import thunk from "redux-thunk";
 
 describe(`modules/auth/actions/load-account-data.js`, () => {
-  proxyquire.noPreserveCache();
   const mockStore = configureMockStore([thunk]);
   const test = t => {
     test(t.description, () => {

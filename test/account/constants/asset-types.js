@@ -8,7 +8,7 @@ describe("modules/account/constants/asset-types.js", () => {
     assertions: () => {
       const expected = "ETH";
 
-      assert.strictEqual(ETH, expected, `didn't return the expected string`);
+      expect(ETH).toBe(expected);
     }
   });
 
@@ -17,7 +17,7 @@ describe("modules/account/constants/asset-types.js", () => {
     assertions: () => {
       const expected = "REP";
 
-      assert.strictEqual(REP, expected, `didn't return the expected string`);
+      expect(REP).toBe(expected);
     }
   });
 });

@@ -12,7 +12,7 @@ describe("modules/transactions/reducers/transactions-loading", () => {
 
       const expected = false;
 
-      assert.strictEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toBe(expected);
     }
   });
 
@@ -28,7 +28,7 @@ describe("modules/transactions/reducers/transactions-loading", () => {
 
       const expected = true;
 
-      assert.strictEqual(actual, expected, `Didn't return the expected value`);
+      expect(actual).toBe(expected);
     }
   });
 });

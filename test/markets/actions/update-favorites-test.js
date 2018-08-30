@@ -7,11 +7,7 @@ describe(`modules/markets/actions/update-favorites.js`, () => {
       type: actions.TOGGLE_FAVORITE,
       marketId
     };
-    assert.deepEqual(
-      actions.toggleFavorite(marketId),
-      expectedOutput,
-      `toggle favorite action didn't return the correct object`
-    );
+    expect(actions.toggleFavorite(marketId)).toEqual(expectedOutput);
   });
 
   test(`should dispatch a update favorites action`, () => {
@@ -20,10 +16,6 @@ describe(`modules/markets/actions/update-favorites.js`, () => {
       type: actions.UPDATE_FAVORITES,
       favorites
     };
-    assert.deepEqual(
-      actions.updateFavorites(favorites),
-      expectedOutput,
-      `update favorites didn't return the correct object`
-    );
+    expect(actions.updateFavorites(favorites)).toEqual(expectedOutput);
   });
 });

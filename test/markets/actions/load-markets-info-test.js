@@ -67,13 +67,8 @@ describe("modules/markets/actions/load-markets-info.js", () => {
           }
         ];
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `didn't dispatch the expected actions`
-        );
-        assert.isTrue(
-          stubbedAugur.markets.getMarketsInfo.calledOnce,
+        expect(actual).toEqual(expected);
+        expect(stubbedAugur.markets.getMarketsInfo.calledOnce).toBeTruthy(
           `didn't call 'getMarketsInfo' once as expected`
         );
 
@@ -115,13 +110,8 @@ describe("modules/markets/actions/load-markets-info.js", () => {
           }
         ];
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `didn't dispatch the expected actions`
-        );
-        assert.isTrue(
-          stubbedLoadingError.calledOnce,
+        expect(actual).toEqual(expected);
+        expect(stubbedLoadingError.calledOnce).toBeTruthy(
           `didn't call 'loadingError' once as expected`
         );
 
@@ -164,13 +154,8 @@ describe("modules/markets/actions/load-markets-info.js", () => {
           }
         ];
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `didn't dispatch the expected actions`
-        );
-        assert.isTrue(
-          stubbedLoadingError.calledOnce,
+        expect(actual).toEqual(expected);
+        expect(stubbedLoadingError.calledOnce).toBeTruthy(
           `didn't call 'loadingError' once as expected`
         );
 
@@ -213,13 +198,8 @@ describe("modules/markets/actions/load-markets-info.js", () => {
           }
         ];
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `didn't dispatch the expected actions`
-        );
-        assert.isTrue(
-          stubbedLoadingError.calledOnce,
+        expect(actual).toEqual(expected);
+        expect(stubbedLoadingError.calledOnce).toBeTruthy(
           `didn't call 'loadingError' once as expected`
         );
 
@@ -291,11 +271,7 @@ describe("modules/markets/actions/load-markets-info.js", () => {
           }
         ];
 
-        assert.deepEqual(
-          actual,
-          expected,
-          `didn't dispatch the expected actions`
-        );
+        expect(actual).toEqual(expected);
 
         __RewireAPI__.__ResetDependency__("augur");
         __RewireAPI__.__ResetDependency__("loadingError");
@@ -348,12 +324,8 @@ describe("modules/markets/actions/load-markets-info.js", () => {
           }
         ];
 
-        assert.deepEqual(actual, expected, `didn't return the expected values`);
-        assert.equal(
-          "ERROR",
-          callbackReturnValue,
-          `didn't return the expected value`
-        );
+        expect(actual).toEqual(expected);
+        expect("ERROR").toEqual(callbackReturnValue);
 
         done();
       }

@@ -20,11 +20,7 @@ describe("modules/account/constants/account-nav-items.js", () => {
         }
       };
 
-      assert.deepEqual(
-        ACCOUNT_NAV_ITEMS,
-        expected,
-        `Didn't return the expected constants`
-      );
+      expect(ACCOUNT_NAV_ITEMS).toEqual(expected);
     }
   });
 });

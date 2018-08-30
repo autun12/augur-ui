@@ -24,13 +24,10 @@ describe("src/modules/market/helpers/limit-period-by-range.js", () => {
   });
 
   describe("when passed a range less than a a period's duration", () => {
-    test(
-      "should return the subset or period with duration less than the passed value",
-      () => {
-        const result = limitPeriodByRange(PERIODS, 3000);
-        expect(result).toEqual(PERIODS.slice(0, 1));
-      }
-    );
+    test("should return the subset or period with duration less than the passed value", () => {
+      const result = limitPeriodByRange(PERIODS, 3000);
+      expect(result).toEqual(PERIODS.slice(0, 1));
+    });
   });
 
   describe("when passed a range equal to a period's duration", () => {

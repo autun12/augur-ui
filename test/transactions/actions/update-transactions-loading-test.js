@@ -18,7 +18,7 @@ describe("modules/transactions/actions/update-transactinos-loading.js", () => {
           }
         };
 
-        assert.deepEqual(actual, expected, `Didn't return the expected object`);
+        expect(actual).toEqual(expected);
       }
     });
   });

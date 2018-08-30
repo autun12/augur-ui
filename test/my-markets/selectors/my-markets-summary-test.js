@@ -3,7 +3,6 @@ import sinon from "sinon";
 import * as mockStore from "test/mockStore";
 
 describe("modules/my-markets/selectors/my-markets-summary", () => {
-  proxyquire.noPreserveCache().noCallThru();
   let actual;
   const { store } = mockStore.default;
   const {
@@ -58,7 +57,7 @@ describe("modules/my-markets/selectors/my-markets-summary", () => {
   });
 
   test(`should return the correct object`, () => {
-    assert.deepEqual(expected, actual, `Didn't return the expected object`);
+    expect(expected).toEqual(actual);
   });
 
   test("should return the correct object to augur-ui-react-components", () => {

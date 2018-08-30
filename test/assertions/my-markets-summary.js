@@ -1,7 +1,7 @@
 export default function(myMarketsSummary) {
   describe(`myMarketsSummary's shape`, () => {
-    assert.isDefined(myMarketsSummary);
-    assert.isObject(myMarketsSummary);
+    expect(myMarketsSummary).toBeDefined();
+    expect(typeof myMarketsSummary).toBe("object");
 
     assertMyMarketsSummary(myMarketsSummary);
   });
@@ -9,12 +9,12 @@ export default function(myMarketsSummary) {
 
 export function assertMyMarketsSummary(summary) {
   describe(`summary's shape`, () => {
-    assert.isDefined(summary);
-    assert.isObject(summary);
+    expect(summary).toBeDefined();
+    expect(typeof summary).toBe("object");
 
     test("numMarkets", () => {
-      assert.isDefined(summary.numMarkets);
-      assert.isNumber(summary.numMarkets);
+      expect(summary.numMarkets).toBeDefined();
+      expect(typeof summary.numMarkets).toBe("number");
     });
   });
 }

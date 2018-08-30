@@ -1,6 +1,6 @@
 export default function(marketsTotals) {
-  assert.isDefined(marketsTotals, `marketsTotals isn't defined`);
-  assert.isObject(marketsTotals, `marketsTotals isn't an object`);
+  expect(marketsTotals).toBeDefined();
+  expect(typeof marketsTotals).toBe("object");
 
   checkDefinedAndNumber(marketsTotals.numAll, `numAll`);
   checkDefinedAndNumber(marketsTotals.numFavorites, `numFavorites`);
@@ -10,6 +10,6 @@ export default function(marketsTotals) {
 }
 
 function checkDefinedAndNumber(obj, name) {
-  assert.isDefined(obj, `marketsTotals.${name} isn't defined`);
-  assert.isNumber(obj, `marketsTotals.${name} isn't a number`);
+  expect(obj).toBeDefined();
+  expect(typeof obj).toBe("number");
 }

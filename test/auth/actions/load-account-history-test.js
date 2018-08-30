@@ -73,6 +73,6 @@ describe(`modules/auth/actions/load-account-history.js`, () => {
       }
     ];
 
-    assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+    expect(actual).toEqual(expected);
   });
 });

@@ -3,8 +3,6 @@ import mocks from "test/mockStore";
 import { CANCEL_ORDER, BID, ASK } from "modules/transactions/constants/types";
 
 describe("modules/bids-asks/actions/cancel-order.js", () => {
-  proxyquire.noPreserveCache().noCallThru();
-
   const { mockStore, actionCreator, state } = mocks;
   const augur = {
     api: {

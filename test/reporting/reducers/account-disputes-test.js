@@ -27,11 +27,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
   test({
     description: `default state`,
     assertions: () => {
-      assert.deepEqual(
-        reducer(undefined, { type: ActionTypes.INIT }),
-        {},
-        `Didn't return expected`
-      );
+      expect(reducer(undefined, { type: ActionTypes.INIT })).toEqual({});
     }
   });
 
@@ -41,14 +37,12 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
       const expected = {
         marketId1: marketId1Data
       };
-      assert.deepEqual(
+      expect(
         reducer(undefined, {
           type: UPDATE_ACCOUNT_DISPUTE,
           data: marketId1Data
-        }),
-        expected,
-        `Didn't return expected`
-      );
+        })
+      ).toEqual(expected);
     }
   });
 
@@ -67,7 +61,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
         marketId1: marketId1Data,
         marketId2: marketId2Data
       };
-      assert.deepEqual(actual, expected, `Didn't return expected`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -85,7 +79,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
       const expected = {
         marketId2: marketId2Data
       };
-      assert.deepEqual(actual, expected, `Didn't return expected`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -97,7 +91,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
         marketId2: marketId2Data
       };
       const actual = reducer(data, { type: CLEAR_ACCOUNT_DISPUTES });
-      assert.deepEqual(actual, DEFAULT_STATE, `Didn't return expected`);
+      expect(actual).toEqual(DEFAULT_STATE);
     }
   });
 
@@ -109,7 +103,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
         marketId2: marketId2Data
       };
       const actual = reducer(data, { type: RESET_STATE });
-      assert.deepEqual(actual, DEFAULT_STATE, `Didn't return expected`);
+      expect(actual).toEqual(DEFAULT_STATE);
     }
   });
 });

@@ -40,15 +40,15 @@ describe("src/modules/market/helpers/order-for-market-depth.js", () => {
     expect(asks).toHaveLength(3);
     expect(bids).toHaveLength(3);
 
-    assert.equal("0", asks[0][0].toString());
-    assert.equal("0.35", asks[0][1]);
-    assert.equal("0.002", asks[0][2]);
-    assert.isFalse(asks[0][3]);
+    expect("0").toEqual(asks[0][0].toString());
+    expect("0.35").toEqual(asks[0][1]);
+    expect("0.002").toEqual(asks[0][2]);
+    expect(asks[0][3]).toBeFalsy();
 
-    assert.equal("0", bids[0][0].toString());
-    assert.equal("0.28", bids[0][1]);
-    assert.equal("0.28", bids[0][1]);
-    assert.equal("0.001", bids[0][2]);
-    assert.isFalse(bids[0][3]);
+    expect("0").toEqual(bids[0][0].toString());
+    expect("0.28").toEqual(bids[0][1]);
+    expect("0.28").toEqual(bids[0][1]);
+    expect("0.001").toEqual(bids[0][2]);
+    expect(bids[0][3]).toBeFalsy();
   });
 });

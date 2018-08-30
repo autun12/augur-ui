@@ -76,7 +76,7 @@ describe(`modules/auth/selectors/login-account.js`, () => {
           eth: formatEther(undefined)
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
         assert(
           stubbedGenerateDownloadAccountLink.calledOnce,
           `didn't call 'generateDownloadAccountLink' once as expected`
@@ -107,7 +107,7 @@ describe(`modules/auth/selectors/login-account.js`, () => {
           eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
         assert(
           stubbedGenerateDownloadAccountLink.calledOnce,
           `didn't call 'generateDownloadAccountLink' once as expected`
@@ -138,7 +138,7 @@ describe(`modules/auth/selectors/login-account.js`, () => {
           eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
         assert(
           stubbedGenerateDownloadAccountLink.calledOnce,
           `didn't call 'generateDownloadAccountLink' once as expected`
@@ -171,7 +171,7 @@ describe(`modules/auth/selectors/login-account.js`, () => {
           eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
         assert(
           stubbedGenerateDownloadAccountLink.calledOnce,
           `didn't call 'generateDownloadAccountLink' once as expected`
@@ -206,7 +206,7 @@ describe(`modules/auth/selectors/login-account.js`, () => {
           eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
         assert(
           stubbedGenerateDownloadAccountLink.calledOnce,
           `didn't call 'generateDownloadAccountLink' once as expected`

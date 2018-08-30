@@ -1,12 +1,12 @@
 export default function(formattedDate, label = "Formatted Date") {
   describe(`${label}`, () => {
     test(`should be formatted date`, () => {
-      assert.isDefined(formattedDate.value, `value is not defined`);
-      assert.instanceOf(formattedDate.value, Date, `value is not a date`);
-      assert.isDefined(formattedDate.formatted, `formatted is not defined`);
-      assert.isString(formattedDate.formatted, `formatted is not a string`);
-      assert.isDefined(formattedDate.full, `full is not defined`);
-      assert.isString(formattedDate.full, `full is not a string`);
+      expect(formattedDate.value).toBeDefined();
+      expect(formattedDate.value).toBeInstanceOf(Date);
+      expect(formattedDate.formatted).toBeDefined();
+      expect(typeof formattedDate.formatted).toBe("string");
+      expect(formattedDate.full).toBeDefined();
+      expect(typeof formattedDate.full).toBe("string");
     });
   });
 }

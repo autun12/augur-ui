@@ -2,12 +2,12 @@ import assertLink from "assertions/common/link";
 
 export default function(navItem, label = "Nav Item") {
   describe(`${label}' Shape`, () => {
-    assert.isDefined(navItem);
-    assert.isObject(navItem);
+    expect(navItem).toBeDefined();
+    expect(typeof navItem).toBe("object");
 
     test("label", () => {
-      assert.isDefined(navItem.label);
-      assert.isString(navItem.label);
+      expect(navItem.label).toBeDefined();
+      expect(typeof navItem.label).toBe("string");
     });
 
     test("link", () => {
@@ -15,8 +15,8 @@ export default function(navItem, label = "Nav Item") {
     });
 
     test("page", () => {
-      assert.isDefined(navItem.page);
-      assert.isString(navItem.page);
+      expect(navItem.page).toBeDefined();
+      expect(typeof navItem.page).toBe("string");
     });
   });
 }

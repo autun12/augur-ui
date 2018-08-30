@@ -9,8 +9,6 @@ import {
 import { formatNumber, formatEther, formatRep } from "utils/format-number";
 
 describe("modules/portfolio/selectors/nav-items", () => {
-  proxyquire.noPreserveCache().noCallThru();
-
   let actual;
 
   const stubbedSelectors = {
@@ -146,6 +144,6 @@ describe("modules/portfolio/selectors/nav-items", () => {
   });
 
   test("should return the expected array", () => {
-    assert.deepEqual(expected, actual, `Didn't return the expected array`);
+    expect(expected).toEqual(actual);
   });
 });

@@ -8,11 +8,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "categories";
 
-      assert.strictEqual(
-        views.DEFAULT_VIEW,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.DEFAULT_VIEW).toBe(expected);
     }
   });
 
@@ -21,11 +17,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "market";
 
-      assert.strictEqual(
-        views.MARKET,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MARKET).toBe(expected);
     }
   });
 
@@ -34,11 +26,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "markets";
 
-      assert.strictEqual(
-        views.MARKETS,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MARKETS).toBe(expected);
     }
   });
 
@@ -47,11 +35,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "create-market";
 
-      assert.strictEqual(
-        views.CREATE_MARKET,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.CREATE_MARKET).toBe(expected);
     }
   });
 
@@ -60,11 +44,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "transactions";
 
-      assert.strictEqual(
-        views.TRANSACTIONS,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.TRANSACTIONS).toBe(expected);
     }
   });
 
@@ -73,11 +53,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "account";
 
-      assert.strictEqual(
-        views.ACCOUNT,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.ACCOUNT).toBe(expected);
     }
   });
 
@@ -86,11 +62,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "authentication";
 
-      assert.strictEqual(
-        views.AUTHENTICATION,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.AUTHENTICATION).toBe(expected);
     }
   });
 
@@ -99,11 +71,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "categories";
 
-      assert.strictEqual(
-        views.CATEGORIES,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.CATEGORIES).toBe(expected);
     }
   });
 
@@ -112,11 +80,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "authentication";
 
-      assert.strictEqual(
-        views.AUTHENTICATION,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.AUTHENTICATION).toBe(expected);
     }
   });
 
@@ -125,11 +89,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "my-positions";
 
-      assert.strictEqual(
-        views.MY_POSITIONS,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MY_POSITIONS).toBe(expected);
     }
   });
 
@@ -138,11 +98,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "my-markets";
 
-      assert.strictEqual(
-        views.MY_MARKETS,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MY_MARKETS).toBe(expected);
     }
   });
 
@@ -151,11 +107,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "reporting";
 
-      assert.strictEqual(
-        views.REPORTING,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.REPORTING).toBe(expected);
     }
   });
 
@@ -164,11 +116,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "outcomes";
 
-      assert.strictEqual(
-        views.MARKET_DATA_NAV_OUTCOMES,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MARKET_DATA_NAV_OUTCOMES).toBe(expected);
     }
   });
 
@@ -177,11 +125,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "orders";
 
-      assert.strictEqual(
-        views.MARKET_DATA_ORDERS,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MARKET_DATA_ORDERS).toBe(expected);
     }
   });
 
@@ -190,11 +134,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "charts";
 
-      assert.strictEqual(
-        views.MARKET_DATA_NAV_CHARTS,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MARKET_DATA_NAV_CHARTS).toBe(expected);
     }
   });
 
@@ -203,11 +143,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "details";
 
-      assert.strictEqual(
-        views.MARKET_DATA_NAV_DETAILS,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MARKET_DATA_NAV_DETAILS).toBe(expected);
     }
   });
 
@@ -216,11 +152,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "report";
 
-      assert.strictEqual(
-        views.MARKET_DATA_NAV_REPORT,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MARKET_DATA_NAV_REPORT).toBe(expected);
     }
   });
 
@@ -229,11 +161,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "snitch";
 
-      assert.strictEqual(
-        views.MARKET_DATA_NAV_SNITCH,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MARKET_DATA_NAV_SNITCH).toBe(expected);
     }
   });
 
@@ -242,11 +170,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "positions";
 
-      assert.strictEqual(
-        views.MARKET_USER_DATA_NAV_POSITIONS,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MARKET_USER_DATA_NAV_POSITIONS).toBe(expected);
     }
   });
 
@@ -255,11 +179,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "open-orders";
 
-      assert.strictEqual(
-        views.MARKET_USER_DATA_NAV_OPEN_ORDERS,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.MARKET_USER_DATA_NAV_OPEN_ORDERS).toBe(expected);
     }
   });
 
@@ -268,11 +188,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "deposit-funds";
 
-      assert.strictEqual(
-        views.ACCOUNT_DEPOSIT,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.ACCOUNT_DEPOSIT).toBe(expected);
     }
   });
 
@@ -281,11 +197,7 @@ describe("modules/app/constants/views", () => {
     assertions: () => {
       const expected = "transfer-funds";
 
-      assert.strictEqual(
-        views.ACCOUNT_TRANSFER,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(views.ACCOUNT_TRANSFER).toBe(expected);
     }
   });
 });

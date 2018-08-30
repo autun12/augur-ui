@@ -3,7 +3,6 @@ import thunk from "redux-thunk";
 import testState from "test/testState";
 
 describe(`modules/universe/actions/update-universe.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
   const state = Object.assign({}, testState);

@@ -3,7 +3,6 @@ import * as mockStore from "test/mockStore";
 import marketsTotalsAssertions from "assertions/markets-totals";
 
 describe(`modules/markets/selectors/markets-totals.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const { store } = mockStore.default;
 
   const mockPositions = {

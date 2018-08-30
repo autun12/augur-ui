@@ -1,8 +1,6 @@
 import mocks from "test/mockStore";
 
 describe("modules/bids-asks/selectors/order-cancellation.js", () => {
-  proxyquire.noPreserveCache().noCallThru();
-
   const { store } = mocks;
   const orderCancellationSelector = jest.mock(
     "../../../src/modules/bids-asks/selectors/order-cancellation",
@@ -13,7 +11,7 @@ describe("modules/bids-asks/selectors/order-cancellation.js", () => {
 
   test("should select correct values", () => {
     const orderCancellation = orderCancellationSelector();
-    assert.isFunction(orderCancellation.cancelOrder);
+    expect(typeof orderCancellation.cancelOrder).toBe("function");
     assert.propertyVal(orderCancellation, "an orderId", "a status");
     expect(Object.keys(orderCancellation)).toHaveLength(2);
   });

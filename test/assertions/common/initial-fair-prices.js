@@ -2,49 +2,31 @@ export default function(initialFairPrices, refObj) {
   describe(`${refObj}'s initiaiFairPrices`, () => {
     describe("type", () => {
       test("should exist", () => {
-        assert.isDefined(
-          initialFairPrices.type,
-          "initialFairPrices.type is not defined"
-        );
+        expect(initialFairPrices.type).toBeDefined();
       });
 
       test("should be a string", () => {
-        assert.isString(
-          initialFairPrices.type,
-          "initialFairPrices.type is not a string"
-        );
+        expect(typeof initialFairPrices.type).toBe("string");
       });
     });
 
     describe("values", () => {
       test("should exist", () => {
-        assert.isDefined(
-          initialFairPrices.values,
-          "initialFairPrices.values is not defined"
-        );
+        expect(initialFairPrices.values).toBeDefined();
       });
 
       test("should be an array", () => {
-        assert.isArray(
-          initialFairPrices.values,
-          "initialFairPrices.values is not an array"
-        );
+        expect(Array.isArray(initialFairPrices.values)).toBe(true);
       });
     });
 
     describe("raw", () => {
       test("should exist", () => {
-        assert.isDefined(
-          initialFairPrices.raw,
-          "initialFairPrices.raw is not defined"
-        );
+        expect(initialFairPrices.raw).toBeDefined();
       });
 
       test("should be an array", () => {
-        assert.isArray(
-          initialFairPrices.raw,
-          "initialFairPrices.raw is not an array"
-        );
+        expect(Array.isArray(initialFairPrices.raw)).toBe(true);
       });
     });
   });

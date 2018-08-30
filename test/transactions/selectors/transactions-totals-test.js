@@ -7,7 +7,6 @@ import {
 import transactionsTotalsAssertions from "assertions/transactions-totals";
 
 describe(`modules/transactions/selectors/transactions-totals.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   let actual;
   let expected;
 
@@ -32,7 +31,7 @@ describe(`modules/transactions/selectors/transactions-totals.js`, () => {
       transactions: undefined,
       shortTitle: "0 Total"
     };
-    assert.deepEqual(actual, expected, `Didn't properly handle an empty state`);
+    expect(actual).toEqual(expected);
   });
 
   test(`should properly return total info on transactions`, () => {
@@ -74,10 +73,6 @@ describe(`modules/transactions/selectors/transactions-totals.js`, () => {
       shortTitle: "1 Working"
     };
     transactionsTotalsAssertions(actual);
-    assert.deepEqual(
-      actual,
-      expected,
-      `Didn't return total info on transactions`
-    );
+    expect(actual).toEqual(expected);
   });
 });

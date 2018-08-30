@@ -3,7 +3,7 @@ import assertFormattedDate from "assertions/common/formatted-date";
 
 export default function(reports) {
   describe(`loginAccountReports.reports' shape`, () => {
-    assert.isDefined(reports);
+    expect(reports).toBeDefined();
     expect(Array.isArray(reports)).toBe(true);
 
     reports.forEach(report => {
@@ -15,63 +15,63 @@ export default function(reports) {
 export function assertAccountReport(report) {
   describe(`report's shape`, () => {
     test("id", () => {
-      assert.isDefined(report.id);
-      assert.isString(report.id);
+      expect(report.id).toBeDefined();
+      expect(typeof report.id).toBe("string");
     });
 
     test("description", () => {
-      assert.isDefined(report.description);
-      assert.isString(report.description);
+      expect(report.description).toBeDefined();
+      expect(typeof report.description).toBe("string");
     });
 
     test("outcome", () => {
-      assert.isDefined(report.outcome);
+      expect(report.outcome).toBeDefined();
 
-      report.outcome != null && assert.isString(report.outcome);
+      report.outcome != null && expect(typeof report.outcome).toBe("string");
     });
 
     test("outcomePercentage", () => {
-      assert.isDefined(report.outcomePercentage);
+      expect(report.outcomePercentage).toBeDefined();
 
       assertFormattedNumber(report.outcomePercentage, "report.fees");
     });
 
     test("reported", () => {
-      assert.isDefined(report.reported);
-      assert.isString(report.reported);
+      expect(report.reported).toBeDefined();
+      expect(typeof report.reported).toBe("string");
     });
 
     test("isReportEqual", () => {
-      assert.isDefined(report.isReportEqual);
-      assert.isBoolean(report.isReportEqual);
+      expect(report.isReportEqual).toBeDefined();
+      expect(typeof report.isReportEqual).toBe("boolean");
     });
 
     test("feesEarned", () => {
-      assert.isDefined(report.feesEarned);
+      expect(report.feesEarned).toBeDefined();
 
       assertFormattedNumber(report.feesEarned, "report.feesEarned");
     });
 
     test("repEarned", () => {
-      assert.isDefined(report.repEarned);
+      expect(report.repEarned).toBeDefined();
 
       assertFormattedNumber(report.repEarned, "report.repEarned");
     });
 
     test("endTime", () => {
-      assert.isDefined(report.endTime);
+      expect(report.endTime).toBeDefined();
 
       assertFormattedDate(report.endTime, "report.endTime");
     });
 
     test("isChallenged", () => {
-      assert.isDefined(report.isChallenged);
-      assert.isBoolean(report.isChallenged);
+      expect(report.isChallenged).toBeDefined();
+      expect(typeof report.isChallenged).toBe("boolean");
     });
 
     test("isChallangeable", () => {
-      assert.isDefined(report.isChallengeable);
-      assert.isBoolean(report.isChallengeable);
+      expect(report.isChallengeable).toBeDefined();
+      expect(typeof report.isChallengeable).toBe("boolean");
     });
   });
 }

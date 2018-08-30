@@ -17,7 +17,7 @@ describe(`modules/reports/reducers/reports.js`, () => {
 
   describe(`UPDATE_REPORTS`, () => {
     test("should update reports", () => {
-      assert.deepEqual(
+      expect(
         reducer(state.reports, {
           type: "UPDATE_REPORTS",
           reports: {
@@ -36,31 +36,29 @@ describe(`modules/reports/reducers/reports.js`, () => {
               }
             }
           }
-        }),
-        {
-          [testState.universe.id]: {
-            test: {
-              marketId: "test",
-              example: "example",
-              isScalar: false,
-              isIndeterminate: false
-            },
-            example: {
-              marketId: "example",
-              test: "test",
-              isScalar: false,
-              isIndeterminate: false
-            },
-            testMarketId: {
-              marketId: "testMarketId",
-              isScalar: false,
-              isSubmitted: false,
-              isIndeterminate: false
-            }
+        })
+      ).toEqual({
+        [testState.universe.id]: {
+          test: {
+            marketId: "test",
+            example: "example",
+            isScalar: false,
+            isIndeterminate: false
+          },
+          example: {
+            marketId: "example",
+            test: "test",
+            isScalar: false,
+            isIndeterminate: false
+          },
+          testMarketId: {
+            marketId: "testMarketId",
+            isScalar: false,
+            isSubmitted: false,
+            isIndeterminate: false
           }
-        },
-        `Didn't update report information`
-      );
+        }
+      });
     });
   });
 
@@ -74,7 +72,8 @@ describe(`modules/reports/reducers/reports.js`, () => {
             marketId: t.params.marketId,
             report: t.params.report
           })
-        ));
+        )
+      );
     test({
       description: "no report data",
       params: {

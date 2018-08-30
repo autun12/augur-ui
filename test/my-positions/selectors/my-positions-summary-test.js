@@ -8,8 +8,6 @@ import { formatEther, formatShares, formatNumber } from "utils/format-number";
 
 describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
   describe("generateOutcomePositionSummary", () => {
-    proxyquire.noPreserveCache().callThru();
-
     const test = t => {
       test(t.description, () => {
         t.assertions();
@@ -23,11 +21,7 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
 
         const expected = null;
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `Didn't return the expected value`
-        );
+        expect(actual).toBe(expected);
       }
     });
 
@@ -54,50 +48,15 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
         };
 
         // More verbose since a `deepEqual` can't properly check equality w/ objects containing functions
-        assert.deepEqual(
-          actual.numPositions,
-          expected.numPositions,
-          `numPositions Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.netPosition,
-          expected.netPosition,
-          `netPosition Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.qtyShares,
-          expected.qtyShares,
-          `qtyShares Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.purchasePrice,
-          expected.purchasePrice,
-          `purchasePrice Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.realizedNet,
-          expected.realizedNet,
-          `realizedNet Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.unrealizedNet,
-          expected.unrealizedNet,
-          `unrealizedNet Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.totalNet,
-          expected.totalNet,
-          `totalNet Didn't return the expected object`
-        );
-        assert.strictEqual(
-          actual.isClosable,
-          expected.isClosable,
-          `isClosable Didn't return the expected value`
-        );
-        assert.isFunction(
-          actual.closePosition,
-          `closePosition Didn't return a function as expected`
-        );
+        expect(actual.numPositions).toEqual(expected.numPositions);
+        expect(actual.netPosition).toEqual(expected.netPosition);
+        expect(actual.qtyShares).toEqual(expected.qtyShares);
+        expect(actual.purchasePrice).toEqual(expected.purchasePrice);
+        expect(actual.realizedNet).toEqual(expected.realizedNet);
+        expect(actual.unrealizedNet).toEqual(expected.unrealizedNet);
+        expect(actual.totalNet).toEqual(expected.totalNet);
+        expect(actual.isClosable).toBe(expected.isClosable);
+        expect(typeof actual.closePosition).toBe("function");
       }
     });
 
@@ -134,50 +93,15 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
         };
 
         // More verbose since a `deepEqual` can't properly check equality w/ objects containing functions
-        assert.deepEqual(
-          actual.numPositions,
-          expected.numPositions,
-          `numPositions Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.netPosition,
-          expected.netPosition,
-          `netPosition Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.qtyShares,
-          expected.qtyShares,
-          `qtyShares Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.purchasePrice,
-          expected.purchasePrice,
-          `purchasePrice Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.realizedNet,
-          expected.realizedNet,
-          `realizedNet Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.unrealizedNet,
-          expected.unrealizedNet,
-          `unrealizedNet Didn't return the expected object`
-        );
-        assert.deepEqual(
-          actual.totalNet,
-          expected.totalNet,
-          `totalNet Didn't return the expected object`
-        );
-        assert.strictEqual(
-          actual.isClosable,
-          expected.isClosable,
-          `isClosable Didn't return the expected value`
-        );
-        assert.isFunction(
-          actual.closePosition,
-          `closePosition Didn't return a function as expected`
-        );
+        expect(actual.numPositions).toEqual(expected.numPositions);
+        expect(actual.netPosition).toEqual(expected.netPosition);
+        expect(actual.qtyShares).toEqual(expected.qtyShares);
+        expect(actual.purchasePrice).toEqual(expected.purchasePrice);
+        expect(actual.realizedNet).toEqual(expected.realizedNet);
+        expect(actual.unrealizedNet).toEqual(expected.unrealizedNet);
+        expect(actual.totalNet).toEqual(expected.totalNet);
+        expect(actual.isClosable).toBe(expected.isClosable);
+        expect(typeof actual.closePosition).toBe("function");
       }
     });
   });
@@ -196,11 +120,7 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
 
         const expected = null;
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `Didn't return the expected value`
-        );
+        expect(actual).toBe(expected);
       }
     });
 
@@ -246,7 +166,7 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
           positionOutcomes: []
         };
 
-        assert.deepEqual(actual, expected, `Didn't return the expect object`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -330,7 +250,7 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
           ]
         };
 
-        assert.deepEqual(actual, expected, `Didn't return the expected object`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -363,7 +283,7 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
           totalNet: formatEther(9)
         };
 
-        assert.deepEqual(actual, expected, `Didn't return the expected value`);
+        expect(actual).toEqual(expected);
       }
     });
   });

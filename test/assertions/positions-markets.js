@@ -1,8 +1,8 @@
 import assertFormattedNumber from "assertions/common/formatted-number";
 
 export default function(positionsMarkets) {
-  assert.isDefined(positionsMarkets, `positionsMarkets isn't defined`);
-  assert.isArray(positionsMarkets, `positionsMarkets isn't an array`);
+  expect(positionsMarkets).toBeDefined();
+  expect(Array.isArray(positionsMarkets)).toBe(true);
 
   positionsMarkets.forEach(positionMarket =>
     assertPositionMarket(positionMarket)
@@ -12,19 +12,13 @@ export default function(positionsMarkets) {
 function assertPositionMarket(positionMarket) {
   describe("positionMarket", () => {
     test("id", () => {
-      assert.isDefined(positionMarket.id, `'positionMarket.id' is not defined`);
-      assert.isString(positionMarket.id, `'positionMarket.id' isn't a string`);
+      expect(positionMarket.id).toBeDefined();
+      expect(typeof positionMarket.id).toBe("string");
     });
 
     test("description", () => {
-      assert.isDefined(
-        positionMarket.description,
-        `'positionMarket.description' is not defined`
-      );
-      assert.isString(
-        positionMarket.description,
-        `'positionMarket.description' isn't a string`
-      );
+      expect(positionMarket.description).toBeDefined();
+      expect(typeof positionMarket.description).toBe("string");
     });
 
     positionMarket.myPositionOutcomes.forEach(positionOutcome =>
@@ -36,8 +30,8 @@ function assertPositionMarket(positionMarket) {
 }
 
 function assertOutcome(outcome) {
-  assert.isNumber(outcome.id, `id isn't a number`);
-  assert.isString(outcome.name, `name isn't a string`);
+  expect(typeof outcome.id).toBe("number");
+  expect(typeof outcome.name).toBe("string");
   assertFormattedNumber(
     outcome.lastPrice,
     "positionsMarkets.positionOutcomes[outcome].lastPrice"

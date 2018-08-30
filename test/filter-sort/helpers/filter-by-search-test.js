@@ -18,13 +18,13 @@ describe("modules/filter-sort/helpers/filter-by-search.js", () => {
   test({
     description: "should handle a null search",
     assertions: () => {
-      assert.isNull(filterBySearch(null, [])([]));
+      expect(filterBySearch(null, [])([])).toBeNull();
     }
   });
   test({
     description: "should handle a empty string search",
     assertions: () => {
-      assert.isNull(filterBySearch("", [])([]));
+      expect(filterBySearch("", [])([])).toBeNull();
     }
   });
   test({
@@ -40,7 +40,9 @@ describe("modules/filter-sort/helpers/filter-by-search.js", () => {
       // look against a key that i know is null in the test data, this should force parentValue = null and an early exit from checkArrayMatch
       const customKeys = defaultKeys;
       customKeys.push(["consensus"]);
-      expect(filterBySearch("0xdeadbeef?", customKeys)(defaultItems)).toEqual([]);
+      expect(filterBySearch("0xdeadbeef?", customKeys)(defaultItems)).toEqual(
+        []
+      );
     }
   });
 
@@ -48,7 +50,9 @@ describe("modules/filter-sort/helpers/filter-by-search.js", () => {
     description:
       "should handle a search and finding markets because of description match",
     assertions: () => {
-      expect(filterBySearch("test description", defaultKeys)(defaultItems)).toEqual(["testMarketId", "testMarketId2"]);
+      expect(
+        filterBySearch("test description", defaultKeys)(defaultItems)
+      ).toEqual(["testMarketId", "testMarketId2"]);
     }
   });
 

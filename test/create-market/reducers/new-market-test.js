@@ -77,11 +77,7 @@ describe("modules/create-market/reducers/new-market.js", () => {
           "Unable to create market.  Ensure your market is unique and all values are valid."
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected default value`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -92,11 +88,7 @@ describe("modules/create-market/reducers/new-market.js", () => {
 
       const expected = "testing";
 
-      assert.equal(
-        actual,
-        expected,
-        `Didn't return the expected existing value`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -133,11 +125,7 @@ describe("modules/create-market/reducers/new-market.js", () => {
         }
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected orderBook object`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -201,11 +189,7 @@ describe("modules/create-market/reducers/new-market.js", () => {
         }
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected orderBook object`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -264,11 +248,7 @@ describe("modules/create-market/reducers/new-market.js", () => {
         }
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected orderBook object`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -349,11 +329,7 @@ describe("modules/create-market/reducers/new-market.js", () => {
         }
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected orderBook object`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -399,11 +375,7 @@ describe("modules/create-market/reducers/new-market.js", () => {
         }
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected orderBook object`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -427,11 +399,7 @@ describe("modules/create-market/reducers/new-market.js", () => {
         anotherTest: ["test1", "test2"]
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected newMarket object`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -502,11 +470,7 @@ describe("modules/create-market/reducers/new-market.js", () => {
           "Unable to create market.  Ensure your market is unique and all values are valid."
       };
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `Didn't return the expected newMarket object`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 });

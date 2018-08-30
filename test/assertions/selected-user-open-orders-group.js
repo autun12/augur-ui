@@ -1,34 +1,26 @@
 export default function(selectedUserOpenOrdersGroup) {
   describe("selectedUserOpenOrdersGroup", () => {
     test("should exist", () => {
-      assert.isDefined(
-        selectedUserOpenOrdersGroup,
-        `selectedUserOpenOrdersGroup is empty.`
-      );
+      expect(selectedUserOpenOrdersGroup).toBeDefined();
     });
 
     test("should be object", () => {
-      assert.isObject(
-        selectedUserOpenOrdersGroup,
-        `selectedUserOpenOrdersGroup is not object.`
-      );
+      expect(typeof selectedUserOpenOrdersGroup).toBe("object");
     });
 
     describe("selectedUserOpenOrdersGroupId", () => {
       test("should exist", () => {
-        assert.isDefined(
-          selectedUserOpenOrdersGroup.selectedUserOpenOrdersGroupId,
-          `selectedUserOpenOrdersGroupId is not defined.`
-        );
+        expect(
+          selectedUserOpenOrdersGroup.selectedUserOpenOrdersGroupId
+        ).toBeDefined();
       });
     });
 
     describe("updateSelectedUserOpenOrdersGroup", () => {
       test("should be function", () => {
-        assert.isFunction(
-          selectedUserOpenOrdersGroup.updateSelectedUserOpenOrdersGroup,
-          `updateSelectedUserOpenOrdersGroup is not function.`
-        );
+        expect(
+          typeof selectedUserOpenOrdersGroup.updateSelectedUserOpenOrdersGroup
+        ).toBe("function");
       });
     });
   });

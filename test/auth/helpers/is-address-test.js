@@ -5,8 +5,7 @@ describe("is-address", () => {
   test({
     description: "It should return false for non-addressy values",
     assertions: () => {
-      assert.isFalse(
-        isAddress(`this isn't a valid address string`),
+      expect(isAddress(`this isn't a valid address string`)).toBeFalsy(
         "Expected a false returned for a bad address string"
       );
     }
@@ -14,8 +13,9 @@ describe("is-address", () => {
   test({
     description: "It should return true for a lowercase address with 0x",
     assertions: () => {
-      assert.isTrue(
-        isAddress(`0x913da4198e6be1d5f5e4a40d0667f70c0b5430eb`),
+      expect(
+        isAddress(`0x913da4198e6be1d5f5e4a40d0667f70c0b5430eb`)
+      ).toBeTruthy(
         "Expected a true returned for a lowercase valid address string with 0x"
       );
     }
@@ -23,8 +23,7 @@ describe("is-address", () => {
   test({
     description: "It should return true for a lowercase address without 0x",
     assertions: () => {
-      assert.isTrue(
-        isAddress(`913da4198e6be1d5f5e4a40d0667f70c0b5430eb`),
+      expect(isAddress(`913da4198e6be1d5f5e4a40d0667f70c0b5430eb`)).toBeTruthy(
         "Expected a true returned for a lowercase valid address string without 0x"
       );
     }
@@ -32,8 +31,7 @@ describe("is-address", () => {
   test({
     description: "It should return false for a bad checksum address without 0x",
     assertions: () => {
-      assert.isFalse(
-        isAddress(`913Da4198E6be1d5f5e4a40d0667f70C0b5430eb`),
+      expect(isAddress(`913Da4198E6be1d5f5e4a40d0667f70C0b5430eb`)).toBeFalsy(
         "Expected a false returned for a bad checksum address string without 0x"
       );
     }
@@ -41,8 +39,7 @@ describe("is-address", () => {
   test({
     description: "It should return false for a bad checksum address with 0x",
     assertions: () => {
-      assert.isFalse(
-        isAddress(`0x913Da4198E6be1d5f5e4a40d0667f70C0b5430eb`),
+      expect(isAddress(`0x913Da4198E6be1d5f5e4a40d0667f70C0b5430eb`)).toBeFalsy(
         "Expected a false returned for a bad checksum address string with 0x"
       );
     }
@@ -50,8 +47,9 @@ describe("is-address", () => {
   test({
     description: "It should return true for a checksum address with 0x",
     assertions: () => {
-      assert.isTrue(
-        isAddress(`0x913dA4198E6bE1D5f5E4a40D0667f70C0B5430Eb`),
+      expect(
+        isAddress(`0x913dA4198E6bE1D5f5E4a40D0667f70C0B5430Eb`)
+      ).toBeTruthy(
         "Expected a true returned for a checksum valid address string"
       );
     }
@@ -59,8 +57,7 @@ describe("is-address", () => {
   test({
     description: "It should return true for a checksum address without 0x",
     assertions: () => {
-      assert.isTrue(
-        isAddress(`913dA4198E6bE1D5f5E4a40D0667f70C0B5430Eb`),
+      expect(isAddress(`913dA4198E6bE1D5f5E4a40D0667f70C0B5430Eb`)).toBeTruthy(
         "Expected a true returned for a checksum valid address string missing the 0x"
       );
     }

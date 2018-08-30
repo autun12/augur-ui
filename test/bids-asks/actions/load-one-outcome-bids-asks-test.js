@@ -2,7 +2,6 @@ import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 
 describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
-  proxyquire.noPreserveCache();
   const test = t =>
     test(t.description, done => {
       const store = configureMockStore([thunk])({});
@@ -28,11 +27,11 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
     },
     stub: {
       loadOneOutcomeBidsOrAsks: {
-        default: () => () => assert.fail()
+        default: () => () => expect(false).toBeTruthy()
       }
     },
     assertions: (err, actions) => {
-      assert.strictEqual(err, "must specify market ID and outcome: null 3");
+      expect(err).toBe("must specify market ID and outcome: null 3");
       expect(actions).toEqual([]);
     }
   });
@@ -44,14 +43,11 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
     },
     stub: {
       loadOneOutcomeBidsOrAsks: {
-        default: () => () => assert.fail()
+        default: () => () => expect(false).toBeTruthy()
       }
     },
     assertions: (err, actions) => {
-      assert.strictEqual(
-        err,
-        "must specify market ID and outcome: MARKET_0 null"
-      );
+      expect(err).toBe("must specify market ID and outcome: MARKET_0 null");
       expect(actions).toEqual([]);
     }
   });
@@ -75,7 +71,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
       }
     },
     assertions: (err, actions) => {
-      assert.isNull(err);
+      expect(err).toBeNull();
       expect(actions).toEqual([
         {
           type: "LOAD_ONE_OUTCOME_BIDS_OR_ASKS",
@@ -112,7 +108,7 @@ describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
       }
     },
     assertions: (err, actions) => {
-      assert.strictEqual(err, "ERROR_MESSAGE");
+      expect(err).toBe("ERROR_MESSAGE");
       expect(actions).toEqual([
         {
           type: "LOAD_ONE_OUTCOME_BIDS_OR_ASKS",

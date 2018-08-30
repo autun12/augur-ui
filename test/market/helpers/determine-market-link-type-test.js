@@ -22,7 +22,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
       assertions: () => {
         const market = {};
         const actual = determineMarketLinkType(market, account);
-        assert.deepEqual(actual, TYPE_VIEW, `Didn't call the expected method`);
+        expect(actual).toEqual(TYPE_VIEW);
       }
     });
   });
@@ -35,7 +35,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
           reportingState: constants.REPORTING_STATE.PRE_REPORTING
         };
         const actual = determineMarketLinkType(market, {});
-        assert.deepEqual(actual, TYPE_VIEW, `Didn't call the expected method`);
+        expect(actual).toEqual(TYPE_VIEW);
       }
     });
   });
@@ -46,7 +46,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
       assertions: () => {
         const market = null;
         const actual = determineMarketLinkType(market, account);
-        assert.deepEqual(actual, TYPE_VIEW, `Didn't call the expected method`);
+        expect(actual).toEqual(TYPE_VIEW);
       }
     });
   });
@@ -59,7 +59,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
           reportingState: constants.REPORTING_STATE.PRE_REPORTING
         };
         const actual = determineMarketLinkType(market, account);
-        assert.deepEqual(actual, TYPE_TRADE, `Didn't call the expected method`);
+        expect(actual).toEqual(TYPE_TRADE);
       }
     });
   });
@@ -73,11 +73,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
           designatedReporter: account.address
         };
         const actual = determineMarketLinkType(market, account);
-        assert.deepEqual(
-          actual,
-          TYPE_REPORT,
-          `Didn't call the expected method`
-        );
+        expect(actual).toEqual(TYPE_REPORT);
       }
     });
   });
@@ -91,7 +87,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
           designatedReporter: "snuggles"
         };
         const actual = determineMarketLinkType(market, account);
-        assert.deepEqual(actual, TYPE_VIEW, `Didn't call the expected method`);
+        expect(actual).toEqual(TYPE_VIEW);
       }
     });
   });
@@ -104,11 +100,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
           reportingState: constants.REPORTING_STATE.OPEN_REPORTING
         };
         const actual = determineMarketLinkType(market, account);
-        assert.deepEqual(
-          actual,
-          TYPE_REPORT,
-          `Didn't call the expected method`
-        );
+        expect(actual).toEqual(TYPE_REPORT);
       }
     });
   });
@@ -121,11 +113,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
           reportingState: constants.REPORTING_STATE.CROWDSOURCING_DISPUTE
         };
         const actual = determineMarketLinkType(market, account);
-        assert.deepEqual(
-          actual,
-          TYPE_DISPUTE,
-          `Didn't call the expected method`
-        );
+        expect(actual).toEqual(TYPE_DISPUTE);
       }
     });
   });

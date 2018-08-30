@@ -6,8 +6,6 @@ import { formatNumber, formatEther, formatShares } from "utils/format-number";
 import { formatDate } from "utils/format-date";
 
 describe("modules/portfolio/selectors/login-account-markets", () => {
-  proxyquire.noPreserveCache().noCallThru();
-
   const { store, state } = mockStore.default;
   state.marketCreatorFees = {
     "0xMARKET1": createBigNumber("10", 10),
@@ -140,7 +138,7 @@ describe("modules/portfolio/selectors/login-account-markets", () => {
   ];
 
   test("should return the expected array", () => {
-    assert.deepEqual(actual, expected, `Didn't return the expected array`);
+    expect(actual).toEqual(expected);
   });
 
   // it('should deliver the expected shape to augur-ui-react-components', () => {

@@ -72,10 +72,6 @@ describe(`modules/bids-asks/reducers/order-books.js`, () => {
       }
     };
 
-    assert.deepEqual(
-      reducer(thisTestState.orderBooks, action),
-      expectedOutput,
-      `Didn't properly set market order book`
-    );
+    expect(reducer(thisTestState.orderBooks, action)).toEqual(expectedOutput);
   });
 });

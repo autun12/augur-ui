@@ -8,8 +8,6 @@ import {
 } from "modules/my-positions/actions/update-account-trades-data";
 
 describe("modules/my-positions/actions/update-account-trades-data.js", () => {
-  proxyquire.noPreserveCache().noCallThru();
-
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
 
@@ -90,7 +88,7 @@ describe("modules/my-positions/actions/update-account-trades-data.js", () => {
           }
         ];
 
-        assert.deepEqual(actual, expected, `Didn't dispatch the expect action`);
+        expect(actual).toEqual(expected);
       }
     });
   });

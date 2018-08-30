@@ -18,7 +18,7 @@ describe("modules/market/actions/update-market-loading.js", () => {
           data: "0xMARKETID"
         };
 
-        assert.deepEqual(actual, expected, `Didn't return the expected object`);
+        expect(actual).toEqual(expected);
       }
     });
   });
@@ -33,7 +33,7 @@ describe("modules/market/actions/update-market-loading.js", () => {
           data: "0xMARKETID"
         };
 
-        assert.deepEqual(actual, expected, `Didn't return the expected object`);
+        expect(actual).toEqual(expected);
       }
     });
   });

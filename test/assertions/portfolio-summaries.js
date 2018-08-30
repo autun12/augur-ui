@@ -1,6 +1,6 @@
 export default function(portfolioSummaries) {
   describe(`portfolio's summaries shape`, () => {
-    assert.isDefined(portfolioSummaries);
+    expect(portfolioSummaries).toBeDefined();
     expect(Array.isArray(portfolioSummaries)).toBe(true);
 
     portfolioSummaries.forEach(summary => {
@@ -12,13 +12,13 @@ export default function(portfolioSummaries) {
 function assertSummary(summary) {
   describe(`summary's shape`, () => {
     test("label", () => {
-      assert.isDefined(summary.label);
-      assert.isString(summary.label);
+      expect(summary.label).toBeDefined();
+      expect(typeof summary.label).toBe("string");
     });
 
     test("value", () => {
-      assert.isDefined(summary.value);
-      assert.isString(summary.value);
+      expect(summary.value).toBeDefined();
+      expect(typeof summary.value).toBe("string");
     });
   });
 }

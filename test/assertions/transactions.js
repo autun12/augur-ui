@@ -1,15 +1,15 @@
 export default function(transactions) {
-  assert.isDefined(transactions, `transactions isn't defined`);
-  assert.isArray(transactions, `transactions isn't an array`);
+  expect(transactions).toBeDefined();
+  expect(Array.isArray(transactions)).toBe(true);
 
   transactions.forEach(transaction => assertTransaction(transactions[0]));
 }
 
 function assertTransaction(transaction) {
-  assert.isString(transaction.id);
-  assert.isString(transaction.type);
-  assert.isString(transaction.status);
+  expect(typeof transaction.id).toBe("string");
+  expect(typeof transaction.type).toBe("string");
+  expect(typeof transaction.status).toBe("string");
   if (transaction.data) {
-    assert.isObject(transaction);
+    expect(typeof transaction).toBe("object");
   }
 }

@@ -11,11 +11,7 @@ describe("modules/app/actions/update-is-mobile.js", () => {
     assertions: () => {
       const expected = "UPDATE_IS_MOBILE";
 
-      assert.strictEqual(
-        UPDATE_IS_MOBILE,
-        expected,
-        `didn't return the expected string`
-      );
+      expect(UPDATE_IS_MOBILE).toBe(expected);
     }
   });
 
@@ -32,7 +28,7 @@ describe("modules/app/actions/update-is-mobile.js", () => {
           }
         };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
+        expect(actual).toEqual(expected);
       }
     });
   });

@@ -31,13 +31,13 @@ describe("modules/app/actions/get-augur-node-network-id.js", () => {
     stub: {
       augur: {
         augurNode: {
-          getSyncData: () => assert.fail()
+          getSyncData: () => expect(false).toBeTruthy()
         }
       }
     },
     assertions: (err, augurNodeNetworkId, actions) => {
-      assert.isNull(err);
-      assert.strictEqual(augurNodeNetworkId, "4");
+      expect(err).toBeNull();
+      expect(augurNodeNetworkId).toBe("4");
       expect(actions).toEqual([]);
     }
   });
@@ -54,8 +54,8 @@ describe("modules/app/actions/get-augur-node-network-id.js", () => {
       }
     },
     assertions: (err, augurNodeNetworkId, actions) => {
-      assert.isNull(err);
-      assert.strictEqual(augurNodeNetworkId, "4");
+      expect(err).toBeNull();
+      expect(augurNodeNetworkId).toBe("4");
       expect(actions).toEqual([
         {
           type: "UPDATE_AUGUR_NODE_NETWORK_ID",

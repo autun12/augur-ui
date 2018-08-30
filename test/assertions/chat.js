@@ -1,10 +1,10 @@
 export default function(chat) {
-  assert.isDefined(chat, `chat isn't defined`);
-  assert.isObject(chat, `chat isn't an object`);
+  expect(chat).toBeDefined();
+  expect(typeof chat).toBe("object");
 
   Object.keys(chat).forEach(room => {
-    assert.isDefined(chat[room], `chat.${room} isn't defined`);
-    assert.isObject(chat[room], `chat.${room} isn't an object`);
+    expect(chat[room]).toBeDefined();
+    expect(typeof chat[room]).toBe("object");
   });
 
   // TODO -- flesh these test out

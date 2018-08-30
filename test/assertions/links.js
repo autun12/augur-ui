@@ -2,8 +2,8 @@ import assertLink from "../../test/assertions/common/link";
 
 export default function(links) {
   describe("links state", () => {
-    assert.isDefined(links, `links isn't defined`);
-    assert.isObject(links, `links isn't an object`);
+    expect(links).toBeDefined();
+    expect(typeof links).toBe("object");
 
     test("authLink", () => {
       assertLink(links.authLink, "authLink");

@@ -31,7 +31,7 @@ describe("src/modules/market/helpers/clamp-period-by-range.js", () => {
   describe("when range is omitted", () => {
     test("should return null", () => {
       const result = clampPeriodByRange(PERIODS);
-      assert.isNull(result);
+      expect(result).toBeNull();
     });
   });
 
@@ -39,35 +39,35 @@ describe("src/modules/market/helpers/clamp-period-by-range.js", () => {
     describe("omitted", () => {
       test("should return the median possible period", () => {
         const result = clampPeriodByRange(PERIODS, 3600);
-        assert.equal(result, 120);
+        expect(result).toEqual(120);
       });
     });
 
     describe("less than passed range", () => {
       test("should return selectedPeriod", () => {
         const result = clampPeriodByRange(PERIODS, 3600, 60);
-        assert.equal(result, 60);
+        expect(result).toEqual(60);
       });
     });
 
     describe("is negative for some reason", () => {
       test("should return the median possible period", () => {
         const result = clampPeriodByRange(PERIODS, 3600, 3600);
-        assert.equal(result, 120);
+        expect(result).toEqual(120);
       });
     });
 
     describe("equal to passed range", () => {
       test("should return the median possible period", () => {
         const result = clampPeriodByRange(PERIODS, 3600, 3600);
-        assert.equal(result, 120);
+        expect(result).toEqual(120);
       });
     });
 
     describe("greater than passed range", () => {
       test("should return the median possible period", () => {
         const result = clampPeriodByRange(PERIODS, 3600, 7200);
-        assert.equal(result, 120);
+        expect(result).toEqual(120);
       });
     });
   });

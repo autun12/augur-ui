@@ -16,7 +16,7 @@ describe("events/actions/disconnect-handlers", () => {
           "connectAugur",
           (history, env, isInitialConnection, cb) => {
             expect(history).toEqual(t.params.history);
-            assert.isFalse(isInitialConnection);
+            expect(isInitialConnection).toBeFalsy();
             expect(env).toEqual(store.getState().env);
             cb();
             // just to confirm this is actually called.
@@ -25,7 +25,7 @@ describe("events/actions/disconnect-handlers", () => {
         );
         RewireReInitAugur.__Rewire__("debounce", (func, wait) => {
           expect(wait).toEqual(3000);
-          assert.isFunction(func);
+          expect(typeof func).toBe("function");
           return cb => {
             // flip the connection.isReconnectionPaused value, should go from false to true, then true to false on the 2nd call.
             t.state.connection.isReconnectionPaused = !t.state.connection
@@ -61,7 +61,7 @@ describe("events/actions/disconnect-handlers", () => {
         }
       },
       assertions: actions =>
-        assert.deepEqual(actions, [
+        expect(actions).toEqual([
           {
             type: "UPDATE_MODAL",
             data: {
@@ -111,7 +111,7 @@ describe("events/actions/disconnect-handlers", () => {
           "connectAugur",
           (history, env, isInitialConnection, cb) => {
             expect(history).toEqual(mockHistory);
-            assert.isFalse(isInitialConnection);
+            expect(isInitialConnection).toBeFalsy();
             expect(env).toEqual(store.getState().env);
             cb();
             // just to confirm this is actually called.
@@ -120,7 +120,7 @@ describe("events/actions/disconnect-handlers", () => {
         );
         RewireDisconnectHandlers.__Rewire__("debounce", (func, wait) => {
           expect(wait).toEqual(3000);
-          assert.isFunction(func);
+          expect(typeof func).toBe("function");
           return cb => {
             // flip the connection.isReconnectionPaused value, should go from false to true, then true to false on the 2nd call.
             t.state.connection.isReconnectionPaused = !t.state.connection
@@ -152,7 +152,7 @@ describe("events/actions/disconnect-handlers", () => {
         }
       },
       assertions: actions =>
-        assert.deepEqual(actions, [
+        expect(actions).toEqual([
           {
             type: "UPDATE_MODAL",
             data: {

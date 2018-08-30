@@ -1,16 +1,16 @@
 export default function(link, label = "Link") {
   describe(`${label} Shape`, () => {
-    assert.isDefined(link);
-    assert.isObject(link);
+    expect(link).toBeDefined();
+    expect(typeof link).toBe("object");
 
     test("href", () => {
-      assert.isDefined(link.href);
-      assert.isString(link.href);
+      expect(link.href).toBeDefined();
+      expect(typeof link.href).toBe("string");
     });
 
     test("onClick", () => {
-      assert.isDefined(link.onClick);
-      assert.isFunction(link.onClick);
+      expect(link.onClick).toBeDefined();
+      expect(typeof link.onClick).toBe("function");
     });
   });
 }

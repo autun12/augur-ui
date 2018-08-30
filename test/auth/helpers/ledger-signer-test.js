@@ -62,11 +62,7 @@ describe("modules/auth/helpers/ledger-signer", () => {
           assert(false, `didn't resolve as expected`);
         });
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `didn't dispatch the expected actions`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -98,11 +94,7 @@ describe("modules/auth/helpers/ledger-signer", () => {
           actual = store.getActions();
         });
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `didn't dispatch the expected actions`
-      );
+      expect(actual).toEqual(expected);
     }
   });
 });

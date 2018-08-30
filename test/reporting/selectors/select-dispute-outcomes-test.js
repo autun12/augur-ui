@@ -320,7 +320,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
         100,
         10000000000
       );
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -386,7 +386,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
         100,
         10000000000
       );
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -415,7 +415,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
           ...stakes[0]
         }
       ];
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -494,7 +494,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
         { ...stakes[2], stakeRemaining: "70" },
         { ...stakes[4], stakeRemaining: "85" }
       ];
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -533,7 +533,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
         }
       ];
 
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -568,7 +568,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
           name: "Indeterminate"
         }
       ];
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -604,7 +604,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
         { ...getDefaultStake(100), display: true, id: "5", name: "Mike" },
         { ...getDefaultStake(100), display: true, id: "6", name: "Ed" }
       ];
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -656,7 +656,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
           name: "Indeterminate"
         }
       ];
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -698,7 +698,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
         }
       ];
 
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -746,7 +746,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
         }
       ];
 
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -778,7 +778,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
         { display: true, id: "1", name: "Yes", ...getDefaultStake(100) }
       ];
 
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -814,7 +814,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
           ...getDefaultStake(100)
         }
       ];
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -823,7 +823,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assertions: () => {
       const actual = selectDisputeOutcomes(marketBinary, []);
       const expected = marketBinary.reportableOutcomes;
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -832,7 +832,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assertions: () => {
       const actual = selectDisputeOutcomes(marketCategorical, []);
       const expected = marketCategorical.reportableOutcomes;
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 
@@ -841,7 +841,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assertions: () => {
       const actual = selectDisputeOutcomes(marketScalar, []);
       const expected = marketScalar.reportableOutcomes;
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+      expect(actual).toEqual(expected);
     }
   });
 });

@@ -44,7 +44,7 @@ describe("modules/account/selectors/core-stats", () => {
 
         const expected = null;
 
-        assert.strictEqual(actual, expected, `didn't return null as expected`);
+        expect(actual).toBe(expected);
       }
     });
 
@@ -55,7 +55,7 @@ describe("modules/account/selectors/core-stats", () => {
 
         const expected = null;
 
-        assert.strictEqual(actual, expected, `didn't return null as expected`);
+        expect(actual).toBe(expected);
       }
     });
 
@@ -66,11 +66,7 @@ describe("modules/account/selectors/core-stats", () => {
 
         const expected = "0.1";
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `didn't return the expected price`
-        );
+        expect(actual).toBe(expected);
       }
     });
 
@@ -81,11 +77,7 @@ describe("modules/account/selectors/core-stats", () => {
 
         const expected = undefined;
 
-        assert.strictEqual(
-          actual,
-          expected,
-          `didn't return the expected price`
-        );
+        expect(actual).toBe(expected);
       }
     });
   });
@@ -103,7 +95,7 @@ describe("modules/account/selectors/core-stats", () => {
 
         const expected = null;
 
-        assert.strictEqual(actual, expected, `didn't return null as expected`);
+        expect(actual).toBe(expected);
       }
     });
 
@@ -118,7 +110,7 @@ describe("modules/account/selectors/core-stats", () => {
 
         const expected = null;
 
-        assert.strictEqual(actual, expected, `didn't return null as expected`);
+        expect(actual).toBe(expected);
       }
     });
 
@@ -164,7 +156,7 @@ describe("modules/account/selectors/core-stats", () => {
 
         const expected = ZERO;
 
-        assert.deepEqual(actual, expected, `didn't return the expected value`);
+        expect(actual).toEqual(expected);
       }
     });
 
@@ -223,7 +215,7 @@ describe("modules/account/selectors/core-stats", () => {
         CoreStatsRewireAPI.__ResetDependency__("selectOutcomeLastPrice");
         CoreStatsRewireAPI.__ResetDependency__("augur");
 
-        assert.deepEqual(actual, expected, `didn't return the expected value`);
+        expect(actual).toEqual(expected);
       }
     });
   });

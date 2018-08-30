@@ -5,76 +5,80 @@ describe("modules/trade/helpers/has-user-enough-funds.js", () => {
     .default;
 
   test(`should return false if user doesn't have enough money`, () => {
-    assert.isFalse(
+    expect(
       hasUserEnoughFunds([], { address: "address", ether: undefined })
-    );
-    assert.isFalse(hasUserEnoughFunds([], { address: "address", ether: null }));
-    assert.isFalse(
+    ).toBeFalsy();
+    expect(
+      hasUserEnoughFunds([], { address: "address", ether: null })
+    ).toBeFalsy();
+    expect(
       hasUserEnoughFunds([{ side: "buy", totalCost: formatEther("11") }], {
         address: "address",
         ether: "10"
       })
-    );
-    assert.isFalse(
+    ).toBeFalsy();
+    expect(
       hasUserEnoughFunds([], { address: "address", ether: undefined })
-    );
-    assert.isFalse(
+    ).toBeFalsy();
+    expect(
       hasUserEnoughFunds([{ side: "buy", totalCost: formatEther("10") }], {
         address: "address",
         ether: "0"
       })
-    );
+    ).toBeFalsy();
   });
 
   test(`should return false if user has no id defined`, () => {
-    assert.isFalse(hasUserEnoughFunds([], { address: null, ether: undefined }));
-    assert.isFalse(
+    expect(
+      hasUserEnoughFunds([], { address: null, ether: undefined })
+    ).toBeFalsy();
+    expect(
       hasUserEnoughFunds([], { address: undefined, ether: undefined })
-    );
-    assert.isFalse(
+    ).toBeFalsy();
+    expect(
       hasUserEnoughFunds([{ side: "buy", totalCost: formatEther("10") }], {
         address: null,
         ether: "10"
       })
-    );
-    assert.isFalse(
+    ).toBeFalsy();
+    expect(
       hasUserEnoughFunds([{ side: "buy", totalCost: formatEther("10") }], {
         address: undefined,
         ether: "10"
       })
-    );
+    ).toBeFalsy();
   });
 
   test(`should return false if there is no logged in user`, () => {
-    assert.isFalse(hasUserEnoughFunds([], undefined));
-    assert.isFalse(hasUserEnoughFunds([], null));
-    assert.isFalse(hasUserEnoughFunds([], {}));
-    assert.isFalse(
+    expect(hasUserEnoughFunds([], undefined)).toBeFalsy();
+    expect(hasUserEnoughFunds([], null)).toBeFalsy();
+    expect(hasUserEnoughFunds([], {})).toBeFalsy();
+    expect(
       hasUserEnoughFunds([{ side: "buy", totalCost: formatEther("10") }], null)
-    );
-    assert.isFalse(
+    ).toBeFalsy();
+    expect(
       hasUserEnoughFunds(
         [{ side: "buy", totalCost: formatEther("10") }],
         undefined
       )
-    );
-    assert.isFalse(
+    ).toBeFalsy();
+    expect(
       hasUserEnoughFunds([{ side: "buy", totalCost: formatEther("10") }], {})
-    );
+    ).toBeFalsy();
   });
 
   test("should return true if user has enough money", () => {
-    assert.isTrue(
+    expect(
       hasUserEnoughFunds([{ side: "buy", totalCost: formatEther("10") }], {
         address: "address",
         ether: "10"
       })
-    );
-    assert.isTrue(
+    ).toBeTruthy();
+    expect(
       hasUserEnoughFunds([{ side: "buy", totalCost: formatEther("9") }], {
         address: "address",
         ether: "10"
       })
-    );
+    ).toBeTruthy();
   });
 });

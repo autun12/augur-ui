@@ -3,7 +3,6 @@ import thunk from "redux-thunk";
 import testState from "test/testState";
 
 describe(`modules/transactions/actions/update-transactions-data.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
   let out;
@@ -27,10 +26,6 @@ describe(`modules/transactions/actions/update-transactions-data.js`, () => {
         test: "testTransactionData"
       })
     );
-    assert.deepEqual(
-      store.getActions(),
-      out,
-      `Didn't dispatch the correct actions`
-    );
+    expect(store.getActions()).toEqual(out);
   });
 });

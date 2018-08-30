@@ -53,8 +53,8 @@ describe(`modules/create-market/actions/estimate-submit-new-market.js`, () => {
     assertions: store => {
       store.dispatch(
         estimateSubmitNewMarket(newBinaryMarket, (err, value) => {
-          assert.deepEqual(err, null, `Error value not as expected`);
-          assert.deepEqual(value, "GAS COST", `Didn't value as expected`);
+          expect(err).toEqual(null);
+          expect(value).toEqual("GAS COST");
         })
       );
     }

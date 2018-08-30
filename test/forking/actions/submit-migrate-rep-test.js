@@ -48,7 +48,10 @@ describe("modules/forking/actions/submit-migrate-rep.js", () => {
                 });
                 expect(args.meta).toEqual("META");
                 expect(args._invalid).toEqual(false);
-                expect(args._payoutNumerators.map(n => n.toString())).toEqual(["0", "10000"]);
+                expect(args._payoutNumerators.map(n => n.toString())).toEqual([
+                  "0",
+                  "10000"
+                ]);
                 expect(args._attotokens).toEqual(42);
               }
             }

@@ -2,7 +2,6 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
 describe(`modules/transactions/actions/trigger-transactions-export.js`, () => {
-  proxyquire.noPreserveCache().noCallThru();
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
   const doc = global.document;
@@ -46,13 +45,12 @@ describe(`modules/transactions/actions/trigger-transactions-export.js`, () => {
     },
     document: {
       createElement: type => {
-        assert.equal(type, "a");
+        expect(type).toEqual("a");
         return {
           setAttribute: (type, value) => {
             switch (type) {
               case "href":
-                return assert.deepEqual(
-                  value,
+                return expect(value).toBe(
                   "data:text/json;charset=utf-8," +
                     encodeURIComponent(
                       JSON.stringify([
@@ -62,12 +60,9 @@ describe(`modules/transactions/actions/trigger-transactions-export.js`, () => {
                     )
                 );
               case "download":
-                return assert.deepEqual(value, "AugurTransactions.json");
+                return expect(value).toBe("AugurTransactions.json");
               default:
-                return assert.isFalse(
-                  true,
-                  "call to setAttribute with unexpected values"
-                );
+                return expect(false).toBeTruthy();
             }
           },
           click: () => {}
@@ -76,11 +71,7 @@ describe(`modules/transactions/actions/trigger-transactions-export.js`, () => {
     },
     expectedOutput: [],
     assertions: (storeActions, expected) => {
-      assert.deepEqual(
-        storeActions,
-        expected,
-        "Did not produce the expected actions"
-      );
+      expect(storeActions).toEqual(expected);
     }
   });
   test({
@@ -99,24 +90,16 @@ describe(`modules/transactions/actions/trigger-transactions-export.js`, () => {
     },
     loadAccountHistory: {
       loadAccountHistory: (loadAll, cb) => {
-        assert.isTrue(
-          loadAll,
+        expect(loadAll).toBeTruthy(
           "loadAll passed to loadAccountHistory should be true"
         );
-        assert.isFunction(
-          cb,
-          "cb passed to loadAccountHistory should be a function"
-        );
+        expect(typeof cb).toBe("function");
         return { type: "LOAD_ACCOUNT_HISTORY", loadAll };
       }
     },
     expectedOutput: [{ type: "LOAD_ACCOUNT_HISTORY", loadAll: true }],
     assertions: (storeActions, expected) => {
-      assert.deepEqual(
-        storeActions,
-        expected,
-        "Did not produce the expected actions"
-      );
+      expect(storeActions).toEqual(expected);
     }
   });
 });

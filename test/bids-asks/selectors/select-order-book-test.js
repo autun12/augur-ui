@@ -108,83 +108,55 @@ describe(`modules/bids-asks/helpers/select-order-book.js`, () => {
     expect(orderBook.bids).toHaveLength(3);
     expect(orderBook.asks).toHaveLength(4);
 
-    assert.deepEqual(
-      orderBook.bids[0],
-      {
-        price: formatEther(0.4),
-        shares: formatShares(10),
-        isOfCurrentUser: false,
-        sharesEscrowed: formatShares(10),
-        tokensEscrowed: formatEther(0)
-      },
-      "first bid"
-    );
-    assert.deepEqual(
-      orderBook.bids[1],
-      {
-        price: formatEther(0.2),
-        shares: formatShares(10),
-        isOfCurrentUser: false,
-        sharesEscrowed: formatShares("4"),
-        tokensEscrowed: formatEther("1.2")
-      },
-      "second bid"
-    );
-    assert.deepEqual(
-      orderBook.bids[2],
-      {
-        price: formatEther(0.1),
-        shares: formatShares(16),
-        isOfCurrentUser: false,
-        sharesEscrowed: formatShares(0),
-        tokensEscrowed: formatEther("1.6")
-      },
-      "third bid"
-    );
+    expect(orderBook.bids[0]).toEqual({
+      price: formatEther(0.4),
+      shares: formatShares(10),
+      isOfCurrentUser: false,
+      sharesEscrowed: formatShares(10),
+      tokensEscrowed: formatEther(0)
+    });
+    expect(orderBook.bids[1]).toEqual({
+      price: formatEther(0.2),
+      shares: formatShares(10),
+      isOfCurrentUser: false,
+      sharesEscrowed: formatShares("4"),
+      tokensEscrowed: formatEther("1.2")
+    });
+    expect(orderBook.bids[2]).toEqual({
+      price: formatEther(0.1),
+      shares: formatShares(16),
+      isOfCurrentUser: false,
+      sharesEscrowed: formatShares(0),
+      tokensEscrowed: formatEther("1.6")
+    });
 
-    assert.deepEqual(
-      orderBook.asks[0],
-      {
-        price: formatEther(0.5),
-        shares: formatShares(14),
-        isOfCurrentUser: false,
-        sharesEscrowed: formatShares("14"),
-        tokensEscrowed: formatEther("0")
-      },
-      "first ask"
-    );
-    assert.deepEqual(
-      orderBook.asks[1],
-      {
-        price: formatEther(0.6),
-        shares: formatShares(23),
-        isOfCurrentUser: false,
-        sharesEscrowed: formatShares("13"),
-        tokensEscrowed: formatEther("4")
-      },
-      "second ask"
-    );
-    assert.deepEqual(
-      orderBook.asks[2],
-      {
-        price: formatEther(0.7),
-        shares: formatShares(10),
-        isOfCurrentUser: false,
-        sharesEscrowed: formatShares("4"),
-        tokensEscrowed: formatEther("1.8")
-      },
-      "third ask"
-    );
-    assert.deepEqual(
-      orderBook.asks[3],
-      {
-        price: formatEther(0.8),
-        shares: formatShares(2),
-        isOfCurrentUser: false,
-        sharesEscrowed: formatShares(0),
-        tokensEscrowed: formatEther("0.4")
-      },
-      "fourth ask"
-    );
+    expect(orderBook.asks[0]).toEqual({
+      price: formatEther(0.5),
+      shares: formatShares(14),
+      isOfCurrentUser: false,
+      sharesEscrowed: formatShares("14"),
+      tokensEscrowed: formatEther("0")
+    });
+    expect(orderBook.asks[1]).toEqual({
+      price: formatEther(0.6),
+      shares: formatShares(23),
+      isOfCurrentUser: false,
+      sharesEscrowed: formatShares("13"),
+      tokensEscrowed: formatEther("4")
+    });
+    expect(orderBook.asks[2]).toEqual({
+      price: formatEther(0.7),
+      shares: formatShares(10),
+      isOfCurrentUser: false,
+      sharesEscrowed: formatShares("4"),
+      tokensEscrowed: formatEther("1.8")
+    });
+    expect(orderBook.asks[3]).toEqual({
+      price: formatEther(0.8),
+      shares: formatShares(2),
+      isOfCurrentUser: false,
+      sharesEscrowed: formatShares(0),
+      tokensEscrowed: formatEther("0.4")
+    });
   });
 });
