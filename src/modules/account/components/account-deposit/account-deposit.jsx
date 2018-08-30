@@ -10,7 +10,7 @@ import {
   Copy as CopyIcon
 } from "modules/common/components/icons";
 
-import Styles from "modules/account/components/account-deposit/account-deposit.styles";
+import Styles from "modules/account/components/account-deposit/account-deposit.styles.less";
 
 function airSwapOnClick(e) {
   const env =

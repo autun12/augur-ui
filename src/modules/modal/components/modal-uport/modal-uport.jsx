@@ -1,7 +1,7 @@
 import React from "react";
 import QRCode from "qrcode.react";
 
-import Styles from "modules/modal/components/modal-uport/modal-uport.styles";
+import Styles from "modules/modal/components/modal-uport/modal-uport.styles.less";
 
 const ModalUport = p => {
   function qrSize() {

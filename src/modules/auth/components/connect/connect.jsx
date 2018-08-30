@@ -10,7 +10,7 @@ import { CONNECT_NAV } from "modules/routes/constants/param-names";
 import { ITEMS, getView } from "modules/auth/constants/connect-nav";
 import { TITLE_SUFFIX } from "modules/app/constants/title-suffix";
 
-import Styles from "modules/auth/components/auth/auth.styles";
+import Styles from "modules/auth/components/auth/auth.styles.less";
 
 export default function AuthConnect(p) {
   const selectedNav = parseQuery(p.location.search)[CONNECT_NAV] || null;

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Styles from "modules/account/components/account-rep-faucet/account-rep-faucet.styles";
+import Styles from "modules/account/components/account-rep-faucet/account-rep-faucet.styles.less";
 
 const AccountRepFaucet = p => (
   <section className={Styles.AccountRepFaucet}>

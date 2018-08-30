@@ -8,7 +8,7 @@ import {
   SELL_DOWN,
   NONE
 } from "modules/trade/constants/types";
-import Styles from "modules/market/components/common/outcome-trading-indicator/outcome-trading-indicator.style";
+import Styles from "modules/market/components/common/outcome-trading-indicator/outcome-trading-indicator.style.less";
 
 export default function OutcomeTradingIndicator({
   tradingIndicator,

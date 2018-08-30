@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { mobileMenuStates } from "modules/app/components/app/app";
 
-import Styles from "modules/app/components/inner-nav/inner-nav.styles";
+import Styles from "modules/app/components/inner-nav/inner-nav.styles.less";
 import { isNull } from "lodash";
 import MenuItem from "modules/app/components/inner-nav/menu-item";
 

@@ -9,7 +9,7 @@ import Paginator from "modules/common/components/paginator/paginator";
 import makePath from "modules/routes/helpers/make-path";
 import makeQuery from "modules/routes/helpers/make-query";
 
-import Styles from "modules/categories/components/categories-view/categories-view.styles";
+import Styles from "modules/categories/components/categories-view/categories-view.styles.less";
 
 import { CATEGORY_PARAM_NAME } from "modules/filter-sort/constants/param-names";
 import { MARKETS } from "modules/routes/constants/views";

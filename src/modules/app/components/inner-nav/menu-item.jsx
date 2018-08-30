@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import Styles from "modules/app/components/inner-nav/inner-nav.styles";
+import Styles from "modules/app/components/inner-nav/inner-nav.styles.less";
 
 const MenuItem = p => (
   <li

@@ -13,8 +13,8 @@ import {
   Withdraw
 } from "modules/common/components/icons";
 import isAddress from "modules/auth/helpers/is-address";
-import FormStyles from "modules/common/less/form";
-import Styles from "modules/account/components/account-withdraw/account-withdraw.styles";
+import FormStyles from "modules/common/less/form.styles.less";
+import Styles from "modules/account/components/account-withdraw/account-withdraw.styles.less";
 
 export default class AccountWithdraw extends Component {
   static propTypes = {

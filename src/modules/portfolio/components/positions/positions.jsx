@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import makePath from "modules/routes/helpers/make-path";
 
 import PositionsMarketsList from "modules/portfolio/components/positions-markets-list/positions-markets-list";
-import PortfolioStyles from "modules/portfolio/components/portfolio-view/portfolio-view.styles";
+import PortfolioStyles from "modules/portfolio/components/portfolio-view/portfolio-view.styles.less";
 import { MARKETS } from "modules/routes/constants/views";
 
 export default class Positions extends Component {

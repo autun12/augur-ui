@@ -14,7 +14,7 @@ import {
   PORTFOLIO_REPORTS
 } from "modules/routes/constants/views";
 
-import Styles from "modules/portfolio/components/portfolio-header/portfolio-header.styles";
+import Styles from "modules/portfolio/components/portfolio-header/portfolio-header.styles.less";
 
 const PortfolioHeader = p => (
   <section className={Styles.PortfolioHeader}>

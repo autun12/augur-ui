@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import isMetaMask from "modules/auth/helpers/is-meta-mask";
 import NetworkMismatchMessage from "modules/modal/components/modal-network-mismatch/network-mismatch-message";
 import MetaMaskNetworkMismatchMessage from "modules/modal/components/modal-network-mismatch/meta-mask-network-mismatch-message";
-import Styles from "modules/modal/components/modal-network-mismatch/modal-network-mismatch.styles";
+import Styles from "modules/modal/components/modal-network-mismatch/modal-network-mismatch.styles.less";
 
 const ModalNetworkMismatch = p => (
   <section className={Styles.ModalNetworkMismatch}>

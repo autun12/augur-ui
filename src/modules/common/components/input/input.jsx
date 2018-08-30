@@ -8,7 +8,7 @@ import { IconSearch, CloseDark } from "modules/common/components/icons";
 
 import debounce from "utils/debounce";
 
-import Styles from "modules/common/components/input/input.styles";
+import Styles from "modules/common/components/input/input.styles.less";
 
 export default class Input extends Component {
   // TODO -- Prop Validations

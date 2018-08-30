@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { augur } from "services/augurjs";
 
-import Styles from "modules/auth/components/trezor/trezor.styles";
+import Styles from "modules/auth/components/trezor/trezor.styles.less";
 
 export default class Trezor extends PureComponent {
   static propTypes = {

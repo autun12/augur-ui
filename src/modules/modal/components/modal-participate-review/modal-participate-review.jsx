@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { SigningPen } from "modules/common/components/icons";
 import { formatRep, formatEther } from "utils/format-number";
-import Styles from "modules/modal/components/modal-participate-review/modal-participate-review.styles";
+import Styles from "modules/modal/components/modal-participate-review/modal-participate-review.styles.less";
 
 const ModalParticipateReview = p => {
   const cleanQuantity = formatRep(p.quantity);

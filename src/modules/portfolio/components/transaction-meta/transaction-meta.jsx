@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Styles from "modules/portfolio/components/transaction-meta/transaction-meta.styles";
+import Styles from "modules/portfolio/components/transaction-meta/transaction-meta.styles.less";
 import EtherscanLink from "modules/common/containers/etherscan-link";
 
 import { convertUnixToFormattedDate } from "utils/format-date";

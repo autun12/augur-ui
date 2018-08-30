@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 // import ReactTooltip from 'react-tooltip'
 
-import Styles from "modules/common/components/value-denomination/value-denomination.styles";
+import Styles from "modules/common/components/value-denomination/value-denomination.styles.less";
 
 const ValueDenomination = p => (
   <span className={Styles[p.className]}>

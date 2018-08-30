@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import makePath from "modules/routes/helpers/make-path";
 import { DEFAULT_VIEW } from "modules/routes/constants/views";
 
-import Styles from "modules/common/components/main-error-boundary/main-error-boundary.styles";
+import Styles from "modules/common/components/main-error-boundary/main-error-boundary.styles.less";
 
 export default class MainErrorBoundary extends Component {
   static propTypes = {

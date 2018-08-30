@@ -8,7 +8,7 @@ import getValue from "utils/get-value";
 import { CATEGORICAL } from "modules/markets/constants/market-types";
 import { MARKET, BUY, LIMIT, SELL } from "modules/transactions/constants/types";
 
-import Styles from "modules/trade/components/trading--confirm/trading--confirm.styles";
+import Styles from "modules/trade/components/trading--confirm/trading--confirm.styles.less";
 
 const MarketTradingConfirm = p => {
   const numShares = getValue(p, "trade.numShares");

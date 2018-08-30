@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Styles from "modules/modal/components/modal-network-mismatch/network-mismatch-message.styles";
+import Styles from "modules/modal/components/modal-network-mismatch/network-mismatch-message.styles.less";
 
 const MetaMaskNetworkMismatchMessage = p => (
   <section className={Styles.NetworkMismatchMessage}>

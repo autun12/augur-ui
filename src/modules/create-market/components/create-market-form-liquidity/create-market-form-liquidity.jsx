@@ -16,8 +16,8 @@ import { CATEGORICAL, SCALAR } from "modules/markets/constants/market-types";
 
 import getValue from "utils/get-value";
 
-import Styles from "modules/create-market/components/create-market-form-liquidity/create-market-form-liquidity.styles";
-import StylesForm from "modules/create-market/components/create-market-form/create-market-form.styles";
+import Styles from "modules/create-market/components/create-market-form-liquidity/create-market-form-liquidity.styles.less";
+import StylesForm from "modules/create-market/components/create-market-form/create-market-form.styles.less";
 
 const PRECISION = 4;
 

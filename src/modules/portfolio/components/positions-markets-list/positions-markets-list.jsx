@@ -4,7 +4,7 @@ import classNames from "classnames";
 import MarketPortfolioCard from "modules/market/containers/market-portfolio-card";
 import NullStateMessage from "modules/common/components/null-state-message/null-state-message";
 import Paginator from "modules/common/components/paginator/paginator";
-import Styles from "modules/portfolio/components/positions-markets-list/positions-markets-list.styles";
+import Styles from "modules/portfolio/components/positions-markets-list/positions-markets-list.styles.less";
 import isEqual from "lodash/isEqual";
 
 export default class PositionsMarketsList extends Component {

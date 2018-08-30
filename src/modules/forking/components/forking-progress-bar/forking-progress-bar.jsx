@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { getDaysRemaining } from "utils/format-date";
 
-import Styles from "modules/forking/components/forking-progress-bar/forking-progress-bar.styles";
+import Styles from "modules/forking/components/forking-progress-bar/forking-progress-bar.styles.less";
 
 const SECONDS_PER_DAY = 3600 * 24;
 

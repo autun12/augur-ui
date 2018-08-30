@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import Styles from "modules/common/components/null-state-message/null-state-message.styles";
+import Styles from "modules/common/components/null-state-message/null-state-message.styles.less";
 
 const NullStateMessage = p => (
   <article className={classNames(p.className, Styles.NullState)}>

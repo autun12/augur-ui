@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { createBigNumber } from "utils/create-big-number";
 
-import FormStyles from "modules/common/less/form";
+import FormStyles from "modules/common/less/form.styles.less";
 import selectMigrateTotals from "modules/reporting/selectors/select-migrated-totals";
-import Styles from "modules/forking/components/migrate-rep-form/migrate-rep-form.styles";
+import Styles from "modules/forking/components/migrate-rep-form/migrate-rep-form.styles.less";
 
 export default class FormattedMigrationTotals extends Component {
   static propTypes = {

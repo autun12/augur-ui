@@ -7,7 +7,7 @@ import MobilePositions from "modules/market/components/market-positions-list--mo
 import MobileOrder from "modules/market/components/market-positions-list--mobile-order/market-positions-list--mobile-order";
 import MobileStats from "modules/market/components/market-positions-list--mobile-stats/market-positions-list--mobile-stats";
 
-import Styles from "modules/market/components/market-positions-list--mobile/market-positions-list--mobile.styles";
+import Styles from "modules/market/components/market-positions-list--mobile/market-positions-list--mobile.styles.less";
 
 export default class MarketPositionsListMobile extends Component {
   static propTypes = {

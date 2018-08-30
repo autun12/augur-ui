@@ -4,7 +4,7 @@ import { BigNumber } from "utils/create-big-number";
 
 import { isNumber } from "lodash/fp";
 
-import Styles from "modules/market/components/market-outcome-charts--header/market-outcome-charts--header.styles";
+import Styles from "modules/market/components/market-outcome-charts--header/market-outcome-charts--header.styles.less";
 
 import { ASKS } from "modules/order-book/constants/order-book-order-types";
 

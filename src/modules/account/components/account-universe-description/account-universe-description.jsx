@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Styles from "modules/account/components/account-universe-description/account-universe-description.styles";
+import Styles from "modules/account/components/account-universe-description/account-universe-description.styles.less";
 import { formatAttoRep, formatAttoEth } from "utils/format-number";
 
 const AccountUniverseDescription = p => (

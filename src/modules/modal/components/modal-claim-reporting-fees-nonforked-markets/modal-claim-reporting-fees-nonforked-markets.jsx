@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { augur } from "services/augurjs";
 import { formatGasCostToEther } from "utils/format-number";
 
-import Styles from "modules/modal/components/modal-claim-reporting-fees-nonforked-markets/modal-claim-reporting-fees-nonforked-markets.styles";
+import Styles from "modules/modal/components/modal-claim-reporting-fees-nonforked-markets/modal-claim-reporting-fees-nonforked-markets.styles.less";
 
 export default class ModalClaimReportingFeesNonforkedMarkets extends Component {
   static propTypes = {

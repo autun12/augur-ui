@@ -7,7 +7,7 @@ import getValue from "utils/get-value";
 import CustomPropTypes from "utils/custom-prop-types";
 import { createBigNumber } from "utils/create-big-number";
 import MarketOutcomeTradingIndicator from "modules/market/containers/market-outcome-trading-indicator";
-import Styles from "modules/market/components/market-outcomes-yes-no-scalar/market-outcomes-yes-no-scalar.styles";
+import Styles from "modules/market/components/market-outcomes-yes-no-scalar/market-outcomes-yes-no-scalar.styles.less";
 
 const MarketOutcomes = p => {
   const scalarDenomination = !p.scalarDenomination ? "" : p.scalarDenomination;

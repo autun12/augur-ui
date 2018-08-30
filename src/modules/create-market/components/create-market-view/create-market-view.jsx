@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import CreateMarketPreview from "modules/create-market/components/create-market-preview/create-market-preview";
 import CreateMarketForm from "modules/create-market/components/create-market-form/create-market-form";
 
-import Styles from "modules/create-market/components/create-market-view/create-market-view.styles";
+import Styles from "modules/create-market/components/create-market-view/create-market-view.styles.less";
 
 const CreateMarketView = p => (
   <section className={Styles.CreateMarketView}>

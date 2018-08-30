@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import ForkingContent from "modules/forking/components/forking-content/forking-content";
 
-import Styles from "modules/forking/components/forking-notification/forking-notification.styles";
+import Styles from "modules/forking/components/forking-notification/forking-notification.styles.less";
 
 class ForkingNotification extends Component {
   constructor(props) {

@@ -7,7 +7,7 @@ import { PAGINATION_PARAM_NAME } from "modules/routes/constants/param-names";
 import parseQuery from "modules/routes/helpers/parse-query";
 import makeQuery from "modules/routes/helpers/make-query";
 
-import Styles from "modules/common/components/paginator/paginator.styles";
+import Styles from "modules/common/components/paginator/paginator.styles.less";
 
 class Paginator extends Component {
   static propTypes = {

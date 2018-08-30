@@ -6,11 +6,11 @@ import ReportingHeader from "modules/reporting/containers/reporting-header";
 import ReportDisputeNoRepState from "src/modules/reporting/components/reporting-dispute-no-rep-state/reporting-dispute-no-rep-state";
 import NullStateMessage from "modules/common/components/null-state-message/null-state-message";
 import DisputeMarketCard from "modules/reporting/components/dispute-market-card/dispute-market-card";
-import MarketsHeaderStyles from "modules/markets/components/markets-header/markets-header.styles";
+import MarketsHeaderStyles from "modules/markets/components/markets-header/markets-header.styles.less";
 import Paginator from "modules/common/components/paginator/paginator";
 import isEqual from "lodash/isEqual";
 
-const Styles = require("./reporting-dispute-markets.styles");
+import Styles from "./reporting-dispute-markets.styles.less";
 
 export default class ReportingDisputeMarkets extends Component {
   static propTypes = {

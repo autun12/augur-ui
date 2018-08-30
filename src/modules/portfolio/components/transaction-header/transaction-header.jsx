@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import MarketLink from "modules/market/components/market-link/market-link";
 
-import Styles from "modules/portfolio/components/transaction-header/transaction-header.styles";
+import Styles from "modules/portfolio/components/transaction-header/transaction-header.styles.less";
 
 const TransactionHeader = ({ transaction }) => {
   const marketId =

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Styles from "modules/auth/components/metamask-connect/metamask-connect.styles";
+import Styles from "modules/auth/components/metamask-connect/metamask-connect.styles.less";
 
 const MetaMask = ({ connectMetaMask, isMetaMaskPresent }) => (
   <section className={Styles.MetaMask__connect}>

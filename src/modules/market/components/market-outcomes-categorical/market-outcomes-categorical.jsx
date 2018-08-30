@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import getValue from "utils/get-value";
 import MarketOutcomeTradingIndicator from "modules/market/containers/market-outcome-trading-indicator";
-import Styles from "modules/market/components/market-outcomes-categorical/market-outcomes-categorical.styles";
+import Styles from "modules/market/components/market-outcomes-categorical/market-outcomes-categorical.styles.less";
 
 const CategoricalOutcome = ({ className, outcome, lastTradeStatus }) => (
   <div className={className || Styles.MarketOutcomesCategorical__outcome}>

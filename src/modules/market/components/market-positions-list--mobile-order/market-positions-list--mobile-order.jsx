@@ -8,7 +8,7 @@ import { Close } from "modules/common/components/icons";
 
 import getValue from "utils/get-value";
 
-import Styles from "modules/market/components/market-positions-list--mobile-order/market-positions-list--mobile-order.styles";
+import Styles from "modules/market/components/market-positions-list--mobile-order/market-positions-list--mobile-order.styles.less";
 
 export default class MobileOrders extends Component {
   static propTypes = {

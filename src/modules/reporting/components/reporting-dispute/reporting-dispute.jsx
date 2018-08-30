@@ -15,8 +15,8 @@ import ReportingDisputeConfirm from "modules/reporting/components/reporting-disp
 import { TYPE_VIEW } from "modules/market/constants/link-types";
 import MarketAdditonalDetails from "modules/reporting/components/market-additional-details/market-additional-details";
 import { isEmpty } from "lodash";
-import FormStyles from "modules/common/less/form";
-import Styles from "modules/reporting/components/reporting-report/reporting-report.styles";
+import FormStyles from "modules/common/less/form.styles.less";
+import Styles from "modules/reporting/components/reporting-report/reporting-report.styles.less";
 
 export default class ReportingDispute extends Component {
   static propTypes = {

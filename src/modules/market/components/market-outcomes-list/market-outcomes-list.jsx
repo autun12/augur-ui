@@ -6,8 +6,8 @@ import MarketOutcomesListOutcome from "modules/market/components/market-outcomes
 import ChevronFlip from "modules/common/components/chevron-flip/chevron-flip";
 import toggleHeight from "utils/toggle-height/toggle-height";
 
-import Styles from "modules/market/components/market-outcomes-list/market-outcomes-list.styles";
-import ToggleHeightStyles from "utils/toggle-height/toggle-height.styles";
+import Styles from "modules/market/components/market-outcomes-list/market-outcomes-list.styles.less";
+import ToggleHeightStyles from "utils/toggle-height/toggle-height.styles.less";
 
 export default class MarketOutcomesList extends Component {
   static propTypes = {

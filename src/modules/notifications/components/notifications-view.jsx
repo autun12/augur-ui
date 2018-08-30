@@ -7,7 +7,7 @@ import Notification from "modules/notifications/components/notification";
 import getValue from "utils/get-value";
 import { CloseBlack } from "modules/common/components/icons";
 
-import Styles from "modules/notifications/components/notifications-view.styles";
+import Styles from "modules/notifications/components/notifications-view.styles.less";
 
 export default class NotificationsView extends Component {
   static propTypes = {

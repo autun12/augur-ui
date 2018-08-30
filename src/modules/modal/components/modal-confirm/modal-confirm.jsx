@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Styles from "modules/modal/components/modal-confirm/modal-confirm.styles";
+import Styles from "modules/modal/components/modal-confirm/modal-confirm.styles.less";
 
 const ModalConfirm = p => (
   <section className={Styles.ModalConfirm}>

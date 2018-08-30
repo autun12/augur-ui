@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Styles from "modules/market/components/market-outstanding-returns/market-outstanding-returns.styles";
+import Styles from "modules/market/components/market-outstanding-returns/market-outstanding-returns.styles.less";
 
 const OutstandingReturns = p => (
   <div className={Styles.MarketOutstandingReturns}>

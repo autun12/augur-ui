@@ -14,9 +14,9 @@ import {
   TYPE_FINALIZE_MARKET
 } from "modules/market/constants/link-types";
 import { dateHasPassed } from "utils/format-date";
-import CommonStyles from "modules/market/components/common/market-common.styles";
-import PositionStyles from "modules/market/components/market-positions-list/market-positions-list.styles";
-import Styles from "modules/market/components/market-portfolio-card/market-portfolio-card.styles";
+import CommonStyles from "modules/market/components/common/market-common.styles.less";
+import PositionStyles from "modules/market/components/market-positions-list/market-positions-list.styles.less";
+import Styles from "modules/market/components/market-portfolio-card/market-portfolio-card.styles.less";
 import MarketPortfolioCardFooter from "modules/market/components/market-portfolio-card/market-portfolio-card-footer";
 
 export default class MarketPortfolioCard extends Component {

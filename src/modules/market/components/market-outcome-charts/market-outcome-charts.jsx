@@ -8,7 +8,7 @@ import MarketOutcomeCandlestick from "modules/market/components/market-outcome-c
 import MarketOutcomeDepth from "modules/market/components/market-outcome-charts--depth/market-outcome-charts--depth";
 import MarketOutcomeChartsOrders from "modules/market/components/market-outcome-charts--orders/market-outcome-charts--orders";
 
-import Styles from "modules/market/components/market-outcome-charts/market-outcome-charts.styles";
+import Styles from "modules/market/components/market-outcome-charts/market-outcome-charts.styles.less";
 import { loadCandleStickData } from "modules/market/actions/load-candlestick-data";
 
 import { BigNumber } from "bignumber.js";

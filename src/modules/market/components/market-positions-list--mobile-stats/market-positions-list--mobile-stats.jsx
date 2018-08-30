@@ -5,8 +5,8 @@ import React from "react";
 import ValueDenomination from "modules/common/components/value-denomination/value-denomination";
 import getValue from "utils/get-value";
 
-import Styles from "modules/market/components/market-positions-list--mobile-stats/market-positions-list--mobile-stats.styles";
-import CommonStyles from "modules/market/components/market-positions-list--mobile/market-positions-list--mobile.styles";
+import Styles from "modules/market/components/market-positions-list--mobile-stats/market-positions-list--mobile-stats.styles.less";
+import CommonStyles from "modules/market/components/market-positions-list--mobile/market-positions-list--mobile.styles.less";
 
 const MobileStats = p => {
   const topBidShares = getValue(p, "outcome.topBid.shares.formatted");

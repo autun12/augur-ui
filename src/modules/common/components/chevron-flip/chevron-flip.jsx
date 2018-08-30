@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-import Styles from "modules/common/components/chevron-flip/chevron-flip.styles";
+import Styles from "modules/common/components/chevron-flip/chevron-flip.styles.less";
 
 const ChevronFlip = p => (
   <svg

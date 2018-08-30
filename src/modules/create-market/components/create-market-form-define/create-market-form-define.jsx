@@ -12,8 +12,8 @@ import {
 
 import { ExclamationCircle as InputErrorIcon } from "modules/common/components/icons";
 
-import Styles from "modules/create-market/components/create-market-form-define/create-market-form-define.styles";
-import StylesForm from "modules/create-market/components/create-market-form/create-market-form.styles";
+import Styles from "modules/create-market/components/create-market-form-define/create-market-form-define.styles.less";
+import StylesForm from "modules/create-market/components/create-market-form/create-market-form.styles.less";
 
 export default class CreateMarketDefine extends Component {
   static propTypes = {

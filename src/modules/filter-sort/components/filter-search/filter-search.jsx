@@ -7,7 +7,7 @@ import makeQuery from "modules/routes/helpers/make-query";
 
 import { FILTER_SEARCH_PARAM } from "modules/filter-sort/constants/param-names";
 
-import Styles from "modules/filter-sort/components/filter-search/filter-search.styles";
+import Styles from "modules/filter-sort/components/filter-search/filter-search.styles.less";
 
 export default class FilterSearch extends Component {
   static propTypes = {

@@ -7,7 +7,7 @@ import makePath from "modules/routes/helpers/make-path";
 
 import { Notifications } from "modules/common/components/icons";
 import { MARKETS } from "modules/routes/constants/views";
-import Styles from "modules/app/components/side-nav/side-nav.styles";
+import Styles from "modules/app/components/side-nav/side-nav.styles.less";
 
 export default class SideNav extends Component {
   static propTypes = {

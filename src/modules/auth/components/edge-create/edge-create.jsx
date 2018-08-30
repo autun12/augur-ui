@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import Helmet from "react-helmet";
 
-import Styles from "modules/auth/components/edge-create/edge-create.styles";
+import Styles from "modules/auth/components/edge-create/edge-create.styles.less";
 
 const Edge = p => (
   <section className={Styles.Edge}>

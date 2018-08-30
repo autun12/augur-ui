@@ -7,7 +7,7 @@ import MarketsList from "modules/markets/components/markets-list";
 import { TYPE_VIEW } from "modules/market/constants/link-types";
 import DisputeMarketCard from "modules/reporting/components/dispute-market-card/dispute-market-card";
 
-import Styles from "modules/reporting/components/reporting-resolved/reporting-resolved.styles";
+import Styles from "modules/reporting/components/reporting-resolved/reporting-resolved.styles.less";
 
 function getMarketIds(markets) {
   const filteredMarkets = [];

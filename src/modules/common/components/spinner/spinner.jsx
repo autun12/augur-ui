@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import Styles from "modules/common/components/spinner/spinner.styles";
+import Styles from "modules/common/components/spinner/spinner.styles.less";
 
 const Spinner = p => (
   <article className={Styles.Spinner}>

@@ -11,8 +11,8 @@ import {
   SCALAR
 } from "modules/markets/constants/market-types";
 
-import FormStyles from "modules/common/less/form";
-import Styles from "modules/reporting/components/reporting-report-form/reporting-report-form.styles";
+import FormStyles from "modules/common/less/form.styles.less";
+import Styles from "modules/reporting/components/reporting-report-form/reporting-report-form.styles.less";
 import { ExclamationCircle as InputErrorIcon } from "modules/common/components/icons";
 
 export default class ReportingReportForm extends Component {

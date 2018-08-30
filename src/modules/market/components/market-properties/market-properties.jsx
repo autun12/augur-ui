@@ -16,7 +16,7 @@ import { SCALAR } from "modules/markets/constants/market-types";
 import getValue from "utils/get-value";
 import shareDenominationLabel from "utils/share-denomination-label";
 import { dateHasPassed } from "utils/format-date";
-import Styles from "modules/market/components/market-properties/market-properties.styles";
+import Styles from "modules/market/components/market-properties/market-properties.styles.less";
 import ChevronFlip from "modules/common/components/chevron-flip/chevron-flip";
 import { MODAL_MIGRATE_MARKET } from "modules/modal/constants/modal-types";
 import { constants } from "services/augurjs";

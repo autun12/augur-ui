@@ -14,7 +14,7 @@ import {
   MARKET_CLOSED
 } from "modules/filter-sort/constants/market-states";
 import Dropdown from "modules/common/components/dropdown/dropdown";
-import Styles from "modules/filter-sort/components/filter-dropdowns/filter-dropdowns.styles";
+import Styles from "modules/filter-sort/components/filter-dropdowns/filter-dropdowns.styles.less";
 
 const sortOptions = [
   { value: MARKET_CREATION_TIME, label: "Creation Time" },

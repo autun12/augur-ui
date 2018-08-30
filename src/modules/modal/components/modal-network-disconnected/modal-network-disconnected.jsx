@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import ModalNetworkConnect from "modules/modal/containers/modal-network-connect";
 
 import { AugurLoadingLogo } from "modules/common/components/icons";
-import Styles from "modules/modal/components/modal-network-disconnected/modal-network-disconnected.styles";
+import Styles from "modules/modal/components/modal-network-disconnected/modal-network-disconnected.styles.less";
 
 import getValue from "utils/get-value";
 

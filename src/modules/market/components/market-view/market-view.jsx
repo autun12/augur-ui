@@ -13,7 +13,7 @@ import parseMarketTitle from "modules/market/helpers/parse-market-title";
 import { CATEGORICAL } from "modules/markets/constants/market-types";
 import { BUY } from "modules/transactions/constants/types";
 
-import Styles from "modules/market/components/market-view/market-view.styles";
+import Styles from "modules/market/components/market-view/market-view.styles.less";
 import { precisionClampFunction } from "src/modules/market/helpers/clamp-fixed-precision";
 
 export default class MarketView extends Component {

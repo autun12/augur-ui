@@ -9,8 +9,8 @@ import { SCALAR } from "modules/markets/constants/market-types";
 import { formatAttoRep, formatNumber } from "utils/format-number";
 import { augur } from "services/augurjs";
 import { ExclamationCircle as InputErrorIcon } from "modules/common/components/icons";
-import FormStyles from "modules/common/less/form";
-import Styles from "modules/reporting/components/reporting-dispute-form/reporting-dispute-form.styles";
+import FormStyles from "modules/common/less/form.styles.less";
+import Styles from "modules/reporting/components/reporting-dispute-form/reporting-dispute-form.styles.less";
 import ReportingDisputeProgress from "modules/reporting/components/reporting-dispute-progress/reporting-dispute-progress";
 import { MALFORMED_OUTCOME } from "utils/constants";
 

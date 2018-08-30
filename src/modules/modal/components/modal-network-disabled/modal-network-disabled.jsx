@@ -1,5 +1,5 @@
 import React from "react";
-import Styles from "modules/modal/components/modal-network-disabled/modal-network-disabled.styles";
+import Styles from "modules/modal/components/modal-network-disabled/modal-network-disabled.styles.less";
 
 const ModalNetworkDisabled = p => (
   <section className={Styles.NetworkDisabled}>

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 import makePath from "modules/routes/helpers/make-path";
 import MarketsList from "modules/markets/components/markets-list";
-import Styles from "modules/portfolio/components/markets/markets.styles";
-import PortfolioStyles from "modules/portfolio/components/portfolio-view/portfolio-view.styles";
+import Styles from "modules/portfolio/components/markets/markets.styles.less";
+import PortfolioStyles from "modules/portfolio/components/portfolio-view/portfolio-view.styles.less";
 import {
   TYPE_TRADE,
   TYPE_REPORT,

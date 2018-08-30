@@ -25,7 +25,7 @@ import getValue from "utils/get-value";
 
 import * as TYPES from "modules/modal/constants/modal-types";
 
-import Styles from "modules/modal/components/modal-view/modal-view.styles";
+import Styles from "modules/modal/components/modal-view/modal-view.styles.less";
 
 export default class ModalView extends Component {
   static propTypes = {

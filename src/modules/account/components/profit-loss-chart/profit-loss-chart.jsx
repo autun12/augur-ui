@@ -5,7 +5,7 @@ import noData from "highcharts/modules/no-data-to-display";
 
 import debounce from "utils/debounce";
 
-import Styles from "modules/account/components/profit-loss-chart/profit-loss-chart.styles";
+import Styles from "modules/account/components/profit-loss-chart/profit-loss-chart.styles.less";
 
 export default class ProfitLossChart extends Component {
   static propTypes = {

@@ -13,7 +13,7 @@ import {
   CLOSE_DIALOG_CLOSING,
   CLOSE_DIALOG_FAILED
 } from "modules/market/constants/close-dialog-status";
-import Styles from "modules/market/components/market-positions-list--position/market-positions-list--position.styles";
+import Styles from "modules/market/components/market-positions-list--position/market-positions-list--position.styles.less";
 import MarketOutcomeTradingIndicator from "modules/market/containers/market-outcome-trading-indicator";
 
 export default class MarketPositionsListPosition extends Component {

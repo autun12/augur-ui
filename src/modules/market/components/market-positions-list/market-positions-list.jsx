@@ -11,8 +11,8 @@ import NullStateMessage from "modules/common/components/null-state-message/null-
 import ChevronFlip from "modules/common/components/chevron-flip/chevron-flip";
 import toggleHeight from "utils/toggle-height/toggle-height";
 
-import Styles from "modules/market/components/market-positions-list/market-positions-list.styles";
-import ToggleHeightStyles from "utils/toggle-height/toggle-height.styles";
+import Styles from "modules/market/components/market-positions-list/market-positions-list.styles.less";
+import ToggleHeightStyles from "utils/toggle-height/toggle-height.styles.less";
 
 export default class MarketPositionsList extends Component {
   static propTypes = {

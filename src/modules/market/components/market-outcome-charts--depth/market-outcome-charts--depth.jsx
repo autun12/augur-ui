@@ -14,7 +14,7 @@ import {
   BIDS
 } from "modules/order-book/constants/order-book-order-types";
 
-import Styles from "modules/market/components/market-outcome-charts--depth/market-outcome-charts--depth.styles";
+import Styles from "modules/market/components/market-outcome-charts--depth/market-outcome-charts--depth.styles.less";
 
 export default class MarketOutcomeDepth extends Component {
   static propTypes = {

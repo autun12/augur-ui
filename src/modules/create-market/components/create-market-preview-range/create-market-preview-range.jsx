@@ -4,7 +4,7 @@ import { BigNumber } from "utils/create-big-number";
 
 import { SCALAR } from "modules/markets/constants/market-types";
 
-import Styles from "modules/create-market/components/create-market-preview-range/create-market-preview-range.styles";
+import Styles from "modules/create-market/components/create-market-preview-range/create-market-preview-range.styles.less";
 
 const MarketPreviewRange = p => {
   let minValue = "0%";

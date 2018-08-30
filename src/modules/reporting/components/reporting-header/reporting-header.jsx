@@ -7,7 +7,7 @@ import {
   getHoursRemaining
 } from "utils/format-date";
 import { formatAttoRep, formatAttoEth } from "utils/format-number";
-import Styles from "modules/reporting/components/reporting-header/reporting-header.styles";
+import Styles from "modules/reporting/components/reporting-header/reporting-header.styles.less";
 import { MODAL_PARTICIPATE } from "modules/modal/constants/modal-types";
 import ForkingContent from "modules/forking/components/forking-content/forking-content";
 import { showMore } from "modules/common/components/icons";

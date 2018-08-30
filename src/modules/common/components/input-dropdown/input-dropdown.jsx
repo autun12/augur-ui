@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import Styles from "modules/common/components/input-dropdown/input-dropdown.styles";
+import Styles from "modules/common/components/input-dropdown/input-dropdown.styles.less";
 
 class InputDropdown extends Component {
   constructor(props) {

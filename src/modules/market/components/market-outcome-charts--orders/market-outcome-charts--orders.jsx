@@ -11,8 +11,8 @@ import {
 import { BUY, SELL } from "modules/transactions/constants/types";
 import MarketOutcomeMidpoint from "modules/market/components/market-outcome-charts--midpoint/market-outcome-charts--midpoint";
 
-import Styles from "modules/market/components/market-outcome-charts--orders/market-outcome-charts--orders.styles";
-import StylesHeader from "modules/market/components/market-outcome-charts--header/market-outcome-charts--header.styles";
+import Styles from "modules/market/components/market-outcome-charts--orders/market-outcome-charts--orders.styles.less";
+import StylesHeader from "modules/market/components/market-outcome-charts--header/market-outcome-charts--header.styles.less";
 import { isEmpty, isEqual } from "lodash";
 
 function findTrailingZeros(number) {

@@ -4,7 +4,7 @@ import { SCALAR, YES_NO } from "modules/markets/constants/market-types";
 import { formatEther, formatShares } from "utils/format-number";
 import { BID, ASK } from "modules/transactions/constants/types";
 
-import Styles from "modules/market/components/market-liquidity-table/market-liquidity-table.styles";
+import Styles from "modules/market/components/market-liquidity-table/market-liquidity-table.styles.less";
 
 const MarketLiquidityTable = p => {
   const {

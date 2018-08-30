@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Styles from "modules/reporting/components/market-additional-details/market-additional-details.style";
+import Styles from "modules/reporting/components/market-additional-details/market-additional-details.style.less";
 import { SCALAR } from "modules/markets/constants/market-types";
 
 const MarketAdditonalDetails = p => {

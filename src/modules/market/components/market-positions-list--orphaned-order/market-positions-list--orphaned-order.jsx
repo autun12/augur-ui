@@ -7,8 +7,8 @@ import classNames from "classnames";
 import getValue from "utils/get-value";
 import { SELL } from "modules/trade/constants/types";
 
-import OrphanedStyles from "modules/market/components/market-positions-list--orphaned-order/market-positions-list--orphaned-order.styles";
-import Styles from "modules/market/components/market-positions-list--order/market-positions-list--order.styles";
+import OrphanedStyles from "modules/market/components/market-positions-list--orphaned-order/market-positions-list--orphaned-order.styles.less";
+import Styles from "modules/market/components/market-positions-list--order/market-positions-list--order.styles.less";
 import { formatEther, formatShares } from "utils/format-number";
 
 export default class OrphanedOrder extends Component {

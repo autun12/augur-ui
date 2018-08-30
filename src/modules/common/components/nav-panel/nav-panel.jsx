@@ -6,7 +6,7 @@ import classNames from "classnames";
 import parseQuery from "modules/routes/helpers/parse-query";
 import makeQuery from "modules/routes/helpers/make-query";
 
-import Styles from "modules/common/components/nav-panel/nav-panel.styles";
+import Styles from "modules/common/components/nav-panel/nav-panel.styles.less";
 
 function makeSearch(location, param, value, isItemDefault) {
   const updatedSearch = parseQuery(location.search);

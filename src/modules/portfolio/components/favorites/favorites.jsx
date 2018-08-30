@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 
 import MarketsList from "modules/markets/components/markets-list";
-import Styles from "modules/portfolio/components/favorites/favorites.styles";
+import Styles from "modules/portfolio/components/favorites/favorites.styles.less";
 import { TYPE_TRADE } from "modules/market/constants/link-types";
 
 const Favorites = p => (

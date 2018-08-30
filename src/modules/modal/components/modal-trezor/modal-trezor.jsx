@@ -1,6 +1,6 @@
 import React from "react";
 
-import Styles from "modules/modal/components/modal-trezor/modal-trezor.styles";
+import Styles from "modules/modal/components/modal-trezor/modal-trezor.styles.less";
 
 const ModalTrezor = p => (
   <section className={Styles.ModalTrezor}>

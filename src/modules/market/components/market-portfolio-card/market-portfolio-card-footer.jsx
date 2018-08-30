@@ -8,7 +8,7 @@ import TimeRemainingIndicatorWrapper from "src/modules/market/components/common/
 import { createBigNumber } from "utils/create-big-number";
 import moment from "moment";
 import { TYPE_CLAIM_PROCEEDS } from "modules/market/constants/link-types";
-import Styles from "modules/market/components/market-portfolio-card/market-portfolio-card.styles";
+import Styles from "modules/market/components/market-portfolio-card/market-portfolio-card.styles.less";
 import { constants } from "services/augurjs";
 import { formatEther } from "utils/format-number";
 

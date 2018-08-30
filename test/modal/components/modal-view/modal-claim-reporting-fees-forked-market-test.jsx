@@ -63,7 +63,9 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
+          expect(Cmp.html()).toContain(
+            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
+          );
         });
       });
 
@@ -135,7 +137,9 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
+          expect(Cmp.html()).toContain(
+            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
+          );
         });
       });
 
@@ -207,7 +211,9 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
+          expect(Cmp.html()).toContain(
+            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
+          );
         });
       });
 
@@ -282,7 +288,9 @@ describe("modal-claim-reporting-fees-forked-market", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
+          expect(Cmp.html()).toContain(
+            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
+          );
         });
       });
 

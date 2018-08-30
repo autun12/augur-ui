@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import LoadingLogo from "modules/app/components/loading-logo/loading-logo";
-import Styles from "modules/app/components/logo/logo.styles";
+import Styles from "modules/app/components/logo/logo.styles.less";
 
 const Logo = props => (
   <section className={Styles.Logo}>

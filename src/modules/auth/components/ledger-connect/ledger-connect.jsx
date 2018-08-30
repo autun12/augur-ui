@@ -11,7 +11,7 @@ import { Alert } from "modules/common/components/icons";
 
 import Spinner from "modules/common/components/spinner/spinner";
 
-import Styles from "modules/auth/components/ledger-connect/ledger-connect.styles";
+import Styles from "modules/auth/components/ledger-connect/ledger-connect.styles.less";
 
 export default class Ledger extends Component {
   static propTypes = {

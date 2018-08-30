@@ -15,8 +15,8 @@ import {
 
 import { getBeginDate } from "src/utils/format-date";
 
-import Styles from "modules/portfolio/components/transactions/transactions.styles";
-import PortfolioStyles from "modules/portfolio/components/portfolio-view/portfolio-view.styles";
+import Styles from "modules/portfolio/components/transactions/transactions.styles.less";
+import PortfolioStyles from "modules/portfolio/components/portfolio-view/portfolio-view.styles.less";
 
 export default class Transactions extends Component {
   static propTypes = {

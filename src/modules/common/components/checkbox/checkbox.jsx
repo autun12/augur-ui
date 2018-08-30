@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Styles from "modules/common/components/checkbox/checkbox.styles";
+import Styles from "modules/common/components/checkbox/checkbox.styles.less";
 
 const Checkbox = p => (
   <div className={Styles.Checkbox}>

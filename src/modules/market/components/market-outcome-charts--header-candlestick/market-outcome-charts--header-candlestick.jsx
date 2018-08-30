@@ -4,8 +4,8 @@ import classNames from "classnames";
 
 import PeriodSelector from "modules/market/components/market-outcome-charts--candlestick-period-selector/market-outcome-charts--candlestick-period-selector";
 
-import Styles from "modules/market/components/market-outcome-charts--header-candlestick/market-outcome-charts--header-candlestick.styles";
-import StylesHeader from "modules/market/components/market-outcome-charts--header/market-outcome-charts--header.styles";
+import Styles from "modules/market/components/market-outcome-charts--header-candlestick/market-outcome-charts--header-candlestick.styles.less";
+import StylesHeader from "modules/market/components/market-outcome-charts--header/market-outcome-charts--header.styles.less";
 
 const MarketOutcomeCandlestickHeader = ({
   outcomeName,

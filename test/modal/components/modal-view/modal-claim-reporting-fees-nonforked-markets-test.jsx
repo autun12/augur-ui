@@ -67,7 +67,9 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
+          expect(Cmp.html()).toContain(
+            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
+          );
         });
       });
 
@@ -102,7 +104,9 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
             onFailed: claimReportingFeesNonforkedMarkets.args[0][0].onFailed,
             onSuccess: claimReportingFeesNonforkedMarkets.args[0][0].onSuccess
           };
-          expect(claimReportingFeesNonforkedMarkets.args[0][0]).toEqual(expected);
+          expect(claimReportingFeesNonforkedMarkets.args[0][0]).toEqual(
+            expected
+          );
         });
       });
 
@@ -145,7 +149,9 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
+          expect(Cmp.html()).toContain(
+            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
+          );
         });
       });
 
@@ -180,7 +186,9 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
             onFailed: claimReportingFeesNonforkedMarkets.args[0][0].onFailed,
             onSuccess: claimReportingFeesNonforkedMarkets.args[0][0].onSuccess
           };
-          expect(claimReportingFeesNonforkedMarkets.args[0][0]).toEqual(expected);
+          expect(claimReportingFeesNonforkedMarkets.args[0][0]).toEqual(
+            expected
+          );
         });
       });
 
@@ -223,7 +231,9 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
+          expect(Cmp.html()).toContain(
+            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
+          );
         });
       });
 
@@ -258,7 +268,9 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
             onFailed: claimReportingFeesNonforkedMarkets.args[0][0].onFailed,
             onSuccess: claimReportingFeesNonforkedMarkets.args[0][0].onSuccess
           };
-          expect(claimReportingFeesNonforkedMarkets.args[0][0]).toEqual(expected);
+          expect(claimReportingFeesNonforkedMarkets.args[0][0]).toEqual(
+            expected
+          );
         });
       });
 
@@ -304,7 +316,9 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
 
       describe("Recipient field", () => {
         test("should match expected recipient address", () => {
-          expect(Cmp.html()).toContain("<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>");
+          expect(Cmp.html()).toContain(
+            "<span>Recipient</span><span>0X913DA4198E6BE1D5F5E4A40D0667F70C0B5430EB</span>"
+          );
         });
       });
 
@@ -339,7 +353,9 @@ describe("modal-claim-reporting-fees-nonforked-markets", () => {
             onFailed: claimReportingFeesNonforkedMarkets.args[0][0].onFailed,
             onSuccess: claimReportingFeesNonforkedMarkets.args[0][0].onSuccess
           };
-          expect(claimReportingFeesNonforkedMarkets.args[0][0]).toEqual(expected);
+          expect(claimReportingFeesNonforkedMarkets.args[0][0]).toEqual(
+            expected
+          );
         });
       });
 

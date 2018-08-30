@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { orderBy } from "lodash";
 import { formatAttoRep } from "utils/format-number";
-import Styles from "modules/account/components/account-universes/account-universes.styles";
+import Styles from "modules/account/components/account-universes/account-universes.styles.less";
 import AccountUniverseDescription from "../account-universe-description/account-universe-description";
 
 export default class AccountUniverses extends Component {

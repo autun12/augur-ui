@@ -23,10 +23,10 @@ import {
   ExclamationCircle as InputErrorIcon,
   Hint
 } from "modules/common/components/icons";
-import Styles from "modules/create-market/components/create-market-form-resolution/create-market-form-resolution.styles";
-import StylesForm from "modules/create-market/components/create-market-form/create-market-form.styles";
+import Styles from "modules/create-market/components/create-market-form-resolution/create-market-form-resolution.styles.less";
+import StylesForm from "modules/create-market/components/create-market-form/create-market-form.styles.less";
 import ReactTooltip from "react-tooltip";
-import TooltipStyles from "modules/common/less/tooltip";
+import TooltipStyles from "modules/common/less/tooltip.less";
 
 export const ChevronLeft = () => (
   <svg viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg">

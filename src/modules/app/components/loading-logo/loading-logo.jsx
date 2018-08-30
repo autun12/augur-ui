@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { AugurLoadingLogo } from "modules/common/components/icons";
-import Styles from "modules/app/components/loading-logo/loading-logo.styles";
+import Styles from "modules/app/components/loading-logo/loading-logo.styles.less";
 
 export default class LoadingLogo extends Component {
   static propTypes = {

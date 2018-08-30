@@ -8,7 +8,7 @@ import {
 } from "modules/common/components/icons";
 import Input from "modules/common/components/input/input";
 
-import Styles from "modules/modal/components/modal-network-connect/modal-network-connect.styles";
+import Styles from "modules/modal/components/modal-network-connect/modal-network-connect.styles.less";
 
 function calculateConnectionErrors(err, res) {
   const errors = [];

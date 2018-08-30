@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Styles from "modules/modal/components/modal-approval/modal-approval.styles";
+import Styles from "modules/modal/components/modal-approval/modal-approval.styles.less";
 
 const ModalApproval = p => (
   <section className={Styles.ModalApproval}>

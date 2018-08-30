@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { SCALAR, YES_NO } from "modules/markets/constants/market-types";
 
-import Styles from "modules/market/components/core-properties/core-properties.styles";
+import Styles from "modules/market/components/core-properties/core-properties.styles.less";
 import ReactTooltip from "react-tooltip";
-import TooltipStyles from "modules/common/less/tooltip";
+import TooltipStyles from "modules/common/less/tooltip.less";
 
 import getValue from "utils/get-value";
 import { dateHasPassed } from "utils/format-date";

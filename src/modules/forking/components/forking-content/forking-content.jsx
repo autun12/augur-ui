@@ -7,7 +7,7 @@ import ForkingProgressBar from "modules/forking/components/forking-progress-bar/
 import { TYPE_MIGRATE_REP } from "modules/market/constants/link-types";
 import MarketLink from "modules/market/components/market-link/market-link";
 
-import Styles from "modules/forking/components/forking-content/forking-content.styles";
+import Styles from "modules/forking/components/forking-content/forking-content.styles.less";
 
 const ForkingContent = p => {
   const unixFormattedDate = convertUnixToFormattedDate(p.forkEndTime);

@@ -9,7 +9,7 @@ import Dropdown from "modules/common/components/dropdown/dropdown";
 import debounce from "utils/debounce";
 import { formatEther } from "utils/format-number";
 
-import Styles from "modules/portfolio/components/performance-graph/performance-graph.styles";
+import Styles from "modules/portfolio/components/performance-graph/performance-graph.styles.less";
 
 class PerformanceGraph extends Component {
   static propTypes = {

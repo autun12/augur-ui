@@ -19,7 +19,7 @@ import { CreateMarketEdit } from "modules/common/components/icons";
 import CreateMarketPreviewRange from "modules/create-market/components/create-market-preview-range/create-market-preview-range";
 import CreateMarketPreviewCategorical from "modules/create-market/components/create-market-preview-categorical/create-market-preview-categorical";
 import { dateHasPassed, formatDate } from "utils/format-date";
-import Styles from "modules/create-market/components/create-market-preview/create-market-preview.styles";
+import Styles from "modules/create-market/components/create-market-preview/create-market-preview.styles.less";
 import noop from "src/utils/noop";
 import { compact } from "lodash";
 import { CategoryTagTrail } from "src/modules/common/components/category-tag-trail/category-tag-trail";

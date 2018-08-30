@@ -7,7 +7,7 @@ import ValueDenomination from "modules/common/components/value-denomination/valu
 
 import getValue from "utils/get-value";
 import MarketOutcomeTradingIndicator from "modules/market/containers/market-outcome-trading-indicator";
-import Styles from "modules/market/components/market-outcomes-list--outcome/market-outcomes-list--outcome.styles";
+import Styles from "modules/market/components/market-outcomes-list--outcome/market-outcomes-list--outcome.styles.less";
 
 const Outcome = p => {
   const outcomeName = getValue(p, "outcome.name");

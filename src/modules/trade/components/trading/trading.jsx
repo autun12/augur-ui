@@ -12,7 +12,7 @@ import {
   ACCOUNT_DEPOSIT
 } from "modules/routes/constants/views";
 import { BigNumber } from "utils/create-big-number";
-import Styles from "modules/trade/components/trading/trading.styles";
+import Styles from "modules/trade/components/trading/trading.styles.less";
 
 class MarketTrading extends Component {
   static propTypes = {

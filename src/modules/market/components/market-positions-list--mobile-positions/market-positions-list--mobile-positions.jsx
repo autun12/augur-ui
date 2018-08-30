@@ -5,8 +5,8 @@ import { createBigNumber } from "utils/create-big-number";
 
 import getValue from "utils/get-value";
 
-import Styles from "modules/market/components/market-positions-list--mobile-positions/market-positions-list--mobile-positions.styles";
-import CommonStyles from "modules/market/components/market-positions-list--mobile/market-positions-list--mobile.styles";
+import Styles from "modules/market/components/market-positions-list--mobile-positions/market-positions-list--mobile-positions.styles.less";
+import CommonStyles from "modules/market/components/market-positions-list--mobile/market-positions-list--mobile.styles.less";
 
 export default class MobilePositions extends Component {
   static propTypes = {

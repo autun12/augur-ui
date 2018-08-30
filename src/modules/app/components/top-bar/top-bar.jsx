@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { Notifications } from "modules/common/components/icons";
 import makePath from "modules/routes/helpers/make-path";
 import { CATEGORIES } from "modules/routes/constants/views";
-import Styles from "modules/app/components/top-bar/top-bar.styles";
+import Styles from "modules/app/components/top-bar/top-bar.styles.less";
 
 const TopBar = props => (
   <header className={Styles.TopBar}>

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { SigningPen } from "modules/common/components/icons";
 import { formatEther } from "utils/format-number";
-import Styles from "modules/modal/components/modal-migrate-market/modal-migrate-market.styles";
+import Styles from "modules/modal/components/modal-migrate-market/modal-migrate-market.styles.less";
 
 export default class ModalMigrateMarket extends Component {
   static propTypes = {

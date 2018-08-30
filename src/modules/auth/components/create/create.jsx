@@ -11,7 +11,7 @@ import { CREATE_NAV } from "modules/routes/constants/param-names";
 import { ITEMS } from "modules/auth/constants/create-nav";
 import { TITLE_SUFFIX } from "modules/app/constants/title-suffix";
 
-import Styles from "modules/auth/components/auth/auth.styles";
+import Styles from "modules/auth/components/auth/auth.styles.less";
 
 export default function AuthCreate(p) {
   const selectedNav = parseQuery(p.location.search)[CREATE_NAV] || null;

@@ -13,13 +13,13 @@ import {
 } from "modules/markets/constants/market-types";
 import { isEqual } from "lodash";
 import ReactTooltip from "react-tooltip";
-import TooltipStyles from "modules/common/less/tooltip";
+import TooltipStyles from "modules/common/less/tooltip.less";
 import {
   Hint,
   ExclamationCircle as InputErrorIcon
 } from "modules/common/components/icons";
-import FormStyles from "modules/common/less/form";
-import Styles from "modules/trade/components/trading--form/trading--form.styles";
+import FormStyles from "modules/common/less/form.styles.less";
+import Styles from "modules/trade/components/trading--form/trading--form.styles.less";
 import { formatEther, formatShares } from "utils/format-number";
 import Checkbox from "src/modules/common/components/checkbox/checkbox";
 

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import TextFit from "react-textfit";
 
-import Styles from "modules/account/components/account-header/account-header.styles";
+import Styles from "modules/account/components/account-header/account-header.styles.less";
 
 const AccountHeader = p => {
   // assign defaults incase we have nulls for value

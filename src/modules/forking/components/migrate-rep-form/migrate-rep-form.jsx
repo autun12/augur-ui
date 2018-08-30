@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { BigNumber, createBigNumber } from "utils/create-big-number";
 
-import FormStyles from "modules/common/less/form";
+import FormStyles from "modules/common/less/form.styles.less";
 import { SCALAR } from "modules/markets/constants/market-types";
 import { ExclamationCircle as InputErrorIcon } from "modules/common/components/icons";
-import Styles from "modules/forking/components/migrate-rep-form/migrate-rep-form.styles";
+import Styles from "modules/forking/components/migrate-rep-form/migrate-rep-form.styles.less";
 import FormattedMigrationTotals from "modules/forking/components/migrate-rep-form/formatted-migration-totals";
 
 export default class MigrateRepForm extends Component {

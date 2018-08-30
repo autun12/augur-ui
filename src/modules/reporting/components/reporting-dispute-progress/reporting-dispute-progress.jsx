@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { formatAttoRep } from "utils/format-number";
-import Styles from "modules/reporting/components/reporting-dispute-progress/reporting-dispute-progress.styles";
+import Styles from "modules/reporting/components/reporting-dispute-progress/reporting-dispute-progress.styles.less";
 import {
   calculateAddedStakePercentage,
   calculateTentativeCurrentRep

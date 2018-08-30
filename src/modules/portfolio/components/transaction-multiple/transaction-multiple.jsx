@@ -10,8 +10,8 @@ import ChevronFlip from "modules/common/components/chevron-flip/chevron-flip";
 
 import toggleHeight from "utils/toggle-height/toggle-height";
 
-import CommonStyles from "modules/portfolio/components/transactions/transactions.styles";
-import ToggleHeightStyles from "utils/toggle-height/toggle-height.styles";
+import CommonStyles from "modules/portfolio/components/transactions/transactions.styles.less";
+import ToggleHeightStyles from "utils/toggle-height/toggle-height.styles.less";
 
 export default class TransactionMultiple extends Component {
   static propTypes = {

@@ -4,12 +4,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { createBigNumber } from "utils/create-big-number";
-import FormStyles from "modules/common/less/form";
+import FormStyles from "modules/common/less/form.styles.less";
 import {
   Participate,
   ExclamationCircle as InputErrorIcon
 } from "modules/common/components/icons";
-import Styles from "modules/modal/components/modal-participate/modal-participate.styles";
+import Styles from "modules/modal/components/modal-participate/modal-participate.styles.less";
 import Input from "modules/common/components/input/input";
 import ModalParticipateReview from "modules/modal/components/modal-participate-review/modal-participate-review";
 

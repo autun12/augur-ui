@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { CATEGORICAL } from "modules/markets/constants/market-types";
 import MarketLiquidityTable from "modules/market/components/market-liquidity-table/market-liquidity-table";
 
-import StylesForm from "modules/create-market/components/create-market-form/create-market-form.styles";
-import Styles from "modules/create-market/components/create-market-form-liquidity-orders/create-market-form-liquidity-orders.styles";
+import StylesForm from "modules/create-market/components/create-market-form/create-market-form.styles.less";
+import Styles from "modules/create-market/components/create-market-form-liquidity-orders/create-market-form-liquidity-orders.styles.less";
 
 const CreateMarketLiquidityOrders = props => {
   const { newMarket, liquidityState, removeOrderFromNewMarket } = props;

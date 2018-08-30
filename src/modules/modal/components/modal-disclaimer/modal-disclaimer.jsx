@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Styles from "modules/modal/components/modal-disclaimer/modal-disclaimer.styles";
+import Styles from "modules/modal/components/modal-disclaimer/modal-disclaimer.styles.less";
 
 const EST_HEIGHT_PERCENT = 0.98;
 

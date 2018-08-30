@@ -62,7 +62,7 @@ import {
 import { MODAL_NETWORK_CONNECT } from "modules/modal/constants/modal-types";
 import { CATEGORY_PARAM_NAME } from "modules/filter-sort/constants/param-names";
 
-import Styles from "modules/app/components/app/app.styles";
+import Styles from "modules/app/components/app/app.styles.less";
 import MarketsInnerNavContainer from "src/modules/app/containers/markets-inner-nav";
 import { NotificationBarContainer } from "src/modules/notification-bar/containers/notification-bar-container";
 

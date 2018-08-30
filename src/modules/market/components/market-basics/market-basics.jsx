@@ -18,8 +18,8 @@ import {
   CATEGORICAL
 } from "modules/markets/constants/market-types";
 
-import CommonStyles from "modules/market/components/common/market-common.styles";
-import Styles from "modules/market/components/market-basics/market-basics.styles";
+import CommonStyles from "modules/market/components/common/market-common.styles.less";
+import Styles from "modules/market/components/market-basics/market-basics.styles.less";
 import SingleSlicePieGraph from "src/modules/market/components/common/single-slice-pie-graph/single-slice-pie-graph";
 import TimeRemainingIndicatorWrapper from "src/modules/market/components/common/time-remaining-indicator/time-remaining-indicator";
 import { constants } from "services/augurjs";

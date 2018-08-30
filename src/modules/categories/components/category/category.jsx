@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { BigNumber, createBigNumber } from "utils/create-big-number";
 
-import Styles from "modules/categories/components/category/category.styles";
+import Styles from "modules/categories/components/category/category.styles.less";
 
 import makePath from "modules/routes/helpers/make-path";
 import makeQuery from "modules/routes/helpers/make-query";

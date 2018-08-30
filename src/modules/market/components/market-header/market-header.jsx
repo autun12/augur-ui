@@ -6,7 +6,7 @@ import { ChevronLeft } from "modules/common/components/icons";
 
 import { CATEGORICAL, SCALAR } from "modules/markets/constants/market-types";
 import { BigNumber } from "bignumber.js";
-import Styles from "modules/market/components/market-header/market-header.styles";
+import Styles from "modules/market/components/market-header/market-header.styles.less";
 import CoreProperties from "modules/market/components/core-properties/core-properties";
 
 const OVERFLOW_DETAILS_LENGTH = 560;

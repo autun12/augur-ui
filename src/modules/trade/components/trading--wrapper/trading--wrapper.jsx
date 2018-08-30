@@ -20,7 +20,7 @@ import {
   ACCOUNT_DEPOSIT
 } from "modules/routes/constants/views";
 import MarketOutcomeTradingIndicator from "modules/market/containers/market-outcome-trading-indicator";
-import Styles from "modules/trade/components/trading--wrapper/trading--wrapper.styles";
+import Styles from "modules/trade/components/trading--wrapper/trading--wrapper.styles.less";
 
 class MarketTradingWrapper extends Component {
   static propTypes = {

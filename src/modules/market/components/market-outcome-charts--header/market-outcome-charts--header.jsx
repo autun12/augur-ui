@@ -5,7 +5,7 @@ import MarketOutcomeChartsHeaderCandlestick from "modules/market/components/mark
 import MarketOutcomeChartHeaderDepth from "modules/market/components/market-outcome-charts--header-depth/market-outcome-charts--header-depth";
 import MarketOutcomeChartHeaderOrders from "modules/market/components/market-outcome-charts--header-orders/market-outcome-charts--header-orders";
 
-import Styles from "modules/market/components/market-outcome-charts--header/market-outcome-charts--header.styles";
+import Styles from "modules/market/components/market-outcome-charts--header/market-outcome-charts--header.styles.less";
 
 const MarketOutcomeChartsHeader = p => (
   <section className={Styles.MarketOutcomeChartsHeader}>

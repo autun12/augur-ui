@@ -8,7 +8,7 @@ import {
   MODAL_CLAIM_REPORTING_FEES_NONFORKED_MARKETS
 } from "modules/modal/constants/modal-types";
 import { TYPE_CLAIM_PROCEEDS } from "modules/market/constants/link-types";
-import Styles from "modules/portfolio/components/portfolio-reports/portfolio-reports.styles";
+import Styles from "modules/portfolio/components/portfolio-reports/portfolio-reports.styles.less";
 
 export default class PortfolioReports extends Component {
   static propTypes = {

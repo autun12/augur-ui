@@ -7,7 +7,7 @@ import { createBigNumber } from "utils/create-big-number";
 import { formatEther, formatGasCostToEther } from "utils/format-number";
 import MarketLiquidityTable from "modules/market/components/market-liquidity-table/market-liquidity-table";
 
-import Styles from "modules/market/components/market-liquidity/market-liquidity.styles";
+import Styles from "modules/market/components/market-liquidity/market-liquidity.styles.less";
 
 const NEW_ORDER_GAS_ESTIMATE = createBigNumber(700000);
 

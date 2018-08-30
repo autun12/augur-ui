@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import Styles from "modules/create-market/components/create-market-preview-categorical/create-market-preview-categorical.styles";
+import Styles from "modules/create-market/components/create-market-preview-categorical/create-market-preview-categorical.styles.less";
 
 const CategoricalOutcome = ({ className, outcome }) => (
   <div className={className || Styles.MarketPreviewCategorical__outcome}>

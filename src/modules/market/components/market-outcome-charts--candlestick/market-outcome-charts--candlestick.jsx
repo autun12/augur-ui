@@ -12,7 +12,7 @@ import MarketOutcomeChartsHeaderCandlestick from "modules/market/components/mark
 
 import { BUY, SELL } from "modules/transactions/constants/types";
 
-import Styles from "modules/market/components/market-outcome-charts--candlestick/market-outcome-charts--candlestick.styles";
+import Styles from "modules/market/components/market-outcome-charts--candlestick/market-outcome-charts--candlestick.styles.less";
 import { createBigNumber } from "src/utils/create-big-number";
 import { getTickIntervalForRange } from "src/modules/market/helpers";
 

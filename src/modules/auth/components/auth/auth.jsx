@@ -15,7 +15,7 @@ import {
   AuthCreate
 } from "modules/routes/constants/components";
 
-import Styles from "modules/auth/components/auth/auth.styles";
+import Styles from "modules/auth/components/auth/auth.styles.less";
 
 export default function Auth(p) {
   return (

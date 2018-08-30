@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Styles from "./single-slice-pie-graph.styles";
+import Styles from "./single-slice-pie-graph.styles.less";
 
 export default function SingleSlicePieGraph({
   percentage,

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Styles from "modules/common/components/word-trail/word-trail.styles";
+import Styles from "modules/common/components/word-trail/word-trail.styles.less";
 import { SimpleButton } from "src/modules/common/components/simple-button";
 
 const WordTrail = ({ items = [], typeLabel }) => (

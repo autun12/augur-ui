@@ -21,7 +21,7 @@ import {
   ACCOUNT_UNIVERSES
 } from "modules/routes/constants/views";
 
-import Styles from "modules/account/components/account-view/account-view.styles";
+import Styles from "modules/account/components/account-view/account-view.styles.less";
 
 const AccountView = p => {
   const showRepFaucet = parseInt(augur.rpc.getNetworkID(), 10) !== 1;

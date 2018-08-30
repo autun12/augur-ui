@@ -1,6 +1,6 @@
 import React from "react";
 
-import Styles from "modules/app/components/terms-and-conditions/terms-and-conditions.styles";
+import Styles from "modules/app/components/terms-and-conditions/terms-and-conditions.styles.less";
 
 const TermsAndConditions = p => (
   <div className={Styles.TermsAndConditions}>

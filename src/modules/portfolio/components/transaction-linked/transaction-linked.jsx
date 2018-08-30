@@ -6,8 +6,8 @@ import ChevronFlip from "modules/common/components/chevron-flip/chevron-flip";
 
 import toggleHeight from "utils/toggle-height/toggle-height";
 
-import Styles from "modules/portfolio/components/transaction-linked/transaction-linked.styles";
-import ToggleHeightStyles from "utils/toggle-height/toggle-height.styles";
+import Styles from "modules/portfolio/components/transaction-linked/transaction-linked.styles.less";
+import ToggleHeightStyles from "utils/toggle-height/toggle-height.styles.less";
 
 export default class LinkedTransaction extends Component {
   static propTypes = {
