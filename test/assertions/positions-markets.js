@@ -11,12 +11,12 @@ export default function(positionsMarkets) {
 
 function assertPositionMarket(positionMarket) {
   describe("positionMarket", () => {
-    it("id", () => {
+    test("id", () => {
       assert.isDefined(positionMarket.id, `'positionMarket.id' is not defined`);
       assert.isString(positionMarket.id, `'positionMarket.id' isn't a string`);
     });
 
-    it("description", () => {
+    test("description", () => {
       assert.isDefined(
         positionMarket.description,
         `'positionMarket.description' is not defined`

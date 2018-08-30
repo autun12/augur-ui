@@ -3,10 +3,10 @@ import { BUY } from "modules/transactions/constants/types";
 describe("modules/bids-asks/selectors/select-order.js", () => {
   const selectOrder = require("../../../src/modules/bids-asks/selectors/select-order")
     .default;
-  it(`shouldn't return order if it's not there`, () => {
+  test(`shouldn't return order if it's not there`, () => {
     assert.isNull(selectOrder("orderId", "marketId", 2, BUY, {}));
   });
-  it(`should return order if it's there`, () => {
+  test(`should return order if it's there`, () => {
     const order = selectOrder("0x1", "MARKET_1", 2, BUY, {
       MARKET_1: {
         2: {

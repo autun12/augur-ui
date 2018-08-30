@@ -20,14 +20,17 @@ describe("src/modules/markets/helpers/get-tags-and-categories-from-location.js",
       );
     });
 
-    it("should return an object with the relevant parsed data in an object", () => {
-      assert.deepEqual(result, {
-        category: "Augur",
-        keywords: "test keywords",
-        tags: ["Ethereum", "trading"],
-        balanceOfSearchParams: {}
-      });
-    });
+    test(
+      "should return an object with the relevant parsed data in an object",
+      () => {
+        assert.deepEqual(result, {
+          category: "Augur",
+          keywords: "test keywords",
+          tags: ["Ethereum", "trading"],
+          balanceOfSearchParams: {}
+        });
+      }
+    );
   });
 
   describe("no tags", () => {
@@ -35,7 +38,7 @@ describe("src/modules/markets/helpers/get-tags-and-categories-from-location.js",
       result = composedGetTagsAndCategoriesFromLocation("category=Augur");
     });
 
-    it("should return an object with the relevant parsed data", () => {
+    test("should return an object with the relevant parsed data", () => {
       assert.deepEqual(result, {
         category: "Augur",
         keywords: undefined,
@@ -50,14 +53,17 @@ describe("src/modules/markets/helpers/get-tags-and-categories-from-location.js",
       result = composedGetTagsAndCategoriesFromLocation("");
     });
 
-    it("should return an object with a null category and empty tags array", () => {
-      assert.deepEqual(result, {
-        category: undefined,
-        keywords: undefined,
-        tags: [],
-        balanceOfSearchParams: {}
-      });
-    });
+    test(
+      "should return an object with a null category and empty tags array",
+      () => {
+        assert.deepEqual(result, {
+          category: undefined,
+          keywords: undefined,
+          tags: [],
+          balanceOfSearchParams: {}
+        });
+      }
+    );
   });
 
   describe("no keywords", () => {
@@ -69,7 +75,7 @@ describe("src/modules/markets/helpers/get-tags-and-categories-from-location.js",
       result = getSelectedTagsAndCategoriesFromLocation({});
     });
 
-    it("should do something", () => {
+    test("should do something", () => {
       assert.deepEqual(result, {
         category: undefined,
         keywords: undefined,
@@ -86,7 +92,7 @@ describe("src/modules/markets/helpers/get-tags-and-categories-from-location.js",
       );
     });
 
-    it('should be returned as part of the "balanceOfSearchParams"', () => {
+    test('should be returned as part of the "balanceOfSearchParams"', () => {
       assert.deepEqual(result, {
         category: "Augur",
         keywords: undefined,

@@ -10,12 +10,12 @@ import selectDisputeOutcomes, {
 
 describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
 
-  after(() => {
+  afterAll(() => {
     RewireAPI.__ResetDependency__("calculatePayoutNumeratorsValue");
   });
 
@@ -144,247 +144,253 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     calculatePayoutNumeratorsValueStubb
   );
 
-  it(`scalar market with more than 9 disputes and includes indeterminate`, () => {
-    const stakes = [
-      {
-        payout: [1000, 9000],
-        isInvalid: false,
-        malformed: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "90",
-        stakeRemaining: "20",
-        display: true,
-        id: "90",
-        name: "90"
-      },
-      {
-        payout: [3000, 7000],
-        isInvalid: false,
-        malformed: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "70",
-        stakeRemaining: "35",
-        display: true,
-        id: "70",
-        name: "70"
-      },
-      {
-        payout: [2000, 8000],
-        isInvalid: false,
-        malformed: false,
-        potentialFork: false,
-        tentativeWinning: true,
-        stakeCurrent: "80",
-        stakeRemaining: "10",
-        display: true,
-        id: "80",
-        name: "80"
-      },
-      {
-        payout: [4000, 6000],
-        isInvalid: false,
-        malformed: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "60",
-        stakeRemaining: "40",
-        display: true,
-        id: "60",
-        name: "60"
-      },
-      {
-        payout: [6000, 4000],
-        isInvalid: false,
-        malformed: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "40",
-        stakeRemaining: "60",
-        display: true,
-        id: "40",
-        name: "40"
-      },
-      {
-        payout: [7000, 3000],
-        isInvalid: false,
-        malformed: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "30",
-        stakeRemaining: "70",
-        id: "30",
-        name: "30"
-      },
-      {
-        payout: [8000, 2000],
-        isInvalid: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "20",
-        stakeRemaining: "300",
-        id: "20",
-        name: "20"
-      },
-      {
-        payout: [5000, 5000],
-        isInvalid: true,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "50",
-        accountStakeCompleted: "0",
-        accountStakeCurrent: "0",
-        stakeCompleted: "0",
-        bondSizeCurrent: 100,
-        stakeRemaining: "50",
-        display: true,
-        id: "0.5",
-        name: "Indeterminate"
-      },
-      {
-        payout: [9000, 1000],
-        isInvalid: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "10",
-        stakeRemaining: "200",
-        id: "10",
-        name: "10"
-      },
-      {
-        payout: [10000, 0],
-        isInvalid: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "0",
-        stakeRemaining: "100",
-        id: "0",
-        name: "0"
-      },
-      {
-        payout: [0, 10000],
-        isInvalid: false,
-        malformed: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "100",
-        stakeRemaining: "15",
-        display: true,
-        id: "100",
-        name: "100"
-      },
-      {
-        payout: [1500, 8500],
-        isInvalid: false,
-        malformed: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "85",
-        stakeRemaining: "30",
-        display: true,
-        id: "85",
-        name: "85"
-      },
-      {
-        payout: [8500, 1500],
-        isInvalid: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "15",
-        stakeRemaining: "400",
-        id: "15",
-        name: "15"
-      }
-    ];
-    const expected = [
-      { ...stakes[2] },
-      { ...stakes[10] },
-      { ...stakes[0] },
-      { ...stakes[11] },
-      { ...stakes[1] },
-      { ...stakes[3] },
-      { ...stakes[7] },
-      { ...stakes[4] },
-      { ...stakes[5] },
-      { ...stakes[9] },
-      { ...stakes[8] },
-      { ...stakes[6] },
-      { ...stakes[12] }
-    ];
-    const actual = selectDisputeOutcomes(
-      marketScalar,
-      stakes,
-      100,
-      10000000000
-    );
-    assert.deepEqual(actual, expected, `Didn't call the expected method`);
-  });
+  test(
+    `scalar market with more than 9 disputes and includes indeterminate`,
+    () => {
+      const stakes = [
+        {
+          payout: [1000, 9000],
+          isInvalid: false,
+          malformed: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "90",
+          stakeRemaining: "20",
+          display: true,
+          id: "90",
+          name: "90"
+        },
+        {
+          payout: [3000, 7000],
+          isInvalid: false,
+          malformed: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "70",
+          stakeRemaining: "35",
+          display: true,
+          id: "70",
+          name: "70"
+        },
+        {
+          payout: [2000, 8000],
+          isInvalid: false,
+          malformed: false,
+          potentialFork: false,
+          tentativeWinning: true,
+          stakeCurrent: "80",
+          stakeRemaining: "10",
+          display: true,
+          id: "80",
+          name: "80"
+        },
+        {
+          payout: [4000, 6000],
+          isInvalid: false,
+          malformed: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "60",
+          stakeRemaining: "40",
+          display: true,
+          id: "60",
+          name: "60"
+        },
+        {
+          payout: [6000, 4000],
+          isInvalid: false,
+          malformed: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "40",
+          stakeRemaining: "60",
+          display: true,
+          id: "40",
+          name: "40"
+        },
+        {
+          payout: [7000, 3000],
+          isInvalid: false,
+          malformed: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "30",
+          stakeRemaining: "70",
+          id: "30",
+          name: "30"
+        },
+        {
+          payout: [8000, 2000],
+          isInvalid: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "20",
+          stakeRemaining: "300",
+          id: "20",
+          name: "20"
+        },
+        {
+          payout: [5000, 5000],
+          isInvalid: true,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "50",
+          accountStakeCompleted: "0",
+          accountStakeCurrent: "0",
+          stakeCompleted: "0",
+          bondSizeCurrent: 100,
+          stakeRemaining: "50",
+          display: true,
+          id: "0.5",
+          name: "Indeterminate"
+        },
+        {
+          payout: [9000, 1000],
+          isInvalid: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "10",
+          stakeRemaining: "200",
+          id: "10",
+          name: "10"
+        },
+        {
+          payout: [10000, 0],
+          isInvalid: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "0",
+          stakeRemaining: "100",
+          id: "0",
+          name: "0"
+        },
+        {
+          payout: [0, 10000],
+          isInvalid: false,
+          malformed: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "100",
+          stakeRemaining: "15",
+          display: true,
+          id: "100",
+          name: "100"
+        },
+        {
+          payout: [1500, 8500],
+          isInvalid: false,
+          malformed: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "85",
+          stakeRemaining: "30",
+          display: true,
+          id: "85",
+          name: "85"
+        },
+        {
+          payout: [8500, 1500],
+          isInvalid: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "15",
+          stakeRemaining: "400",
+          id: "15",
+          name: "15"
+        }
+      ];
+      const expected = [
+        { ...stakes[2] },
+        { ...stakes[10] },
+        { ...stakes[0] },
+        { ...stakes[11] },
+        { ...stakes[1] },
+        { ...stakes[3] },
+        { ...stakes[7] },
+        { ...stakes[4] },
+        { ...stakes[5] },
+        { ...stakes[9] },
+        { ...stakes[8] },
+        { ...stakes[6] },
+        { ...stakes[12] }
+      ];
+      const actual = selectDisputeOutcomes(
+        marketScalar,
+        stakes,
+        100,
+        10000000000
+      );
+      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+    }
+  );
 
-  it(`scalar market with more than 3 disputes and does not include indeterminate`, () => {
-    const stakes = [
-      {
-        payout: [1000, 9000],
-        isInvalid: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "90",
-        stakeRemaining: "20",
-        display: true,
-        id: "90",
-        name: "90"
-      },
-      {
-        payout: [3000, 7000],
-        isInvalid: false,
-        potentialFork: false,
-        tentativeWinning: false,
-        stakeCurrent: "70",
-        stakeRemaining: "35",
-        display: true,
-        id: "70",
-        name: "70"
-      },
-      {
-        payout: [2000, 8000],
-        isInvalid: false,
-        potentialFork: false,
-        tentativeWinning: true,
-        stakeCurrent: "80",
-        stakeRemaining: "10",
-        display: true,
-        id: "80",
-        name: "80"
-      }
-    ];
-    const expected = [
-      { ...stakes[2] },
-      { ...stakes[0] },
-      { ...stakes[1] },
-      {
-        accountStakeCompleted: "0",
-        accountStakeCurrent: "0",
-        bondSizeCurrent: 100,
-        display: true,
-        id: "0.5",
-        name: "Indeterminate",
-        potentialFork: false,
-        stakeCompleted: "0",
-        stakeCurrent: "0",
-        stakeRemaining: 100,
-        tentativeWinning: false
-      }
-    ];
-    const actual = selectDisputeOutcomes(
-      marketScalar,
-      stakes,
-      100,
-      10000000000
-    );
-    assert.deepEqual(actual, expected, `Didn't call the expected method`);
-  });
+  test(
+    `scalar market with more than 3 disputes and does not include indeterminate`,
+    () => {
+      const stakes = [
+        {
+          payout: [1000, 9000],
+          isInvalid: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "90",
+          stakeRemaining: "20",
+          display: true,
+          id: "90",
+          name: "90"
+        },
+        {
+          payout: [3000, 7000],
+          isInvalid: false,
+          potentialFork: false,
+          tentativeWinning: false,
+          stakeCurrent: "70",
+          stakeRemaining: "35",
+          display: true,
+          id: "70",
+          name: "70"
+        },
+        {
+          payout: [2000, 8000],
+          isInvalid: false,
+          potentialFork: false,
+          tentativeWinning: true,
+          stakeCurrent: "80",
+          stakeRemaining: "10",
+          display: true,
+          id: "80",
+          name: "80"
+        }
+      ];
+      const expected = [
+        { ...stakes[2] },
+        { ...stakes[0] },
+        { ...stakes[1] },
+        {
+          accountStakeCompleted: "0",
+          accountStakeCurrent: "0",
+          bondSizeCurrent: 100,
+          display: true,
+          id: "0.5",
+          name: "Indeterminate",
+          potentialFork: false,
+          stakeCompleted: "0",
+          stakeCurrent: "0",
+          stakeRemaining: 100,
+          tentativeWinning: false
+        }
+      ];
+      const actual = selectDisputeOutcomes(
+        marketScalar,
+        stakes,
+        100,
+        10000000000
+      );
+      assert.deepEqual(actual, expected, `Didn't call the expected method`);
+    }
+  );
 
-  it(`scalar market with invalid disputes`, () => {
+  test(`scalar market with invalid disputes`, () => {
     const stakes = [
       {
         payout: [5000, 5000],
@@ -405,7 +411,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`scalar market with invalid disputes sort`, () => {
+  test(`scalar market with invalid disputes sort`, () => {
     const stakes = [
       {
         payout: [2000, 8000],
@@ -476,7 +482,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`scalar market with two disputes`, () => {
+  test(`scalar market with two disputes`, () => {
     const stakes = [
       {
         payout: [2000, 8000],
@@ -507,7 +513,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`scalar market with one disputes`, () => {
+  test(`scalar market with one disputes`, () => {
     const stakes = [
       {
         payout: [2000, 8000],
@@ -534,7 +540,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`categorical market with invalid disputes`, () => {
+  test(`categorical market with invalid disputes`, () => {
     const stakes = [
       {
         payout: [1429, 1429, 1429, 1429, 1429, 1429, 1429],
@@ -567,7 +573,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`categorical market with two disputes`, () => {
+  test(`categorical market with two disputes`, () => {
     const stakes = [
       {
         payout: [10003, 0, 0, 0, 0, 0, 0],
@@ -616,7 +622,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`categorical market with one disputes`, () => {
+  test(`categorical market with one disputes`, () => {
     const stakes = [
       {
         payout: [10003, 0, 0, 0, 0, 0, 0],
@@ -655,7 +661,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`yes/no  market with two disputes`, () => {
+  test(`yes/no  market with two disputes`, () => {
     const stakes = [
       {
         payout: [10000, 0],
@@ -695,7 +701,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`yes/no  market with invalid disputes`, () => {
+  test(`yes/no  market with invalid disputes`, () => {
     const stakes = [
       {
         payout: [5000, 5000],
@@ -719,7 +725,7 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`yes/no  market with one dispute`, () => {
+  test(`yes/no  market with one dispute`, () => {
     const stakes = [
       {
         payout: [10000, 0],
@@ -747,19 +753,19 @@ describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`yes/no  market with NO disputes`, () => {
+  test(`yes/no  market with NO disputes`, () => {
     const actual = selectDisputeOutcomes(marketBinary, []);
     const expected = marketBinary.reportableOutcomes;
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`category market with NO disputes`, () => {
+  test(`category market with NO disputes`, () => {
     const actual = selectDisputeOutcomes(marketCategorical, []);
     const expected = marketCategorical.reportableOutcomes;
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`scalar market with NO disputes`, () => {
+  test(`scalar market with NO disputes`, () => {
     const actual = selectDisputeOutcomes(marketScalar, []);
     const expected = marketScalar.reportableOutcomes;
     assert.deepEqual(actual, expected, `Didn't call the expected method`);

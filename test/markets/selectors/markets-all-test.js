@@ -1,4 +1,3 @@
-import proxyquire from "proxyquire";
 import sinon from "sinon";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
@@ -122,7 +121,7 @@ describe(`modules/markets/selectors/markets-all.js`, () => {
 
   allMarkets = selector.default;
 
-  it(`should return the correct selectedMarket function`, () => {
+  test(`should return the correct selectedMarket function`, () => {
     const actual = selector.default();
 
     marketsAssertions(actual);

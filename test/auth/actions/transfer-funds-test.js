@@ -12,7 +12,7 @@ import { ETH, REP } from "modules/account/constants/asset-types";
 describe("modules/auth/actions/transfer-funds.js", () => {
   const mockStore = configureMockStore([thunk]);
   const test = t =>
-    it(t.description, done => {
+    test(t.description, done => {
       const store = mockStore(t.state || {});
       t.assertions(done, store);
     });

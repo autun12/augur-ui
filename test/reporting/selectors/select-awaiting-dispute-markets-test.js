@@ -5,10 +5,10 @@ import marketsAwaitingDispute, {
 } from "modules/reporting/selectors/select-awaiting-dispute-markets";
 
 describe(`modules/reports/selectors/select-awaiting-dispute-markets.js`, () => {
-  const test = t => it(t.description, done => t.assertions(done));
+  const test = t => test(t.description, done => t.assertions(done));
 
   describe("default method", () => {
-    it("should call `selectMarketsAwaitingDispute` from the default function", done => {
+    test("should call `selectMarketsAwaitingDispute` from the default function", done => {
       const stubbedSelectMarketsAwaitingDispute = sinon.stub();
       __RewireAPI__.__Rewire__(
         "selectMarketsAwaitingDispute",
@@ -29,7 +29,7 @@ describe(`modules/reports/selectors/select-awaiting-dispute-markets.js`, () => {
   });
 
   describe("selectMarketsAwaitingDispute", () => {
-    it(`should return an empty array`, done => {
+    test(`should return an empty array`, done => {
       const actual = selectMarketsAwaitingDispute.resultFunc([]);
 
       const expected = [];
@@ -39,7 +39,7 @@ describe(`modules/reports/selectors/select-awaiting-dispute-markets.js`, () => {
       done();
     });
 
-    it(`should return an array populated with matching market objects`, done => {
+    test(`should return an array populated with matching market objects`, done => {
       __RewireAPI__.__Rewire__("constants", {
         REPORTING_STATE: {
           AWAITING_NEXT_WINDOW: "test"

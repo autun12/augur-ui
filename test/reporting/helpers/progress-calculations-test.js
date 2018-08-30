@@ -8,7 +8,7 @@ import { createBigNumber } from "src/utils/create-big-number";
 
 describe(`modules/reporting/helpers/progress-calculations.js`, () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
@@ -20,7 +20,7 @@ describe(`modules/reporting/helpers/progress-calculations.js`, () => {
 
   RewireAPI.__Rewire__("formatAttoRep", formatAttoRepStubb);
 
-  it(`value remaining tentative stake REP`, () => {
+  test(`value remaining tentative stake REP`, () => {
     assert.deepEqual(
       calculateTentativeCurrentRep(
         createBigNumber("34000000000000000000", 10),
@@ -31,7 +31,7 @@ describe(`modules/reporting/helpers/progress-calculations.js`, () => {
     );
   });
 
-  it(`large value remaining tentative stake REP`, () => {
+  test(`large value remaining tentative stake REP`, () => {
     assert.deepEqual(
       calculateTentativeCurrentRep(
         createBigNumber("349680582682291650", 10),
@@ -42,7 +42,7 @@ describe(`modules/reporting/helpers/progress-calculations.js`, () => {
     );
   });
 
-  it(`add REP stake get percentage`, () => {
+  test(`add REP stake get percentage`, () => {
     assert.deepEqual(
       calculateAddedStakePercentage(createBigNumber("10", 10), 0, 1),
       10,
@@ -50,7 +50,7 @@ describe(`modules/reporting/helpers/progress-calculations.js`, () => {
     );
   });
 
-  it(`add REP stake get percentage`, () => {
+  test(`add REP stake get percentage`, () => {
     assert.deepEqual(
       calculateAddedStakePercentage(
         createBigNumber("20", 10),
@@ -62,7 +62,7 @@ describe(`modules/reporting/helpers/progress-calculations.js`, () => {
     );
   });
 
-  it(`0 numbers, percentage calculation`, () => {
+  test(`0 numbers, percentage calculation`, () => {
     assert.deepEqual(
       calculatePercentage(0, 5),
       0,
@@ -70,7 +70,7 @@ describe(`modules/reporting/helpers/progress-calculations.js`, () => {
     );
   });
 
-  it(`null numbers, percentage calculation`, () => {
+  test(`null numbers, percentage calculation`, () => {
     assert.deepEqual(
       calculatePercentage(null, 5),
       0,
@@ -78,7 +78,7 @@ describe(`modules/reporting/helpers/progress-calculations.js`, () => {
     );
   });
 
-  it(`negative numbers, percentage calculation`, () => {
+  test(`negative numbers, percentage calculation`, () => {
     assert.deepEqual(
       calculatePercentage(-10, 5),
       0,
@@ -86,7 +86,7 @@ describe(`modules/reporting/helpers/progress-calculations.js`, () => {
     );
   });
 
-  it(`small numbers, percentage calculation`, () => {
+  test(`small numbers, percentage calculation`, () => {
     assert.deepEqual(
       calculatePercentage(10, 5),
       50,
@@ -94,7 +94,7 @@ describe(`modules/reporting/helpers/progress-calculations.js`, () => {
     );
   });
 
-  it(`large percentage calculation`, () => {
+  test(`large percentage calculation`, () => {
     assert.deepEqual(
       calculatePercentage(
         createBigNumber("2098083496093750000", 10),

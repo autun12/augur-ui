@@ -1,5 +1,3 @@
-import { describe, it, beforeEach } from "mocha";
-
 import testState from "test/testState";
 import { UPDATE_ORDER_BOOK } from "modules/bids-asks/actions/update-order-book";
 import reducer from "modules/bids-asks/reducers/order-books";
@@ -11,7 +9,7 @@ describe(`modules/bids-asks/reducers/order-books.js`, () => {
     thisTestState = Object.assign({}, testState);
   });
 
-  it(`Should set market order book`, () => {
+  test(`Should set market order book`, () => {
     const action = {
       type: UPDATE_ORDER_BOOK,
       marketId: "partyRockMarket",

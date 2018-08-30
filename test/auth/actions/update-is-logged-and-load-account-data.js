@@ -1,5 +1,4 @@
 import configureMockStore from "redux-mock-store";
-import proxyquire from "proxyquire";
 import sinon from "sinon";
 import thunk from "redux-thunk";
 
@@ -7,7 +6,7 @@ describe(`modules/auth/actions/update-is-logged-and-load-account-data.js`, () =>
   proxyquire.noPreserveCache();
   const mockStore = configureMockStore([thunk]);
   const test = t =>
-    it(t.description, () => {
+    test(t.description, () => {
       const store = mockStore(t.state);
       const AugurJS = { augur: { rpc: { clear: () => {} } } };
       const LoadAccountData = { loadAccountData: () => {} };

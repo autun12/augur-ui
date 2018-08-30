@@ -1,7 +1,4 @@
-import { describe, it, before } from "mocha";
-
 import sinon from "sinon";
-import proxyquire from "proxyquire";
 
 import {
   MY_POSITIONS,
@@ -123,32 +120,32 @@ describe("modules/portfolio/selectors/nav-items", () => {
     }
   ];
 
-  before(() => {
+  beforeAll(() => {
     actual = proxiedSelector.default();
   });
 
-  it(`should call 'selectMyPositionsSummary' once`, () => {
+  test(`should call 'selectMyPositionsSummary' once`, () => {
     assert(
       stubbedGenerateMarketsPositionsSummary.calledOnce,
       `Didn't call 'generateMarketsPositionsSummary' once as expected`
     );
   });
 
-  it(`should call 'selectMyMarketsSummary' once`, () => {
+  test(`should call 'selectMyMarketsSummary' once`, () => {
     assert(
       stubbedMyMarketsSummary.calledOnce,
       `Didn't call 'selectMyMarketsSummary' once as expected`
     );
   });
 
-  it(`should call 'selectMyReportsSummary' once`, () => {
+  test(`should call 'selectMyReportsSummary' once`, () => {
     assert(
       stubbedMyReportsSummary.calledOnce,
       `Didn't call 'selectMyReportsSummary' once as expected`
     );
   });
 
-  it("should return the expected array", () => {
+  test("should return the expected array", () => {
     assert.deepEqual(expected, actual, `Didn't return the expected array`);
   });
 });

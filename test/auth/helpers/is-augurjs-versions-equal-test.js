@@ -3,31 +3,34 @@ import isAugurJSVersionsEqual, {
 } from "modules/auth/helpers/is-augurjs-versions-equal";
 
 describe("modules/auth/helpers/is-augurjs-versions-equal", () => {
-  const test = t => it(t.description, async () => t.assertions());
+  const test = t => test(t.description, async () => t.assertions());
 
   afterEach(() => {
     isAugurJSVersionsEqualAPI.__ResetDependency__("augur");
   });
 
-  it(`Should handle an error from augurNode.getSyncData, and return false`, () => {
-    isAugurJSVersionsEqualAPI.__Rewire__("augur", {
-      version: "helloWorld",
-      augurNode: {
-        getSyncData: cb => {
-          cb({ error: 1000, message: "Uh-Oh!" });
+  test(
+    `Should handle an error from augurNode.getSyncData, and return false`,
+    () => {
+      isAugurJSVersionsEqualAPI.__Rewire__("augur", {
+        version: "helloWorld",
+        augurNode: {
+          getSyncData: cb => {
+            cb({ error: 1000, message: "Uh-Oh!" });
+          }
         }
-      }
-    });
+      });
 
-    return isAugurJSVersionsEqual().then(res => {
-      assert.isObject(res);
-      assert.isFalse(res.isEqual);
-      assert.isUndefined(res.augurNode);
-      assert.deepEqual(res.augurjs, "helloWorld");
-    });
-  });
+      return isAugurJSVersionsEqual().then(res => {
+        assert.isObject(res);
+        assert.isFalse(res.isEqual);
+        assert.isUndefined(res.augurNode);
+        assert.deepEqual(res.augurjs, "helloWorld");
+      });
+    }
+  );
 
-  it(`Should handle a versionMismatch and return false`, () => {
+  test(`Should handle a versionMismatch and return false`, () => {
     isAugurJSVersionsEqualAPI.__Rewire__("augur", {
       version: "helloWorld",
       augurNode: {
@@ -45,7 +48,7 @@ describe("modules/auth/helpers/is-augurjs-versions-equal", () => {
     });
   });
 
-  it(`Should handle a matching version and return true`, () => {
+  test(`Should handle a matching version and return true`, () => {
     isAugurJSVersionsEqualAPI.__Rewire__("augur", {
       version: "helloWorld",
       augurNode: {

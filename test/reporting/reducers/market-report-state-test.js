@@ -21,7 +21,7 @@ describe("market report state", () => {
   };
 
   describe("default state", () => {
-    it("should return an object with empty arrays", () => {
+    test("should return an object with empty arrays", () => {
       const result = reducer(undefined, { type: ActionTypes.INIT });
       assert.deepEqual(defaultState, result);
     });
@@ -31,7 +31,7 @@ describe("market report state", () => {
     const payload = ["1", "2", "3"];
 
     describe("UPDATE_UPCOMING_DESIGNATED_REPORTING_MARKETS action", () => {
-      it("should replace upcoming attribute with data payload", () => {
+      test("should replace upcoming attribute with data payload", () => {
         const result = reducer(defaultState, {
           type: UPDATE_UPCOMING_DESIGNATED_REPORTING_MARKETS,
           data: payload
@@ -51,7 +51,7 @@ describe("market report state", () => {
     });
 
     describe("UPDATE_DESIGNATED_REPORTING_MARKETS", () => {
-      it("should replace designated attribute with data payload", () => {
+      test("should replace designated attribute with data payload", () => {
         const result = reducer(defaultState, {
           type: UPDATE_DESIGNATED_REPORTING_MARKETS,
           data: payload
@@ -71,7 +71,7 @@ describe("market report state", () => {
     });
 
     describe("UPDATE_OPEN_REPORTING_MARKETS", () => {
-      it("should replace open attribute with data payload", () => {
+      test("should replace open attribute with data payload", () => {
         const result = reducer(defaultState, {
           type: UPDATE_OPEN_REPORTING_MARKETS,
           data: payload
@@ -91,7 +91,7 @@ describe("market report state", () => {
     });
 
     describe("UPDATE_AWAITING_DISPUTE_MARKETS", () => {
-      it("should replace open attribute with data payload", () => {
+      test("should replace open attribute with data payload", () => {
         const result = reducer(defaultState, {
           type: UPDATE_AWAITING_DISPUTE_MARKETS,
           data: payload
@@ -111,7 +111,7 @@ describe("market report state", () => {
     });
 
     describe("UPDATE_CROWD_DISPUTE_MARKETS", () => {
-      it("should replace open attribute with data payload", () => {
+      test("should replace open attribute with data payload", () => {
         const result = reducer(defaultState, {
           type: UPDATE_CROWD_DISPUTE_MARKETS,
           data: payload
@@ -131,7 +131,7 @@ describe("market report state", () => {
     });
 
     describe("UPDATE_RESOLVED_REPORTING_MARKETS", () => {
-      it("should replace resolved attribute with data payload", () => {
+      test("should replace resolved attribute with data payload", () => {
         const result = reducer(defaultState, {
           type: UPDATE_RESOLVED_REPORTING_MARKETS,
           data: payload
@@ -151,7 +151,7 @@ describe("market report state", () => {
     });
 
     describe("RESET_STATE", () => {
-      it("should return default state", () => {
+      test("should return default state", () => {
         const result = reducer(
           { randomattr: [] },
           { type: RESET_STATE, data: payload }

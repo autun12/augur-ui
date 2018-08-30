@@ -11,13 +11,13 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
   const account = { address: "userId" };
 
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
 
   describe("empty market", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const market = {};
       const actual = determineMarketLinkType(market, account);
       assert.deepEqual(actual, TYPE_VIEW, `Didn't call the expected method`);
@@ -25,7 +25,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
   });
 
   describe("empty login account", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const market = {
         reportingState: constants.REPORTING_STATE.PRE_REPORTING
       };
@@ -35,7 +35,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
   });
 
   describe("null market", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const market = null;
       const actual = determineMarketLinkType(market, account);
       assert.deepEqual(actual, TYPE_VIEW, `Didn't call the expected method`);
@@ -43,7 +43,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
   });
 
   describe("pre reporting market", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const market = {
         reportingState: constants.REPORTING_STATE.PRE_REPORTING
       };
@@ -53,7 +53,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
   });
 
   describe("designated reporting market", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const market = {
         reportingState: constants.REPORTING_STATE.DESIGNATED_REPORTING,
         designatedReporter: account.address
@@ -64,7 +64,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
   });
 
   describe("non-designated reporting market", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const market = {
         reportingState: constants.REPORTING_STATE.DESIGNATED_REPORTING,
         designatedReporter: "snuggles"
@@ -75,7 +75,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
   });
 
   describe("open reporting market", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const market = {
         reportingState: constants.REPORTING_STATE.OPEN_REPORTING
       };
@@ -85,7 +85,7 @@ describe(`modules/market/helpers/determine-market-link-type.js`, () => {
   });
 
   describe("dispute reporting market", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const market = {
         reportingState: constants.REPORTING_STATE.CROWDSOURCING_DISPUTE
       };

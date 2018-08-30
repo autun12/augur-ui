@@ -11,14 +11,14 @@ import {
 import mocks from "test/mockStore";
 
 describe("modules/auth/actions/ledger-ethereum-hook-actions.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
   const { store } = mocks;
 
   afterEach(() => {
     store.clearActions();
   });
 
-  it("should handle a onConnectLedgerRequest action", () => {
+  test("should handle a onConnectLedgerRequest action", () => {
     store.dispatch(onConnectLedgerRequest());
     const expected = [
       {
@@ -28,7 +28,7 @@ describe("modules/auth/actions/ledger-ethereum-hook-actions.js", () => {
     ];
     assert.deepEqual(store.getActions(), expected);
   });
-  it("should handle a onOpenEthereumAppRequest action", () => {
+  test("should handle a onOpenEthereumAppRequest action", () => {
     store.dispatch(onOpenEthereumAppRequest());
     const expected = [
       {
@@ -38,7 +38,7 @@ describe("modules/auth/actions/ledger-ethereum-hook-actions.js", () => {
     ];
     assert.deepEqual(store.getActions(), expected);
   });
-  it("should handle a onSwitchLedgerModeRequest action", () => {
+  test("should handle a onSwitchLedgerModeRequest action", () => {
     store.dispatch(onSwitchLedgerModeRequest());
     const expected = [
       {
@@ -48,7 +48,7 @@ describe("modules/auth/actions/ledger-ethereum-hook-actions.js", () => {
     ];
     assert.deepEqual(store.getActions(), expected);
   });
-  it("should handle a onEnableContractSupportRequest action", () => {
+  test("should handle a onEnableContractSupportRequest action", () => {
     store.dispatch(onEnableContractSupportRequest());
     const expected = [
       {

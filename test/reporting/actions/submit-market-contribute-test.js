@@ -22,7 +22,7 @@ describe(`modules/reporting/actions/submit-market-contribute.js`, () => {
     callback.reset();
   });
 
-  after(() => {
+  afterAll(() => {
     submitMarketContributeReqireAPI.__ResetDependency__("getPayoutNumerators");
     submitMarketContributeReqireAPI.__ResetDependency__("removeAccountDispute");
   });
@@ -62,7 +62,7 @@ describe(`modules/reporting/actions/submit-market-contribute.js`, () => {
     removeAccountDispute
   );
 
-  it(`should call callback and history with good data`, () => {
+  test(`should call callback and history with good data`, () => {
     submitMarketContributeReqireAPI.__Rewire__("augur", augurSuccess);
     store.dispatch(
       submitMarketContribute(
@@ -79,7 +79,7 @@ describe(`modules/reporting/actions/submit-market-contribute.js`, () => {
     assert(history.push.calledOnce, `Didn't call 'history' once as expected`);
   });
 
-  it(`should call callback and history with good negative data`, () => {
+  test(`should call callback and history with good negative data`, () => {
     submitMarketContributeReqireAPI.__Rewire__("augur", augurSuccess);
     store.dispatch(
       submitMarketContribute(
@@ -96,7 +96,7 @@ describe(`modules/reporting/actions/submit-market-contribute.js`, () => {
     assert(history.push.calledOnce, `Didn't call 'history' once as expected`);
   });
 
-  it(`should only call callback with null market id`, () => {
+  test(`should only call callback with null market id`, () => {
     submitMarketContributeReqireAPI.__Rewire__("augur", augurSuccess);
     store.dispatch(
       submitMarketContribute(false, null, 0, false, 1000, history, callback)
@@ -105,7 +105,7 @@ describe(`modules/reporting/actions/submit-market-contribute.js`, () => {
     assert(history.push.notCalled, `Did call 'history' not expected`);
   });
 
-  it(`should only callback with empty market id`, () => {
+  test(`should only callback with empty market id`, () => {
     submitMarketContributeReqireAPI.__Rewire__("augur", augurSuccess);
     store.dispatch(
       submitMarketContribute(false, "", 0, false, 1000, history, callback)
@@ -114,7 +114,7 @@ describe(`modules/reporting/actions/submit-market-contribute.js`, () => {
     assert(history.push.notCalled, `Did call 'history' not expected`);
   });
 
-  it("should only call callback with bad outcome", () => {
+  test("should only call callback with bad outcome", () => {
     submitMarketContributeReqireAPI.__Rewire__("augur", augurSuccess);
     store.dispatch(
       submitMarketContribute(
@@ -131,7 +131,7 @@ describe(`modules/reporting/actions/submit-market-contribute.js`, () => {
     assert(history.push.notCalled, `Did call 'history' not expected`);
   });
 
-  it(`should call both callback and history with good data`, () => {
+  test(`should call both callback and history with good data`, () => {
     submitMarketContributeReqireAPI.__Rewire__("augur", augurFailed);
     store.dispatch(
       submitMarketContribute(
@@ -148,7 +148,7 @@ describe(`modules/reporting/actions/submit-market-contribute.js`, () => {
     assert(history.push.calledOnce, `Did call 'history' not expected`);
   });
 
-  it(`should call callback but not history with good data`, () => {
+  test(`should call callback but not history with good data`, () => {
     submitMarketContributeReqireAPI.__Rewire__("augur", augurSuccess);
     store.dispatch(
       submitMarketContribute(

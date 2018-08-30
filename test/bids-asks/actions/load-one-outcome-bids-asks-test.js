@@ -1,11 +1,10 @@
-import proxyquire from "proxyquire";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 
 describe(`modules/bids-asks/actions/load-one-outcome-bids-asks.js`, () => {
   proxyquire.noPreserveCache();
   const test = t =>
-    it(t.description, done => {
+    test(t.description, done => {
       const store = configureMockStore([thunk])({});
       const loadOneOutcomeBidsAsks = proxyquire(
         "../../../src/modules/bids-asks/actions/load-one-outcome-bids-asks",

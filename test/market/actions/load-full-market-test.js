@@ -24,7 +24,7 @@ describe("modules/market/actions/load-full-market.js", () => {
   };
 
   const test = t =>
-    it(t.description, done => {
+    test(t.description, done => {
       const store = mockStore(t.state || {});
 
       t.assertions(store, done);
@@ -45,7 +45,7 @@ describe("modules/market/actions/load-full-market.js", () => {
       __RewireAPI__.__ResetDependency__("loadMarketsInfo");
     });
 
-    after(() => {
+    afterAll(() => {
       __RewireAPI__.__ResetDependency__("updateMarketLoading");
       __RewireAPI__.__ResetDependency__("loadMarketDetails");
     });
@@ -205,7 +205,7 @@ describe("modules/market/actions/load-full-market.js", () => {
       __RewireAPI__.__ResetDependency__("loadingError");
     });
 
-    it(
+    test(
       "should dispatch the expected actions WITHOUT chained errors",
       (store, done) => {
         __RewireAPI__.__Rewire__("loadBidsAsks", (marketId, cb) => {
@@ -283,7 +283,7 @@ describe("modules/market/actions/load-full-market.js", () => {
       }
     );
 
-    it(
+    test(
       "should dispatch the expected actions WITH error returned from `loadBidsAsks`",
       (store, done) => {
         const stubbedLoadingError = sinon.stub();
@@ -325,7 +325,7 @@ describe("modules/market/actions/load-full-market.js", () => {
         done();
       }
     );
-    it(
+    test(
       "should dispatch the expected actions WITH error returned from `loadAccountTrades`",
       (store, done) => {
         const stubbedLoadingError = sinon.stub();
@@ -383,7 +383,7 @@ describe("modules/market/actions/load-full-market.js", () => {
       }
     );
 
-    it(
+    test(
       "should dispatch the expected actions WITH error returned from `loadPriceHistory`",
       (store, done) => {
         const stubbedLoadingError = sinon.stub();
@@ -467,13 +467,13 @@ describe("modules/market/actions/load-full-market.js", () => {
       }
     }));
 
-    after(() => {
+    afterAll(() => {
       __RewireAPI__.__ResetDependency__("removeMarketLoading");
     });
 
     const loadingError = __RewireAPI__.__get__("loadingError");
 
-    it(
+    test(
       "should remove the market from the loading state + call the callback with error parameter",
       (store, done) => {
         let callbackReturnValue;

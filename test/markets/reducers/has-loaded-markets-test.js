@@ -4,7 +4,7 @@ import { UPDATE_HAS_LOADED_MARKETS } from "modules/markets/actions/update-has-lo
 
 describe("modules/markets/reducers/has-loaded-markets.js", () => {
   const test = t => {
-    it(t.describe, () => {
+    test(t.describe, () => {
       t.assertions();
     });
   };

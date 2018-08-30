@@ -33,12 +33,12 @@ describe(`modules/create-market/actions/estimate-submit-new-market.js`, () => {
     };
   }
 
-  after(() => {
+  afterAll(() => {
     estimateSubmitNewMarketReqireAPI.__ResetDependency__("buildCreateMarket");
   });
 
   const test = t =>
-    it(t.description, () => {
+    test(t.description, () => {
       estimateSubmitNewMarketReqireAPI.__Rewire__(
         "buildCreateMarket",
         buildCreateMarket

@@ -1,4 +1,3 @@
-import proxyquire from "proxyquire";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import testState from "test/testState";
@@ -14,7 +13,7 @@ describe(`modules/transactions/actions/update-transactions-data.js`, () => {
     "../../../src/modules/transactions/actions/update-transactions-data",
     {}
   );
-  it(`should fire update and process transaction actions`, () => {
+  test(`should fire update and process transaction actions`, () => {
     out = [
       {
         type: "UPDATE_TRANSACTIONS_DATA",

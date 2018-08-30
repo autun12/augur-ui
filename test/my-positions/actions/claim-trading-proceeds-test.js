@@ -1,6 +1,5 @@
 import { createBigNumber } from "utils/create-big-number";
 
-import proxyquire from "proxyquire";
 import sinon from "sinon";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
@@ -10,7 +9,7 @@ describe(`modules/my-positions/actions/claim-trading-proceeds.js`, () => {
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       const store = mockStore(t.state);
       const Speedomatic = { bignum: () => {} };
       const AugurJS = {

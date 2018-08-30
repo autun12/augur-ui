@@ -16,7 +16,7 @@ describe("modules/events/actions/log-handlers.js", () => {
   });
 
   const test = t =>
-    it(t.description, () => {
+    test(t.description, () => {
       store = configureMockStore([thunk])({ ...t.state });
       __RewireAPI__.__Rewire__("isCurrentMarket", t.stub.isCurrentMarket);
 

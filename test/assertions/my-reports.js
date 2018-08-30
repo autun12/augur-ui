@@ -14,62 +14,62 @@ export default function(reports) {
 
 export function assertAccountReport(report) {
   describe(`report's shape`, () => {
-    it("id", () => {
+    test("id", () => {
       assert.isDefined(report.id);
       assert.isString(report.id);
     });
 
-    it("description", () => {
+    test("description", () => {
       assert.isDefined(report.description);
       assert.isString(report.description);
     });
 
-    it("outcome", () => {
+    test("outcome", () => {
       assert.isDefined(report.outcome);
 
       report.outcome != null && assert.isString(report.outcome);
     });
 
-    it("outcomePercentage", () => {
+    test("outcomePercentage", () => {
       assert.isDefined(report.outcomePercentage);
 
       assertFormattedNumber(report.outcomePercentage, "report.fees");
     });
 
-    it("reported", () => {
+    test("reported", () => {
       assert.isDefined(report.reported);
       assert.isString(report.reported);
     });
 
-    it("isReportEqual", () => {
+    test("isReportEqual", () => {
       assert.isDefined(report.isReportEqual);
       assert.isBoolean(report.isReportEqual);
     });
 
-    it("feesEarned", () => {
+    test("feesEarned", () => {
       assert.isDefined(report.feesEarned);
 
       assertFormattedNumber(report.feesEarned, "report.feesEarned");
     });
 
-    it("repEarned", () => {
+    test("repEarned", () => {
       assert.isDefined(report.repEarned);
 
       assertFormattedNumber(report.repEarned, "report.repEarned");
     });
 
-    it("endTime", () => {
+    test("endTime", () => {
       assert.isDefined(report.endTime);
 
       assertFormattedDate(report.endTime, "report.endTime");
     });
 
-    it("isChallenged", () => {
+    test("isChallenged", () => {
       assert.isDefined(report.isChallenged);
       assert.isBoolean(report.isChallenged);
     });
 
-    it("isChallangeable", () => {
+    test("isChallangeable", () => {
       assert.isDefined(report.isChallengeable);
       assert.isBoolean(report.isChallengeable);
     });

@@ -1,11 +1,10 @@
-import proxyquire from "proxyquire";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 
 describe(`modules/bids-asks/actions/insert-order-book-chunk-to-order-book.js`, () => {
   proxyquire.noPreserveCache();
   const test = t =>
-    it(t.description, () => {
+    test(t.description, () => {
       const store = configureMockStore([thunk])({});
       const insertOrderBookChunkToOrderBook = proxyquire(
         "../../../src/modules/bids-asks/actions/insert-order-book-chunk-to-order-book",

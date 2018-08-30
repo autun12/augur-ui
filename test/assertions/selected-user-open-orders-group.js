@@ -1,13 +1,13 @@
 export default function(selectedUserOpenOrdersGroup) {
   describe("selectedUserOpenOrdersGroup", () => {
-    it("should exist", () => {
+    test("should exist", () => {
       assert.isDefined(
         selectedUserOpenOrdersGroup,
         `selectedUserOpenOrdersGroup is empty.`
       );
     });
 
-    it("should be object", () => {
+    test("should be object", () => {
       assert.isObject(
         selectedUserOpenOrdersGroup,
         `selectedUserOpenOrdersGroup is not object.`
@@ -15,7 +15,7 @@ export default function(selectedUserOpenOrdersGroup) {
     });
 
     describe("selectedUserOpenOrdersGroupId", () => {
-      it("should exist", () => {
+      test("should exist", () => {
         assert.isDefined(
           selectedUserOpenOrdersGroup.selectedUserOpenOrdersGroupId,
           `selectedUserOpenOrdersGroupId is not defined.`
@@ -24,7 +24,7 @@ export default function(selectedUserOpenOrdersGroup) {
     });
 
     describe("updateSelectedUserOpenOrdersGroup", () => {
-      it("should be function", () => {
+      test("should be function", () => {
         assert.isFunction(
           selectedUserOpenOrdersGroup.updateSelectedUserOpenOrdersGroup,
           `updateSelectedUserOpenOrdersGroup is not function.`

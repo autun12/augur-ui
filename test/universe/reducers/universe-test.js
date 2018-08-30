@@ -4,7 +4,7 @@ import reducer from "modules/universe/reducers/universe";
 
 describe(`modules/universe/reducers/universe.js`, () => {
   const thisTestState = Object.assign({}, testState);
-  it(`should update the universe object in state`, () => {
+  test(`should update the universe object in state`, () => {
     const action = {
       type: UPDATE_UNIVERSE,
       universe: {

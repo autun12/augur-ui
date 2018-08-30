@@ -28,7 +28,7 @@ describe("loadReporting action", () => {
   let store;
   let submitRequestStub;
 
-  before(() => {
+  beforeAll(() => {
     mockStore = configureMockStore([thunk]);
   });
 
@@ -63,97 +63,100 @@ describe("loadReporting action", () => {
     loadReportingRewire.__ResetDependency__("loadMarketsInfoIfNotLoaded");
   });
 
-  it("should load upcoming designated markets for a given user in side the given universe", () => {
-    store.dispatch(loadReporting());
+  test(
+    "should load upcoming designated markets for a given user in side the given universe",
+    () => {
+      store.dispatch(loadReporting());
 
-    const checkCall = (
-      callIndex,
-      method,
-      reportingState,
-      expectedParams,
-      callbackArgs
-    ) => {
-      const c = submitRequestStub.getCall(callIndex);
-      assert.ok(
-        c.calledWith(method, {
-          reportingState,
-          ...expectedParams
-        })
+      const checkCall = (
+        callIndex,
+        method,
+        reportingState,
+        expectedParams,
+        callbackArgs
+      ) => {
+        const c = submitRequestStub.getCall(callIndex);
+        assert.ok(
+          c.calledWith(method, {
+            reportingState,
+            ...expectedParams
+          })
+        );
+        c.args[2](null, callbackArgs);
+      };
+
+      checkCall(
+        0,
+        "getMarkets",
+        constants.REPORTING_STATE.PRE_REPORTING,
+        {
+          sortBy: "endTime",
+          universe: universeAddress,
+          designatedReporter: loginAccountAddress
+        },
+        ["1111"]
       );
-      c.args[2](null, callbackArgs);
-    };
-
-    checkCall(
-      0,
-      "getMarkets",
-      constants.REPORTING_STATE.PRE_REPORTING,
-      {
-        sortBy: "endTime",
-        universe: universeAddress,
-        designatedReporter: loginAccountAddress
-      },
-      ["1111"]
-    );
-    checkCall(
-      1,
-      "getMarkets",
-      constants.REPORTING_STATE.DESIGNATED_REPORTING,
-      {
-        sortBy: "endTime",
-        universe: universeAddress,
-        designatedReporter: loginAccountAddress
-      },
-      ["2222", "3333"]
-    );
-
-    checkCall(
-      2,
-      "getMarkets",
-      constants.REPORTING_STATE.OPEN_REPORTING,
-      {
-        sortBy: "endTime",
-        universe: universeAddress
-      },
-      ["4444"]
-    );
-
-    const expected = [
-      {
-        data: ["1111"],
-        type: "UPDATE_UPCOMING_DESIGNATED_REPORTING_MARKETS"
-      },
-      {
-        data: {
-          marketIds: ["1111"]
+      checkCall(
+        1,
+        "getMarkets",
+        constants.REPORTING_STATE.DESIGNATED_REPORTING,
+        {
+          sortBy: "endTime",
+          universe: universeAddress,
+          designatedReporter: loginAccountAddress
         },
-        type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
-      },
-      {
-        data: ["2222", "3333"],
-        type: "UPDATE_DESIGNATED_REPORTING_MARKETS"
-      },
-      {
-        data: {
-          marketIds: ["2222", "3333"]
+        ["2222", "3333"]
+      );
+
+      checkCall(
+        2,
+        "getMarkets",
+        constants.REPORTING_STATE.OPEN_REPORTING,
+        {
+          sortBy: "endTime",
+          universe: universeAddress
         },
-        type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
-      },
-      {
-        data: ["4444"],
-        type: "UPDATE_OPEN_REPORTING_MARKETS"
-      },
-      {
-        data: {
-          marketIds: ["4444"]
+        ["4444"]
+      );
+
+      const expected = [
+        {
+          data: ["1111"],
+          type: "UPDATE_UPCOMING_DESIGNATED_REPORTING_MARKETS"
         },
-        type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
-      }
-    ];
-    const actual = store.getActions();
-    // actions include load market info actions
-    assert.lengthOf(actual, 6);
-    assert.deepEqual(actual, expected, "Did not get correct actions");
-  });
+        {
+          data: {
+            marketIds: ["1111"]
+          },
+          type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
+        },
+        {
+          data: ["2222", "3333"],
+          type: "UPDATE_DESIGNATED_REPORTING_MARKETS"
+        },
+        {
+          data: {
+            marketIds: ["2222", "3333"]
+          },
+          type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
+        },
+        {
+          data: ["4444"],
+          type: "UPDATE_OPEN_REPORTING_MARKETS"
+        },
+        {
+          data: {
+            marketIds: ["4444"]
+          },
+          type: "LOAD_MARKETS_INFO_IF_NOT_LOADED"
+        }
+      ];
+      const actual = store.getActions();
+      // actions include load market info actions
+      assert.lengthOf(actual, 6);
+      assert.deepEqual(actual, expected, "Did not get correct actions");
+    }
+  );
 
   describe("upon error", () => {
     let callback;
@@ -166,7 +169,7 @@ describe("loadReporting action", () => {
       store.dispatch(loadReporting(callback));
     });
 
-    it("should be passed to callback passed to action", () => {
+    test("should be passed to callback passed to action", () => {
       submitRequestStub.getCall(0).args[2](error);
 
       callback.calledWith(error);

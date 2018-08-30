@@ -1,10 +1,8 @@
-import proxyquire from "proxyquire";
-
 describe(`modules/reports/selectors/select-dispute-markets.js`, () => {
   proxyquire.noPreserveCache().noCallThru();
 
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };

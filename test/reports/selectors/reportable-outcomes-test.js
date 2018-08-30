@@ -13,7 +13,7 @@ describe("modules/reports/selectors/reportable-outcomes.js", () => {
   let actual;
   let expected;
 
-  it("should return the correct array for a YES_NO market", () => {
+  test("should return the correct array for a YES_NO market", () => {
     actual = selectReportableOutcomes(YES_NO);
     expected = [
       {
@@ -34,7 +34,7 @@ describe("modules/reports/selectors/reportable-outcomes.js", () => {
     // assertions.reportableOutcomes(actual);
   });
 
-  it("should return the correct array for a CATEGORICAL market", () => {
+  test("should return the correct array for a CATEGORICAL market", () => {
     const outcomes = [
       {
         id: "3",
@@ -74,7 +74,7 @@ describe("modules/reports/selectors/reportable-outcomes.js", () => {
     reportableOutcomesAssertions(actual);
   });
 
-  it("should return the correct array for DEFAULT case", () => {
+  test("should return the correct array for DEFAULT case", () => {
     actual = selectReportableOutcomes(null);
     expected = [];
 

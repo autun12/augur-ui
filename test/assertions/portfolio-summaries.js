@@ -11,12 +11,12 @@ export default function(portfolioSummaries) {
 
 function assertSummary(summary) {
   describe(`summary's shape`, () => {
-    it("label", () => {
+    test("label", () => {
       assert.isDefined(summary.label);
       assert.isString(summary.label);
     });
 
-    it("value", () => {
+    test("value", () => {
       assert.isDefined(summary.value);
       assert.isString(summary.value);
     });

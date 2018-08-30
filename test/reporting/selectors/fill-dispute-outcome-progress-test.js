@@ -4,7 +4,7 @@ import fillDisputeOutcomeProgess, {
 
 describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
@@ -16,7 +16,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
 
   RewireAPI.__Rewire__("formatAttoRep", formatAttoRepStubb);
 
-  it(`get remaining rep`, () => {
+  test(`get remaining rep`, () => {
     const outcome = {
       bondSizeCurrent: 12588500976562500000,
       completedStake: "0",
@@ -33,7 +33,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`big numbers completed % both non and account`, () => {
+  test(`big numbers completed % both non and account`, () => {
     const outcome = {
       bondSizeCurrent: 2098083496093750000,
       stakeCurrent: "2098083496093750000",
@@ -49,7 +49,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`big numbers non account complete%`, () => {
+  test(`big numbers non account complete%`, () => {
     const outcome = {
       bondSizeCurrent: 2098083496093750000,
       stakeCurrent: "1098083496093750000",
@@ -65,7 +65,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`big numbers account % complete, rounding up`, () => {
+  test(`big numbers account % complete, rounding up`, () => {
     const outcome = {
       bondSizeCurrent: 6294250488281250000,
       stakeCurrent: "349680582682291650",
@@ -82,7 +82,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`big numbers account % complete, 10, total 50 complete `, () => {
+  test(`big numbers account % complete, 10, total 50 complete `, () => {
     const outcome = {
       bondSizeCurrent: 20000000000000000000,
       stakeCurrent: "12000000000000000000",
@@ -99,7 +99,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`big numbers account % complete, 50 `, () => {
+  test(`big numbers account % complete, 50 `, () => {
     const outcome = {
       bondSizeCurrent: 4000000000000000000,
       stakeCurrent: "2000000000000000000",
@@ -116,7 +116,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`big numbers % complete, 50 `, () => {
+  test(`big numbers % complete, 50 `, () => {
     const outcome = {
       bondSizeCurrent: 2000000000000000000,
       completedStake: "0",
@@ -133,7 +133,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`% complete, 75 `, () => {
+  test(`% complete, 75 `, () => {
     const outcome = {
       bondSizeCurrent: 10,
       stakeCurrent: "7.5",
@@ -150,7 +150,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`% complete, 50 `, () => {
+  test(`% complete, 50 `, () => {
     const outcome = {
       bondSizeCurrent: 10,
       stakeCurrent: "5",
@@ -167,7 +167,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`all zeros`, () => {
+  test(`all zeros`, () => {
     const outcome = {
       bondSizeCurrent: 0,
       stakeCurrent: "0",
@@ -184,7 +184,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`empty object with bond`, () => {
+  test(`empty object with bond`, () => {
     const outcome = {};
     const disputeBond = 10;
     const actual = fillDisputeOutcomeProgess(disputeBond, outcome);
@@ -195,7 +195,7 @@ describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
     assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
-  it(`empty object`, () => {
+  test(`empty object`, () => {
     const outcome = {};
     const disputeBond = 0;
     const actual = fillDisputeOutcomeProgess(disputeBond, outcome);

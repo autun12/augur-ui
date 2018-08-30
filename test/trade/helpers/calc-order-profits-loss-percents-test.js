@@ -6,7 +6,7 @@ import { BUY, SELL } from "modules/transactions/constants/types";
 import { YES_NO, SCALAR } from "modules/markets/constants/market-types";
 
 describe("modules/trade/helpers/calc-order-profit-loss-percents.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: `should return null when an argument is missing`,

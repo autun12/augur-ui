@@ -1,5 +1,3 @@
-import { describe, it, afterEach } from "mocha";
-
 import mockStore from "test/mockStore";
 import speedomatic from "speedomatic";
 import { formatGasCostToEther } from "utils/format-number";
@@ -10,7 +8,7 @@ import {
 } from "modules/reporting/actions/purchase-participation-tokens";
 
 describe("purchase participation tokens tests", () => {
-  const test = t => it(t.description, done => t.assertions(done));
+  const test = t => test(t.description, done => t.assertions(done));
   const { store } = mockStore;
 
   const ACTIONS = {
@@ -22,7 +20,7 @@ describe("purchase participation tokens tests", () => {
     store.clearActions();
   });
 
-  it("It should handle buying 10.25 participation tokens", done => {
+  test("It should handle buying 10.25 participation tokens", done => {
     ReWireModule.__Rewire__("augur", {
       api: {
         FeeWindow: {
@@ -59,86 +57,92 @@ describe("purchase participation tokens tests", () => {
     );
   });
 
-  it("It should handle estimating gas for buying participation tokens", done => {
-    ReWireModule.__Rewire__("augur", {
-      api: {
-        FeeWindow: {
-          buy: p => {
-            const { tx, _attotokens, onSent, onSuccess, onFailed } = p;
-            assert.deepEqual(tx, { to: "0xfeeWindow01", estimateGas: true });
-            assert.deepEqual(_attotokens, speedomatic.fix("10.25", "hex"));
-            assert.isFunction(onSent);
-            assert.isFunction(onSuccess);
-            assert.isFunction(onFailed);
-            onSent();
-            onSuccess("0xdeadbeef");
+  test(
+    "It should handle estimating gas for buying participation tokens",
+    done => {
+      ReWireModule.__Rewire__("augur", {
+        api: {
+          FeeWindow: {
+            buy: p => {
+              const { tx, _attotokens, onSent, onSuccess, onFailed } = p;
+              assert.deepEqual(tx, { to: "0xfeeWindow01", estimateGas: true });
+              assert.deepEqual(_attotokens, speedomatic.fix("10.25", "hex"));
+              assert.isFunction(onSent);
+              assert.isFunction(onSuccess);
+              assert.isFunction(onFailed);
+              onSent();
+              onSuccess("0xdeadbeef");
+            }
           }
-        }
-      },
-      reporting: {
-        getFeeWindowCurrent: (p, cb) => {
-          assert.deepEqual(p, { universe: store.getState().universe.id });
-          assert.isFunction(cb);
-          cb(null, { feeWindow: "0xfeeWindow01" });
-        }
-      },
-      rpc: mockRPC
-    });
-
-    store.dispatch(
-      purchaseParticipationTokens("10.25", true, (err, res) => {
-        assert.isNull(err);
-        const expectedResponse = formatGasCostToEther(
-          "0xdeadbeef",
-          { decimalsRounded: 4 },
-          "0x2fdaf"
-        );
-        assert.deepEqual(res, expectedResponse);
-        const expectedActions = [];
-        assert.deepEqual(store.getActions(), expectedActions);
-        done();
-      })
-    );
-  });
-
-  it("It should handle an error from estimating gas for buying participation tokens", done => {
-    ReWireModule.__Rewire__("augur", {
-      api: {
-        FeeWindow: {
-          buy: p => {
-            const { tx, _attotokens, onSent, onSuccess, onFailed } = p;
-            assert.deepEqual(tx, { to: "0xfeeWindow01", estimateGas: true });
-            assert.deepEqual(_attotokens, speedomatic.fix("10.25", "hex"));
-            assert.isFunction(onSent);
-            assert.isFunction(onSuccess);
-            assert.isFunction(onFailed);
-            onSent();
-            onFailed({ error: 1000, message: "Uh-Oh!" });
+        },
+        reporting: {
+          getFeeWindowCurrent: (p, cb) => {
+            assert.deepEqual(p, { universe: store.getState().universe.id });
+            assert.isFunction(cb);
+            cb(null, { feeWindow: "0xfeeWindow01" });
           }
-        }
-      },
-      reporting: {
-        getFeeWindowCurrent: (p, cb) => {
-          assert.deepEqual(p, { universe: store.getState().universe.id });
-          assert.isFunction(cb);
-          cb(null, { feeWindow: "0xfeeWindow01" });
-        }
-      },
-      rpc: mockRPC
-    });
+        },
+        rpc: mockRPC
+      });
 
-    store.dispatch(
-      purchaseParticipationTokens("10.25", true, (err, res) => {
-        assert.isUndefined(res);
-        assert.deepEqual(err, { error: 1000, message: "Uh-Oh!" });
-        const expectedActions = [];
-        assert.deepEqual(store.getActions(), expectedActions);
-        done();
-      })
-    );
-  });
+      store.dispatch(
+        purchaseParticipationTokens("10.25", true, (err, res) => {
+          assert.isNull(err);
+          const expectedResponse = formatGasCostToEther(
+            "0xdeadbeef",
+            { decimalsRounded: 4 },
+            "0x2fdaf"
+          );
+          assert.deepEqual(res, expectedResponse);
+          const expectedActions = [];
+          assert.deepEqual(store.getActions(), expectedActions);
+          done();
+        })
+      );
+    }
+  );
 
-  it("It should handle an error from getting the Fee Window", done => {
+  test(
+    "It should handle an error from estimating gas for buying participation tokens",
+    done => {
+      ReWireModule.__Rewire__("augur", {
+        api: {
+          FeeWindow: {
+            buy: p => {
+              const { tx, _attotokens, onSent, onSuccess, onFailed } = p;
+              assert.deepEqual(tx, { to: "0xfeeWindow01", estimateGas: true });
+              assert.deepEqual(_attotokens, speedomatic.fix("10.25", "hex"));
+              assert.isFunction(onSent);
+              assert.isFunction(onSuccess);
+              assert.isFunction(onFailed);
+              onSent();
+              onFailed({ error: 1000, message: "Uh-Oh!" });
+            }
+          }
+        },
+        reporting: {
+          getFeeWindowCurrent: (p, cb) => {
+            assert.deepEqual(p, { universe: store.getState().universe.id });
+            assert.isFunction(cb);
+            cb(null, { feeWindow: "0xfeeWindow01" });
+          }
+        },
+        rpc: mockRPC
+      });
+
+      store.dispatch(
+        purchaseParticipationTokens("10.25", true, (err, res) => {
+          assert.isUndefined(res);
+          assert.deepEqual(err, { error: 1000, message: "Uh-Oh!" });
+          const expectedActions = [];
+          assert.deepEqual(store.getActions(), expectedActions);
+          done();
+        })
+      );
+    }
+  );
+
+  test("It should handle an error from getting the Fee Window", done => {
     ReWireModule.__Rewire__("augur", {
       api: {
         FeeWindow: {
@@ -168,7 +172,7 @@ describe("purchase participation tokens tests", () => {
     );
   });
 
-  it("It should handle an null current Fee Window", done => {
+  test("It should handle an null current Fee Window", done => {
     ReWireModule.__Rewire__("augur", {
       api: {
         FeeWindow: {

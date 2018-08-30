@@ -11,7 +11,7 @@ import { RESET_STATE } from "src/modules/app/actions/reset-state";
 // I'm back door testing action creators here.
 describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
   describe("default state", () => {
-    it("should be an empty array", () => {
+    test("should be an empty array", () => {
       const actual = OrphanedOrdersReducer([], {});
 
       assert.isArray(actual);
@@ -20,18 +20,21 @@ describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
   });
 
   describe("ADD_ORPHANED_ORDER", () => {
-    it("should push the data payload onto the state with an added dismissed property", () => {
-      const action = addOrphanedOrder({ orderId: "12345" });
-      const actual = OrphanedOrdersReducer([], action);
-      assert.deepEqual(actual, [
-        {
-          dismissed: false,
-          orderId: "12345"
-        }
-      ]);
-    });
+    test(
+      "should push the data payload onto the state with an added dismissed property",
+      () => {
+        const action = addOrphanedOrder({ orderId: "12345" });
+        const actual = OrphanedOrdersReducer([], action);
+        assert.deepEqual(actual, [
+          {
+            dismissed: false,
+            orderId: "12345"
+          }
+        ]);
+      }
+    );
 
-    it("should do nothing if an order exists with the same orderId", () => {
+    test("should do nothing if an order exists with the same orderId", () => {
       // I'm back door testing action creators here.
       const action = addOrphanedOrder({ orderId: "12345", timestamp: 123456 });
       const actual = OrphanedOrdersReducer(
@@ -56,7 +59,7 @@ describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
   });
 
   describe("DISMISS_ORPHANED_ORDER", () => {
-    it("should set dismissed propert to true", () => {
+    test("should set dismissed propert to true", () => {
       const actual = OrphanedOrdersReducer(
         [
           {
@@ -89,7 +92,7 @@ describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
   });
 
   describe("REMOVE_ORPHANED_ORDER", () => {
-    it("should filter out anything with a matching orderId", () => {
+    test("should filter out anything with a matching orderId", () => {
       const action = removeOrphanedOrder("12345");
       const actual = OrphanedOrdersReducer(
         [
@@ -106,7 +109,7 @@ describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
   });
 
   describe("RESET_STATE", () => {
-    it("should return to the default state", () => {
+    test("should return to the default state", () => {
       const actual = OrphanedOrdersReducer(
         [
           {
@@ -124,7 +127,7 @@ describe("src/modules/orphaned-orders/reducers/orphaned-orders.js", () => {
   });
 
   describe("CANCEL_ORDER", () => {
-    it("should return to the default state", () => {
+    test("should return to the default state", () => {
       cancelOrphanedOrderRequireAPI.__Rewire__(
         "selectCurrentTimestampInSeconds",
         () => {}

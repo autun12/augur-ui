@@ -3,12 +3,12 @@ export default function(link, label = "Link") {
     assert.isDefined(link);
     assert.isObject(link);
 
-    it("href", () => {
+    test("href", () => {
       assert.isDefined(link.href);
       assert.isString(link.href);
     });
 
-    it("onClick", () => {
+    test("onClick", () => {
       assert.isDefined(link.onClick);
       assert.isFunction(link.onClick);
     });

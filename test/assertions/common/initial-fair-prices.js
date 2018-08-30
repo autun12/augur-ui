@@ -1,14 +1,14 @@
 export default function(initialFairPrices, refObj) {
   describe(`${refObj}'s initiaiFairPrices`, () => {
     describe("type", () => {
-      it("should exist", () => {
+      test("should exist", () => {
         assert.isDefined(
           initialFairPrices.type,
           "initialFairPrices.type is not defined"
         );
       });
 
-      it("should be a string", () => {
+      test("should be a string", () => {
         assert.isString(
           initialFairPrices.type,
           "initialFairPrices.type is not a string"
@@ -17,14 +17,14 @@ export default function(initialFairPrices, refObj) {
     });
 
     describe("values", () => {
-      it("should exist", () => {
+      test("should exist", () => {
         assert.isDefined(
           initialFairPrices.values,
           "initialFairPrices.values is not defined"
         );
       });
 
-      it("should be an array", () => {
+      test("should be an array", () => {
         assert.isArray(
           initialFairPrices.values,
           "initialFairPrices.values is not an array"
@@ -33,14 +33,14 @@ export default function(initialFairPrices, refObj) {
     });
 
     describe("raw", () => {
-      it("should exist", () => {
+      test("should exist", () => {
         assert.isDefined(
           initialFairPrices.raw,
           "initialFairPrices.raw is not defined"
         );
       });
 
-      it("should be an array", () => {
+      test("should be an array", () => {
         assert.isArray(
           initialFairPrices.raw,
           "initialFairPrices.raw is not an array"

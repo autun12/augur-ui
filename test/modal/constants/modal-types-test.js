@@ -1,9 +1,9 @@
 import * as modalTypes from "modules/modal/constants/modal-types";
 
 describe("modules/modal/constants/modal-types", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
-  it(`should return the expected value 'MODAL_LEDGER'`, () => {
+  test(`should return the expected value 'MODAL_LEDGER'`, () => {
     const expected = "MODAL_LEDGER";
 
     assert.strictEqual(
@@ -12,7 +12,7 @@ describe("modules/modal/constants/modal-types", () => {
       `didn't return the expected string`
     );
   });
-  it(`should return the expected value 'MODAL_UPORT'`, () => {
+  test(`should return the expected value 'MODAL_UPORT'`, () => {
     const expected = "MODAL_UPORT";
 
     assert.strictEqual(
@@ -21,7 +21,7 @@ describe("modules/modal/constants/modal-types", () => {
       `didn't return the expected string`
     );
   });
-  it(`should return the expected value 'MODAL_NETWORK_MISMATCH'`, () => {
+  test(`should return the expected value 'MODAL_NETWORK_MISMATCH'`, () => {
     const expected = "MODAL_NETWORK_MISMATCH";
 
     assert.strictEqual(
@@ -30,7 +30,7 @@ describe("modules/modal/constants/modal-types", () => {
       `didn't return the expected string`
     );
   });
-  it(`should return the expected value 'MODAL_NETWORK_DISCONNECTED'`, () => {
+  test(`should return the expected value 'MODAL_NETWORK_DISCONNECTED'`, () => {
     const expected = "MODAL_NETWORK_DISCONNECTED";
 
     assert.strictEqual(

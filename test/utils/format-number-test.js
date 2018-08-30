@@ -113,7 +113,7 @@ describe("utils/format-number.js", () => {
 
   utils.forEach(currentUtil => {
     describe(`${currentUtil.func}`, () => {
-      it("should return a correctly formatted object", () => {
+      test("should return a correctly formatted object", () => {
         assert.deepEqual(
           formatNumber[`${currentUtil.func}`](currentUtil.num || num),
           currentUtil.out,
@@ -159,7 +159,7 @@ describe("utils/format-number.js", () => {
 
   utils2.forEach(currentUtil => {
     describe(`${currentUtil.func}`, () => {
-      it("should return a correctly formatted object", () => {
+      test("should return a correctly formatted object", () => {
         assert.deepEqual(
           formatNumber[`${currentUtil.func}`](currentUtil.num || num2),
           currentUtil.out,
@@ -205,7 +205,7 @@ describe("utils/format-number.js", () => {
 
   utils3.forEach(currentUtil => {
     describe(`${currentUtil.func}`, () => {
-      it("should return a correctly formatted object", () => {
+      test("should return a correctly formatted object", () => {
         assert.deepEqual(
           formatNumber[`${currentUtil.func}`](currentUtil.num || num3),
           currentUtil.out,
@@ -251,7 +251,7 @@ describe("utils/format-number.js", () => {
 
   utils4.forEach(currentUtil => {
     describe(`${currentUtil.func}`, () => {
-      it("should return a correctly formatted object", () => {
+      test("should return a correctly formatted object", () => {
         assert.deepEqual(
           formatNumber[`${currentUtil.func}`](currentUtil.num || num4),
           currentUtil.out,
@@ -297,7 +297,7 @@ describe("utils/format-number.js", () => {
 
   utils5.forEach(currentUtil => {
     describe(`${currentUtil.func}`, () => {
-      it("should return a correctly formatted object", () => {
+      test("should return a correctly formatted object", () => {
         assert.deepEqual(
           formatNumber[`${currentUtil.func}`](currentUtil.num || num5),
           currentUtil.out,
@@ -308,7 +308,7 @@ describe("utils/format-number.js", () => {
   });
 
   describe("formatNone", () => {
-    it("should return a properly formatted `none` number object", () => {
+    test("should return a properly formatted `none` number object", () => {
       const out = {
         value: 0,
         formattedValue: 0,
@@ -329,7 +329,7 @@ describe("utils/format-number.js", () => {
   });
 
   describe("format gas cost", () => {
-    it("should return a properly formatted gas cost number", () => {
+    test("should return a properly formatted gas cost number", () => {
       assert.deepEqual(
         formatNumber.formatGasCostToEther(
           "0x632ea0",
@@ -343,7 +343,7 @@ describe("utils/format-number.js", () => {
   });
 
   describe("format gas cost different gas", () => {
-    it("should return a properly formatted gas cost number", () => {
+    test("should return a properly formatted gas cost number", () => {
       assert.deepEqual(
         formatNumber.formatGasCostToEther(
           "0x632ea0",
@@ -357,7 +357,7 @@ describe("utils/format-number.js", () => {
   });
 
   describe("format attoETH", () => {
-    it("should return a properly formatted attoETH number", () => {
+    test("should return a properly formatted attoETH number", () => {
       const result = formatNumber.formatAttoEth("349680582682291650", {
         decimals: 4
       });
@@ -370,7 +370,7 @@ describe("utils/format-number.js", () => {
   });
 
   describe("format attoREP", () => {
-    it("should return a properly formatted attoREP number", () => {
+    test("should return a properly formatted attoREP number", () => {
       const result = formatNumber.formatAttoRep("349680582682291650", {
         decimals: 4
       });
@@ -383,7 +383,7 @@ describe("utils/format-number.js", () => {
   });
 
   describe("format largish attoREP", () => {
-    it("should return a properly formatted attoREP number", () => {
+    test("should return a properly formatted attoREP number", () => {
       const result = formatNumber.formatAttoRep("3496805826822916500000", {
         decimals: 4
       });

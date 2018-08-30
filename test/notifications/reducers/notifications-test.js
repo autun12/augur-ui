@@ -10,13 +10,13 @@ import {
 import notifications from "modules/notifications/reducers/notifications";
 
 describe("modules/notifications/reducers/notifications", () => {
-  it("should return the default state", () => {
+  test("should return the default state", () => {
     const actual = notifications(undefined, {});
     const expected = [];
     assert.deepEqual(actual, expected, `Didn't return the expected array`);
   });
 
-  it("should return the expected array for type ADD_NOTIFICATION", () => {
+  test("should return the expected array for type ADD_NOTIFICATION", () => {
     const actual = notifications([], {
       type: ADD_NOTIFICATION,
       data: {
@@ -33,7 +33,7 @@ describe("modules/notifications/reducers/notifications", () => {
     assert.deepEqual(actual, expected, `Didn't return the expected array`);
   });
 
-  it("should return non dup array for type ADD_NOTIFICATION", () => {
+  test("should return non dup array for type ADD_NOTIFICATION", () => {
     const actual = notifications(
       [
         {
@@ -57,7 +57,7 @@ describe("modules/notifications/reducers/notifications", () => {
     assert.deepEqual(actual, expected, `Didn't return the expected array`);
   });
 
-  it("should return the expected array for type REMOVE_NOTIFICATION", () => {
+  test("should return the expected array for type REMOVE_NOTIFICATION", () => {
     const actual = notifications(
       [
         {
@@ -75,7 +75,7 @@ describe("modules/notifications/reducers/notifications", () => {
     assert.deepEqual(actual, expected, `Didn't return the expected array`);
   });
 
-  it("should return the expected array for type UPDATE_NOTIFICATION", () => {
+  test("should return the expected array for type UPDATE_NOTIFICATION", () => {
     const actual = notifications(
       [
         {
@@ -114,7 +114,7 @@ describe("modules/notifications/reducers/notifications", () => {
   });
 
   describe("CLEAR_NOTIFICATIONS action", () => {
-    it("should remove items with the passed notification level.", () => {
+    test("should remove items with the passed notification level.", () => {
       const actual = notifications(
         [
           {

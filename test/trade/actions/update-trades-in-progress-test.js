@@ -1,6 +1,3 @@
-import { describe, it, beforeEach, afterEach } from "mocha";
-
-import proxyquire from "proxyquire";
 import sinon from "sinon";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
@@ -133,314 +130,341 @@ describe("modules/trade/actions/update-trades-in-progress.js", () => {
       store.clearActions();
     });
 
-    it("should pass shape tests for buying 10 shares of YES at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testYesNoMarketId",
-          0,
-          BUY,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
-    });
+    test(
+      "should pass shape tests for buying 10 shares of YES at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testYesNoMarketId",
+            0,
+            BUY,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
+      }
+    );
 
-    it("should pass calculation tests for buying 10 shares of YES at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testYesNoMarketId",
-          0,
-          BUY,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testYesNoMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
-              numShares: "10",
-              sharesFilled: "0",
-              limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "5",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "5",
-              shareBalances: ["0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+    test(
+      "should pass calculation tests for buying 10 shares of YES at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testYesNoMarketId",
+            0,
+            BUY,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testYesNoMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "10",
+                sharesFilled: "0",
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "5",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "5",
+                shareBalances: ["0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
             }
-          }
-        },
-        `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
-      );
-    });
+          },
+          `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
+        );
+      }
+    );
 
-    it("should pass shape tests for Selling 10 shares of YES at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testYesNoMarketId",
-          1,
-          SELL,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
-    });
+    test(
+      "should pass shape tests for Selling 10 shares of YES at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testYesNoMarketId",
+            1,
+            SELL,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
+      }
+    );
 
-    it("should pass calculation tests for selling 10 shares of YES at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testYesNoMarketId",
-          1,
-          SELL,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testYesNoMarketId",
-            outcomeId: 1,
-            details: {
-              side: "sell",
-              numShares: "10",
-              sharesFilled: "10",
-              limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "5",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "5",
-              shareBalances: ["10", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+    test(
+      "should pass calculation tests for selling 10 shares of YES at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testYesNoMarketId",
+            1,
+            SELL,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testYesNoMarketId",
+              outcomeId: 1,
+              details: {
+                side: "sell",
+                numShares: "10",
+                sharesFilled: "10",
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "5",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "5",
+                shareBalances: ["10", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
             }
-          }
-        },
-        `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
-      );
-    });
+          },
+          `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
+        );
+      }
+    );
 
-    it("should reset the tradeDetails object if 0 shares are passed in as a buy", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testYesNoMarketId",
-          0,
-          BUY,
-          "0",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testYesNoMarketId",
-            outcomeId: 0,
-            details: {
+    test(
+      "should reset the tradeDetails object if 0 shares are passed in as a buy",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testYesNoMarketId",
+            0,
+            BUY,
+            "0",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testYesNoMarketId",
+              outcomeId: 0,
+              details: {
+                side: BUY,
+                numShares: undefined,
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "0"
+              }
+            }
+          },
+          `Didn't clear the tradeDetails object`
+        );
+      }
+    );
+
+    test(
+      "should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is set.",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testYesNoMarketId",
+            0,
+            BUY,
+            undefined,
+            "0.5",
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testYesNoMarketId",
+              outcomeId: 0,
+              details: {
+                side: BUY,
+                numShares: undefined,
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "0"
+              }
+            }
+          },
+          `Didn't return the correct tradeDetails object based on input`
+        );
+      }
+    );
+
+    test(
+      "should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is changed when a tradesInProgress is defined for an outcome.",
+      () => {
+        // set the current Trade in Progress for BUY to a 10 share .5 limit buy order
+        store.getState().tradesInProgress = {
+          testYesNoMarketId: {
+            0: {
               side: BUY,
-              numShares: undefined,
-              limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "0"
-            }
-          }
-        },
-        `Didn't clear the tradeDetails object`
-      );
-    });
-
-    it("should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is set.", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testYesNoMarketId",
-          0,
-          BUY,
-          undefined,
-          "0.5",
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testYesNoMarketId",
-            outcomeId: 0,
-            details: {
-              side: BUY,
-              numShares: undefined,
-              limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "0"
-            }
-          }
-        },
-        `Didn't return the correct tradeDetails object based on input`
-      );
-    });
-
-    it("should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is changed when a tradesInProgress is defined for an outcome.", () => {
-      // set the current Trade in Progress for BUY to a 10 share .5 limit buy order
-      store.getState().tradesInProgress = {
-        testYesNoMarketId: {
-          0: {
-            side: BUY,
-            numShares: "10",
-            limitPrice: "0.5",
-            totalFee: "0.01",
-            totalCost: "-5.01",
-            feePercent: "0.2",
-            worstCaseFees: "0"
-          }
-        }
-      };
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testYesNoMarketId",
-          0,
-          BUY,
-          undefined,
-          "0.15",
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testYesNoMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
               numShares: "10",
-              sharesFilled: "0",
-              limitPrice: "0.15",
-              totalFee: "0",
-              totalCost: "1.5",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "1.5",
-              shareBalances: ["0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
-            }
-          }
-        },
-        `Didn't update the tradeDetails object to the new calcs given new limit`
-      );
-    });
-
-    it("should handle the tradeDetails object if limitPrice is unchanged but share number changes", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testYesNoMarketId",
-          0,
-          BUY,
-          "25",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testYesNoMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
-              numShares: "25",
-              sharesFilled: "0",
               limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "12.5",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "12.5",
-              shareBalances: ["0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              totalFee: "0.01",
+              totalCost: "-5.01",
+              feePercent: "0.2",
+              worstCaseFees: "0"
             }
           }
-        },
-        "Didn't produce the expected tradeDetails object"
-      );
-    });
+        };
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testYesNoMarketId",
+            0,
+            BUY,
+            undefined,
+            "0.15",
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testYesNoMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "10",
+                sharesFilled: "0",
+                limitPrice: "0.15",
+                totalFee: "0",
+                totalCost: "1.5",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "1.5",
+                shareBalances: ["0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
+            }
+          },
+          `Didn't update the tradeDetails object to the new calcs given new limit`
+        );
+      }
+    );
 
-    it("should handle the tradeDetails object if limitPrice is unchanged but share number changes to negative (should default to the positive version of the numShares: -25 becomes 25.)", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testYesNoMarketId",
-          0,
-          BUY,
-          "-25",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testYesNoMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
-              numShares: "25",
-              sharesFilled: "0",
-              limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "12.5",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "12.5",
-              shareBalances: ["0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+    test(
+      "should handle the tradeDetails object if limitPrice is unchanged but share number changes",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testYesNoMarketId",
+            0,
+            BUY,
+            "25",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testYesNoMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "25",
+                sharesFilled: "0",
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "12.5",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "12.5",
+                shareBalances: ["0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
             }
-          }
-        },
-        "Didn't produce the expected tradeDetails object"
-      );
-    });
+          },
+          "Didn't produce the expected tradeDetails object"
+        );
+      }
+    );
+
+    test(
+      "should handle the tradeDetails object if limitPrice is unchanged but share number changes to negative (should default to the positive version of the numShares: -25 becomes 25.)",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testYesNoMarketId",
+            0,
+            BUY,
+            "-25",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testYesNoMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "25",
+                sharesFilled: "0",
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "12.5",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "12.5",
+                shareBalances: ["0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
+            }
+          },
+          "Didn't produce the expected tradeDetails object"
+        );
+      }
+    );
   });
 
   describe("should update a trade in progress for a categorical market", () => {
@@ -475,325 +499,352 @@ describe("modules/trade/actions/update-trades-in-progress.js", () => {
       store.clearActions();
     });
 
-    it("should pass shape tests for buying 10 shares of Outcome 0 at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testCategoricalMarketId",
-          0,
-          BUY,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
-    });
+    test(
+      "should pass shape tests for buying 10 shares of Outcome 0 at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testCategoricalMarketId",
+            0,
+            BUY,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
+      }
+    );
 
-    it("should pass calculation tests for buying 10 shares of Outcome 1 at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testCategoricalMarketId",
-          1,
-          BUY,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testCategoricalMarketId",
-            outcomeId: 1,
-            details: {
-              side: "buy",
-              numShares: "10",
-              sharesFilled: "0.005",
-              limitPrice: "0.7",
-              totalFee: "0",
-              totalCost: "7",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "7",
-              shareBalances: ["0", "0.005", "0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
-            }
-          }
-        },
-        `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
-      );
-    });
-
-    it("should pass shape tests for Selling 10 shares of Outcome 0 at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testCategoricalMarketId",
-          0,
-          SELL,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
-    });
-
-    it("should pass calculation tests for selling 10 shares of Outcome 1 at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testCategoricalMarketId",
-          1,
-          SELL,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testCategoricalMarketId",
-            outcomeId: 1,
-            details: {
-              side: "sell",
-              numShares: "10",
-              sharesFilled: "10",
-              limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "5",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "5",
-              shareBalances: ["10", "0", "10", "10"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
-            }
-          }
-        },
-        `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
-      );
-    });
-
-    it("should reset the tradeDetails object if 0 shares are passed in as a buy", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testCategoricalMarketId",
-          0,
-          BUY,
-          "0",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testCategoricalMarketId",
-            outcomeId: 0,
-            details: {
-              side: BUY,
-              numShares: undefined,
-              limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "0"
-            }
-          }
-        },
-        `Didn't clear the tradeDetails object`
-      );
-    });
-
-    it("should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is set.", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testCategoricalMarketId",
-          0,
-          BUY,
-          undefined,
-          "0.5",
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testCategoricalMarketId",
-            outcomeId: 0,
-            details: {
-              side: BUY,
-              numShares: undefined,
-              limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "0"
-            }
-          }
-        },
-        `Didn't return the correct tradeDetails object based on input`
-      );
-    });
-
-    it("should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is changed when a tradesInProgress is defined for an outcome.", () => {
-      // set the current Trade in Progress for BUY to a 10 share .5 limit buy order
-      store.getState().tradesInProgress = {
-        testCategoricalMarketId: {
-          0: {
-            side: BUY,
-            numShares: "10",
-            limitPrice: "0.5",
-            totalFee: "0.004999999999999995",
-            totalCost: "-5.004999999999999995",
-            tradeActions: [
-              {
-                action: "BID",
-                shares: "10",
-                feeEth: "0.004999999999999995",
-                feePercent: "0.0999999999999999",
-                costEth: "-5.004999999999999995",
-                avgPrice: "0.500499999999999999",
-                noFeePrice: "0.5"
+    test(
+      "should pass calculation tests for buying 10 shares of Outcome 1 at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testCategoricalMarketId",
+            1,
+            BUY,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testCategoricalMarketId",
+              outcomeId: 1,
+              details: {
+                side: "buy",
+                numShares: "10",
+                sharesFilled: "0.005",
+                limitPrice: "0.7",
+                totalFee: "0",
+                totalCost: "7",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "7",
+                shareBalances: ["0", "0.005", "0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
               }
-            ],
-            tradingFeesEth: "0.004999999999999995",
-            feePercent: "0.099800399201596707"
-          }
-        }
-      };
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testCategoricalMarketId",
-          0,
-          BUY,
-          undefined,
-          "0.15",
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testCategoricalMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
+            }
+          },
+          `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
+        );
+      }
+    );
+
+    test(
+      "should pass shape tests for Selling 10 shares of Outcome 0 at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testCategoricalMarketId",
+            0,
+            SELL,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
+      }
+    );
+
+    test(
+      "should pass calculation tests for selling 10 shares of Outcome 1 at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testCategoricalMarketId",
+            1,
+            SELL,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testCategoricalMarketId",
+              outcomeId: 1,
+              details: {
+                side: "sell",
+                numShares: "10",
+                sharesFilled: "10",
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "5",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "5",
+                shareBalances: ["10", "0", "10", "10"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
+            }
+          },
+          `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
+        );
+      }
+    );
+
+    test(
+      "should reset the tradeDetails object if 0 shares are passed in as a buy",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testCategoricalMarketId",
+            0,
+            BUY,
+            "0",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testCategoricalMarketId",
+              outcomeId: 0,
+              details: {
+                side: BUY,
+                numShares: undefined,
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "0"
+              }
+            }
+          },
+          `Didn't clear the tradeDetails object`
+        );
+      }
+    );
+
+    test(
+      "should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is set.",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testCategoricalMarketId",
+            0,
+            BUY,
+            undefined,
+            "0.5",
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testCategoricalMarketId",
+              outcomeId: 0,
+              details: {
+                side: BUY,
+                numShares: undefined,
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "0"
+              }
+            }
+          },
+          `Didn't return the correct tradeDetails object based on input`
+        );
+      }
+    );
+
+    test(
+      "should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is changed when a tradesInProgress is defined for an outcome.",
+      () => {
+        // set the current Trade in Progress for BUY to a 10 share .5 limit buy order
+        store.getState().tradesInProgress = {
+          testCategoricalMarketId: {
+            0: {
+              side: BUY,
               numShares: "10",
-              sharesFilled: "0",
-              limitPrice: "0.15",
-              totalFee: "0",
-              totalCost: "1.5",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "1.5",
-              shareBalances: ["0", "0", "0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
-            }
-          }
-        },
-        `Didn't update the tradeDetails object to the new calcs given new limit`
-      );
-    });
-
-    it("should handle the tradeDetails object if limitPrice is unchanged but share number changes", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testCategoricalMarketId",
-          0,
-          BUY,
-          "25",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testCategoricalMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
-              numShares: "25",
-              sharesFilled: "0",
               limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "12.5",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "12.5",
-              shareBalances: ["0", "0", "0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              totalFee: "0.004999999999999995",
+              totalCost: "-5.004999999999999995",
+              tradeActions: [
+                {
+                  action: "BID",
+                  shares: "10",
+                  feeEth: "0.004999999999999995",
+                  feePercent: "0.0999999999999999",
+                  costEth: "-5.004999999999999995",
+                  avgPrice: "0.500499999999999999",
+                  noFeePrice: "0.5"
+                }
+              ],
+              tradingFeesEth: "0.004999999999999995",
+              feePercent: "0.099800399201596707"
             }
           }
-        },
-        "Didn't produce the expected tradeDetails object"
-      );
-    });
+        };
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testCategoricalMarketId",
+            0,
+            BUY,
+            undefined,
+            "0.15",
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testCategoricalMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "10",
+                sharesFilled: "0",
+                limitPrice: "0.15",
+                totalFee: "0",
+                totalCost: "1.5",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "1.5",
+                shareBalances: ["0", "0", "0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
+            }
+          },
+          `Didn't update the tradeDetails object to the new calcs given new limit`
+        );
+      }
+    );
 
-    it("should handle the tradeDetails object if limitPrice is unchanged but share number changes to negative (should default to the positive version of the numShares: -25 becomes 25.)", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testCategoricalMarketId",
-          0,
-          BUY,
-          "-25",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testCategoricalMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
-              numShares: "25",
-              sharesFilled: "0",
-              limitPrice: "0.5",
-              totalFee: "0",
-              totalCost: "12.5",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "12.5",
-              shareBalances: ["0", "0", "0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+    test(
+      "should handle the tradeDetails object if limitPrice is unchanged but share number changes",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testCategoricalMarketId",
+            0,
+            BUY,
+            "25",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testCategoricalMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "25",
+                sharesFilled: "0",
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "12.5",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "12.5",
+                shareBalances: ["0", "0", "0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
             }
-          }
-        },
-        "Didn't produce the expected tradeDetails object"
-      );
-    });
+          },
+          "Didn't produce the expected tradeDetails object"
+        );
+      }
+    );
+
+    test(
+      "should handle the tradeDetails object if limitPrice is unchanged but share number changes to negative (should default to the positive version of the numShares: -25 becomes 25.)",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testCategoricalMarketId",
+            0,
+            BUY,
+            "-25",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testCategoricalMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "25",
+                sharesFilled: "0",
+                limitPrice: "0.5",
+                totalFee: "0",
+                totalCost: "12.5",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "12.5",
+                shareBalances: ["0", "0", "0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
+            }
+          },
+          "Didn't produce the expected tradeDetails object"
+        );
+      }
+    );
   });
 
   describe("should update a trade in progress for a scalar market", () => {
@@ -828,353 +879,383 @@ describe("modules/trade/actions/update-trades-in-progress.js", () => {
       store.clearActions();
     });
 
-    it("should pass shape tests for buying 10 shares of outcome1 at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testScalarMarketId",
-          1,
-          BUY,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
-    });
+    test(
+      "should pass shape tests for buying 10 shares of outcome1 at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testScalarMarketId",
+            1,
+            BUY,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
+      }
+    );
 
-    it("should pass calculation tests for buying 10 shares of outcome 1 at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testScalarMarketId",
-          1,
-          BUY,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testScalarMarketId",
-            outcomeId: 1,
-            details: {
-              side: "buy",
-              numShares: "10",
-              sharesFilled: "0.5",
-              limitPrice: "55",
-              totalFee: "0",
-              totalCost: "650",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "650",
-              shareBalances: ["0", "0.5"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+    test(
+      "should pass calculation tests for buying 10 shares of outcome 1 at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testScalarMarketId",
+            1,
+            BUY,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testScalarMarketId",
+              outcomeId: 1,
+              details: {
+                side: "buy",
+                numShares: "10",
+                sharesFilled: "0.5",
+                limitPrice: "55",
+                totalFee: "0",
+                totalCost: "650",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "650",
+                shareBalances: ["0", "0.5"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
             }
-          }
-        },
-        `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
-      );
-    });
+          },
+          `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
+        );
+      }
+    );
 
-    it("should pass shape tests for Selling 10 shares of outcome 1 at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testScalarMarketId",
-          1,
-          SELL,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
-    });
+    test(
+      "should pass shape tests for Selling 10 shares of outcome 1 at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testScalarMarketId",
+            1,
+            SELL,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        updateTradesInProgressActionShapeAssertion(store.getActions()[0]);
+      }
+    );
 
-    it("should pass calculation tests for selling 10 shares of outcome1 at the default limitPrice", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testScalarMarketId",
-          1,
-          SELL,
-          "10.0",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testScalarMarketId",
-            outcomeId: 1,
-            details: {
-              side: "sell",
-              numShares: "10",
-              sharesFilled: "1.5",
-              limitPrice: "50",
-              totalFee: "0",
-              totalCost: "600",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "600",
-              shareBalances: ["1.5", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+    test(
+      "should pass calculation tests for selling 10 shares of outcome1 at the default limitPrice",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testScalarMarketId",
+            1,
+            SELL,
+            "10.0",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testScalarMarketId",
+              outcomeId: 1,
+              details: {
+                side: "sell",
+                numShares: "10",
+                sharesFilled: "1.5",
+                limitPrice: "50",
+                totalFee: "0",
+                totalCost: "600",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "600",
+                shareBalances: ["1.5", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
             }
-          }
-        },
-        `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
-      );
-    });
+          },
+          `The tradeDetails dispatched didn't correctly calculate the trade as expected.`
+        );
+      }
+    );
 
-    it("should reset the tradeDetails object if 0 shares are passed in as a buy", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testScalarMarketId",
-          0,
-          BUY,
-          "0",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testScalarMarketId",
-            outcomeId: 0,
-            details: {
+    test(
+      "should reset the tradeDetails object if 0 shares are passed in as a buy",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testScalarMarketId",
+            0,
+            BUY,
+            "0",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testScalarMarketId",
+              outcomeId: 0,
+              details: {
+                side: BUY,
+                numShares: undefined,
+                limitPrice: "50",
+                totalFee: "0",
+                totalCost: "0"
+              }
+            }
+          },
+          `Didn't clear the tradeDetails object`
+        );
+      }
+    );
+
+    test(
+      "should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is set.",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testScalarMarketId",
+            0,
+            BUY,
+            undefined,
+            "65",
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testScalarMarketId",
+              outcomeId: 0,
+              details: {
+                side: BUY,
+                numShares: undefined,
+                limitPrice: "65",
+                totalFee: "0",
+                totalCost: "0"
+              }
+            }
+          },
+          `Didn't clear the tradeDetails object`
+        );
+      }
+    );
+
+    test(
+      "should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is changed when a tradesInProgress is defined for an outcome.",
+      () => {
+        // set the current Trade in Progress for BUY to a 10 share .5 limit buy order
+        store.getState().tradesInProgress = {
+          testScalarMarketId: {
+            0: {
               side: BUY,
-              numShares: undefined,
-              limitPrice: "50",
-              totalFee: "0",
-              totalCost: "0"
-            }
-          }
-        },
-        `Didn't clear the tradeDetails object`
-      );
-    });
-
-    it("should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is set.", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testScalarMarketId",
-          0,
-          BUY,
-          undefined,
-          "65",
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testScalarMarketId",
-            outcomeId: 0,
-            details: {
-              side: BUY,
-              numShares: undefined,
-              limitPrice: "65",
-              totalFee: "0",
-              totalCost: "0"
-            }
-          }
-        },
-        `Didn't clear the tradeDetails object`
-      );
-    });
-
-    it("should handle the tradeDetails object if no shares are passed in as a buy but a limitPrice is changed when a tradesInProgress is defined for an outcome.", () => {
-      // set the current Trade in Progress for BUY to a 10 share .5 limit buy order
-      store.getState().tradesInProgress = {
-        testScalarMarketId: {
-          0: {
-            side: BUY,
-            numShares: "10",
-            limitPrice: "55",
-            totalFee: "5.36982248520710025",
-            totalCost: "-555.36982248520710025",
-            feePercent: "0.9763313609467455"
-          }
-        }
-      };
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testScalarMarketId",
-          0,
-          BUY,
-          undefined,
-          "70",
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testScalarMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
               numShares: "10",
-              sharesFilled: "0",
-              limitPrice: "70",
-              totalFee: "0",
-              totalCost: "800",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "800",
-              shareBalances: ["0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
-            }
-          }
-        },
-        `Didn't update the tradeDetails object to the new calcs given new limit`
-      );
-    });
-
-    it("should handle the tradeDetails object if limitPrice is unchanged but share number changes", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testScalarMarketId",
-          0,
-          BUY,
-          "25",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testScalarMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
-              numShares: "25",
-              sharesFilled: "0",
               limitPrice: "55",
-              totalFee: "0",
-              totalCost: "1625",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "1625",
-              shareBalances: ["0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              totalFee: "5.36982248520710025",
+              totalCost: "-555.36982248520710025",
+              feePercent: "0.9763313609467455"
             }
           }
-        },
-        `Didn't update the tradeDetails object to the new calcs given new limit`
-      );
-    });
+        };
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testScalarMarketId",
+            0,
+            BUY,
+            undefined,
+            "70",
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testScalarMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "10",
+                sharesFilled: "0",
+                limitPrice: "70",
+                totalFee: "0",
+                totalCost: "800",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "800",
+                shareBalances: ["0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
+            }
+          },
+          `Didn't update the tradeDetails object to the new calcs given new limit`
+        );
+      }
+    );
 
-    it("should handle the tradeDetails object if limitPrice is unchanged but share number changes to negative (should default to the positive version of the numShares: -25 becomes 25.)", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testScalarMarketId",
-          0,
-          BUY,
-          "-25",
-          undefined,
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testScalarMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
-              numShares: "25",
-              sharesFilled: "0",
-              limitPrice: "55",
-              totalFee: "0",
-              totalCost: "1625",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "1625",
-              shareBalances: ["0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+    test(
+      "should handle the tradeDetails object if limitPrice is unchanged but share number changes",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testScalarMarketId",
+            0,
+            BUY,
+            "25",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testScalarMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "25",
+                sharesFilled: "0",
+                limitPrice: "55",
+                totalFee: "0",
+                totalCost: "1625",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "1625",
+                shareBalances: ["0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
             }
-          }
-        },
-        `Didn't update the tradeDetails object to the new calcs given new limit`
-      );
-    });
+          },
+          `Didn't update the tradeDetails object to the new calcs given new limit`
+        );
+      }
+    );
 
-    it("should handle the tradeDetails object if limitPrice is negative but valid for this scalar market", () => {
-      store.dispatch(
-        action.updateTradesInProgress(
-          "testScalarMarketId",
-          0,
-          BUY,
-          undefined,
-          "-5",
-          undefined
-        )
-      );
-      assert.deepEqual(
-        store.getActions()[0],
-        {
-          type: "UPDATE_TRADE_IN_PROGRESS",
-          data: {
-            marketId: "testScalarMarketId",
-            outcomeId: 0,
-            details: {
-              side: "buy",
-              numShares: "10",
-              sharesFilled: "0",
-              limitPrice: "-5",
-              totalFee: "0",
-              totalCost: "50",
-              feePercent: "0",
-              settlementFees: "0",
-              shareCost: "0",
-              sharesDepleted: "0",
-              otherSharesDepleted: "0",
-              tokensDepleted: "50",
-              shareBalances: ["0", "0"],
-              worstCaseFees: "0",
-              tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+    test(
+      "should handle the tradeDetails object if limitPrice is unchanged but share number changes to negative (should default to the positive version of the numShares: -25 becomes 25.)",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testScalarMarketId",
+            0,
+            BUY,
+            "-25",
+            undefined,
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testScalarMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "25",
+                sharesFilled: "0",
+                limitPrice: "55",
+                totalFee: "0",
+                totalCost: "1625",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "1625",
+                shareBalances: ["0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
             }
-          }
-        },
-        `Didn't update the tradeDetails object to the new calcs given new limit`
-      );
-    });
+          },
+          `Didn't update the tradeDetails object to the new calcs given new limit`
+        );
+      }
+    );
+
+    test(
+      "should handle the tradeDetails object if limitPrice is negative but valid for this scalar market",
+      () => {
+        store.dispatch(
+          action.updateTradesInProgress(
+            "testScalarMarketId",
+            0,
+            BUY,
+            undefined,
+            "-5",
+            undefined
+          )
+        );
+        assert.deepEqual(
+          store.getActions()[0],
+          {
+            type: "UPDATE_TRADE_IN_PROGRESS",
+            data: {
+              marketId: "testScalarMarketId",
+              outcomeId: 0,
+              details: {
+                side: "buy",
+                numShares: "10",
+                sharesFilled: "0",
+                limitPrice: "-5",
+                totalFee: "0",
+                totalCost: "50",
+                feePercent: "0",
+                settlementFees: "0",
+                shareCost: "0",
+                sharesDepleted: "0",
+                otherSharesDepleted: "0",
+                tokensDepleted: "50",
+                shareBalances: ["0", "0"],
+                worstCaseFees: "0",
+                tradeGroupId: store.getActions()[0].data.details.tradeGroupId
+              }
+            }
+          },
+          `Didn't update the tradeDetails object to the new calcs given new limit`
+        );
+      }
+    );
   });
 });

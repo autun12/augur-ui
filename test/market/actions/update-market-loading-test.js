@@ -6,10 +6,10 @@ import {
 } from "modules/market/actions/update-market-loading";
 
 describe("modules/market/actions/update-market-loading.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   describe("updateMarketLoading", () => {
-    it("should return the expected object", () => {
+    test("should return the expected object", () => {
       const actual = updateMarketLoading("0xMARKETID");
       const expected = {
         type: UPDATE_MARKET_LOADING,
@@ -21,7 +21,7 @@ describe("modules/market/actions/update-market-loading.js", () => {
   });
 
   describe("removeMarketLoading", () => {
-    it("should return the expected object", () => {
+    test("should return the expected object", () => {
       const actual = removeMarketLoading("0xMARKETID");
       const expected = {
         type: REMOVE_MARKET_LOADING,

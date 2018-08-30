@@ -5,9 +5,9 @@ import generateDownloadAccountLink, {
 } from "modules/auth/helpers/generate-download-account-link";
 
 describe("modules/auth/helpers/generate-download-account-link.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
-  it(`should return the expected values + call the expected methods`, () => {
+  test(`should return the expected values + call the expected methods`, () => {
     const Speedomatic = {
       byteArrayToHexString: () => {}
     };

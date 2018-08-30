@@ -1,5 +1,4 @@
 import configureMockStore from "redux-mock-store";
-import proxyquire from "proxyquire";
 import sinon from "sinon";
 import thunk from "redux-thunk";
 
@@ -9,7 +8,7 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
   proxyquire.noPreserveCache();
   const mockStore = configureMockStore([thunk]);
   const test = t =>
-    it(t.description, done => {
+    test(t.description, done => {
       const store = mockStore(t.state);
       const AugurJS = {
         augur: {

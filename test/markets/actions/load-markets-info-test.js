@@ -24,7 +24,7 @@ describe("modules/markets/actions/load-markets-info.js", () => {
   const marketIds = ["0xMarket1", "0xMarket2"];
 
   const test = t =>
-    it(t.description, done => {
+    test(t.description, done => {
       const store = mockStore();
 
       t.assertions(store, done);
@@ -38,7 +38,7 @@ describe("modules/markets/actions/load-markets-info.js", () => {
       }
     }));
 
-    it(
+    test(
       `should dispatch the expected actions + call 'getMarketsInfo'`,
       (store, done) => {
         const stubbedAugur = {
@@ -83,7 +83,7 @@ describe("modules/markets/actions/load-markets-info.js", () => {
       }
     );
 
-    it(
+    test(
       `should dispatch the expected actions + call 'loadingError' due to error returned from 'getMarketsInfo'`,
       (store, done) => {
         const stubbedAugur = {
@@ -132,7 +132,7 @@ describe("modules/markets/actions/load-markets-info.js", () => {
       }
     );
 
-    it(
+    test(
       `should dispatch the expected actions + call 'loadingError' due to null return value from 'getMarketsInfo'`,
       (store, done) => {
         const stubbedAugur = {
@@ -181,7 +181,7 @@ describe("modules/markets/actions/load-markets-info.js", () => {
       }
     );
 
-    it(
+    test(
       `should dispatch the expected actions + call 'loadingError' due to malformed return value from 'getMarketsInfo'`,
       (store, done) => {
         const stubbedAugur = {
@@ -230,7 +230,7 @@ describe("modules/markets/actions/load-markets-info.js", () => {
       }
     );
 
-    it(`should dispatch the expected actions`, (store, done) => {
+    test(`should dispatch the expected actions`, (store, done) => {
       const stubbedAugur = {
         markets: {
           getMarketsInfo: (marketIds, cb) =>
@@ -310,13 +310,13 @@ describe("modules/markets/actions/load-markets-info.js", () => {
       }
     }));
 
-    after(() => {
+    afterAll(() => {
       __RewireAPI__.__ResetDependency__("removeMarketLoading");
     });
 
     const loadingError = __RewireAPI__.__get__("loadingError");
 
-    it(
+    test(
       "should remove the market from the loading state + call the callback with error parameter",
       (store, done) => {
         let callbackReturnValue;

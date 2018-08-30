@@ -4,9 +4,9 @@ import {
 } from "modules/app/actions/update-is-mobile";
 
 describe("modules/app/actions/update-is-mobile.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
-  it(`should return the expected string`, () => {
+  test(`should return the expected string`, () => {
     const expected = "UPDATE_IS_MOBILE";
 
     assert.strictEqual(
@@ -17,7 +17,7 @@ describe("modules/app/actions/update-is-mobile.js", () => {
   });
 
   describe(`updateIsMobile`, () => {
-    it(`should return the expected object`, () => {
+    test(`should return the expected object`, () => {
       const actual = updateIsMobile(false);
 
       const expected = {

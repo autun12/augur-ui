@@ -1,4 +1,3 @@
-import proxyquire from "proxyquire";
 import {
   PENDING,
   SUCCESS,
@@ -12,7 +11,7 @@ describe(`modules/transactions/selectors/transactions-totals.js`, () => {
   let actual;
   let expected;
 
-  it(`should return the transaction totals for a blank state`, () => {
+  test(`should return the transaction totals for a blank state`, () => {
     const Transactions = {
       selectTransactions: () => []
     };
@@ -36,7 +35,7 @@ describe(`modules/transactions/selectors/transactions-totals.js`, () => {
     assert.deepEqual(actual, expected, `Didn't properly handle an empty state`);
   });
 
-  it(`should properly return total info on transactions`, () => {
+  test(`should properly return total info on transactions`, () => {
     const Transactions = {
       selectTransactions: () => [
         {

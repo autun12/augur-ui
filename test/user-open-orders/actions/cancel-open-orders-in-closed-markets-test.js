@@ -1,4 +1,3 @@
-import proxyquire from "proxyquire";
 import sinon from "sinon";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
@@ -7,7 +6,7 @@ describe(`modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.
   proxyquire.noPreserveCache().noCallThru();
   const mockStore = configureMockStore([thunk]);
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       const store = mockStore(t.state);
       const CancelOrder = { cancelOrder: () => {} };
       const { openOrders } = t;

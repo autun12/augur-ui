@@ -28,7 +28,7 @@ describe("src/modules/app/selectors/select-all-categories.js", () => {
     result = selectAllCategories(state);
   });
 
-  it("should group tags by category", () => {
+  test("should group tags by category", () => {
     const expected = {
       "CATEGORY-WITH-TAGS": ["unique-tag", "duplicate-tag", "unique-tag-1"],
       "CATEGORY-WITH-TAGS-2": ["unique-tag-1", "duplicate-tag"],

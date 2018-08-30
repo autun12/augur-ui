@@ -13,7 +13,7 @@ describe("modules/app/actions/get-augur-node-network-id.js", () => {
     __RewireAPI__.__ResetDependency__("augur");
   });
   const test = t =>
-    it(t.description, done => {
+    test(t.description, done => {
       store = configureMockStore([thunk])({ ...t.state });
       __RewireAPI__.__Rewire__("augur", t.stub.augur);
       store.dispatch(

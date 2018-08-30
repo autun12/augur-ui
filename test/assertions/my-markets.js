@@ -14,35 +14,35 @@ export default function(myMarkets) {
 
 export function assertMyMarkets(market) {
   describe(`myMarket's shape`, () => {
-    it("id", () => {
+    test("id", () => {
       assert.isDefined(market.id);
       assert.isString(market.id);
     });
 
-    it("description", () => {
+    test("description", () => {
       assert.isDefined(market.description);
       assert.isString(market.description);
     });
 
-    it("endTime", () => {
+    test("endTime", () => {
       assert.isDefined(market.endTime);
 
       assertFormattedDate(market.endTime, "loginAccountMarkets.endTime");
     });
 
-    it("fees", () => {
+    test("fees", () => {
       assert.isDefined(market.fees);
 
       assertFormattedNumber(market.fees, "loginAccountMarkets.fees");
     });
 
-    it("volume", () => {
+    test("volume", () => {
       assert.isDefined(market.volume);
 
       assertFormattedNumber(market.volume, "loginAccountMarkets.volume");
     });
 
-    it("numberOfTrades", () => {
+    test("numberOfTrades", () => {
       assert.isDefined(market.numberOfTrades);
 
       assertFormattedNumber(
@@ -51,7 +51,7 @@ export function assertMyMarkets(market) {
       );
     });
 
-    it("averageTradeSize", () => {
+    test("averageTradeSize", () => {
       assert.isDefined(market.averageTradeSize);
 
       assertFormattedNumber(
@@ -60,7 +60,7 @@ export function assertMyMarkets(market) {
       );
     });
 
-    it("openVolume", () => {
+    test("openVolume", () => {
       assert.isDefined(market.openVolume);
 
       assertFormattedNumber(

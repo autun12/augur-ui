@@ -29,7 +29,7 @@ describe("loadDisputing action", () => {
   let store;
   let submitRequestStub;
 
-  before(() => {
+  beforeAll(() => {
     mockStore = configureMockStore([thunk]);
   });
 
@@ -58,34 +58,37 @@ describe("loadDisputing action", () => {
     loadDisputingRewire.__ResetDependency__("loadMarketsDisputeInfo");
   });
 
-  it("should load upcoming dispute markets for a given user in side the given universe", () => {
-    store.dispatch(loadDisputing());
+  test(
+    "should load upcoming dispute markets for a given user in side the given universe",
+    () => {
+      store.dispatch(loadDisputing());
 
-    const checkCall = (callIndex, method, reportingState, callbackArgs) => {
-      const c = submitRequestStub.getCall(callIndex);
-      assert.ok(
-        c.calledWith(method, {
-          reportingState,
-          ...expectedParams
-        })
+      const checkCall = (callIndex, method, reportingState, callbackArgs) => {
+        const c = submitRequestStub.getCall(callIndex);
+        assert.ok(
+          c.calledWith(method, {
+            reportingState,
+            ...expectedParams
+          })
+        );
+        c.args[2](null, callbackArgs);
+      };
+
+      checkCall(
+        0,
+        "getMarkets",
+        constants.REPORTING_STATE.CROWDSOURCING_DISPUTE,
+        ["1111"]
       );
-      c.args[2](null, callbackArgs);
-    };
+      checkCall(1, "getMarkets", constants.REPORTING_STATE.AWAITING_NEXT_WINDOW, [
+        "2222",
+        "3333"
+      ]);
 
-    checkCall(
-      0,
-      "getMarkets",
-      constants.REPORTING_STATE.CROWDSOURCING_DISPUTE,
-      ["1111"]
-    );
-    checkCall(1, "getMarkets", constants.REPORTING_STATE.AWAITING_NEXT_WINDOW, [
-      "2222",
-      "3333"
-    ]);
-
-    const actual = store.getActions();
-    assert.lengthOf(actual, 2);
-  });
+      const actual = store.getActions();
+      assert.lengthOf(actual, 2);
+    }
+  );
 
   describe("upon error", () => {
     let callback;
@@ -99,14 +102,14 @@ describe("loadDisputing action", () => {
     });
 
     describe("CROWDSOURCING_DISPUTE", () => {
-      it("should be passed to callback passed to action", () => {
+      test("should be passed to callback passed to action", () => {
         submitRequestStub.getCall(0).args[2](error);
         callback.calledWith(error);
       });
     });
 
     describe("AWAITING_NEXT_WINDOW", () => {
-      it("should be passed to callback passed to action", () => {
+      test("should be passed to callback passed to action", () => {
         submitRequestStub.getCall(1).args[2](error);
         callback.calledWith(error);
       });

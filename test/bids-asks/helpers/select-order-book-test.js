@@ -17,7 +17,7 @@ import { CLOSE_DIALOG_CLOSING } from "modules/market/constants/close-dialog-stat
 describe("modules/bids-asks/helpers/select-order-book.js", () => {
   const mockStore = configureMockStore([thunk]);
   const test = t =>
-    it(t.description, done => {
+    test(t.description, done => {
       const store = mockStore(t.state || {});
       selectOrderBookRewireAPI.__Rewire__("store", store);
       t.assertions(done, store);
@@ -28,41 +28,47 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
   });
 
   describe("selectAggregateOrderBook", () => {
-    it(`should return the expected object when 'marketOrderBook' is null`, done => {
-      const actual = selectAggregateOrderBook("1", null, {});
+    test(
+      `should return the expected object when 'marketOrderBook' is null`,
+      done => {
+        const actual = selectAggregateOrderBook("1", null, {});
 
-      const expected = {
-        bids: [],
-        asks: []
-      };
+        const expected = {
+          bids: [],
+          asks: []
+        };
 
-      assert.deepEqual(actual, expected, `didn't return the expected object`);
+        assert.deepEqual(actual, expected, `didn't return the expected object`);
 
-      done();
-    });
+        done();
+      }
+    );
 
-    it(`should return the expected object when 'marketOrderBook' is null`, done => {
-      const selectAggregatePricePoints = sinon.stub().returns(["test"]);
-      selectOrderBookRewireAPI.__Rewire__(
-        "selectAggregatePricePoints",
-        selectAggregatePricePoints
-      );
+    test(
+      `should return the expected object when 'marketOrderBook' is null`,
+      done => {
+        const selectAggregatePricePoints = sinon.stub().returns(["test"]);
+        selectOrderBookRewireAPI.__Rewire__(
+          "selectAggregatePricePoints",
+          selectAggregatePricePoints
+        );
 
-      const actual = selectAggregateOrderBook("1", { buy: [], sell: [] }, {});
+        const actual = selectAggregateOrderBook("1", { buy: [], sell: [] }, {});
 
-      const expected = {
-        bids: ["test"],
-        asks: ["test"]
-      };
+        const expected = {
+          bids: ["test"],
+          asks: ["test"]
+        };
 
-      assert.deepEqual(actual, expected, `didn't return the expected object`);
+        assert.deepEqual(actual, expected, `didn't return the expected object`);
 
-      selectOrderBookRewireAPI.__ResetDependency__(
-        "selectAggregatePricePoints"
-      );
+        selectOrderBookRewireAPI.__ResetDependency__(
+          "selectAggregatePricePoints"
+        );
 
-      done();
-    });
+        done();
+      }
+    );
   });
 
   describe("selectTopBid", () => {
@@ -84,35 +90,41 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
       ]
     };
 
-    it(`should return null when not bids exist and including current user`, done => {
-      const actual = selectTopBid({ bids: [] });
+    test(
+      `should return null when not bids exist and including current user`,
+      done => {
+        const actual = selectTopBid({ bids: [] });
 
-      const expected = null;
+        const expected = null;
 
-      assert.strictEqual(
-        actual,
-        expected,
-        `didn't return the expected top bid`
-      );
+        assert.strictEqual(
+          actual,
+          expected,
+          `didn't return the expected top bid`
+        );
 
-      done();
-    });
+        done();
+      }
+    );
 
-    it(`should return null when not bids exist and excluding current user`, done => {
-      const actual = selectTopBid({ bids: [] }, true);
+    test(
+      `should return null when not bids exist and excluding current user`,
+      done => {
+        const actual = selectTopBid({ bids: [] }, true);
 
-      const expected = null;
+        const expected = null;
 
-      assert.strictEqual(
-        actual,
-        expected,
-        `didn't return the expected top bid`
-      );
+        assert.strictEqual(
+          actual,
+          expected,
+          `didn't return the expected top bid`
+        );
 
-      done();
-    });
+        done();
+      }
+    );
 
-    it(`should return the topBid, including current user`, done => {
+    test(`should return the topBid, including current user`, done => {
       const actual = selectTopBid(marketOrderBook);
 
       const expected = {
@@ -125,7 +137,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
       done();
     });
 
-    it(`should return the topBid, excluding current user`, done => {
+    test(`should return the topBid, excluding current user`, done => {
       const actual = selectTopBid(marketOrderBook, true);
 
       const expected = {
@@ -157,35 +169,41 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
       ]
     };
 
-    it(`should return null when not asks exist and including current user`, done => {
-      const actual = selectTopAsk({ asks: [] });
+    test(
+      `should return null when not asks exist and including current user`,
+      done => {
+        const actual = selectTopAsk({ asks: [] });
 
-      const expected = null;
+        const expected = null;
 
-      assert.strictEqual(
-        actual,
-        expected,
-        `didn't return the expected top bid`
-      );
+        assert.strictEqual(
+          actual,
+          expected,
+          `didn't return the expected top bid`
+        );
 
-      done();
-    });
+        done();
+      }
+    );
 
-    it(`should return null when not asks exist and excluding current user`, done => {
-      const actual = selectTopAsk({ asks: [] }, true);
+    test(
+      `should return null when not asks exist and excluding current user`,
+      done => {
+        const actual = selectTopAsk({ asks: [] }, true);
 
-      const expected = null;
+        const expected = null;
 
-      assert.strictEqual(
-        actual,
-        expected,
-        `didn't return the expected top bid`
-      );
+        assert.strictEqual(
+          actual,
+          expected,
+          `didn't return the expected top bid`
+        );
 
-      done();
-    });
+        done();
+      }
+    );
 
-    it(`should return the topAsk, including current user`, done => {
+    test(`should return the topAsk, including current user`, done => {
       const actual = selectTopAsk(marketOrderBook);
 
       const expected = {
@@ -198,7 +216,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
       done();
     });
 
-    it(`should return the topAsk, excluding current user`, done => {
+    test(`should return the topAsk, excluding current user`, done => {
       const actual = selectTopAsk(marketOrderBook, true);
 
       const expected = {
@@ -212,7 +230,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
   });
 
   describe("selectAggregatePricePoints", () => {
-    it(`should return an empty array when the orders array is null`, done => {
+    test(`should return an empty array when the orders array is null`, done => {
       const selectAggregatePricePoints = selectOrderBookRewireAPI.__get__(
         "selectAggregatePricePoints"
       );
@@ -225,7 +243,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
       done();
     });
 
-    it(`should return an empty array when the orders array is null`, done => {
+    test(`should return an empty array when the orders array is null`, done => {
       const selectAggregatePricePoints = selectOrderBookRewireAPI.__get__(
         "selectAggregatePricePoints"
       );
@@ -330,7 +348,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
   });
 
   describe("reduceSharesCountByPrice", () => {
-    it(`should return the expected object when previous is empty`, done => {
+    test(`should return the expected object when previous is empty`, done => {
       const reduceSharesCountByPrice = selectOrderBookRewireAPI.__get__(
         "reduceSharesCountByPrice"
       );
@@ -360,121 +378,130 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
       done();
     });
 
-    it(`should return the expected object when a pervious order is passed in`, done => {
-      const reduceSharesCountByPrice = selectOrderBookRewireAPI.__get__(
-        "reduceSharesCountByPrice"
-      );
-      const actual = reduceSharesCountByPrice(
-        {
+    test(
+      `should return the expected object when a pervious order is passed in`,
+      done => {
+        const reduceSharesCountByPrice = selectOrderBookRewireAPI.__get__(
+          "reduceSharesCountByPrice"
+        );
+        const actual = reduceSharesCountByPrice(
+          {
+            0.1: {
+              isOfCurrentUser: false,
+              shares: createBigNumber("1"),
+              sharesEscrowed: createBigNumber("0"),
+              tokensEscrowed: createBigNumber("0.1")
+            }
+          },
+          {
+            isOfCurrentUser: true,
+            outcome: "1",
+            fullPrecisionPrice: "0.1",
+            fullPrecisionAmount: "1",
+            sharesEscrowed: "1",
+            tokensEscrowed: "0"
+          }
+        );
+
+        const expected = {
           0.1: {
-            isOfCurrentUser: false,
-            shares: createBigNumber("1"),
-            sharesEscrowed: createBigNumber("0"),
+            isOfCurrentUser: true,
+            shares: createBigNumber("2"),
+            sharesEscrowed: createBigNumber("1"),
             tokensEscrowed: createBigNumber("0.1")
           }
-        },
-        {
-          isOfCurrentUser: true,
-          outcome: "1",
-          fullPrecisionPrice: "0.1",
-          fullPrecisionAmount: "1",
-          sharesEscrowed: "1",
-          tokensEscrowed: "0"
-        }
-      );
+        };
 
-      const expected = {
-        0.1: {
-          isOfCurrentUser: true,
-          shares: createBigNumber("2"),
-          sharesEscrowed: createBigNumber("1"),
-          tokensEscrowed: createBigNumber("0.1")
-        }
-      };
+        assert.deepEqual(actual, expected, `didn't return the expected object`);
 
-      assert.deepEqual(actual, expected, `didn't return the expected object`);
+        done();
+      }
+    );
 
-      done();
-    });
+    test(
+      `should return the expected object when a pervious order at a different price passed in`,
+      done => {
+        const reduceSharesCountByPrice = selectOrderBookRewireAPI.__get__(
+          "reduceSharesCountByPrice"
+        );
+        const actual = reduceSharesCountByPrice(
+          {
+            0.1: {
+              isOfCurrentUser: false,
+              shares: createBigNumber("1"),
+              sharesEscrowed: createBigNumber("1"),
+              tokensEscrowed: createBigNumber("0")
+            }
+          },
+          {
+            isOfCurrentUser: false,
+            outcome: "1",
+            fullPrecisionPrice: "0.2",
+            fullPrecisionAmount: "1",
+            sharesEscrowed: "0",
+            tokensEscrowed: "0.2"
+          }
+        );
 
-    it(`should return the expected object when a pervious order at a different price passed in`, done => {
-      const reduceSharesCountByPrice = selectOrderBookRewireAPI.__get__(
-        "reduceSharesCountByPrice"
-      );
-      const actual = reduceSharesCountByPrice(
-        {
+        const expected = {
           0.1: {
             isOfCurrentUser: false,
             shares: createBigNumber("1"),
             sharesEscrowed: createBigNumber("1"),
             tokensEscrowed: createBigNumber("0")
+          },
+          0.2: {
+            isOfCurrentUser: false,
+            shares: createBigNumber("1"),
+            sharesEscrowed: createBigNumber("0"),
+            tokensEscrowed: createBigNumber("0.2")
           }
-        },
-        {
-          isOfCurrentUser: false,
-          outcome: "1",
-          fullPrecisionPrice: "0.2",
-          fullPrecisionAmount: "1",
-          sharesEscrowed: "0",
-          tokensEscrowed: "0.2"
-        }
-      );
+        };
 
-      const expected = {
-        0.1: {
-          isOfCurrentUser: false,
-          shares: createBigNumber("1"),
-          sharesEscrowed: createBigNumber("1"),
-          tokensEscrowed: createBigNumber("0")
-        },
-        0.2: {
-          isOfCurrentUser: false,
-          shares: createBigNumber("1"),
-          sharesEscrowed: createBigNumber("0"),
-          tokensEscrowed: createBigNumber("0.2")
-        }
-      };
+        assert.deepEqual(actual, expected, `didn't return the expected object`);
 
-      assert.deepEqual(actual, expected, `didn't return the expected object`);
+        done();
+      }
+    );
 
-      done();
-    });
+    test(
+      `should return the previous aggregated orders if new order is malformed`,
+      done => {
+        console.debug = () => {};
 
-    it(`should return the previous aggregated orders if new order is malformed`, done => {
-      console.debug = () => {};
+        const reduceSharesCountByPrice = selectOrderBookRewireAPI.__get__(
+          "reduceSharesCountByPrice"
+        );
+        const actual = reduceSharesCountByPrice(
+          {
+            0.1: {
+              isOfCurrentUser: false,
+              shares: createBigNumber("1")
+            }
+          },
+          {
+            isOfCurrentUser: false,
+            outcome: "1",
+            fullPrecisionAmount: "1"
+          }
+        );
 
-      const reduceSharesCountByPrice = selectOrderBookRewireAPI.__get__(
-        "reduceSharesCountByPrice"
-      );
-      const actual = reduceSharesCountByPrice(
-        {
+        const expected = {
           0.1: {
             isOfCurrentUser: false,
             shares: createBigNumber("1")
           }
-        },
-        {
-          isOfCurrentUser: false,
-          outcome: "1",
-          fullPrecisionAmount: "1"
-        }
-      );
+        };
 
-      const expected = {
-        0.1: {
-          isOfCurrentUser: false,
-          shares: createBigNumber("1")
-        }
-      };
+        assert.deepEqual(actual, expected, `didn't return the expected object`);
 
-      assert.deepEqual(actual, expected, `didn't return the expected object`);
-
-      done();
-    });
+        done();
+      }
+    );
   });
 
   describe("sortPricePointsByPriceAsc", () => {
-    it(`should return the expected value`, done => {
+    test(`should return the expected value`, done => {
       const sortPricePointsByPriceAsc = selectOrderBookRewireAPI.__get__(
         "sortPricePointsByPriceAsc"
       );
@@ -497,7 +524,7 @@ describe("modules/bids-asks/helpers/select-order-book.js", () => {
   });
 
   describe("sortPricePointsByPriceDesc", () => {
-    it(`should return the expected value`, done => {
+    test(`should return the expected value`, done => {
       const sortPricePointsByPriceDesc = selectOrderBookRewireAPI.__get__(
         "sortPricePointsByPriceDesc"
       );

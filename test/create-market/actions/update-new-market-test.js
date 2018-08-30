@@ -17,37 +17,40 @@ import {
 
 describe("modules/create-market/actions/update-new-market.js", () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
 
-  it(`should dispatch the expected actions from 'invalidateMarketCreation'`, () => {
-    const middlewares = [thunk];
-    const mockStore = configureMockStore(middlewares);
-    const store = mockStore();
+  test(
+    `should dispatch the expected actions from 'invalidateMarketCreation'`,
+    () => {
+      const middlewares = [thunk];
+      const mockStore = configureMockStore(middlewares);
+      const store = mockStore();
 
-    store.dispatch(invalidateMarketCreation("testing"));
+      store.dispatch(invalidateMarketCreation("testing"));
 
-    const actions = store.getActions();
+      const actions = store.getActions();
 
-    const expectedActions = [
-      {
-        type: UPDATE_NEW_MARKET,
-        data: {
-          isValid: false
+      const expectedActions = [
+        {
+          type: UPDATE_NEW_MARKET,
+          data: {
+            isValid: false
+          }
         }
-      }
-    ];
+      ];
 
-    assert.deepEqual(
-      actions,
-      expectedActions,
-      `Didn't dispatch the expected actions`
-    );
-  });
+      assert.deepEqual(
+        actions,
+        expectedActions,
+        `Didn't dispatch the expected actions`
+      );
+    }
+  );
 
-  it(`should return the expected object for 'addOrderToNewMarket'`, () => {
+  test(`should return the expected object for 'addOrderToNewMarket'`, () => {
     const action = addOrderToNewMarket({ test: "test" });
 
     const expected = {
@@ -60,20 +63,23 @@ describe("modules/create-market/actions/update-new-market.js", () => {
     assert.deepEqual(action, expected, `Didn't return the expected object`);
   });
 
-  it(`should return the expected object for 'removeOrderFromNewMarket'`, () => {
-    const action = removeOrderFromNewMarket({ test: "test" });
+  test(
+    `should return the expected object for 'removeOrderFromNewMarket'`,
+    () => {
+      const action = removeOrderFromNewMarket({ test: "test" });
 
-    const expected = {
-      type: REMOVE_ORDER_FROM_NEW_MARKET,
-      data: {
-        test: "test"
-      }
-    };
+      const expected = {
+        type: REMOVE_ORDER_FROM_NEW_MARKET,
+        data: {
+          test: "test"
+        }
+      };
 
-    assert.deepEqual(action, expected, `Didn't return the expected object`);
-  });
+      assert.deepEqual(action, expected, `Didn't return the expected object`);
+    }
+  );
 
-  it(`should return the expected object for 'updateNewMarket'`, () => {
+  test(`should return the expected object for 'updateNewMarket'`, () => {
     const action = updateNewMarket({ test: "test" });
 
     const expected = {
@@ -86,7 +92,7 @@ describe("modules/create-market/actions/update-new-market.js", () => {
     assert.deepEqual(action, expected, `Didn't return the expected object`);
   });
 
-  it(`should return the expected object for 'clearNewMarket'`, () => {
+  test(`should return the expected object for 'clearNewMarket'`, () => {
     const action = clearNewMarket();
 
     const expected = {

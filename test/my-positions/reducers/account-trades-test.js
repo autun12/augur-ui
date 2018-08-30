@@ -6,19 +6,19 @@ import { CLEAR_LOGIN_ACCOUNT } from "modules/auth/actions/update-login-account";
 
 describe("modules/my-positions/reducers/account-trades.js", () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
 
-  it(`should return the default state`, () => {
+  test(`should return the default state`, () => {
     const actual = accountTrades(undefined, { type: null });
     const expected = {};
 
     assert.deepEqual(actual, expected, `Didn't return the expected value`);
   });
 
-  it(`should return the default state for type: CLEAR_LOGIN_ACCOUNT`, () => {
+  test(`should return the default state for type: CLEAR_LOGIN_ACCOUNT`, () => {
     const actual = accountTrades(
       { test: "test" },
       { type: CLEAR_LOGIN_ACCOUNT }
@@ -28,7 +28,7 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
     assert.deepEqual(actual, expected, `Didn't return the expected value`);
   });
 
-  it(`should return the default state for type: CLEAR_ACCOUNT_TRADES`, () => {
+  test(`should return the default state for type: CLEAR_ACCOUNT_TRADES`, () => {
     const actual = accountTrades(
       { test: "test" },
       { type: CLEAR_ACCOUNT_TRADES }
@@ -38,7 +38,7 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
     assert.deepEqual(actual, expected, `Didn't return the expected value`);
   });
 
-  it(`should update the state from the default state correctly`, () => {
+  test(`should update the state from the default state correctly`, () => {
     const actual = accountTrades(undefined, {
       type: UPDATE_ACCOUNT_TRADES_DATA,
       data: {
@@ -63,9 +63,45 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
     assert.deepEqual(actual, expected, `Didn't return the expected value`);
   });
 
-  it(`should update the state correctly from state WITH matching trades`, () => {
-    const actual = accountTrades(
-      {
+  test(
+    `should update the state correctly from state WITH matching trades`,
+    () => {
+      const actual = accountTrades(
+        {
+          "0xMARKETID2": {
+            2: [
+              {
+                transactionHash: "0x2TRANSACTIONHASH2"
+              },
+              {
+                transactionHash: "0x2TRANSACTIONHASH1"
+              }
+            ]
+          },
+          "0xMARKETID1": {
+            1: [
+              {
+                transactionHash: "0xTRANSACTIONHASH2"
+              },
+              {
+                transactionHash: "0xTRANSACTIONHASH1"
+              }
+            ]
+          }
+        },
+        {
+          type: UPDATE_ACCOUNT_TRADES_DATA,
+          data: {
+            1: [
+              {
+                transactionHash: "0xTRANSACTIONHASH1"
+              }
+            ]
+          },
+          market: "0xMARKETID1"
+        }
+      );
+      const expected = {
         "0xMARKETID2": {
           2: [
             {
@@ -86,48 +122,51 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
             }
           ]
         }
-      },
-      {
-        type: UPDATE_ACCOUNT_TRADES_DATA,
-        data: {
-          1: [
-            {
-              transactionHash: "0xTRANSACTIONHASH1"
-            }
-          ]
+      };
+
+      assert.deepEqual(actual, expected, `Didn't return the expected value`);
+    }
+  );
+
+  test(
+    `should update the state correctly from state WITHOUT matching trades`,
+    () => {
+      const actual = accountTrades(
+        {
+          "0xMARKETID2": {
+            2: [
+              {
+                transactionHash: "0x2TRANSACTIONHASH2"
+              },
+              {
+                transactionHash: "0x2TRANSACTIONHASH1"
+              }
+            ]
+          },
+          "0xMARKETID1": {
+            1: [
+              {
+                transactionHash: "0xTRANSACTIONHASH2"
+              },
+              {
+                transactionHash: "0xTRANSACTIONHASH1"
+              }
+            ]
+          }
         },
-        market: "0xMARKETID1"
-      }
-    );
-    const expected = {
-      "0xMARKETID2": {
-        2: [
-          {
-            transactionHash: "0x2TRANSACTIONHASH2"
+        {
+          type: UPDATE_ACCOUNT_TRADES_DATA,
+          data: {
+            1: [
+              {
+                transactionHash: "0xTRANSACTIONHASH3"
+              }
+            ]
           },
-          {
-            transactionHash: "0x2TRANSACTIONHASH1"
-          }
-        ]
-      },
-      "0xMARKETID1": {
-        1: [
-          {
-            transactionHash: "0xTRANSACTIONHASH2"
-          },
-          {
-            transactionHash: "0xTRANSACTIONHASH1"
-          }
-        ]
-      }
-    };
-
-    assert.deepEqual(actual, expected, `Didn't return the expected value`);
-  });
-
-  it(`should update the state correctly from state WITHOUT matching trades`, () => {
-    const actual = accountTrades(
-      {
+          market: "0xMARKETID1"
+        }
+      );
+      const expected = {
         "0xMARKETID2": {
           2: [
             {
@@ -145,48 +184,15 @@ describe("modules/my-positions/reducers/account-trades.js", () => {
             },
             {
               transactionHash: "0xTRANSACTIONHASH1"
-            }
-          ]
-        }
-      },
-      {
-        type: UPDATE_ACCOUNT_TRADES_DATA,
-        data: {
-          1: [
+            },
             {
               transactionHash: "0xTRANSACTIONHASH3"
             }
           ]
-        },
-        market: "0xMARKETID1"
-      }
-    );
-    const expected = {
-      "0xMARKETID2": {
-        2: [
-          {
-            transactionHash: "0x2TRANSACTIONHASH2"
-          },
-          {
-            transactionHash: "0x2TRANSACTIONHASH1"
-          }
-        ]
-      },
-      "0xMARKETID1": {
-        1: [
-          {
-            transactionHash: "0xTRANSACTIONHASH2"
-          },
-          {
-            transactionHash: "0xTRANSACTIONHASH1"
-          },
-          {
-            transactionHash: "0xTRANSACTIONHASH3"
-          }
-        ]
-      }
-    };
+        }
+      };
 
-    assert.deepEqual(actual, expected, `Didn't return the expected value`);
-  });
+      assert.deepEqual(actual, expected, `Didn't return the expected value`);
+    }
+  );
 });

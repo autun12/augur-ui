@@ -3,7 +3,7 @@ import transactionsLoading from "modules/transactions/reducers/transactions-load
 import { UPDATE_TRANSACTIONS_LOADING } from "modules/transactions/actions/update-transactions-loading";
 
 describe("modules/transactions/reducers/transactions-loading", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   test({
     description: `should return the default state`,

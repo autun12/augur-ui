@@ -1,5 +1,3 @@
-import { describe, it, afterEach } from "mocha";
-
 import testState from "test/testState";
 import reducer from "modules/reports/reducers/reports";
 
@@ -18,7 +16,7 @@ describe(`modules/reports/reducers/reports.js`, () => {
   });
 
   describe(`UPDATE_REPORTS`, () => {
-    it("should update reports", () => {
+    test("should update reports", () => {
       assert.deepEqual(
         reducer(state.reports, {
           type: "UPDATE_REPORTS",
@@ -68,7 +66,7 @@ describe(`modules/reports/reducers/reports.js`, () => {
 
   describe("UPDATE_REPORT", () => {
     const test = t =>
-      it(t.description, () =>
+      test(t.description, () =>
         t.assertions(
           reducer(t.state.reports, {
             type: "UPDATE_REPORT",
@@ -76,8 +74,7 @@ describe(`modules/reports/reducers/reports.js`, () => {
             marketId: t.params.marketId,
             report: t.params.report
           })
-        )
-      );
+        ));
     test({
       description: "no report data",
       params: {

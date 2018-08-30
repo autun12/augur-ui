@@ -5,19 +5,19 @@ import { CLEAR_LOGIN_ACCOUNT } from "modules/auth/actions/update-login-account";
 
 describe("modules/my-positions/reducers/account-positions.js", () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
 
-  it(`should return the default state`, () => {
+  test(`should return the default state`, () => {
     const actual = accountPositions(undefined, { type: null });
     const expected = {};
 
     assert.deepEqual(actual, expected, `Didn't return the expected value`);
   });
 
-  it(`should return the default state for type: CLEAR_LOGIN_ACCOUNT`, () => {
+  test(`should return the default state for type: CLEAR_LOGIN_ACCOUNT`, () => {
     const actual = accountPositions(
       { test: "test" },
       { type: CLEAR_LOGIN_ACCOUNT }
@@ -27,7 +27,7 @@ describe("modules/my-positions/reducers/account-positions.js", () => {
     assert.deepEqual(actual, expected, `Didn't return the expected value`);
   });
 
-  it(`should update the state from the default state correctly`, () => {
+  test(`should update the state from the default state correctly`, () => {
     const actual = accountPositions(undefined, {
       type: UPDATE_ACCOUNT_POSITIONS_DATA,
       data: {
@@ -46,7 +46,7 @@ describe("modules/my-positions/reducers/account-positions.js", () => {
     assert.deepEqual(actual, expected, `Didn't return the expected value`);
   });
 
-  it(`should update the state from existing state correctly`, () => {
+  test(`should update the state from existing state correctly`, () => {
     const actual = accountPositions(
       {
         "0xMARKETID2": {

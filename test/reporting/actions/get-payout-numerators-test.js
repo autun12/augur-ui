@@ -1,5 +1,3 @@
-import proxyquire from "proxyquire";
-
 import {
   YES_NO,
   CATEGORICAL,
@@ -12,7 +10,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   proxyquire.noPreserveCache().noCallThru();
 
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
@@ -50,7 +48,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   };
 
   describe("scalar 75", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketScalar, "75", false).map(n =>
         n.toString()
       );
@@ -66,7 +64,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("scalar 75 sub 0 Min", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketScalarMin, "75", false).map(n =>
         n.toString()
       );
@@ -82,7 +80,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("scalar 25 sub 0 Min", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketScalarMin, "25", false).map(n =>
         n.toString()
       );
@@ -98,7 +96,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("scalar 50", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketScalar, "50", false).map(n =>
         n.toString()
       );
@@ -114,7 +112,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("scalar 25", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketScalar, "25", false).map(n =>
         n.toString()
       );
@@ -130,7 +128,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("scalar 45.01", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketScalar, "45.01", false).map(n =>
         n.toString()
       );
@@ -146,7 +144,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("scalar invalid", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketScalar, "0", true).map(n =>
         n.toString()
       );
@@ -162,7 +160,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("yes/no NO", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketBinary, 0, false).map(n =>
         n.toString()
       );
@@ -172,7 +170,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("yes/no YES", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketBinary, 1, false).map(n =>
         n.toString()
       );
@@ -182,7 +180,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("yes/no invalid", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketBinary, 1, true).map(n =>
         n.toString()
       );
@@ -192,7 +190,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("categorical 0", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketCategorical, 0, false).map(n =>
         n.toString()
       );
@@ -202,7 +200,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("categorical 3", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketCategorical, 3, false).map(n =>
         n.toString()
       );
@@ -212,7 +210,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("categorical 6", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketCategorical, 6, false).map(n =>
         n.toString()
       );
@@ -222,7 +220,7 @@ describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
   });
 
   describe("categorical invalid", () => {
-    it(`should call the expected method`, () => {
+    test(`should call the expected method`, () => {
       const actual = getPayoutNumerators(marketCategorical, 0, true).map(n =>
         n.toString()
       );

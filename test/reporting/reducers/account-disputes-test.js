@@ -10,7 +10,7 @@ import reducer from "modules/reporting/reducers/account-disputes-state";
 
 describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
@@ -24,7 +24,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
     outcome: "0"
   };
 
-  it(`default state`, () => {
+  test(`default state`, () => {
     assert.deepEqual(
       reducer(undefined, { type: ActionTypes.INIT }),
       {},
@@ -32,7 +32,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
     );
   });
 
-  it(`add one dispute`, () => {
+  test(`add one dispute`, () => {
     const expected = {
       marketId1: marketId1Data
     };
@@ -46,7 +46,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
     );
   });
 
-  it(`add multiple dispute`, () => {
+  test(`add multiple dispute`, () => {
     const state = reducer(
       {},
       { type: UPDATE_ACCOUNT_DISPUTE, data: marketId1Data }
@@ -62,7 +62,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
     assert.deepEqual(actual, expected, `Didn't return expected`);
   });
 
-  it(`remove one dispute`, () => {
+  test(`remove one dispute`, () => {
     const data = {
       marketId1: marketId1Data,
       marketId2: marketId2Data
@@ -77,7 +77,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
     assert.deepEqual(actual, expected, `Didn't return expected`);
   });
 
-  it(`clear all account disputes`, () => {
+  test(`clear all account disputes`, () => {
     const data = {
       marketId1: marketId1Data,
       marketId2: marketId2Data
@@ -86,7 +86,7 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
     assert.deepEqual(actual, DEFAULT_STATE, `Didn't return expected`);
   });
 
-  it(`reset state account disputes`, () => {
+  test(`reset state account disputes`, () => {
     const data = {
       marketId1: marketId1Data,
       marketId2: marketId2Data

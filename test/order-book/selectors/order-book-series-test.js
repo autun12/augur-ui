@@ -9,12 +9,12 @@ import { formatEther, formatShares } from "utils/format-number";
 
 describe("modules/order-book/selectors/order-book-series", () => {
   const test = t => {
-    it(t.description, () => {
+    test(t.description, () => {
       t.assertions();
     });
   };
 
-  it("should return an empty series for both bids + asks", () => {
+  test("should return an empty series for both bids + asks", () => {
     const actual = orderBookSeries({ [BIDS]: [], [ASKS]: [] });
 
     const expected = { [BIDS]: [], [ASKS]: [] };
@@ -26,7 +26,7 @@ describe("modules/order-book/selectors/order-book-series", () => {
     );
   });
 
-  it("should return a correctly ordered series for both bids + asks", () => {
+  test("should return a correctly ordered series for both bids + asks", () => {
     const actual = orderBookSeries({
       [BIDS]: [
         {

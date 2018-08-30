@@ -1,9 +1,7 @@
-import proxyquire from "proxyquire";
-
 describe(`modules/universe/selectors/reporting-cycle.js`, () => {
   proxyquire.noPreserveCache();
   const test = t =>
-    it(t.description, () => {
+    test(t.description, () => {
       const AugurJS = {
         augur: t.stub.augur
       };

@@ -33,7 +33,7 @@ describe("modules/notifications/selectors/notifications", () => {
       };
     });
 
-    it("should return the expected object", () => {
+    test("should return the expected object", () => {
       const actual = selectInfoNotificationsAndSeenCount(state);
       const expected = {
         unseenCount: 2,
@@ -86,7 +86,7 @@ describe("modules/notifications/selectors/notifications", () => {
       };
     });
 
-    it("should only return notifications with a matching level", () => {
+    test("should only return notifications with a matching level", () => {
       const actual = selectNotificationsByLevel(notificationLevels.INFO)(state);
       assert.lengthOf(actual, 2);
     });

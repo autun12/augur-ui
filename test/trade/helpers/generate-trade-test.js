@@ -14,7 +14,7 @@ describe("modules/trade/helpers/generate-trade.js", () => {
     state.orderBooks.testMarketId
   );
 
-  it("should generate trade object", () => {
+  test("should generate trade object", () => {
     assert.deepEqual(trade, {
       limitPrice: "0.50",
       numShares: 5000,

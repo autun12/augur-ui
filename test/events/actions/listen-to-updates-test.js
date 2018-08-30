@@ -1,4 +1,3 @@
-import { describe, it } from "mocha";
 import mockStore from "test/mockStore";
 import {
   listenToUpdates,
@@ -21,7 +20,7 @@ describe("events/actions/listen-to-updates", () => {
       NODES_ETHEREUM_ON_SET: { type: "NODES_ETHEREUM_ON_SET" }
     };
     const test = t =>
-      it(t.description, () => {
+      test(t.description, () => {
         const store = mockStore.mockStore({});
         RewireListenToUpdates.__Rewire__("augur", {
           events: {
@@ -122,19 +121,22 @@ describe("events/actions/listen-to-updates", () => {
         store.dispatch(listenToUpdates({}));
         t.assertions(store.getActions());
       });
-    it("it should handle clearing all listeners then setting all listeners when called.", actions =>
-      assert.deepEqual(actions, [
-        ACTIONS.STOP_BLOCK_LISTENERS,
-        ACTIONS.STOP_AUGUR_NODE_EVENT_LISTENERS,
-        ACTIONS.START_BLOCK_LISTENERS,
-        ACTIONS.START_AUGUR_NODE_EVENT_LISTENERS,
-        ACTIONS.NODES_AUGUR_ON_SET,
-        ACTIONS.NODES_ETHEREUM_ON_SET
-      ]));
+    test(
+      "it should handle clearing all listeners then setting all listeners when called.",
+      actions =>
+        assert.deepEqual(actions, [
+          ACTIONS.STOP_BLOCK_LISTENERS,
+          ACTIONS.STOP_AUGUR_NODE_EVENT_LISTENERS,
+          ACTIONS.START_BLOCK_LISTENERS,
+          ACTIONS.START_AUGUR_NODE_EVENT_LISTENERS,
+          ACTIONS.NODES_AUGUR_ON_SET,
+          ACTIONS.NODES_ETHEREUM_ON_SET
+        ])
+    );
   });
   describe("MarketState", () => {
     const test = t =>
-      it(t.description, () => {
+      test(t.description, () => {
         const store = mockStore.mockStore(t.state);
         RewireLogHandlers.__Rewire__("loadMarketsInfo", marketIds => ({
           type: "LOAD_MARKETS_INFO",
@@ -172,7 +174,7 @@ describe("events/actions/listen-to-updates", () => {
   });
   describe("InitialReportSubmitted", () => {
     const test = t =>
-      it(t.description, () => {
+      test(t.description, () => {
         const store = mockStore.mockStore(t.state);
         RewireLogHandlers.__Rewire__("loadMarketsInfo", marketIds => ({
           type: "LOAD_MARKETS_INFO",

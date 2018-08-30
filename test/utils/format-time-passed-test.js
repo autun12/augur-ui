@@ -1,7 +1,7 @@
 import formatTimePassed from "utils/format-time-passed";
 
 describe("utils/format-time-passed.js", () => {
-  it("should format time passed", () => {
+  test("should format time passed", () => {
     assert.equal(formatTimePassed(999), "less than a second ago");
     assert.equal(formatTimePassed(1000), "00:01 ago");
     assert.equal(formatTimePassed(1001), "00:01 ago");

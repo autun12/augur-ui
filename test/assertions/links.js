@@ -5,31 +5,31 @@ export default function(links) {
     assert.isDefined(links, `links isn't defined`);
     assert.isObject(links, `links isn't an object`);
 
-    it("authLink", () => {
+    test("authLink", () => {
       assertLink(links.authLink, "authLink");
     });
 
-    it("marketsLink", () => {
+    test("marketsLink", () => {
       assertLink(links.marketsLink, "marketsLink");
     });
 
-    it("transactionsLink", () => {
+    test("transactionsLink", () => {
       assertLink(links.transactionsLink, "transactionsLink");
     });
 
-    it("marketLink", () => {
+    test("marketLink", () => {
       assertLink(links.marketLink, "marketLink");
     });
 
-    it("previousLink", () => {
+    test("previousLink", () => {
       assertLink(links.previousLink, "previousLink");
     });
 
-    it("createMarketLink", () => {
+    test("createMarketLink", () => {
       assertLink(links.createMarketLink, "createMarketLink");
     });
 
-    it("categorysLink", () => {
+    test("categorysLink", () => {
       assertLink(links.categorysLink, "categorysLink");
     });
   });

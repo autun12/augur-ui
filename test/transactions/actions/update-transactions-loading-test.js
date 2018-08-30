@@ -1,7 +1,7 @@
 import * as updateTransactionsLoading from "modules/transactions/actions/update-transactions-loading";
 
 describe("modules/transactions/actions/update-transactinos-loading.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   describe("updateTransactionsLoading", () => {
     test({

@@ -1,22 +1,22 @@
 export default function(orderCancellation) {
   describe("orderCancellation", () => {
-    it("orderCancellation", () => {
+    test("orderCancellation", () => {
       assert.isObject(orderCancellation);
     });
 
-    it("orderCancellation.cancelOrder", () => {
+    test("orderCancellation.cancelOrder", () => {
       assert.isFunction(orderCancellation.cancelOrder);
     });
 
-    it("orderCancellation.abortCancelOrderConfirmation", () => {
+    test("orderCancellation.abortCancelOrderConfirmation", () => {
       assert.isFunction(orderCancellation.abortCancelOrderConfirmation);
     });
 
-    it("orderCancellation.showCancelOrderConfirmation", () => {
+    test("orderCancellation.showCancelOrderConfirmation", () => {
       assert.isFunction(orderCancellation.showCancelOrderConfirmation);
     });
 
-    it("orderCancellation.cancellationStatuses", () => {
+    test("orderCancellation.cancellationStatuses", () => {
       assert.isObject(orderCancellation.cancellationStatuses);
       assert.deepEqual(orderCancellation.cancellationStatuses, {
         CANCELLATION_CONFIRMATION: "CANCELLATION_CONFIRMATION",

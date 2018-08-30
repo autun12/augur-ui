@@ -11,10 +11,10 @@ import coreStats, {
 import { ZERO } from "modules/trade/constants/numbers";
 
 describe("modules/account/selectors/core-stats", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   describe("default", () => {
-    it(`should call 'selectCoreStats'`, () => {
+    test(`should call 'selectCoreStats'`, () => {
       const stubbedSelectCoreStats = sinon.stub();
 
       CoreStatsRewireAPI.__Rewire__("selectCoreStats", stubbedSelectCoreStats);
@@ -31,7 +31,7 @@ describe("modules/account/selectors/core-stats", () => {
   });
 
   describe("selectOutcomeLastPrice", () => {
-    it(`should return null when 'marketOutcomeData' is undefined`, () => {
+    test(`should return null when 'marketOutcomeData' is undefined`, () => {
       const actual = selectOutcomeLastPrice(undefined, 1);
 
       const expected = null;
@@ -39,7 +39,7 @@ describe("modules/account/selectors/core-stats", () => {
       assert.strictEqual(actual, expected, `didn't return null as expected`);
     });
 
-    it(`should return null when 'outcomeId' is undefined`, () => {
+    test(`should return null when 'outcomeId' is undefined`, () => {
       const actual = selectOutcomeLastPrice({}, undefined);
 
       const expected = null;
@@ -47,7 +47,7 @@ describe("modules/account/selectors/core-stats", () => {
       assert.strictEqual(actual, expected, `didn't return null as expected`);
     });
 
-    it(`should return the expected price`, () => {
+    test(`should return the expected price`, () => {
       const actual = selectOutcomeLastPrice({ 1: { price: "0.1" } }, 1);
 
       const expected = "0.1";
@@ -55,7 +55,7 @@ describe("modules/account/selectors/core-stats", () => {
       assert.strictEqual(actual, expected, `didn't return the expected price`);
     });
 
-    it(`should return the expected price`, () => {
+    test(`should return the expected price`, () => {
       const actual = selectOutcomeLastPrice({ 2: { price: "0.1" } }, 1);
 
       const expected = undefined;
@@ -66,7 +66,7 @@ describe("modules/account/selectors/core-stats", () => {
 
   describe("createPeriodPLSelector", () => {
     // eslint-disable-line func-names, prefer-arrow-callback
-    it(`should return null when 'accountTrades' is undefined`, () => {
+    test(`should return null when 'accountTrades' is undefined`, () => {
       const blockchain = {};
 
       const selector = createPeriodPLSelector(1);
@@ -78,7 +78,7 @@ describe("modules/account/selectors/core-stats", () => {
       assert.strictEqual(actual, expected, `didn't return null as expected`);
     });
 
-    it(`should return null when 'blockchain' is undefined`, () => {
+    test(`should return null when 'blockchain' is undefined`, () => {
       const accountTrades = {};
 
       const selector = createPeriodPLSelector(1);
@@ -90,7 +90,7 @@ describe("modules/account/selectors/core-stats", () => {
       assert.strictEqual(actual, expected, `didn't return null as expected`);
     });
 
-    it(`should return 0 for a set period with no trades`, () => {
+    test(`should return 0 for a set period with no trades`, () => {
       const accountTrades = {
         "0xMarketID1": {
           1: [
@@ -133,7 +133,7 @@ describe("modules/account/selectors/core-stats", () => {
       assert.deepEqual(actual, expected, `didn't return the expected value`);
     });
 
-    it(`should return the expected value for a set period with trades`, () => {
+    test(`should return the expected value for a set period with trades`, () => {
       const accountTrades = {
         "0xMarketID1": {
           1: [

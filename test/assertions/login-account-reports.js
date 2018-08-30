@@ -3,12 +3,12 @@ export default function(loginAccountReports) {
     assert.isDefined(loginAccountReports);
     assert.isObject(loginAccountReports);
 
-    it("reports", () => {
+    test("reports", () => {
       assert.isDefined(loginAccountReports.reports);
       assert.isArray(loginAccountReports.reports);
     });
 
-    it("summary", () => {
+    test("summary", () => {
       assert.isDefined(loginAccountReports.summary);
       assert.isObject(loginAccountReports.summary);
     });

@@ -3,7 +3,7 @@ import { ungroupBy } from "src/utils/ungroupBy";
 describe("src/utils/ungroupBy.js", () => {
   describe("ungroupBy method", () => {
     // This is the omnibus example.
-    it("should collapse trees into an array of flattish objects", () => {
+    test("should collapse trees into an array of flattish objects", () => {
       const obj = {
         v1: {
           v2: {
@@ -51,7 +51,7 @@ describe("src/utils/ungroupBy.js", () => {
       };
     });
 
-    it("should push the passed object onto results array", () => {
+    test("should push the passed object onto results array", () => {
       const result = ungroupBy(exampleObject, []);
       assert.deepEqual(result, [
         {
@@ -62,7 +62,7 @@ describe("src/utils/ungroupBy.js", () => {
   });
 
   describe("single depth", () => {
-    it("should collapse the first key and push the result on the array", () => {
+    test("should collapse the first key and push the result on the array", () => {
       const exampleObject = {
         v1: {
           v2: "justSomeProperty"
@@ -80,7 +80,7 @@ describe("src/utils/ungroupBy.js", () => {
   });
 
   describe("split in tree", () => {
-    it("should collapse both branches", () => {
+    test("should collapse both branches", () => {
       const exampleObject = {
         v1: {
           v2: "justSomeProperty"
@@ -104,7 +104,7 @@ describe("src/utils/ungroupBy.js", () => {
   });
 
   describe("arrays", () => {
-    it("should collapse as if it were not there", () => {
+    test("should collapse as if it were not there", () => {
       const exampleObject = {
         v1: [
           {

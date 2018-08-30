@@ -21,7 +21,7 @@ describe(`modules/trade/reducers/trade-in-progress.js`, () => {
     }
   };
 
-  it(`should clear the login account `, () => {
+  test(`should clear the login account `, () => {
     const testAction = {
       type: CLEAR_LOGIN_ACCOUNT
     };
@@ -35,7 +35,7 @@ describe(`modules/trade/reducers/trade-in-progress.js`, () => {
     );
   });
 
-  it(`should be able to update a trade in progress`, () => {
+  test(`should be able to update a trade in progress`, () => {
     const testAction = {
       type: UPDATE_TRADE_IN_PROGRESS,
       data: {
@@ -69,7 +69,7 @@ describe(`modules/trade/reducers/trade-in-progress.js`, () => {
     );
   });
 
-  it(`should be able to clear a trade in progress`, () => {
+  test(`should be able to clear a trade in progress`, () => {
     const testAction = {
       type: CLEAR_TRADE_IN_PROGRESS,
       marketId: "MarketID2"

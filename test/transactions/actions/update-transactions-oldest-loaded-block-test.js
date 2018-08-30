@@ -1,7 +1,7 @@
 import * as updateTransactionsOldestLoadedBlock from "modules/transactions/actions/update-transactions-oldest-loaded-block";
 
 describe("modules/transactions/actions/update-transactinos-oldest-loaded-block.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   describe("updateTransactionsOldestLoadedBlock", () => {
     test({

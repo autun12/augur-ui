@@ -1,6 +1,3 @@
-import { describe, it } from "mocha";
-import { assert } from "chai";
-
 import { YES_NO } from "modules/markets/constants/market-types";
 import {
   getForkMigrationTotals,
@@ -8,10 +5,10 @@ import {
 } from "modules/forking/actions/get-fork-migration-totals";
 
 describe("modules/forking/actions/get-fork-migration-totals.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   describe("getForkMigrationTotals", () => {
-    it("should return the expected object", () => {
+    test("should return the expected object", () => {
       const forkMigrationTotalsData = {
         "0xCHILD_1": {
           payout: [0, 10000],
@@ -47,7 +44,7 @@ describe("modules/forking/actions/get-fork-migration-totals.js", () => {
         api: {
           Universe: {
             getForkingMarket: (args, callback) => {
-              assert.deepEqual(args, {
+              expect(args).toEqual({
                 tx: { to: "0xUNIVERSE" }
               });
               return callback(null, "0xMARKET");
@@ -56,8 +53,8 @@ describe("modules/forking/actions/get-fork-migration-totals.js", () => {
         },
         augurNode: {
           submitRequest: (methodName, args, callback) => {
-            assert.equal(methodName, "getForkMigrationTotals");
-            assert.deepEqual(args, {
+            expect(methodName).toEqual("getForkMigrationTotals");
+            expect(args).toEqual({
               parentUniverse: "0xUNIVERSE"
             });
             return callback(null, forkMigrationTotalsData);
@@ -78,7 +75,7 @@ describe("modules/forking/actions/get-fork-migration-totals.js", () => {
       };
 
       getForkMigrationTotals("0xUNIVERSE", (err, actual) => {
-        assert.deepEqual(actual, expected, `Didn't return the expected object`);
+        expect(actual).toEqual(expected);
       })(null, getState);
     });
   });

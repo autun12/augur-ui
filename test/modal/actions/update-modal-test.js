@@ -1,9 +1,9 @@
 import { UPDATE_MODAL, updateModal } from "modules/modal/actions/update-modal";
 
 describe("modules/modal/actions/update-modal", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
-  it("should return the expected value", () => {
+  test("should return the expected value", () => {
     const actual = updateModal({ test: "TEST" });
 
     const expected = {

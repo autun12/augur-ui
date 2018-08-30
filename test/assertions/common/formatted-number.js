@@ -1,6 +1,6 @@
 export default function(actual, label = "Formatted Number") {
   describe(label, () => {
-    it("should be formatted number", () => {
+    test("should be formatted number", () => {
       assert.isDefined(actual.value, `'value' isn't defined`);
       assert.isNumber(actual.value, `'value' isn't a number`);
       assert.isDefined(actual.formattedValue, `'formattedValue' isn't defined`);

@@ -4,12 +4,12 @@ export default function(reportableOutcomes) {
     assert.isArray(reportableOutcomes, `'reportableOutcomes' is not an array`);
 
     reportableOutcomes.forEach(outcome => {
-      it("id", () => {
+      test("id", () => {
         assert.isDefined(outcome.id, `reportableOutcomes' id is not defined`);
         assert.isString(outcome.id, `reportableOutcomes' id is not a string`);
       });
 
-      it("name", () => {
+      test("name", () => {
         assert.isDefined(
           outcome.name,
           `reportableOutcomes' name is not defined`

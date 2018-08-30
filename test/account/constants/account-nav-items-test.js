@@ -6,9 +6,9 @@ import {
 } from "modules/routes/constants/views";
 
 describe("modules/account/constants/account-nav-items.js", () => {
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
-  it(`should return the expected constants`, () => {
+  test(`should return the expected constants`, () => {
     const expected = {
       [ACCOUNT_DEPOSIT]: {
         label: "Deposit"

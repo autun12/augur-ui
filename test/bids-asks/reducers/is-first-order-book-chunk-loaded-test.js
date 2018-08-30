@@ -3,9 +3,8 @@ import reducer from "modules/bids-asks/reducers/is-first-order-book-chunk-loaded
 
 describe(`modules/bids-asks/reducers/is-first-order-book-chunk-loaded.js`, () => {
   const test = t =>
-    it(t.description, () =>
-      t.assertions(reducer(t.params.isFirstOrderBookLoaded, t.params.action))
-    );
+    test(t.description, () =>
+      t.assertions(reducer(t.params.isFirstOrderBookLoaded, t.params.action)));
   test({
     description: "Should set isFirstOrderBookChunkLoaded to false",
     params: {

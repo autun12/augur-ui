@@ -19,7 +19,7 @@ describe("modules/auth/helpers/ledger-signer", () => {
   __RewireAPI__.__Rewire__("updateModal", stubbedUpdateModal);
   __RewireAPI__.__Rewire__("closeModal", stubbedCloseModal);
 
-  const test = t => it(t.description, () => t.assertions());
+  const test = t => test(t.description, () => t.assertions());
 
   beforeEach(() => {
     ledgerLib = {
@@ -29,41 +29,44 @@ describe("modules/auth/helpers/ledger-signer", () => {
     store.clearActions();
   });
 
-  it("should dispatch the expected actions when signing succeeds", async () => {
-    let actual;
-    const expected = [
-      {
-        type: "stubbedUpdateModal"
-      },
-      {
-        type: "stubbedCloseModal"
-      }
-    ];
+  test(
+    "should dispatch the expected actions when signing succeeds",
+    async () => {
+      let actual;
+      const expected = [
+        {
+          type: "stubbedUpdateModal"
+        },
+        {
+          type: "stubbedCloseModal"
+        }
+      ];
 
-    ledgerLib.signTransactionByBip32Path.resolves({
-      r: "blah",
-      s: "test",
-      v: "bob"
-    });
-
-    await ledgerSigner(
-      [{}, () => {}],
-      ledgerLib,
-      "m/44'/60'/0'/0/0",
-      store.dispatch
-    )
-      .then(res => {
-        actual = store.getActions();
-      })
-      .catch(err => {
-        console.log(err);
-        assert(false, `didn't resolve as expected`);
+      ledgerLib.signTransactionByBip32Path.resolves({
+        r: "blah",
+        s: "test",
+        v: "bob"
       });
 
-    assert.deepEqual(actual, expected, `didn't dispatch the expected actions`);
-  });
+      await ledgerSigner(
+        [{}, () => {}],
+        ledgerLib,
+        "m/44'/60'/0'/0/0",
+        store.dispatch
+      )
+        .then(res => {
+          actual = store.getActions();
+        })
+        .catch(err => {
+          console.log(err);
+          assert(false, `didn't resolve as expected`);
+        });
 
-  it("should dispatch the expected actions when signing fails", async () => {
+      assert.deepEqual(actual, expected, `didn't dispatch the expected actions`);
+    }
+  );
+
+  test("should dispatch the expected actions when signing fails", async () => {
     let actual;
     const expected = [
       {
