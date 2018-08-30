@@ -11,27 +11,24 @@ describe(`modules/auth/selectors/login-account.js`, () => {
   const test = t => it(t.description, done => t.assertions(done));
 
   describe("default", () => {
-    test({
-      description: `should call 'selectLoginAccount'`,
-      assertions: done => {
-        const stubbedSelectLoginAccount = sinon.stub();
+    it(`should call 'selectLoginAccount'`, done => {
+      const stubbedSelectLoginAccount = sinon.stub();
 
-        loginAccountRewireAPI.__Rewire__(
-          "selectLoginAccount",
-          stubbedSelectLoginAccount
-        );
+      loginAccountRewireAPI.__Rewire__(
+        "selectLoginAccount",
+        stubbedSelectLoginAccount
+      );
 
-        loginAccount();
+      loginAccount();
 
-        loginAccountRewireAPI.__ResetDependency__("selectLoginAccount");
+      loginAccountRewireAPI.__ResetDependency__("selectLoginAccount");
 
-        assert(
-          stubbedSelectLoginAccount.calledOnce,
-          `didn't call 'selectLoginAccount' once as expected`
-        );
+      assert(
+        stubbedSelectLoginAccount.calledOnce,
+        `didn't call 'selectLoginAccount' once as expected`
+      );
 
-        done();
-      }
+      done();
     });
   });
 
@@ -62,158 +59,143 @@ describe(`modules/auth/selectors/login-account.js`, () => {
       loginAccountRewireAPI.__ResetDependency__("augur");
     });
 
-    test({
-      description: `should return the expected object when user is unlogged`,
-      assertions: done => {
-        const loginAccount = {};
-        const accountName = null;
+    it(`should return the expected object when user is unlogged`, done => {
+      const loginAccount = {};
+      const accountName = null;
 
-        const actual = selectLoginAccount.resultFunc(loginAccount, accountName);
+      const actual = selectLoginAccount.resultFunc(loginAccount, accountName);
 
-        const expected = {
-          accountName: null,
-          rep: formatRep(undefined),
-          eth: formatEther(undefined)
-        };
+      const expected = {
+        accountName: null,
+        rep: formatRep(undefined),
+        eth: formatEther(undefined)
+      };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
-        assert(
-          stubbedGenerateDownloadAccountLink.calledOnce,
-          `didn't call 'generateDownloadAccountLink' once as expected`
-        );
+      assert.deepEqual(actual, expected, `didn't return the expected object`);
+      assert(
+        stubbedGenerateDownloadAccountLink.calledOnce,
+        `didn't call 'generateDownloadAccountLink' once as expected`
+      );
 
-        done();
-      }
+      done();
     });
 
-    test({
-      description: `should return the expected object when user is logged via loginId with account locked`,
-      assertions: done => {
-        const loginAccount = {
-          address: "0xAccountAddress",
-          loginId: "123ThisIsALoginId",
-          eth: "10",
-          rep: "12"
-        };
-        const accountName = "testing";
+    it(`should return the expected object when user is logged via loginId with account locked`, done => {
+      const loginAccount = {
+        address: "0xAccountAddress",
+        loginId: "123ThisIsALoginId",
+        eth: "10",
+        rep: "12"
+      };
+      const accountName = "testing";
 
-        const actual = selectLoginAccount.resultFunc(loginAccount, accountName);
+      const actual = selectLoginAccount.resultFunc(loginAccount, accountName);
 
-        const expected = {
-          address: "0xAccountAddress",
-          loginId: "123ThisIsALoginId",
-          accountName: "testing",
-          rep: formatRep(12, { zeroStyled: false, decimalsRounded: 4 }),
-          eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
-        };
+      const expected = {
+        address: "0xAccountAddress",
+        loginId: "123ThisIsALoginId",
+        accountName: "testing",
+        rep: formatRep(12, { zeroStyled: false, decimalsRounded: 4 }),
+        eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
+      };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
-        assert(
-          stubbedGenerateDownloadAccountLink.calledOnce,
-          `didn't call 'generateDownloadAccountLink' once as expected`
-        );
+      assert.deepEqual(actual, expected, `didn't return the expected object`);
+      assert(
+        stubbedGenerateDownloadAccountLink.calledOnce,
+        `didn't call 'generateDownloadAccountLink' once as expected`
+      );
 
-        done();
-      }
+      done();
     });
 
-    test({
-      description: `should return the expected object when user is logged via loginId with account locked and name encoded`,
-      assertions: done => {
-        const loginAccount = {
-          address: "0xAccountAddress",
-          loginId: "123ThisIsALoginId",
-          eth: "10",
-          rep: "12"
-        };
-        const accountName = "testing";
+    it(`should return the expected object when user is logged via loginId with account locked and name encoded`, done => {
+      const loginAccount = {
+        address: "0xAccountAddress",
+        loginId: "123ThisIsALoginId",
+        eth: "10",
+        rep: "12"
+      };
+      const accountName = "testing";
 
-        const actual = selectLoginAccount.resultFunc(loginAccount, accountName);
+      const actual = selectLoginAccount.resultFunc(loginAccount, accountName);
 
-        const expected = {
-          address: "0xAccountAddress",
-          loginId: "123ThisIsALoginId",
-          accountName: "testing",
-          rep: formatRep(12, { zeroStyled: false, decimalsRounded: 4 }),
-          eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
-        };
+      const expected = {
+        address: "0xAccountAddress",
+        loginId: "123ThisIsALoginId",
+        accountName: "testing",
+        rep: formatRep(12, { zeroStyled: false, decimalsRounded: 4 }),
+        eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
+      };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
-        assert(
-          stubbedGenerateDownloadAccountLink.calledOnce,
-          `didn't call 'generateDownloadAccountLink' once as expected`
-        );
+      assert.deepEqual(actual, expected, `didn't return the expected object`);
+      assert(
+        stubbedGenerateDownloadAccountLink.calledOnce,
+        `didn't call 'generateDownloadAccountLink' once as expected`
+      );
 
-        done();
-      }
+      done();
     });
 
-    test({
-      description: `should return the expected object when user is logged via loginId with account UNlocked`,
-      assertions: done => {
-        const loginAccount = {
-          address: "0xAccountAddress",
-          loginId: "123ThisIsALoginId",
-          eth: "10",
-          rep: "12",
-          isUnlocked: true
-        };
-        const accountName = "testing";
+    it(`should return the expected object when user is logged via loginId with account UNlocked`, done => {
+      const loginAccount = {
+        address: "0xAccountAddress",
+        loginId: "123ThisIsALoginId",
+        eth: "10",
+        rep: "12",
+        isUnlocked: true
+      };
+      const accountName = "testing";
 
-        const actual = selectLoginAccount.resultFunc(loginAccount, accountName);
+      const actual = selectLoginAccount.resultFunc(loginAccount, accountName);
 
-        const expected = {
-          address: "0xAccountAddress",
-          loginId: "123ThisIsALoginId",
-          accountName: "testing",
-          isUnlocked: true,
-          rep: formatRep(12, { zeroStyled: false, decimalsRounded: 4 }),
-          eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
-        };
+      const expected = {
+        address: "0xAccountAddress",
+        loginId: "123ThisIsALoginId",
+        accountName: "testing",
+        isUnlocked: true,
+        rep: formatRep(12, { zeroStyled: false, decimalsRounded: 4 }),
+        eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
+      };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
-        assert(
-          stubbedGenerateDownloadAccountLink.calledOnce,
-          `didn't call 'generateDownloadAccountLink' once as expected`
-        );
+      assert.deepEqual(actual, expected, `didn't return the expected object`);
+      assert(
+        stubbedGenerateDownloadAccountLink.calledOnce,
+        `didn't call 'generateDownloadAccountLink' once as expected`
+      );
 
-        done();
-      }
+      done();
     });
 
-    test({
-      description: `should return the expected object when user is logged via Edge`,
-      assertions: done => {
-        const loginAccount = {
-          edgeAccount: {},
-          address: "0xAccountAddress",
-          loginId: "123ThisIsALoginId",
-          eth: "10",
-          rep: "12",
-          isUnlocked: true
-        };
-        const accountName = "testing";
+    it(`should return the expected object when user is logged via Edge`, done => {
+      const loginAccount = {
+        edgeAccount: {},
+        address: "0xAccountAddress",
+        loginId: "123ThisIsALoginId",
+        eth: "10",
+        rep: "12",
+        isUnlocked: true
+      };
+      const accountName = "testing";
 
-        const actual = selectLoginAccount.resultFunc(loginAccount, accountName);
+      const actual = selectLoginAccount.resultFunc(loginAccount, accountName);
 
-        const expected = {
-          edgeAccount: {},
-          address: "0xAccountAddress",
-          loginId: "123ThisIsALoginId",
-          accountName: "testing",
-          isUnlocked: true,
-          rep: formatRep(12, { zeroStyled: false, decimalsRounded: 4 }),
-          eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
-        };
+      const expected = {
+        edgeAccount: {},
+        address: "0xAccountAddress",
+        loginId: "123ThisIsALoginId",
+        accountName: "testing",
+        isUnlocked: true,
+        rep: formatRep(12, { zeroStyled: false, decimalsRounded: 4 }),
+        eth: formatEther(10, { zeroStyled: false, decimalsRounded: 4 })
+      };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
-        assert(
-          stubbedGenerateDownloadAccountLink.calledOnce,
-          `didn't call 'generateDownloadAccountLink' once as expected`
-        );
+      assert.deepEqual(actual, expected, `didn't return the expected object`);
+      assert(
+        stubbedGenerateDownloadAccountLink.calledOnce,
+        `didn't call 'generateDownloadAccountLink' once as expected`
+      );
 
-        done();
-      }
+      done();
     });
   });
 });

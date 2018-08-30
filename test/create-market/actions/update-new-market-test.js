@@ -22,92 +22,77 @@ describe("modules/create-market/actions/update-new-market.js", () => {
     });
   };
 
-  test({
-    description: `should dispatch the expected actions from 'invalidateMarketCreation'`,
-    assertions: () => {
-      const middlewares = [thunk];
-      const mockStore = configureMockStore(middlewares);
-      const store = mockStore();
+  it(`should dispatch the expected actions from 'invalidateMarketCreation'`, () => {
+    const middlewares = [thunk];
+    const mockStore = configureMockStore(middlewares);
+    const store = mockStore();
 
-      store.dispatch(invalidateMarketCreation("testing"));
+    store.dispatch(invalidateMarketCreation("testing"));
 
-      const actions = store.getActions();
+    const actions = store.getActions();
 
-      const expectedActions = [
-        {
-          type: UPDATE_NEW_MARKET,
-          data: {
-            isValid: false
-          }
-        }
-      ];
-
-      assert.deepEqual(
-        actions,
-        expectedActions,
-        `Didn't dispatch the expected actions`
-      );
-    }
-  });
-
-  test({
-    description: `should return the expected object for 'addOrderToNewMarket'`,
-    assertions: () => {
-      const action = addOrderToNewMarket({ test: "test" });
-
-      const expected = {
-        type: ADD_ORDER_TO_NEW_MARKET,
-        data: {
-          test: "test"
-        }
-      };
-
-      assert.deepEqual(action, expected, `Didn't return the expected object`);
-    }
-  });
-
-  test({
-    description: `should return the expected object for 'removeOrderFromNewMarket'`,
-    assertions: () => {
-      const action = removeOrderFromNewMarket({ test: "test" });
-
-      const expected = {
-        type: REMOVE_ORDER_FROM_NEW_MARKET,
-        data: {
-          test: "test"
-        }
-      };
-
-      assert.deepEqual(action, expected, `Didn't return the expected object`);
-    }
-  });
-
-  test({
-    description: `should return the expected object for 'updateNewMarket'`,
-    assertions: () => {
-      const action = updateNewMarket({ test: "test" });
-
-      const expected = {
+    const expectedActions = [
+      {
         type: UPDATE_NEW_MARKET,
         data: {
-          test: "test"
+          isValid: false
         }
-      };
+      }
+    ];
 
-      assert.deepEqual(action, expected, `Didn't return the expected object`);
-    }
+    assert.deepEqual(
+      actions,
+      expectedActions,
+      `Didn't dispatch the expected actions`
+    );
   });
 
-  test({
-    description: `should return the expected object for 'clearNewMarket'`,
-    assertions: () => {
-      const action = clearNewMarket();
+  it(`should return the expected object for 'addOrderToNewMarket'`, () => {
+    const action = addOrderToNewMarket({ test: "test" });
 
-      const expected = {
-        type: CLEAR_NEW_MARKET
-      };
+    const expected = {
+      type: ADD_ORDER_TO_NEW_MARKET,
+      data: {
+        test: "test"
+      }
+    };
 
-      assert.deepEqual(action, expected, `Didn't return the expected object`);
-    }
+    assert.deepEqual(action, expected, `Didn't return the expected object`);
+  });
+
+  it(`should return the expected object for 'removeOrderFromNewMarket'`, () => {
+    const action = removeOrderFromNewMarket({ test: "test" });
+
+    const expected = {
+      type: REMOVE_ORDER_FROM_NEW_MARKET,
+      data: {
+        test: "test"
+      }
+    };
+
+    assert.deepEqual(action, expected, `Didn't return the expected object`);
+  });
+
+  it(`should return the expected object for 'updateNewMarket'`, () => {
+    const action = updateNewMarket({ test: "test" });
+
+    const expected = {
+      type: UPDATE_NEW_MARKET,
+      data: {
+        test: "test"
+      }
+    };
+
+    assert.deepEqual(action, expected, `Didn't return the expected object`);
+  });
+
+  it(`should return the expected object for 'clearNewMarket'`, () => {
+    const action = clearNewMarket();
+
+    const expected = {
+      type: CLEAR_NEW_MARKET
+    };
+
+    assert.deepEqual(action, expected, `Didn't return the expected object`);
   });
 });

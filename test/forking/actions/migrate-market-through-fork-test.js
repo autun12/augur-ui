@@ -10,34 +10,30 @@ describe("modules/forking/actions/migrate-market-through-fork.js", () => {
   const test = t => it(t.description, () => t.assertions());
 
   describe("migrateMarketThroughFork", () => {
-    test({
-      description: "should call the function as expected",
-      assertions: () => {
-        const stateData = {
-          loginAccount: {
-            meta: "META"
-          }
-        };
+    it("should call the function as expected", () => {
+      const stateData = {
+        loginAccount: {
+          meta: "META"
+        }
+      };
 
-        const getState = () => stateData;
+      const getState = () => stateData;
 
-        ReWireModule.__Rewire__("augur", {
-          api: {
-            Market: {
-              migrateThroughOneFork: args => {
-                assert.deepEqual(args.tx, {
-                  to: "0xMARKET",
-                  estimateGas: false
-                });
-                return args.onSuccess(null);
-              }
+      ReWireModule.__Rewire__("augur", {
+        api: {
+          Market: {
+            migrateThroughOneFork: args => {
+              assert.deepEqual(args.tx, {
+                to: "0xMARKET",
+                estimateGas: false
+              });
+              return args.onSuccess(null);
             }
           }
-        });
+        }
+      });
 
-        migrateMarketThroughFork("0xMARKET", false, () => {})(() => {},
-        getState);
-      }
+      migrateMarketThroughFork("0xMARKET", false, () => {})(() => {}, getState);
     });
   });
 });

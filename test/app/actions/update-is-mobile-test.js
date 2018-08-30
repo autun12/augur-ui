@@ -6,34 +6,28 @@ import {
 describe("modules/app/actions/update-is-mobile.js", () => {
   const test = t => it(t.description, () => t.assertions());
 
-  test({
-    description: `should return the expected string`,
-    assertions: () => {
-      const expected = "UPDATE_IS_MOBILE";
+  it(`should return the expected string`, () => {
+    const expected = "UPDATE_IS_MOBILE";
 
-      assert.strictEqual(
-        UPDATE_IS_MOBILE,
-        expected,
-        `didn't return the expected string`
-      );
-    }
+    assert.strictEqual(
+      UPDATE_IS_MOBILE,
+      expected,
+      `didn't return the expected string`
+    );
   });
 
   describe(`updateIsMobile`, () => {
-    test({
-      description: `should return the expected object`,
-      assertions: () => {
-        const actual = updateIsMobile(false);
+    it(`should return the expected object`, () => {
+      const actual = updateIsMobile(false);
 
-        const expected = {
-          type: UPDATE_IS_MOBILE,
-          data: {
-            isMobile: false
-          }
-        };
+      const expected = {
+        type: UPDATE_IS_MOBILE,
+        data: {
+          isMobile: false
+        }
+      };
 
-        assert.deepEqual(actual, expected, `didn't return the expected object`);
-      }
+      assert.deepEqual(actual, expected, `didn't return the expected object`);
     });
   });
 });

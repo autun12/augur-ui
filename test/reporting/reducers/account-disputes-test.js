@@ -24,92 +24,74 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
     outcome: "0"
   };
 
-  test({
-    description: `default state`,
-    assertions: () => {
-      assert.deepEqual(
-        reducer(undefined, { type: ActionTypes.INIT }),
-        {},
-        `Didn't return expected`
-      );
-    }
+  it(`default state`, () => {
+    assert.deepEqual(
+      reducer(undefined, { type: ActionTypes.INIT }),
+      {},
+      `Didn't return expected`
+    );
   });
 
-  test({
-    description: `add one dispute`,
-    assertions: () => {
-      const expected = {
-        marketId1: marketId1Data
-      };
-      assert.deepEqual(
-        reducer(undefined, {
-          type: UPDATE_ACCOUNT_DISPUTE,
-          data: marketId1Data
-        }),
-        expected,
-        `Didn't return expected`
-      );
-    }
-  });
-
-  test({
-    description: `add multiple dispute`,
-    assertions: () => {
-      const state = reducer(
-        {},
-        { type: UPDATE_ACCOUNT_DISPUTE, data: marketId1Data }
-      );
-      const actual = reducer(state, {
+  it(`add one dispute`, () => {
+    const expected = {
+      marketId1: marketId1Data
+    };
+    assert.deepEqual(
+      reducer(undefined, {
         type: UPDATE_ACCOUNT_DISPUTE,
-        data: marketId2Data
-      });
-      const expected = {
-        marketId1: marketId1Data,
-        marketId2: marketId2Data
-      };
-      assert.deepEqual(actual, expected, `Didn't return expected`);
-    }
-  });
-
-  test({
-    description: `remove one dispute`,
-    assertions: () => {
-      const data = {
-        marketId1: marketId1Data,
-        marketId2: marketId2Data
-      };
-      const actual = reducer(data, {
-        type: REMOVE_ACCOUNT_DISPUTE,
         data: marketId1Data
-      });
-      const expected = {
-        marketId2: marketId2Data
-      };
-      assert.deepEqual(actual, expected, `Didn't return expected`);
-    }
+      }),
+      expected,
+      `Didn't return expected`
+    );
   });
 
-  test({
-    description: `clear all account disputes`,
-    assertions: () => {
-      const data = {
-        marketId1: marketId1Data,
-        marketId2: marketId2Data
-      };
-      const actual = reducer(data, { type: CLEAR_ACCOUNT_DISPUTES });
-      assert.deepEqual(actual, DEFAULT_STATE, `Didn't return expected`);
-    }
+  it(`add multiple dispute`, () => {
+    const state = reducer(
+      {},
+      { type: UPDATE_ACCOUNT_DISPUTE, data: marketId1Data }
+    );
+    const actual = reducer(state, {
+      type: UPDATE_ACCOUNT_DISPUTE,
+      data: marketId2Data
+    });
+    const expected = {
+      marketId1: marketId1Data,
+      marketId2: marketId2Data
+    };
+    assert.deepEqual(actual, expected, `Didn't return expected`);
   });
 
-  test({
-    description: `reset state account disputes`,
-    assertions: () => {
-      const data = {
-        marketId1: marketId1Data,
-        marketId2: marketId2Data
-      };
-      const actual = reducer(data, { type: RESET_STATE });
-      assert.deepEqual(actual, DEFAULT_STATE, `Didn't return expected`);
-    }
+  it(`remove one dispute`, () => {
+    const data = {
+      marketId1: marketId1Data,
+      marketId2: marketId2Data
+    };
+    const actual = reducer(data, {
+      type: REMOVE_ACCOUNT_DISPUTE,
+      data: marketId1Data
+    });
+    const expected = {
+      marketId2: marketId2Data
+    };
+    assert.deepEqual(actual, expected, `Didn't return expected`);
+  });
+
+  it(`clear all account disputes`, () => {
+    const data = {
+      marketId1: marketId1Data,
+      marketId2: marketId2Data
+    };
+    const actual = reducer(data, { type: CLEAR_ACCOUNT_DISPUTES });
+    assert.deepEqual(actual, DEFAULT_STATE, `Didn't return expected`);
+  });
+
+  it(`reset state account disputes`, () => {
+    const data = {
+      marketId1: marketId1Data,
+      marketId2: marketId2Data
+    };
+    const actual = reducer(data, { type: RESET_STATE });
+    assert.deepEqual(actual, DEFAULT_STATE, `Didn't return expected`);
   });
 });

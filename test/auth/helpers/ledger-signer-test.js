@@ -29,80 +29,66 @@ describe("modules/auth/helpers/ledger-signer", () => {
     store.clearActions();
   });
 
-  test({
-    description: "should dispatch the expected actions when signing succeeds",
-    assertions: async () => {
-      let actual;
-      const expected = [
-        {
-          type: "stubbedUpdateModal"
-        },
-        {
-          type: "stubbedCloseModal"
-        }
-      ];
+  it("should dispatch the expected actions when signing succeeds", async () => {
+    let actual;
+    const expected = [
+      {
+        type: "stubbedUpdateModal"
+      },
+      {
+        type: "stubbedCloseModal"
+      }
+    ];
 
-      ledgerLib.signTransactionByBip32Path.resolves({
-        r: "blah",
-        s: "test",
-        v: "bob"
+    ledgerLib.signTransactionByBip32Path.resolves({
+      r: "blah",
+      s: "test",
+      v: "bob"
+    });
+
+    await ledgerSigner(
+      [{}, () => {}],
+      ledgerLib,
+      "m/44'/60'/0'/0/0",
+      store.dispatch
+    )
+      .then(res => {
+        actual = store.getActions();
+      })
+      .catch(err => {
+        console.log(err);
+        assert(false, `didn't resolve as expected`);
       });
 
-      await ledgerSigner(
-        [{}, () => {}],
-        ledgerLib,
-        "m/44'/60'/0'/0/0",
-        store.dispatch
-      )
-        .then(res => {
-          actual = store.getActions();
-        })
-        .catch(err => {
-          console.log(err);
-          assert(false, `didn't resolve as expected`);
-        });
-
-      assert.deepEqual(
-        actual,
-        expected,
-        `didn't dispatch the expected actions`
-      );
-    }
+    assert.deepEqual(actual, expected, `didn't dispatch the expected actions`);
   });
 
-  test({
-    description: "should dispatch the expected actions when signing fails",
-    assertions: async () => {
-      let actual;
-      const expected = [
-        {
-          type: "stubbedUpdateModal"
-        },
-        {
-          type: "stubbedUpdateModal"
-        }
-      ];
+  it("should dispatch the expected actions when signing fails", async () => {
+    let actual;
+    const expected = [
+      {
+        type: "stubbedUpdateModal"
+      },
+      {
+        type: "stubbedUpdateModal"
+      }
+    ];
 
-      ledgerLib.signTransactionByBip32Path.rejects();
+    ledgerLib.signTransactionByBip32Path.rejects();
 
-      await ledgerSigner(
-        [{}, () => {}],
-        ledgerLib,
-        "m/44'/60'/0'/0/0",
-        store.dispatch
-      )
-        .then(() => {
-          assert(false, `didn't reject as expected`);
-        })
-        .catch(err => {
-          actual = store.getActions();
-        });
+    await ledgerSigner(
+      [{}, () => {}],
+      ledgerLib,
+      "m/44'/60'/0'/0/0",
+      store.dispatch
+    )
+      .then(() => {
+        assert(false, `didn't reject as expected`);
+      })
+      .catch(err => {
+        actual = store.getActions();
+      });
 
-      assert.deepEqual(
-        actual,
-        expected,
-        `didn't dispatch the expected actions`
-      );
-    }
+    assert.deepEqual(actual, expected, `didn't dispatch the expected actions`);
   });
 });

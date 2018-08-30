@@ -8,23 +8,20 @@ import {
 describe("modules/account/constants/account-nav-items.js", () => {
   const test = t => it(t.description, () => t.assertions());
 
-  test({
-    description: `should return the expected constants`,
-    assertions: () => {
-      const expected = {
-        [ACCOUNT_DEPOSIT]: {
-          label: "Deposit"
-        },
-        [ACCOUNT_TRANSFER]: {
-          label: "Transfer"
-        }
-      };
+  it(`should return the expected constants`, () => {
+    const expected = {
+      [ACCOUNT_DEPOSIT]: {
+        label: "Deposit"
+      },
+      [ACCOUNT_TRANSFER]: {
+        label: "Transfer"
+      }
+    };
 
-      assert.deepEqual(
-        ACCOUNT_NAV_ITEMS,
-        expected,
-        `Didn't return the expected constants`
-      );
-    }
+    assert.deepEqual(
+      ACCOUNT_NAV_ITEMS,
+      expected,
+      `Didn't return the expected constants`
+    );
   });
 });

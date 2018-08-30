@@ -15,78 +15,51 @@ describe("modules/filter-sort/helpers/filter-by-search.js", () => {
       ...state.marketsData.testMarketId2
     }
   ];
-  test({
-    description: "should handle a null search",
-    assertions: () => {
-      assert.isNull(filterBySearch(null, [])([]));
-    }
+  it("should handle a null search", () => {
+    assert.isNull(filterBySearch(null, [])([]));
   });
-  test({
-    description: "should handle a empty string search",
-    assertions: () => {
-      assert.isNull(filterBySearch("", [])([]));
-    }
+  it("should handle a empty string search", () => {
+    assert.isNull(filterBySearch("", [])([]));
   });
-  test({
-    description: "should handle a search and not finding anything",
-    assertions: () => {
-      assert.deepEqual(filterBySearch("augur", defaultKeys)(defaultItems), []);
-    }
+  it("should handle a search and not finding anything", () => {
+    assert.deepEqual(filterBySearch("augur", defaultKeys)(defaultItems), []);
   });
 
-  test({
-    description: "should handle a null parentValue in an array",
-    assertions: () => {
-      // look against a key that i know is null in the test data, this should force parentValue = null and an early exit from checkArrayMatch
-      const customKeys = defaultKeys;
-      customKeys.push(["consensus"]);
-      assert.deepEqual(
-        filterBySearch("0xdeadbeef?", customKeys)(defaultItems),
-        []
-      );
-    }
+  it("should handle a null parentValue in an array", () => {
+    // look against a key that i know is null in the test data, this should force parentValue = null and an early exit from checkArrayMatch
+    const customKeys = defaultKeys;
+    customKeys.push(["consensus"]);
+    assert.deepEqual(
+      filterBySearch("0xdeadbeef?", customKeys)(defaultItems),
+      []
+    );
   });
 
-  test({
-    description:
-      "should handle a search and finding markets because of description match",
-    assertions: () => {
-      assert.deepEqual(
-        filterBySearch("test description", defaultKeys)(defaultItems),
-        ["testMarketId", "testMarketId2"]
-      );
-    }
+  it("should handle a search and finding markets because of description match", () => {
+    assert.deepEqual(
+      filterBySearch("test description", defaultKeys)(defaultItems),
+      ["testMarketId", "testMarketId2"]
+    );
   });
 
-  test({
-    description:
-      "should handle a search and finding a market because of tags match",
-    assertions: () => {
-      assert.deepEqual(filterBySearch("tag2", defaultKeys)(defaultItems), [
-        "testMarketId2"
-      ]);
-    }
+  it("should handle a search and finding a market because of tags match", () => {
+    assert.deepEqual(filterBySearch("tag2", defaultKeys)(defaultItems), [
+      "testMarketId2"
+    ]);
   });
 
-  test({
-    description:
-      "should handle a search and finding a market because of outcomes match",
-    assertions: () => {
-      assert.deepEqual(filterBySearch("outcome", defaultKeys)(defaultItems), [
-        "testMarketId"
-      ]);
-    }
+  it("should handle a search and finding a market because of outcomes match", () => {
+    assert.deepEqual(filterBySearch("outcome", defaultKeys)(defaultItems), [
+      "testMarketId"
+    ]);
   });
 
-  test({
-    description: "should handle a Object parentValue for checkArrayMatch",
-    assertions: () => {
-      const customKeys = defaultKeys;
-      customKeys.push(["outstandingShares", "full"]);
-      assert.deepEqual(filterBySearch("shares", customKeys)(defaultItems), [
-        "testMarketId",
-        "testMarketId2"
-      ]);
-    }
+  it("should handle a Object parentValue for checkArrayMatch", () => {
+    const customKeys = defaultKeys;
+    customKeys.push(["outstandingShares", "full"]);
+    assert.deepEqual(filterBySearch("shares", customKeys)(defaultItems), [
+      "testMarketId",
+      "testMarketId2"
+    ]);
   });
 });

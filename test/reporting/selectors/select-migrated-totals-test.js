@@ -67,124 +67,121 @@ describe(`modules/reporting/selectors/select-migrated-totals.js`, () => {
 
   RewireAPI.__Rewire__("formatAttoRep", echoStub);
 
-  test({
-    description: `scalar market with more than 9 disputes and includes indeterminate`,
-    assertions: () => {
-      const totals = {
-        2202: {
-          repTotal: 201,
-          winner: false,
-          isInvalid: false
-        },
-        2200: {
-          repTotal: 11,
-          winner: false,
-          isInvalid: false
-        },
-        0.5: {
-          repTotal: 135,
-          winner: false,
-          isInvalid: true
-        },
-        2221: {
-          repTotal: 31,
-          winner: false,
-          isInvalid: false
-        },
-        2122: {
-          repTotal: 131,
-          winner: false,
-          isInvalid: false
-        },
-        1222: {
-          repTotal: 221,
-          winner: false,
-          isInvalid: false
-        },
-        2332: {
-          repTotal: 230,
-          winner: false,
-          isInvalid: false
-        },
-        2552: {
-          repTotal: 231,
-          winner: false,
-          isInvalid: false
-        },
-        2113: {
-          repTotal: 2.33,
-          winner: false,
-          isInvalid: false
-        },
-        21: {
-          repTotal: 1.33,
-          winner: false,
-          isInvalid: false
-        },
-        211: {
-          repTotal: 0.33,
-          winner: false,
-          isInvalid: false
-        }
-      };
+  it(`scalar market with more than 9 disputes and includes indeterminate`, () => {
+    const totals = {
+      2202: {
+        repTotal: 201,
+        winner: false,
+        isInvalid: false
+      },
+      2200: {
+        repTotal: 11,
+        winner: false,
+        isInvalid: false
+      },
+      0.5: {
+        repTotal: 135,
+        winner: false,
+        isInvalid: true
+      },
+      2221: {
+        repTotal: 31,
+        winner: false,
+        isInvalid: false
+      },
+      2122: {
+        repTotal: 131,
+        winner: false,
+        isInvalid: false
+      },
+      1222: {
+        repTotal: 221,
+        winner: false,
+        isInvalid: false
+      },
+      2332: {
+        repTotal: 230,
+        winner: false,
+        isInvalid: false
+      },
+      2552: {
+        repTotal: 231,
+        winner: false,
+        isInvalid: false
+      },
+      2113: {
+        repTotal: 2.33,
+        winner: false,
+        isInvalid: false
+      },
+      21: {
+        repTotal: 1.33,
+        winner: false,
+        isInvalid: false
+      },
+      211: {
+        repTotal: 0.33,
+        winner: false,
+        isInvalid: false
+      }
+    };
 
-      const expected = [
-        {
-          ...immutableDelete(totals[2552], "repTotal"),
-          name: "2552",
-          id: "2552",
-          rep: { formatted: "231", fullPrecision: 231 }
-        },
-        {
-          ...immutableDelete(totals[2332], "repTotal"),
-          name: "2332",
-          id: "2332",
-          rep: { formatted: "230", fullPrecision: 230 }
-        },
-        {
-          ...immutableDelete(totals[1222], "repTotal"),
-          name: "1222",
-          id: "1222",
-          rep: { formatted: "221", fullPrecision: 221 }
-        },
-        {
-          ...immutableDelete(totals[2202], "repTotal"),
-          name: "2202",
-          id: "2202",
-          rep: { formatted: "201", fullPrecision: 201 }
-        },
-        {
-          ...immutableDelete(totals[0.5], "repTotal"),
-          name: "Indeterminate",
-          id: "0.5",
-          rep: { formatted: "135", fullPrecision: 135 }
-        },
-        {
-          ...immutableDelete(totals[2122], "repTotal"),
-          name: "2122",
-          id: "2122",
-          rep: { formatted: "131", fullPrecision: 131 }
-        },
-        {
-          ...immutableDelete(totals[2221], "repTotal"),
-          name: "2221",
-          id: "2221",
-          rep: { formatted: "31", fullPrecision: 31 }
-        },
-        {
-          ...immutableDelete(totals[2200], "repTotal"),
-          name: "2200",
-          id: "2200",
-          rep: { formatted: "11", fullPrecision: 11 }
-        }
-      ];
+    const expected = [
+      {
+        ...immutableDelete(totals[2552], "repTotal"),
+        name: "2552",
+        id: "2552",
+        rep: { formatted: "231", fullPrecision: 231 }
+      },
+      {
+        ...immutableDelete(totals[2332], "repTotal"),
+        name: "2332",
+        id: "2332",
+        rep: { formatted: "230", fullPrecision: 230 }
+      },
+      {
+        ...immutableDelete(totals[1222], "repTotal"),
+        name: "1222",
+        id: "1222",
+        rep: { formatted: "221", fullPrecision: 221 }
+      },
+      {
+        ...immutableDelete(totals[2202], "repTotal"),
+        name: "2202",
+        id: "2202",
+        rep: { formatted: "201", fullPrecision: 201 }
+      },
+      {
+        ...immutableDelete(totals[0.5], "repTotal"),
+        name: "Indeterminate",
+        id: "0.5",
+        rep: { formatted: "135", fullPrecision: 135 }
+      },
+      {
+        ...immutableDelete(totals[2122], "repTotal"),
+        name: "2122",
+        id: "2122",
+        rep: { formatted: "131", fullPrecision: 131 }
+      },
+      {
+        ...immutableDelete(totals[2221], "repTotal"),
+        name: "2221",
+        id: "2221",
+        rep: { formatted: "31", fullPrecision: 31 }
+      },
+      {
+        ...immutableDelete(totals[2200], "repTotal"),
+        name: "2200",
+        id: "2200",
+        rep: { formatted: "11", fullPrecision: 11 }
+      }
+    ];
 
-      const actual = selectMigratedTotals(
-        marketScalar.reportableOutcomes,
-        totals
-      );
-      assert.deepEqual(actual, expected, `Didn't call the expected method`);
-    }
+    const actual = selectMigratedTotals(
+      marketScalar.reportableOutcomes,
+      totals
+    );
+    assert.deepEqual(actual, expected, `Didn't call the expected method`);
   });
 
   test({
