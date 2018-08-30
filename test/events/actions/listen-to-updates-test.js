@@ -68,19 +68,15 @@ describe("events/actions/listen-to-updates", () => {
         store.dispatch(listenToUpdates({}));
         t.assertions(store.getActions());
       });
-    test({
-      description:
-        "it should handle clearing all listeners then setting all listeners when called.",
-      assertions: actions =>
-        expect(actions).toEqual([
-          ACTIONS.STOP_BLOCK_LISTENERS,
-          ACTIONS.STOP_AUGUR_NODE_EVENT_LISTENERS,
-          ACTIONS.START_BLOCK_LISTENERS,
-          ACTIONS.START_AUGUR_NODE_EVENT_LISTENERS,
-          ACTIONS.NODES_AUGUR_ON_SET,
-          ACTIONS.NODES_ETHEREUM_ON_SET
-        ])
-    });
+    test("it should handle clearing all listeners then setting all listeners when called.", actions =>
+      expect(actions).toEqual([
+        ACTIONS.STOP_BLOCK_LISTENERS,
+        ACTIONS.STOP_AUGUR_NODE_EVENT_LISTENERS,
+        ACTIONS.START_BLOCK_LISTENERS,
+        ACTIONS.START_AUGUR_NODE_EVENT_LISTENERS,
+        ACTIONS.NODES_AUGUR_ON_SET,
+        ACTIONS.NODES_ETHEREUM_ON_SET
+      ]));
   });
   describe("MarketState", () => {
     const test = t =>

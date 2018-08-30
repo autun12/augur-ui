@@ -22,22 +22,19 @@ describe(`modules/transactions/selectors/transactions.js`, () => {
       t.assertions(store);
     });
 
-  test({
-    description: `should call the expected method`,
-    assertions: () => {
-      const transactions = require("modules/transactions/selectors/transactions");
+  test(`should call the expected method`, () => {
+    const transactions = require("modules/transactions/selectors/transactions");
 
-      transactions.__RewireAPI__.__Rewire__(
-        "selectTransactions",
-        () => "selectTransactions"
-      );
+    transactions.__RewireAPI__.__Rewire__(
+      "selectTransactions",
+      () => "selectTransactions"
+    );
 
-      const actual = transactions.default();
+    const actual = transactions.default();
 
-      const expected = "selectTransactions";
+    const expected = "selectTransactions";
 
-      expect(actual).toBe(expected);
-    }
+    expect(actual).toBe(expected);
   });
 
   test({

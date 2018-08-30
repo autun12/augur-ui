@@ -192,10 +192,9 @@ describe("modules/market/actions/load-full-market.js", () => {
       __RewireAPI__.__ResetDependency__("loadingError");
     });
 
-    test({
-      description:
-        "should dispatch the expected actions WITHOUT chained errors",
-      assertions: (store, done) => {
+    test(
+      "should dispatch the expected actions WITHOUT chained errors",
+      (store, done) => {
         __RewireAPI__.__Rewire__("loadBidsAsks", (marketId, cb) => {
           cb();
           return {
@@ -265,12 +264,11 @@ describe("modules/market/actions/load-full-market.js", () => {
 
         done();
       }
-    });
+    );
 
-    test({
-      description:
-        "should dispatch the expected actions WITH error returned from `loadBidsAsks`",
-      assertions: (store, done) => {
+    test(
+      "should dispatch the expected actions WITH error returned from `loadBidsAsks`",
+      (store, done) => {
         const stubbedLoadingError = sinon.stub();
         __RewireAPI__.__Rewire__("loadingError", stubbedLoadingError);
 
@@ -304,11 +302,10 @@ describe("modules/market/actions/load-full-market.js", () => {
 
         done();
       }
-    });
-    test({
-      description:
-        "should dispatch the expected actions WITH error returned from `loadAccountTrades`",
-      assertions: (store, done) => {
+    );
+    test(
+      "should dispatch the expected actions WITH error returned from `loadAccountTrades`",
+      (store, done) => {
         const stubbedLoadingError = sinon.stub();
         __RewireAPI__.__Rewire__("loadingError", stubbedLoadingError);
 
@@ -357,12 +354,11 @@ describe("modules/market/actions/load-full-market.js", () => {
 
         done();
       }
-    });
+    );
 
-    test({
-      description:
-        "should dispatch the expected actions WITH error returned from `loadPriceHistory`",
-      assertions: (store, done) => {
+    test(
+      "should dispatch the expected actions WITH error returned from `loadPriceHistory`",
+      (store, done) => {
         const stubbedLoadingError = sinon.stub();
         __RewireAPI__.__Rewire__("loadingError", stubbedLoadingError);
 
@@ -428,7 +424,7 @@ describe("modules/market/actions/load-full-market.js", () => {
 
         done();
       }
-    });
+    );
   });
 
   describe("loadingError", () => {
@@ -445,10 +441,9 @@ describe("modules/market/actions/load-full-market.js", () => {
 
     const loadingError = __RewireAPI__.__get__("loadingError");
 
-    test({
-      description:
-        "should remove the market from the loading state + call the callback with error parameter",
-      assertions: (store, done) => {
+    test(
+      "should remove the market from the loading state + call the callback with error parameter",
+      (store, done) => {
         let callbackReturnValue;
 
         const callback = err => {
@@ -473,6 +468,6 @@ describe("modules/market/actions/load-full-market.js", () => {
 
         done();
       }
-    });
+    );
   });
 });

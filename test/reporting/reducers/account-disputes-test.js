@@ -24,86 +24,68 @@ describe(`modules/reporting/reducers/account-disputes-state.js`, () => {
     outcome: "0"
   };
 
-  test({
-    description: `default state`,
-    assertions: () => {
-      expect(reducer(undefined, { type: ActionTypes.INIT })).toEqual({});
-    }
+  test(`default state`, () => {
+    expect(reducer(undefined, { type: ActionTypes.INIT })).toEqual({});
   });
 
-  test({
-    description: `add one dispute`,
-    assertions: () => {
-      const expected = {
-        marketId1: marketId1Data
-      };
-      expect(
-        reducer(undefined, {
-          type: UPDATE_ACCOUNT_DISPUTE,
-          data: marketId1Data
-        })
-      ).toEqual(expected);
-    }
-  });
-
-  test({
-    description: `add multiple dispute`,
-    assertions: () => {
-      const state = reducer(
-        {},
-        { type: UPDATE_ACCOUNT_DISPUTE, data: marketId1Data }
-      );
-      const actual = reducer(state, {
+  test(`add one dispute`, () => {
+    const expected = {
+      marketId1: marketId1Data
+    };
+    expect(
+      reducer(undefined, {
         type: UPDATE_ACCOUNT_DISPUTE,
-        data: marketId2Data
-      });
-      const expected = {
-        marketId1: marketId1Data,
-        marketId2: marketId2Data
-      };
-      expect(actual).toEqual(expected);
-    }
-  });
-
-  test({
-    description: `remove one dispute`,
-    assertions: () => {
-      const data = {
-        marketId1: marketId1Data,
-        marketId2: marketId2Data
-      };
-      const actual = reducer(data, {
-        type: REMOVE_ACCOUNT_DISPUTE,
         data: marketId1Data
-      });
-      const expected = {
-        marketId2: marketId2Data
-      };
-      expect(actual).toEqual(expected);
-    }
+      })
+    ).toEqual(expected);
   });
 
-  test({
-    description: `clear all account disputes`,
-    assertions: () => {
-      const data = {
-        marketId1: marketId1Data,
-        marketId2: marketId2Data
-      };
-      const actual = reducer(data, { type: CLEAR_ACCOUNT_DISPUTES });
-      expect(actual).toEqual(DEFAULT_STATE);
-    }
+  test(`add multiple dispute`, () => {
+    const state = reducer(
+      {},
+      { type: UPDATE_ACCOUNT_DISPUTE, data: marketId1Data }
+    );
+    const actual = reducer(state, {
+      type: UPDATE_ACCOUNT_DISPUTE,
+      data: marketId2Data
+    });
+    const expected = {
+      marketId1: marketId1Data,
+      marketId2: marketId2Data
+    };
+    expect(actual).toEqual(expected);
   });
 
-  test({
-    description: `reset state account disputes`,
-    assertions: () => {
-      const data = {
-        marketId1: marketId1Data,
-        marketId2: marketId2Data
-      };
-      const actual = reducer(data, { type: RESET_STATE });
-      expect(actual).toEqual(DEFAULT_STATE);
-    }
+  test(`remove one dispute`, () => {
+    const data = {
+      marketId1: marketId1Data,
+      marketId2: marketId2Data
+    };
+    const actual = reducer(data, {
+      type: REMOVE_ACCOUNT_DISPUTE,
+      data: marketId1Data
+    });
+    const expected = {
+      marketId2: marketId2Data
+    };
+    expect(actual).toEqual(expected);
+  });
+
+  test(`clear all account disputes`, () => {
+    const data = {
+      marketId1: marketId1Data,
+      marketId2: marketId2Data
+    };
+    const actual = reducer(data, { type: CLEAR_ACCOUNT_DISPUTES });
+    expect(actual).toEqual(DEFAULT_STATE);
+  });
+
+  test(`reset state account disputes`, () => {
+    const data = {
+      marketId1: marketId1Data,
+      marketId2: marketId2Data
+    };
+    const actual = reducer(data, { type: RESET_STATE });
+    expect(actual).toEqual(DEFAULT_STATE);
   });
 });

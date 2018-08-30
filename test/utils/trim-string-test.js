@@ -1,27 +1,19 @@
 import trimString from "utils/trim-string";
 
 describe("utils/trim-string", () => {
-  const test = t => test(t.description, () => t.assertions());
+  test(`should return null when argument is undefined`, () => {
+    const actual = trimString();
 
-  test({
-    description: `should return null when argument is undefined`,
-    assertions: () => {
-      const actual = trimString();
+    const expected = null;
 
-      const expected = null;
-
-      expect(actual).toBe(expected);
-    }
+    expect(actual).toBe(expected);
   });
 
-  test({
-    description: `should return a trimmed string`,
-    assertions: () => {
-      const actual = trimString("string to be trimmed");
+  test(`should return a trimmed string`, () => {
+    const actual = trimString("string to be trimmed");
 
-      const expected = "stri...";
+    const expected = "stri...";
 
-      expect(actual).toBe(expected);
-    }
+    expect(actual).toBe(expected);
   });
 });

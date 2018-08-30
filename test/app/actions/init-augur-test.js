@@ -115,9 +115,177 @@ describe("modules/app/actions/init-augur.js", () => {
   describe("initAugur", () => {
     const test = t => test(t.description, done => t.assertions(done));
 
-    test({
-      description: "Should InitAugur successfully, with logged in account",
-      assertions: done => {
+    test("Should InitAugur successfully, with logged in account", done => {
+      ReWireModule.__Rewire__("AugurJS", {
+        connect: (env, cb) => {
+          cb(null, {
+            ethereumNode: {
+              ...ethereumNodeConnectionInfo,
+              contracts: {},
+              abi: {
+                functions: {},
+                events: {}
+              }
+            },
+            augurNode: augurNodeWS
+          });
+        },
+        augur: {
+          contracts: { addresses: { 4: { Universe: "0xb0b" } } },
+          rpc: {
+            getNetworkID: () => 4,
+            eth: { accounts: cb => cb(null, ["0xa11ce"]) }
+          },
+          api: { Controller: { stopped: () => {} } }
+        }
+      });
+
+      store.dispatch(
+        initAugur({}, {}, (err, connInfo) => {
+          assert.isUndefined(
+            err,
+            "callback passed to initAugur had a first argument when expecting undefined."
+          );
+          assert.isUndefined(
+            connInfo,
+            "callback passed to initAugur had a second argument when expecting undefined."
+          );
+          done();
+        })
+      );
+
+      const expected = [
+        { type: "UPDATE_ENV" },
+        { type: "UPDATE_CONNECTION_STATUS" },
+        { type: "UPDATE_CONTRACT_ADDRESSES" },
+        { type: "UPDATE_FUNCTIONS_API" },
+        { type: "UPDATE_EVENTS_API" },
+        { type: "UPDATE_AUGUR_NODE_CONNECTION_STATUS" },
+        { type: "REGISTER_TRANSACTION_RELAY" },
+        { type: "LOAD_UNIVERSE" },
+        { type: "CLOSE_MODAL" },
+        { type: "SET_LOGIN_ACCOUNT" }
+      ];
+
+      expect(store.getActions()).toEqual(expected);
+    });
+    test("Should InitAugur successfully, not logged in", done => {
+      ReWireModule.__Rewire__("AugurJS", {
+        connect: (env, cb) => {
+          cb(null, {
+            ethereumNode: {
+              ...ethereumNodeConnectionInfo,
+              contracts: {},
+              abi: {
+                functions: {},
+                events: {}
+              }
+            },
+            augurNode: augurNodeWS
+          });
+        },
+        augur: {
+          contracts: { addresses: { 4: { Universe: "0xb0b" } } },
+          rpc: {
+            getNetworkID: () => 4,
+            eth: { accounts: cb => cb(null, []) }
+          },
+          api: { Controller: { stopped: () => {} } }
+        }
+      });
+
+      store.dispatch(
+        initAugur({}, {}, (err, connInfo) => {
+          assert.isUndefined(
+            err,
+            "callback passed to initAugur had a first argument when expecting undefined."
+          );
+          assert.isUndefined(
+            connInfo,
+            "callback passed to initAugur had a second argument when expecting undefined."
+          );
+          done();
+        })
+      );
+
+      const expected = [
+        { type: "UPDATE_ENV" },
+        { type: "UPDATE_CONNECTION_STATUS" },
+        { type: "UPDATE_CONTRACT_ADDRESSES" },
+        { type: "UPDATE_FUNCTIONS_API" },
+        { type: "UPDATE_EVENTS_API" },
+        { type: "UPDATE_AUGUR_NODE_CONNECTION_STATUS" },
+        { type: "REGISTER_TRANSACTION_RELAY" },
+        { type: "LOAD_UNIVERSE" },
+        { type: "CLOSE_MODAL" },
+        { type: "LOGOUT" }
+      ];
+
+      expect(store.getActions()).toEqual(expected);
+    });
+    test("Should InitAugur successfully, not logged in, unexpectedNetworkId", done => {
+      ReWireModule.__Rewire__("AugurJS", {
+        connect: (env, cb) => {
+          cb(null, {
+            ethereumNode: {
+              ...ethereumNodeConnectionInfo,
+              contracts: {},
+              abi: {
+                functions: {},
+                events: {}
+              }
+            },
+            augurNode: augurNodeWS
+          });
+        },
+        augur: {
+          contracts: {
+            addresses: {
+              4: { Universe: "0xb0b" },
+              3: { Universe: "0xc41231e2" }
+            }
+          },
+          rpc: {
+            getNetworkID: () => 3,
+            eth: { accounts: cb => cb(null, []) }
+          },
+          api: { Controller: { stopped: () => {} } }
+        }
+      });
+
+      store.dispatch(
+        initAugur({}, {}, (err, connInfo) => {
+          assert.isUndefined(
+            err,
+            "callback passed to initAugur had a first argument when expecting undefined."
+          );
+          assert.isUndefined(
+            connInfo,
+            "callback passed to initAugur had a second argument when expecting undefined."
+          );
+          done();
+        })
+      );
+
+      const expected = [
+        { type: "UPDATE_ENV" },
+        { type: "UPDATE_CONNECTION_STATUS" },
+        { type: "UPDATE_CONTRACT_ADDRESSES" },
+        { type: "UPDATE_FUNCTIONS_API" },
+        { type: "UPDATE_EVENTS_API" },
+        { type: "UPDATE_AUGUR_NODE_CONNECTION_STATUS" },
+        { type: "REGISTER_TRANSACTION_RELAY" },
+        { type: "LOAD_UNIVERSE" },
+        { type: "UPDATE_MODAL" },
+        { type: "LOGOUT" }
+      ];
+
+      expect(store.getActions()).toEqual(expected);
+    });
+    describe("connectAugur", () => {
+      const test = t => test(t.description, done => t.assertions(done));
+
+      test("Should connectAugur successfully as an initial connection, with logged in account", done => {
         ReWireModule.__Rewire__("AugurJS", {
           connect: (env, cb) => {
             cb(null, {
@@ -143,21 +311,20 @@ describe("modules/app/actions/init-augur.js", () => {
         });
 
         store.dispatch(
-          initAugur({}, {}, (err, connInfo) => {
+          connectAugur({}, mockEnv, true, (err, connInfo) => {
             assert.isUndefined(
               err,
-              "callback passed to initAugur had a first argument when expecting undefined."
+              "callback passed to connectAugur had a first argument when expecting undefined."
             );
             assert.isUndefined(
               connInfo,
-              "callback passed to initAugur had a second argument when expecting undefined."
+              "callback passed to connectAugur had a second argument when expecting undefined."
             );
             done();
           })
         );
 
         const expected = [
-          { type: "UPDATE_ENV" },
           { type: "UPDATE_CONNECTION_STATUS" },
           { type: "UPDATE_CONTRACT_ADDRESSES" },
           { type: "UPDATE_FUNCTIONS_API" },
@@ -170,11 +337,8 @@ describe("modules/app/actions/init-augur.js", () => {
         ];
 
         expect(store.getActions()).toEqual(expected);
-      }
-    });
-    test({
-      description: "Should InitAugur successfully, not logged in",
-      assertions: done => {
+      });
+      test("Should connectAugur successfully as a reconnection", done => {
         ReWireModule.__Rewire__("AugurJS", {
           connect: (env, cb) => {
             cb(null, {
@@ -200,19 +364,18 @@ describe("modules/app/actions/init-augur.js", () => {
         });
 
         store.dispatch(
-          initAugur({}, {}, (err, connInfo) => {
+          connectAugur({}, mockEnv, false, (err, connInfo) => {
             assert.isUndefined(
               err,
-              "callback passed to initAugur had a first argument when expecting undefined."
+              "callback passed to connectAguur had a first argument when expecting undefined."
             );
             assert.isUndefined(
               connInfo,
-              "callback passed to initAugur had a second argument when expecting undefined."
+              "callback passed to connectAguur had a second argument when expecting undefined."
             );
             done();
           })
         );
-
         const expected = [
           { type: "UPDATE_ENV" },
           { type: "UPDATE_CONNECTION_STATUS" },
@@ -221,18 +384,12 @@ describe("modules/app/actions/init-augur.js", () => {
           { type: "UPDATE_EVENTS_API" },
           { type: "UPDATE_AUGUR_NODE_CONNECTION_STATUS" },
           { type: "REGISTER_TRANSACTION_RELAY" },
-          { type: "LOAD_UNIVERSE" },
-          { type: "CLOSE_MODAL" },
-          { type: "LOGOUT" }
+          { type: "LOAD_UNIVERSE" }
         ];
 
         expect(store.getActions()).toEqual(expected);
-      }
-    });
-    test({
-      description:
-        "Should InitAugur successfully, not logged in, unexpectedNetworkId",
-      assertions: done => {
+      });
+      test("Should handle a undefined augurNode from AugurJS.connect", done => {
         ReWireModule.__Rewire__("AugurJS", {
           connect: (env, cb) => {
             cb(null, {
@@ -244,6 +401,53 @@ describe("modules/app/actions/init-augur.js", () => {
                   events: {}
                 }
               },
+              augurNode: undefined
+            });
+          },
+          augur: {
+            contracts: {
+              addresses: {
+                4: { Universe: "0xb0b" },
+                3: { Universe: "0xc41231e2" }
+              }
+            },
+            rpc: {
+              getNetworkID: () => 4,
+              eth: { accounts: cb => cb(null, []) }
+            }
+          }
+        });
+
+        store.dispatch(
+          connectAugur({}, mockEnv, false, (err, connInfo) => {
+            assert.isNull(
+              err,
+              "callback passed to connectAugur had a first argument when expecting null."
+            );
+            expect(connInfo).toEqual({
+              ethereumNode: {
+                ...ethereumNodeConnectionInfo,
+                contracts: {},
+                abi: {
+                  functions: {},
+                  events: {}
+                }
+              },
+              augurNode: undefined
+            });
+            done();
+          })
+        );
+
+        const expected = [];
+
+        expect(store.getActions()).toEqual(expected);
+      });
+      test("Should handle a undefined ethereumNode from AugurJS.connect", done => {
+        ReWireModule.__Rewire__("AugurJS", {
+          connect: (env, cb) => {
+            cb(null, {
+              ethereumNode: undefined,
               augurNode: augurNodeWS
             });
           },
@@ -255,303 +459,72 @@ describe("modules/app/actions/init-augur.js", () => {
               }
             },
             rpc: {
-              getNetworkID: () => 3,
+              getNetworkID: () => 4,
               eth: { accounts: cb => cb(null, []) }
-            },
-            api: { Controller: { stopped: () => {} } }
+            }
           }
         });
 
         store.dispatch(
-          initAugur({}, {}, (err, connInfo) => {
-            assert.isUndefined(
+          connectAugur({}, mockEnv, false, (err, connInfo) => {
+            assert.isNull(
               err,
-              "callback passed to initAugur had a first argument when expecting undefined."
+              "callback passed to connectAugur had a first argument when expecting null."
             );
-            assert.isUndefined(
-              connInfo,
-              "callback passed to initAugur had a second argument when expecting undefined."
-            );
+            expect(connInfo).toEqual({
+              ethereumNode: undefined,
+              augurNode: augurNodeWS
+            });
             done();
           })
         );
 
-        const expected = [
-          { type: "UPDATE_ENV" },
-          { type: "UPDATE_CONNECTION_STATUS" },
-          { type: "UPDATE_CONTRACT_ADDRESSES" },
-          { type: "UPDATE_FUNCTIONS_API" },
-          { type: "UPDATE_EVENTS_API" },
-          { type: "UPDATE_AUGUR_NODE_CONNECTION_STATUS" },
-          { type: "REGISTER_TRANSACTION_RELAY" },
-          { type: "LOAD_UNIVERSE" },
-          { type: "UPDATE_MODAL" },
-          { type: "LOGOUT" }
-        ];
+        const expected = [];
 
         expect(store.getActions()).toEqual(expected);
-      }
-    });
-    describe("connectAugur", () => {
-      const test = t => test(t.description, done => t.assertions(done));
-
-      test({
-        description:
-          "Should connectAugur successfully as an initial connection, with logged in account",
-        assertions: done => {
-          ReWireModule.__Rewire__("AugurJS", {
-            connect: (env, cb) => {
-              cb(null, {
-                ethereumNode: {
-                  ...ethereumNodeConnectionInfo,
-                  contracts: {},
-                  abi: {
-                    functions: {},
-                    events: {}
-                  }
-                },
-                augurNode: augurNodeWS
-              });
-            },
-            augur: {
-              contracts: { addresses: { 4: { Universe: "0xb0b" } } },
-              rpc: {
-                getNetworkID: () => 4,
-                eth: { accounts: cb => cb(null, ["0xa11ce"]) }
-              },
-              api: { Controller: { stopped: () => {} } }
-            }
-          });
-
-          store.dispatch(
-            connectAugur({}, mockEnv, true, (err, connInfo) => {
-              assert.isUndefined(
-                err,
-                "callback passed to connectAugur had a first argument when expecting undefined."
-              );
-              assert.isUndefined(
-                connInfo,
-                "callback passed to connectAugur had a second argument when expecting undefined."
-              );
-              done();
-            })
-          );
-
-          const expected = [
-            { type: "UPDATE_CONNECTION_STATUS" },
-            { type: "UPDATE_CONTRACT_ADDRESSES" },
-            { type: "UPDATE_FUNCTIONS_API" },
-            { type: "UPDATE_EVENTS_API" },
-            { type: "UPDATE_AUGUR_NODE_CONNECTION_STATUS" },
-            { type: "REGISTER_TRANSACTION_RELAY" },
-            { type: "LOAD_UNIVERSE" },
-            { type: "CLOSE_MODAL" },
-            { type: "SET_LOGIN_ACCOUNT" }
-          ];
-
-          expect(store.getActions()).toEqual(expected);
-        }
       });
-      test({
-        description: "Should connectAugur successfully as a reconnection",
-        assertions: done => {
-          ReWireModule.__Rewire__("AugurJS", {
-            connect: (env, cb) => {
-              cb(null, {
-                ethereumNode: {
-                  ...ethereumNodeConnectionInfo,
-                  contracts: {},
-                  abi: {
-                    functions: {},
-                    events: {}
-                  }
-                },
-                augurNode: augurNodeWS
-              });
-            },
-            augur: {
-              contracts: { addresses: { 4: { Universe: "0xb0b" } } },
-              rpc: {
-                getNetworkID: () => 4,
-                eth: { accounts: cb => cb(null, []) }
-              },
-              api: { Controller: { stopped: () => {} } }
-            }
-          });
-
-          store.dispatch(
-            connectAugur({}, mockEnv, false, (err, connInfo) => {
-              assert.isUndefined(
-                err,
-                "callback passed to connectAguur had a first argument when expecting undefined."
-              );
-              assert.isUndefined(
-                connInfo,
-                "callback passed to connectAguur had a second argument when expecting undefined."
-              );
-              done();
-            })
-          );
-          const expected = [
-            { type: "UPDATE_ENV" },
-            { type: "UPDATE_CONNECTION_STATUS" },
-            { type: "UPDATE_CONTRACT_ADDRESSES" },
-            { type: "UPDATE_FUNCTIONS_API" },
-            { type: "UPDATE_EVENTS_API" },
-            { type: "UPDATE_AUGUR_NODE_CONNECTION_STATUS" },
-            { type: "REGISTER_TRANSACTION_RELAY" },
-            { type: "LOAD_UNIVERSE" }
-          ];
-
-          expect(store.getActions()).toEqual(expected);
-        }
-      });
-      test({
-        description: "Should handle a undefined augurNode from AugurJS.connect",
-        assertions: done => {
-          ReWireModule.__Rewire__("AugurJS", {
-            connect: (env, cb) => {
-              cb(null, {
-                ethereumNode: {
-                  ...ethereumNodeConnectionInfo,
-                  contracts: {},
-                  abi: {
-                    functions: {},
-                    events: {}
-                  }
-                },
-                augurNode: undefined
-              });
-            },
-            augur: {
-              contracts: {
-                addresses: {
-                  4: { Universe: "0xb0b" },
-                  3: { Universe: "0xc41231e2" }
-                }
-              },
-              rpc: {
-                getNetworkID: () => 4,
-                eth: { accounts: cb => cb(null, []) }
-              }
-            }
-          });
-
-          store.dispatch(
-            connectAugur({}, mockEnv, false, (err, connInfo) => {
-              assert.isNull(
-                err,
-                "callback passed to connectAugur had a first argument when expecting null."
-              );
-              expect(connInfo).toEqual({
-                ethereumNode: {
-                  ...ethereumNodeConnectionInfo,
-                  contracts: {},
-                  abi: {
-                    functions: {},
-                    events: {}
-                  }
-                },
-                augurNode: undefined
-              });
-              done();
-            })
-          );
-
-          const expected = [];
-
-          expect(store.getActions()).toEqual(expected);
-        }
-      });
-      test({
-        description:
-          "Should handle a undefined ethereumNode from AugurJS.connect",
-        assertions: done => {
-          ReWireModule.__Rewire__("AugurJS", {
-            connect: (env, cb) => {
-              cb(null, {
-                ethereumNode: undefined,
-                augurNode: augurNodeWS
-              });
-            },
-            augur: {
-              contracts: {
-                addresses: {
-                  4: { Universe: "0xb0b" },
-                  3: { Universe: "0xc41231e2" }
-                }
-              },
-              rpc: {
-                getNetworkID: () => 4,
-                eth: { accounts: cb => cb(null, []) }
-              }
-            }
-          });
-
-          store.dispatch(
-            connectAugur({}, mockEnv, false, (err, connInfo) => {
-              assert.isNull(
-                err,
-                "callback passed to connectAugur had a first argument when expecting null."
-              );
-              expect(connInfo).toEqual({
-                ethereumNode: undefined,
-                augurNode: augurNodeWS
-              });
-              done();
-            })
-          );
-
-          const expected = [];
-
-          expect(store.getActions()).toEqual(expected);
-        }
-      });
-      test({
-        description: "Should handle a error object back from AugurJS.connect",
-        assertions: done => {
-          ReWireModule.__Rewire__("AugurJS", {
-            connect: (env, cb) => {
-              cb(
-                { error: 2000, message: "There was a mistake." },
-                {
-                  ethereumNode: undefined,
-                  augurNode: undefined
-                }
-              );
-            },
-            augur: {
-              contracts: {
-                addresses: {
-                  4: { Universe: "0xb0b" },
-                  3: { Universe: "0xc41231e2" }
-                }
-              },
-              rpc: {
-                getNetworkID: () => 4,
-                eth: { accounts: cb => cb(null, []) }
-              }
-            }
-          });
-
-          store.dispatch(
-            connectAugur({}, mockEnv, false, (err, connInfo) => {
-              expect(err).toEqual({
-                error: 2000,
-                message: "There was a mistake."
-              });
-              expect(connInfo).toEqual({
+      test("Should handle a error object back from AugurJS.connect", done => {
+        ReWireModule.__Rewire__("AugurJS", {
+          connect: (env, cb) => {
+            cb(
+              { error: 2000, message: "There was a mistake." },
+              {
                 ethereumNode: undefined,
                 augurNode: undefined
-              });
-              done();
-            })
-          );
+              }
+            );
+          },
+          augur: {
+            contracts: {
+              addresses: {
+                4: { Universe: "0xb0b" },
+                3: { Universe: "0xc41231e2" }
+              }
+            },
+            rpc: {
+              getNetworkID: () => 4,
+              eth: { accounts: cb => cb(null, []) }
+            }
+          }
+        });
 
-          const expected = [];
+        store.dispatch(
+          connectAugur({}, mockEnv, false, (err, connInfo) => {
+            expect(err).toEqual({
+              error: 2000,
+              message: "There was a mistake."
+            });
+            expect(connInfo).toEqual({
+              ethereumNode: undefined,
+              augurNode: undefined
+            });
+            done();
+          })
+        );
 
-          expect(store.getActions()).toEqual(expected);
-        }
+        const expected = [];
+
+        expect(store.getActions()).toEqual(expected);
       });
     });
   });

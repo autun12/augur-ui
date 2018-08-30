@@ -9,65 +9,56 @@ describe("modules/auth/helpers/is-augurjs-versions-equal", () => {
     isAugurJSVersionsEqualAPI.__ResetDependency__("augur");
   });
 
-  test({
-    description: `Should handle an error from augurNode.getSyncData, and return false`,
-    assertions: () => {
-      isAugurJSVersionsEqualAPI.__Rewire__("augur", {
-        version: "helloWorld",
-        augurNode: {
-          getSyncData: cb => {
-            cb({ error: 1000, message: "Uh-Oh!" });
-          }
+  test(`Should handle an error from augurNode.getSyncData, and return false`, () => {
+    isAugurJSVersionsEqualAPI.__Rewire__("augur", {
+      version: "helloWorld",
+      augurNode: {
+        getSyncData: cb => {
+          cb({ error: 1000, message: "Uh-Oh!" });
         }
-      });
+      }
+    });
 
-      return isAugurJSVersionsEqual().then(res => {
-        expect(typeof res).toBe("object");
-        expect(res.isEqual).toBeFalsy();
-        assert.isUndefined(res.augurNode);
-        expect(res.augurjs).toEqual("helloWorld");
-      });
-    }
+    return isAugurJSVersionsEqual().then(res => {
+      expect(typeof res).toBe("object");
+      expect(res.isEqual).toBeFalsy();
+      assert.isUndefined(res.augurNode);
+      expect(res.augurjs).toEqual("helloWorld");
+    });
   });
 
-  test({
-    description: `Should handle a versionMismatch and return false`,
-    assertions: () => {
-      isAugurJSVersionsEqualAPI.__Rewire__("augur", {
-        version: "helloWorld",
-        augurNode: {
-          getSyncData: cb => {
-            cb(undefined, { version: "goodbyeWorld" });
-          }
+  test(`Should handle a versionMismatch and return false`, () => {
+    isAugurJSVersionsEqualAPI.__Rewire__("augur", {
+      version: "helloWorld",
+      augurNode: {
+        getSyncData: cb => {
+          cb(undefined, { version: "goodbyeWorld" });
         }
-      });
+      }
+    });
 
-      return isAugurJSVersionsEqual().then(res => {
-        expect(typeof res).toBe("object");
-        expect(res.isEqual).toBeFalsy();
-        expect(res.augurNode).toEqual("goodbyeWorld");
-        expect(res.augurjs).toEqual("helloWorld");
-      });
-    }
+    return isAugurJSVersionsEqual().then(res => {
+      expect(typeof res).toBe("object");
+      expect(res.isEqual).toBeFalsy();
+      expect(res.augurNode).toEqual("goodbyeWorld");
+      expect(res.augurjs).toEqual("helloWorld");
+    });
   });
 
-  test({
-    description: `Should handle a matching version and return true`,
-    assertions: () => {
-      isAugurJSVersionsEqualAPI.__Rewire__("augur", {
-        version: "helloWorld",
-        augurNode: {
-          getSyncData: cb => {
-            cb(undefined, { version: "helloWorld" });
-          }
+  test(`Should handle a matching version and return true`, () => {
+    isAugurJSVersionsEqualAPI.__Rewire__("augur", {
+      version: "helloWorld",
+      augurNode: {
+        getSyncData: cb => {
+          cb(undefined, { version: "helloWorld" });
         }
-      });
-      return isAugurJSVersionsEqual().then(res => {
-        expect(typeof res).toBe("object");
-        expect(res.isEqual).toBeTruthy();
-        expect(res.augurNode).toEqual("helloWorld");
-        expect(res.augurjs).toEqual("helloWorld");
-      });
-    }
+      }
+    });
+    return isAugurJSVersionsEqual().then(res => {
+      expect(typeof res).toBe("object");
+      expect(res.isEqual).toBeTruthy();
+      expect(res.augurNode).toEqual("helloWorld");
+      expect(res.augurjs).toEqual("helloWorld");
+    });
   });
 });

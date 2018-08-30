@@ -4,32 +4,24 @@ import {
 } from "modules/app/actions/update-is-mobile";
 
 describe("modules/app/actions/update-is-mobile.js", () => {
-  const test = t => test(t.description, () => t.assertions());
+  test(`should return the expected string`, () => {
+    const expected = "UPDATE_IS_MOBILE";
 
-  test({
-    description: `should return the expected string`,
-    assertions: () => {
-      const expected = "UPDATE_IS_MOBILE";
-
-      expect(UPDATE_IS_MOBILE).toBe(expected);
-    }
+    expect(UPDATE_IS_MOBILE).toBe(expected);
   });
 
   describe(`updateIsMobile`, () => {
-    test({
-      description: `should return the expected object`,
-      assertions: () => {
-        const actual = updateIsMobile(false);
+    test(`should return the expected object`, () => {
+      const actual = updateIsMobile(false);
 
-        const expected = {
-          type: UPDATE_IS_MOBILE,
-          data: {
-            isMobile: false
-          }
-        };
+      const expected = {
+        type: UPDATE_IS_MOBILE,
+        data: {
+          isMobile: false
+        }
+      };
 
-        expect(actual).toEqual(expected);
-      }
+      expect(actual).toEqual(expected);
     });
   });
 });

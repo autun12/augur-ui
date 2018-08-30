@@ -1,203 +1,135 @@
 import * as views from "modules/routes/constants/views";
 
 describe("modules/app/constants/views", () => {
-  const test = t => test(t.description, () => t.assertions());
+  test(`should return the expected value 'DEFAULT_VIEW'`, () => {
+    const expected = "categories";
 
-  test({
-    description: `should return the expected value 'DEFAULT_VIEW'`,
-    assertions: () => {
-      const expected = "categories";
-
-      expect(views.DEFAULT_VIEW).toBe(expected);
-    }
+    expect(views.DEFAULT_VIEW).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'M'`,
-    assertions: () => {
-      const expected = "market";
+  test(`should return the expected value 'M'`, () => {
+    const expected = "market";
 
-      expect(views.MARKET).toBe(expected);
-    }
+    expect(views.MARKET).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MARKETS'`,
-    assertions: () => {
-      const expected = "markets";
+  test(`should return the expected value 'MARKETS'`, () => {
+    const expected = "markets";
 
-      expect(views.MARKETS).toBe(expected);
-    }
+    expect(views.MARKETS).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'CREATE_MARKET'`,
-    assertions: () => {
-      const expected = "create-market";
+  test(`should return the expected value 'CREATE_MARKET'`, () => {
+    const expected = "create-market";
 
-      expect(views.CREATE_MARKET).toBe(expected);
-    }
+    expect(views.CREATE_MARKET).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'TRANSACTIONS'`,
-    assertions: () => {
-      const expected = "transactions";
+  test(`should return the expected value 'TRANSACTIONS'`, () => {
+    const expected = "transactions";
 
-      expect(views.TRANSACTIONS).toBe(expected);
-    }
+    expect(views.TRANSACTIONS).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'ACCOUNT'`,
-    assertions: () => {
-      const expected = "account";
+  test(`should return the expected value 'ACCOUNT'`, () => {
+    const expected = "account";
 
-      expect(views.ACCOUNT).toBe(expected);
-    }
+    expect(views.ACCOUNT).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'AUTHENTICATION'`,
-    assertions: () => {
-      const expected = "authentication";
+  test(`should return the expected value 'AUTHENTICATION'`, () => {
+    const expected = "authentication";
 
-      expect(views.AUTHENTICATION).toBe(expected);
-    }
+    expect(views.AUTHENTICATION).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'CATEGORIES'`,
-    assertions: () => {
-      const expected = "categories";
+  test(`should return the expected value 'CATEGORIES'`, () => {
+    const expected = "categories";
 
-      expect(views.CATEGORIES).toBe(expected);
-    }
+    expect(views.CATEGORIES).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'AUTH_LOGIN'`,
-    assertions: () => {
-      const expected = "authentication";
+  test(`should return the expected value 'AUTH_LOGIN'`, () => {
+    const expected = "authentication";
 
-      expect(views.AUTHENTICATION).toBe(expected);
-    }
+    expect(views.AUTHENTICATION).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MY_POSITIONS'`,
-    assertions: () => {
-      const expected = "my-positions";
+  test(`should return the expected value 'MY_POSITIONS'`, () => {
+    const expected = "my-positions";
 
-      expect(views.MY_POSITIONS).toBe(expected);
-    }
+    expect(views.MY_POSITIONS).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MY_MARKETS'`,
-    assertions: () => {
-      const expected = "my-markets";
+  test(`should return the expected value 'MY_MARKETS'`, () => {
+    const expected = "my-markets";
 
-      expect(views.MY_MARKETS).toBe(expected);
-    }
+    expect(views.MY_MARKETS).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'REPORTING'`,
-    assertions: () => {
-      const expected = "reporting";
+  test(`should return the expected value 'REPORTING'`, () => {
+    const expected = "reporting";
 
-      expect(views.REPORTING).toBe(expected);
-    }
+    expect(views.REPORTING).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MARKET_DATA_NAV_OUTCOMES'`,
-    assertions: () => {
-      const expected = "outcomes";
+  test(`should return the expected value 'MARKET_DATA_NAV_OUTCOMES'`, () => {
+    const expected = "outcomes";
 
-      expect(views.MARKET_DATA_NAV_OUTCOMES).toBe(expected);
-    }
+    expect(views.MARKET_DATA_NAV_OUTCOMES).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MARKET_DATA_ORDERS'`,
-    assertions: () => {
-      const expected = "orders";
+  test(`should return the expected value 'MARKET_DATA_ORDERS'`, () => {
+    const expected = "orders";
 
-      expect(views.MARKET_DATA_ORDERS).toBe(expected);
-    }
+    expect(views.MARKET_DATA_ORDERS).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MARKET_DATA_NAV_CHARTS'`,
-    assertions: () => {
-      const expected = "charts";
+  test(`should return the expected value 'MARKET_DATA_NAV_CHARTS'`, () => {
+    const expected = "charts";
 
-      expect(views.MARKET_DATA_NAV_CHARTS).toBe(expected);
-    }
+    expect(views.MARKET_DATA_NAV_CHARTS).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MARKET_DATA_NAV_DETAILS'`,
-    assertions: () => {
-      const expected = "details";
+  test(`should return the expected value 'MARKET_DATA_NAV_DETAILS'`, () => {
+    const expected = "details";
 
-      expect(views.MARKET_DATA_NAV_DETAILS).toBe(expected);
-    }
+    expect(views.MARKET_DATA_NAV_DETAILS).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MARKET_DATA_NAV_REPORT'`,
-    assertions: () => {
-      const expected = "report";
+  test(`should return the expected value 'MARKET_DATA_NAV_REPORT'`, () => {
+    const expected = "report";
 
-      expect(views.MARKET_DATA_NAV_REPORT).toBe(expected);
-    }
+    expect(views.MARKET_DATA_NAV_REPORT).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MARKET_DATA_NAV_SNITCH'`,
-    assertions: () => {
-      const expected = "snitch";
+  test(`should return the expected value 'MARKET_DATA_NAV_SNITCH'`, () => {
+    const expected = "snitch";
 
-      expect(views.MARKET_DATA_NAV_SNITCH).toBe(expected);
-    }
+    expect(views.MARKET_DATA_NAV_SNITCH).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MARKET_USER_DATA_NAV_POSITIONS'`,
-    assertions: () => {
-      const expected = "positions";
+  test(`should return the expected value 'MARKET_USER_DATA_NAV_POSITIONS'`, () => {
+    const expected = "positions";
 
-      expect(views.MARKET_USER_DATA_NAV_POSITIONS).toBe(expected);
-    }
+    expect(views.MARKET_USER_DATA_NAV_POSITIONS).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'MARKET_USER_DATA_NAV_OPEN_ORDERS'`,
-    assertions: () => {
-      const expected = "open-orders";
+  test(`should return the expected value 'MARKET_USER_DATA_NAV_OPEN_ORDERS'`, () => {
+    const expected = "open-orders";
 
-      expect(views.MARKET_USER_DATA_NAV_OPEN_ORDERS).toBe(expected);
-    }
+    expect(views.MARKET_USER_DATA_NAV_OPEN_ORDERS).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'ACCOUNT_DEPOSIT'`,
-    assertions: () => {
-      const expected = "deposit-funds";
+  test(`should return the expected value 'ACCOUNT_DEPOSIT'`, () => {
+    const expected = "deposit-funds";
 
-      expect(views.ACCOUNT_DEPOSIT).toBe(expected);
-    }
+    expect(views.ACCOUNT_DEPOSIT).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value 'ACCOUNT_TRANSFER'`,
-    assertions: () => {
-      const expected = "transfer-funds";
+  test(`should return the expected value 'ACCOUNT_TRANSFER'`, () => {
+    const expected = "transfer-funds";
 
-      expect(views.ACCOUNT_TRANSFER).toBe(expected);
-    }
+    expect(views.ACCOUNT_TRANSFER).toBe(expected);
   });
 });

@@ -23,15 +23,12 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
       () => "selectPositionsPlusAsks"
     );
 
-    test({
-      description: `should call the expected methods`,
-      assertions: () => {
-        const actual = positionsPlusAsks.default();
+    test(`should call the expected methods`, () => {
+      const actual = positionsPlusAsks.default();
 
-        const expected = "selectPositionsPlusAsks";
+      const expected = "selectPositionsPlusAsks";
 
-        expect(actual).toBe(expected);
-      }
+      expect(actual).toBe(expected);
     });
   });
 
@@ -113,90 +110,75 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
 
     positionsPlusAsks.__Rewire__("getOpenAskShares", () => 1);
 
-    test({
-      description: `should return the expected value without asks passed in`,
-      assertions: () => {
-        const actual = positionsPlusAsks.selectMarketPositionPlusAsks();
+    test(`should return the expected value without asks passed in`, () => {
+      const actual = positionsPlusAsks.selectMarketPositionPlusAsks();
 
-        const expected = {};
+      const expected = {};
 
-        expect(actual).toEqual(expected);
-      }
+      expect(actual).toEqual(expected);
     });
 
-    test({
-      description: `should return the expected value with asks passed in`,
-      assertions: () => {
-        const actual = positionsPlusAsks.selectMarketPositionPlusAsks(
-          null,
-          { 1: "1" },
-          {}
-        );
+    test(`should return the expected value with asks passed in`, () => {
+      const actual = positionsPlusAsks.selectMarketPositionPlusAsks(
+        null,
+        { 1: "1" },
+        {}
+      );
 
-        const expected = {
-          1: "2"
-        };
+      const expected = {
+        1: "2"
+      };
 
-        expect(actual).toEqual(expected);
-      }
+      expect(actual).toEqual(expected);
     });
   });
 
   describe("getOpenAskShares", () => {
     const positionsPlusAsks = require("modules/user-open-orders/selectors/positions-plus-asks");
 
-    test({
-      description: `should return the expected value without account passed`,
-      assertions: () => {
-        const actual = positionsPlusAsks.getOpenAskShares();
+    test(`should return the expected value without account passed`, () => {
+      const actual = positionsPlusAsks.getOpenAskShares();
 
-        const expected = ZERO;
+      const expected = ZERO;
 
-        expect(actual).toEqual(expected);
-      }
+      expect(actual).toEqual(expected);
     });
 
-    test({
-      description: `should return the expected value without askOrders passed`,
-      assertions: () => {
-        const actual = positionsPlusAsks.getOpenAskShares("0xUSERADDRESS", 1);
+    test(`should return the expected value without askOrders passed`, () => {
+      const actual = positionsPlusAsks.getOpenAskShares("0xUSERADDRESS", 1);
 
-        const expected = ZERO;
+      const expected = ZERO;
 
-        expect(actual).toEqual(expected);
-      }
+      expect(actual).toEqual(expected);
     });
 
-    test({
-      description: `should return the expected value`,
-      assertions: () => {
-        const actual = positionsPlusAsks.getOpenAskShares("0xUSERADDRESS", 1, {
-          "0xORDER1": {
-            owner: "0xUSERADDRESS",
-            outcome: 1,
-            amount: "1"
-          },
-          "0xORDER2": {
-            owner: "0xNOTUSERADDRESS",
-            outcome: 1,
-            amount: "1"
-          },
-          "0xORDER3": {
-            owner: "0xUSERADDRESS",
-            outcome: 2,
-            amount: "1"
-          },
-          "0xORDER4": {
-            owner: "0xUSERADDRESS",
-            outcome: 1,
-            amount: "1"
-          }
-        });
+    test(`should return the expected value`, () => {
+      const actual = positionsPlusAsks.getOpenAskShares("0xUSERADDRESS", 1, {
+        "0xORDER1": {
+          owner: "0xUSERADDRESS",
+          outcome: 1,
+          amount: "1"
+        },
+        "0xORDER2": {
+          owner: "0xNOTUSERADDRESS",
+          outcome: 1,
+          amount: "1"
+        },
+        "0xORDER3": {
+          owner: "0xUSERADDRESS",
+          outcome: 2,
+          amount: "1"
+        },
+        "0xORDER4": {
+          owner: "0xUSERADDRESS",
+          outcome: 1,
+          amount: "1"
+        }
+      });
 
-        const expected = createBigNumber("2");
+      const expected = createBigNumber("2");
 
-        expect(actual).toEqual(expected);
-      }
+      expect(actual).toEqual(expected);
     });
   });
 });

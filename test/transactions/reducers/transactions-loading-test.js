@@ -3,32 +3,24 @@ import transactionsLoading from "modules/transactions/reducers/transactions-load
 import { UPDATE_TRANSACTIONS_LOADING } from "modules/transactions/actions/update-transactions-loading";
 
 describe("modules/transactions/reducers/transactions-loading", () => {
-  const test = t => test(t.description, () => t.assertions());
+  test(`should return the default state`, () => {
+    const actual = transactionsLoading(undefined, {});
 
-  test({
-    description: `should return the default state`,
-    assertions: () => {
-      const actual = transactionsLoading(undefined, {});
+    const expected = false;
 
-      const expected = false;
-
-      expect(actual).toBe(expected);
-    }
+    expect(actual).toBe(expected);
   });
 
-  test({
-    description: `should return the expected value for case UPDATE_TRANSACTIONS_LOADING`,
-    assertions: () => {
-      const actual = transactionsLoading(false, {
-        type: UPDATE_TRANSACTIONS_LOADING,
-        data: {
-          isLoading: true
-        }
-      });
+  test(`should return the expected value for case UPDATE_TRANSACTIONS_LOADING`, () => {
+    const actual = transactionsLoading(false, {
+      type: UPDATE_TRANSACTIONS_LOADING,
+      data: {
+        isLoading: true
+      }
+    });
 
-      const expected = true;
+    const expected = true;
 
-      expect(actual).toBe(expected);
-    }
+    expect(actual).toBe(expected);
   });
 });

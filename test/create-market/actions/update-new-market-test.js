@@ -22,88 +22,73 @@ describe("modules/create-market/actions/update-new-market.js", () => {
     });
   };
 
-  test({
-    description: `should dispatch the expected actions from 'invalidateMarketCreation'`,
-    assertions: () => {
-      const middlewares = [thunk];
-      const mockStore = configureMockStore(middlewares);
-      const store = mockStore();
+  test(`should dispatch the expected actions from 'invalidateMarketCreation'`, () => {
+    const middlewares = [thunk];
+    const mockStore = configureMockStore(middlewares);
+    const store = mockStore();
 
-      store.dispatch(invalidateMarketCreation("testing"));
+    store.dispatch(invalidateMarketCreation("testing"));
 
-      const actions = store.getActions();
+    const actions = store.getActions();
 
-      const expectedActions = [
-        {
-          type: UPDATE_NEW_MARKET,
-          data: {
-            isValid: false
-          }
-        }
-      ];
-
-      expect(actions).toEqual(expectedActions);
-    }
-  });
-
-  test({
-    description: `should return the expected object for 'addOrderToNewMarket'`,
-    assertions: () => {
-      const action = addOrderToNewMarket({ test: "test" });
-
-      const expected = {
-        type: ADD_ORDER_TO_NEW_MARKET,
-        data: {
-          test: "test"
-        }
-      };
-
-      expect(action).toEqual(expected);
-    }
-  });
-
-  test({
-    description: `should return the expected object for 'removeOrderFromNewMarket'`,
-    assertions: () => {
-      const action = removeOrderFromNewMarket({ test: "test" });
-
-      const expected = {
-        type: REMOVE_ORDER_FROM_NEW_MARKET,
-        data: {
-          test: "test"
-        }
-      };
-
-      expect(action).toEqual(expected);
-    }
-  });
-
-  test({
-    description: `should return the expected object for 'updateNewMarket'`,
-    assertions: () => {
-      const action = updateNewMarket({ test: "test" });
-
-      const expected = {
+    const expectedActions = [
+      {
         type: UPDATE_NEW_MARKET,
         data: {
-          test: "test"
+          isValid: false
         }
-      };
+      }
+    ];
 
-      expect(action).toEqual(expected);
-    }
+    expect(actions).toEqual(expectedActions);
   });
 
-  test({
-    description: `should return the expected object for 'clearNewMarket'`,
-    assertions: () => {
-      const action = clearNewMarket();
+  test(`should return the expected object for 'addOrderToNewMarket'`, () => {
+    const action = addOrderToNewMarket({ test: "test" });
 
-      const expected = {
-        type: CLEAR_NEW_MARKET
-      };
+    const expected = {
+      type: ADD_ORDER_TO_NEW_MARKET,
+      data: {
+        test: "test"
+      }
+    };
 
-      expect(action).toEqual(expected);
-    }
+    expect(action).toEqual(expected);
+  });
+
+  test(`should return the expected object for 'removeOrderFromNewMarket'`, () => {
+    const action = removeOrderFromNewMarket({ test: "test" });
+
+    const expected = {
+      type: REMOVE_ORDER_FROM_NEW_MARKET,
+      data: {
+        test: "test"
+      }
+    };
+
+    expect(action).toEqual(expected);
+  });
+
+  test(`should return the expected object for 'updateNewMarket'`, () => {
+    const action = updateNewMarket({ test: "test" });
+
+    const expected = {
+      type: UPDATE_NEW_MARKET,
+      data: {
+        test: "test"
+      }
+    };
+
+    expect(action).toEqual(expected);
+  });
+
+  test(`should return the expected object for 'clearNewMarket'`, () => {
+    const action = clearNewMarket();
+
+    const expected = {
+      type: CLEAR_NEW_MARKET
+    };
+
+    expect(action).toEqual(expected);
   });
 });

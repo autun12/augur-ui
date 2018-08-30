@@ -69,27 +69,24 @@ describe("modules/my-positions/actions/update-account-trades-data.js", () => {
   };
 
   describe("updateAccountPositionsData", () => {
-    test({
-      description: `should return the expected action`,
-      assertions: store => {
-        store.dispatch(
-          updateAccountPositionsData({ "0xMARKETID": {} }, "0xMARKETID")
-        );
+    test(`should return the expected action`, store => {
+      store.dispatch(
+        updateAccountPositionsData({ "0xMARKETID": {} }, "0xMARKETID")
+      );
 
-        const actual = store.getActions();
+      const actual = store.getActions();
 
-        const expected = [
-          {
-            type: UPDATE_ACCOUNT_POSITIONS_DATA,
-            data: {
-              "0xMARKETID": {}
-            },
-            marketId: "0xMARKETID"
-          }
-        ];
+      const expected = [
+        {
+          type: UPDATE_ACCOUNT_POSITIONS_DATA,
+          data: {
+            "0xMARKETID": {}
+          },
+          marketId: "0xMARKETID"
+        }
+      ];
 
-        expect(actual).toEqual(expected);
-      }
+      expect(actual).toEqual(expected);
     });
   });
 });

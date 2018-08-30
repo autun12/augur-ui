@@ -38,9 +38,9 @@ describe("modules/markets/actions/load-markets-info.js", () => {
       }
     }));
 
-    test({
-      description: `should dispatch the expected actions + call 'getMarketsInfo'`,
-      assertions: (store, done) => {
+    test(
+      `should dispatch the expected actions + call 'getMarketsInfo'`,
+      (store, done) => {
         const stubbedAugur = {
           markets: {
             getMarketsInfo: sinon.stub()
@@ -76,11 +76,11 @@ describe("modules/markets/actions/load-markets-info.js", () => {
 
         done();
       }
-    });
+    );
 
-    test({
-      description: `should dispatch the expected actions + call 'loadingError' due to error returned from 'getMarketsInfo'`,
-      assertions: (store, done) => {
+    test(
+      `should dispatch the expected actions + call 'loadingError' due to error returned from 'getMarketsInfo'`,
+      (store, done) => {
         const stubbedAugur = {
           markets: {
             getMarketsInfo: (marketIds, cb) => cb(true)
@@ -120,11 +120,11 @@ describe("modules/markets/actions/load-markets-info.js", () => {
 
         done();
       }
-    });
+    );
 
-    test({
-      description: `should dispatch the expected actions + call 'loadingError' due to null return value from 'getMarketsInfo'`,
-      assertions: (store, done) => {
+    test(
+      `should dispatch the expected actions + call 'loadingError' due to null return value from 'getMarketsInfo'`,
+      (store, done) => {
         const stubbedAugur = {
           markets: {
             getMarketsInfo: (marketIds, cb) => cb(null, [])
@@ -164,11 +164,11 @@ describe("modules/markets/actions/load-markets-info.js", () => {
 
         done();
       }
-    });
+    );
 
-    test({
-      description: `should dispatch the expected actions + call 'loadingError' due to malformed return value from 'getMarketsInfo'`,
-      assertions: (store, done) => {
+    test(
+      `should dispatch the expected actions + call 'loadingError' due to malformed return value from 'getMarketsInfo'`,
+      (store, done) => {
         const stubbedAugur = {
           markets: {
             getMarketsInfo: (marketIds, cb) => cb(null, [{ mal: "formed" }])
@@ -208,76 +208,73 @@ describe("modules/markets/actions/load-markets-info.js", () => {
 
         done();
       }
-    });
+    );
 
-    test({
-      description: `should dispatch the expected actions`,
-      assertions: (store, done) => {
-        const stubbedAugur = {
-          markets: {
-            getMarketsInfo: (marketIds, cb) =>
-              cb(
-                false,
-                marketIds.marketIds.reduce(
-                  (p, marketId) => [...p, { id: marketId, test: "value" }],
-                  []
-                )
+    test(`should dispatch the expected actions`, (store, done) => {
+      const stubbedAugur = {
+        markets: {
+          getMarketsInfo: (marketIds, cb) =>
+            cb(
+              false,
+              marketIds.marketIds.reduce(
+                (p, marketId) => [...p, { id: marketId, test: "value" }],
+                []
               )
+            )
+        }
+      };
+      __RewireAPI__.__Rewire__("augur", stubbedAugur);
+
+      store.dispatch(loadMarketsInfo(marketIds));
+
+      const actual = store.getActions();
+
+      const expected = [
+        {
+          type: UPDATE_MARKET_LOADING,
+          data: {
+            "0xMarket1": MARKET_INFO_LOADING
           }
-        };
-        __RewireAPI__.__Rewire__("augur", stubbedAugur);
-
-        store.dispatch(loadMarketsInfo(marketIds));
-
-        const actual = store.getActions();
-
-        const expected = [
-          {
-            type: UPDATE_MARKET_LOADING,
-            data: {
-              "0xMarket1": MARKET_INFO_LOADING
-            }
-          },
-          {
-            type: UPDATE_MARKET_LOADING,
-            data: {
-              "0xMarket2": MARKET_INFO_LOADING
-            }
-          },
-          {
-            type: UPDATE_MARKET_LOADING,
-            data: {
-              "0xMarket1": MARKET_INFO_LOADED
-            }
-          },
-          {
-            type: UPDATE_MARKET_LOADING,
-            data: {
-              "0xMarket2": MARKET_INFO_LOADED
-            }
-          },
-          {
-            type: UPDATE_MARKETS_DATA,
-            marketsData: {
-              "0xMarket1": {
-                id: "0xMarket1",
-                test: "value"
-              },
-              "0xMarket2": {
-                id: "0xMarket2",
-                test: "value"
-              }
+        },
+        {
+          type: UPDATE_MARKET_LOADING,
+          data: {
+            "0xMarket2": MARKET_INFO_LOADING
+          }
+        },
+        {
+          type: UPDATE_MARKET_LOADING,
+          data: {
+            "0xMarket1": MARKET_INFO_LOADED
+          }
+        },
+        {
+          type: UPDATE_MARKET_LOADING,
+          data: {
+            "0xMarket2": MARKET_INFO_LOADED
+          }
+        },
+        {
+          type: UPDATE_MARKETS_DATA,
+          marketsData: {
+            "0xMarket1": {
+              id: "0xMarket1",
+              test: "value"
+            },
+            "0xMarket2": {
+              id: "0xMarket2",
+              test: "value"
             }
           }
-        ];
+        }
+      ];
 
-        expect(actual).toEqual(expected);
+      expect(actual).toEqual(expected);
 
-        __RewireAPI__.__ResetDependency__("augur");
-        __RewireAPI__.__ResetDependency__("loadingError");
+      __RewireAPI__.__ResetDependency__("augur");
+      __RewireAPI__.__ResetDependency__("loadingError");
 
-        done();
-      }
+      done();
     });
   });
 
@@ -295,10 +292,9 @@ describe("modules/markets/actions/load-markets-info.js", () => {
 
     const loadingError = __RewireAPI__.__get__("loadingError");
 
-    test({
-      description:
-        "should remove the market from the loading state + call the callback with error parameter",
-      assertions: (store, done) => {
+    test(
+      "should remove the market from the loading state + call the callback with error parameter",
+      (store, done) => {
         let callbackReturnValue;
 
         const callback = err => {
@@ -329,6 +325,6 @@ describe("modules/markets/actions/load-markets-info.js", () => {
 
         done();
       }
-    });
+    );
   });
 });
