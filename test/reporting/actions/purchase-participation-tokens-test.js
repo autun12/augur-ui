@@ -8,7 +8,7 @@ import {
 } from "modules/reporting/actions/purchase-participation-tokens";
 
 describe("purchase participation tokens tests", () => {
-  const test = t => test(t.description, done => t.assertions(done));
+  const oldtest = t => test(t.description, done => t.assertions(done));
   const { store } = mockStore;
 
   const ACTIONS = {

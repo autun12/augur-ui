@@ -16,7 +16,7 @@ import {
 // import { NEW_MARKET_REVIEW } from 'modules/create-market/constants/new-market-creation-steps'
 
 describe("modules/create-market/actions/update-new-market.js", () => {
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       t.assertions();
     });

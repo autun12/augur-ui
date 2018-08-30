@@ -4,7 +4,7 @@ import {
 } from "modules/markets/actions/update-has-loaded-markets";
 
 describe("modules/markets/actions/update-has-loaded-markets.js", () => {
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       t.assertions(updateHasLoadedMarkets(t.hasLoadedMarkets));
     });

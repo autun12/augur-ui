@@ -9,7 +9,7 @@ import selectMigratedTotals, {
 } from "modules/reporting/selectors/select-migrated-totals";
 
 describe(`modules/reporting/selectors/select-migrated-totals.js`, () => {
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       t.assertions();
     });

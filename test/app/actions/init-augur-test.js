@@ -113,7 +113,7 @@ describe("modules/app/actions/init-augur.js", () => {
   });
 
   describe("initAugur", () => {
-    const test = t => test(t.description, done => t.assertions(done));
+    const oldtest = t => test(t.description, done => t.assertions(done));
 
     test("Should InitAugur successfully, with logged in account", done => {
       ReWireModule.__Rewire__("AugurJS", {
@@ -283,7 +283,7 @@ describe("modules/app/actions/init-augur.js", () => {
       expect(store.getActions()).toEqual(expected);
     });
     describe("connectAugur", () => {
-      const test = t => test(t.description, done => t.assertions(done));
+      const oldtest = t => test(t.description, done => t.assertions(done));
 
       test("Should connectAugur successfully as an initial connection, with logged in account", done => {
         ReWireModule.__Rewire__("AugurJS", {

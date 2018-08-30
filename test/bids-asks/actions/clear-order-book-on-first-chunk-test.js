@@ -3,7 +3,7 @@ import configureMockStore from "redux-mock-store";
 import clearOrderBookOnFirstChunk from "modules/bids-asks/actions/clear-order-book-on-first-chunk";
 
 describe(`modules/bids-asks/actions/clear-order-book-on-first-chunk.js`, () => {
-  const test = t =>
+  const oldtest = t =>
     test(t.description, () => {
       const store = configureMockStore([thunk])({ ...t.mock.state });
       store.dispatch(

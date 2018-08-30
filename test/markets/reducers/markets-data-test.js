@@ -3,7 +3,7 @@ import { UPDATE_MARKET_REP_BALANCE } from "src/modules/markets/actions/update-ma
 
 describe(`modules/markets/reducers/markets-data.js`, () => {
   describe("UPDATE_MARKET_CATEGORY", () => {
-    const test = t =>
+    const oldtest = t =>
       test(t.description, () => {
         t.assertions(reducer(t.marketsData, t.action));
       });

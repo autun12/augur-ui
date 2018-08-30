@@ -5,7 +5,7 @@ import { CLEAR_ACCOUNT_TRADES } from "modules/my-positions/actions/clear-account
 import { CLEAR_LOGIN_ACCOUNT } from "modules/auth/actions/update-login-account";
 
 describe("modules/my-positions/reducers/account-trades.js", () => {
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       t.assertions();
     });

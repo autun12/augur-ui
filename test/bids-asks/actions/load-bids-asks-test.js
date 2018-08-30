@@ -4,7 +4,7 @@ import configureMockStore from "redux-mock-store";
 const marketsData = { MARKET_0: { numOutcomes: 3 } };
 
 describe(`modules/bids-asks/actions/load-bids-asks.js`, () => {
-  const test = t =>
+  const oldtest = t =>
     test(t.description, done => {
       const store = configureMockStore([thunk])({ ...t.mock.state });
       const loadBidsAsks = jest.mock(

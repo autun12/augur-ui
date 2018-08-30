@@ -5,27 +5,13 @@ import {
 
 describe("modules/my-positions/actions/clear-close-position-outcome.js", () => {
   describe("clearClosePositionTradeGroup", () => {
-    const test = t => {
-      test(t.description, () => {
-        t.assertions(
-          clearClosePositionOutcome(t.arguments.marketId, t.arguments.outcomeId)
-        );
-      });
-    };
-
-    test({
-      description: "should return the expected object",
-      arguments: {
+    test("should return the expected object", () => {
+      const res = clearClosePositionOutcome("0xMarketId", "1");
+      expect(res).toEqual({
+        type: CLEAR_CLOSE_POSITION_OUTCOME,
         marketId: "0xMarketId",
         outcomeId: "1"
-      },
-      assertions: res => {
-        expect(res).toEqual({
-          type: CLEAR_CLOSE_POSITION_OUTCOME,
-          marketId: "0xMarketId",
-          outcomeId: "1"
-        });
-      }
+      });
     });
   });
 });

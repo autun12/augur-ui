@@ -7,8 +7,8 @@ import { ZERO } from "modules/trade/constants/numbers";
 import { isOrderOfUser } from "modules/bids-asks/helpers/is-order-of-user";
 
 import {
-  BIDS,
   ASKS,
+  BIDS,
   CANCELED
 } from "modules/order-book/constants/order-book-order-types";
 import { BUY, SELL } from "modules/trade/constants/types";
@@ -16,7 +16,7 @@ import { CLOSE_DIALOG_CLOSING } from "modules/market/constants/close-dialog-stat
 
 import { has } from "lodash";
 
-import { formatShares, formatEther } from "utils/format-number";
+import { formatEther, formatShares } from "utils/format-number";
 
 /**
  * @param {String} outcomeId
@@ -117,16 +117,13 @@ const selectAggregatePricePoints = memoize(
       }))
       .reduce(reduceSharesCountByPrice, {});
 
-    return Object.keys(shareCountPerPrice).map(price => {
-      const obj = {
-        isOfCurrentUser: shareCountPerPrice[price].isOfCurrentUser,
-        shares: formatShares(shareCountPerPrice[price].shares),
-        price: formatEther(price),
-        sharesEscrowed: formatShares(shareCountPerPrice[price].sharesEscrowed),
-        tokensEscrowed: formatEther(shareCountPerPrice[price].tokensEscrowed)
-      };
-      return obj;
-    });
+    return Object.keys(shareCountPerPrice).map(price => ({
+      isOfCurrentUser: shareCountPerPrice[price].isOfCurrentUser,
+      shares: formatShares(shareCountPerPrice[price].shares),
+      price: formatEther(price),
+      sharesEscrowed: formatShares(shareCountPerPrice[price].sharesEscrowed),
+      tokensEscrowed: formatEther(shareCountPerPrice[price].tokensEscrowed)
+    }));
   },
   { max: 100 }
 );

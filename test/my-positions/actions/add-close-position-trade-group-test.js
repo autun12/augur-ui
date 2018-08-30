@@ -5,7 +5,7 @@ import {
 
 describe("modules/my-positions/actions/add-close-position-trade-group.js", () => {
   describe("addClosePositionTradeGroup", () => {
-    const test = t => {
+    const oldtest = t => {
       test(t.description, () => {
         t.assertions(
           addClosePositionTradeGroup(

@@ -15,7 +15,7 @@ import { SUCCESS, FAILED } from "modules/transactions/constants/statuses";
 
 describe("modules/my-positions/selectors/close-position-status", () => {
   // eslint-disable-line func-names, prefer-arrow-callback
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       const delayClearTradeGroupIds = sinon.stub();
       ReWireModule.__Rewire__(

@@ -6,7 +6,7 @@ import {
 
 describe("app/actions/re-init-augur", () => {
   const mockHistory = { push: arg => assert.deepEqual(arg, "/categories") };
-  const test = t =>
+  const oldtest = t =>
     test(t.description, done => {
       let connectAugurCallCount = 0;
       const store = mockStore.mockStore(t.state);

@@ -60,7 +60,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
       mockPlaceTrade.placeTrade.restore();
     });
 
-    const test = t =>
+    const oldtest = t =>
       test(t.description, () => {
         const store = mockStore(t.state || {});
         sinon
@@ -240,7 +240,7 @@ describe("modules/my-positions/actions/close-position.js", () => {
   });
 
   describe("getBestFill", () => {
-    const test = t =>
+    const oldtest = t =>
       test(t.description, () => {
         const bestFill = action.getBestFill(
           t.state.orderBook,

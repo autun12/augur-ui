@@ -4,7 +4,7 @@ import thunk from "redux-thunk";
 
 describe(`modules/auth/actions/update-login-account.js`, () => {
   const mockStore = configureMockStore([thunk]);
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       const store = mockStore(t.state);
       const UpdateFromAddress = { updateFromAddress: () => {} };

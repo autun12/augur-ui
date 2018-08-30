@@ -7,7 +7,7 @@ import { getPayoutNumerators } from "modules/reporting/selectors/get-payout-nume
 import { createBigNumber } from "utils/create-big-number";
 
 describe(`modules/reporting/actions/get-payout-numerators.js`, () => {
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       t.assertions();
     });

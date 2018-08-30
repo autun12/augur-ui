@@ -4,7 +4,7 @@ import sinon from "sinon";
 import { SCALAR } from "../../../src/modules/markets/constants/market-types";
 
 describe(`modules/my-positions/selectors/winning-positions.js`, () => {
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       const Speedomatic = { bignum: () => {} };
       const SelectLoginAccountPositions = () =>

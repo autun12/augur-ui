@@ -23,7 +23,7 @@ describe("modules/markets/actions/load-markets-info.js", () => {
 
   const marketIds = ["0xMarket1", "0xMarket2"];
 
-  const test = t =>
+  const oldtest = t =>
     test(t.description, done => {
       const store = mockStore();
 

@@ -11,6 +11,6 @@ describe("modules/modal/actions/update-modal", () => {
       }
     };
 
-    assert(actual, expected, `didn't return the expected object`);
+    expect(actual).toEqual(expected);
   });
 });

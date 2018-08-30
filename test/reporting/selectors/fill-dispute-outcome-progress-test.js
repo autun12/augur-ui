@@ -3,7 +3,7 @@ import fillDisputeOutcomeProgess, {
 } from "modules/reporting/selectors/fill-dispute-outcome-progress";
 
 describe(`modules/reporting/selectors/fill-dispute-outcome-progress.js`, () => {
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       t.assertions();
     });

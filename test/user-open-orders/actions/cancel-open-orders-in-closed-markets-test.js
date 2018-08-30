@@ -4,7 +4,7 @@ import thunk from "redux-thunk";
 
 describe(`modules/user-open-orders/actions/cancel-open-orders-in-closed-markets.js`, () => {
   const mockStore = configureMockStore([thunk]);
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       const store = mockStore(t.state);
       const CancelOrder = { cancelOrder: () => {} };

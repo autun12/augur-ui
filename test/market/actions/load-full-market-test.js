@@ -23,7 +23,7 @@ describe("modules/market/actions/load-full-market.js", () => {
     LOAD_PRICE_HISTORY: "LOAD_PRICE_HISTORY"
   };
 
-  const test = t =>
+  const oldtest = t =>
     test(t.description, done => {
       const store = mockStore(t.state || {});
 

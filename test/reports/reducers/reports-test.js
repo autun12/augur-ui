@@ -63,7 +63,7 @@ describe(`modules/reports/reducers/reports.js`, () => {
   });
 
   describe("UPDATE_REPORT", () => {
-    const test = t =>
+    const oldtest = t =>
       test(t.description, () =>
         t.assertions(
           reducer(t.state.reports, {

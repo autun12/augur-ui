@@ -5,7 +5,7 @@ import * as closePositionTradeGroups from "modules/my-positions/reducers/close-p
 
 describe("modules/my-positions/reducers/close-position-trade-groups.js", () => {
   describe("closePositionTradeGroups", () => {
-    const test = t => {
+    const oldtest = t => {
       test(t.description, () => {
         if (t.defaultState) {
           t.assertions(closePositionTradeGroups.default(undefined, t.action));

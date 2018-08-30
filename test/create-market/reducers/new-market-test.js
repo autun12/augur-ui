@@ -11,7 +11,7 @@ import {
 import { createBigNumber } from "utils/create-big-number";
 
 describe("modules/create-market/reducers/new-market.js", () => {
-  const test = t => {
+  const oldtest = t => {
     test(t.describe, () => {
       t.assertions();
     });

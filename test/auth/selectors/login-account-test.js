@@ -8,8 +8,6 @@ import loginAccount, {
 import { formatRep, formatEther } from "utils/format-number";
 
 describe(`modules/auth/selectors/login-account.js`, () => {
-  const test = t => test(t.description, done => t.assertions(done));
-
   describe("default", () => {
     test(`should call 'selectLoginAccount'`, done => {
       const stubbedSelectLoginAccount = sinon.stub();

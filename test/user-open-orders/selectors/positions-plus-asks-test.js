@@ -8,7 +8,7 @@ describe("modules/user-open-orders/selectors/positions-plus-asks", () => {
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
 
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       const store = mockStore(t.state || {});
       t.assertions(store);

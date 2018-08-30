@@ -15,7 +15,7 @@ describe("modules/app/actions/verify-matching-network-ids.js", () => {
     __RewireAPI__.__ResetDependency__("getMetaMaskNetworkId");
     __RewireAPI__.__ResetDependency__("augur");
   });
-  const test = t =>
+  const oldtest = t =>
     test(t.description, done => {
       __RewireAPI__.__Rewire__("isGlobalWeb3", t.stub.isGlobalWeb3);
       __RewireAPI__.__Rewire__(

@@ -9,7 +9,7 @@ import selectDisputeOutcomes, {
 } from "modules/reporting/selectors/select-dispute-outcomes";
 
 describe(`modules/reporting/selectors/select-dispute-outcomes.js`, () => {
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       t.assertions();
     });

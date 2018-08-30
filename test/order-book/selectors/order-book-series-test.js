@@ -8,7 +8,7 @@ import {
 import { formatEther, formatShares } from "utils/format-number";
 
 describe("modules/order-book/selectors/order-book-series", () => {
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       t.assertions();
     });

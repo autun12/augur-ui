@@ -1,7 +1,7 @@
 import { selectCategories } from "modules/categories/selectors/categories";
 
 describe(`modules/categories/selectors/categories.js`, () => {
-  const test = t =>
+  const oldtest = t =>
     test(t.description, () =>
       t.assertions(selectCategories({ categories: t.categories }))
     );

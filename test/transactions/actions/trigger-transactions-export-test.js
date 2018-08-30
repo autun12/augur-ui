@@ -6,7 +6,7 @@ describe(`modules/transactions/actions/trigger-transactions-export.js`, () => {
   const mockStore = configureMockStore(middlewares);
   const doc = global.document;
 
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       const store = mockStore(t.state);
       const action = jest.mock(

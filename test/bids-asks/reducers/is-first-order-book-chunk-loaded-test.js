@@ -2,7 +2,7 @@ import { UPDATE_IS_FIRST_ORDER_BOOK_CHUNK_LOADED } from "modules/bids-asks/actio
 import reducer from "modules/bids-asks/reducers/is-first-order-book-chunk-loaded";
 
 describe(`modules/bids-asks/reducers/is-first-order-book-chunk-loaded.js`, () => {
-  const test = t =>
+  const oldtest = t =>
     test(t.description, () =>
       t.assertions(reducer(t.params.isFirstOrderBookLoaded, t.params.action))
     );

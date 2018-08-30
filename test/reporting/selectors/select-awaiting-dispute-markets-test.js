@@ -5,8 +5,6 @@ import marketsAwaitingDispute, {
 } from "modules/reporting/selectors/select-awaiting-dispute-markets";
 
 describe(`modules/reports/selectors/select-awaiting-dispute-markets.js`, () => {
-  const test = t => test(t.description, done => t.assertions(done));
-
   describe("default method", () => {
     test("should call `selectMarketsAwaitingDispute` from the default function", done => {
       const stubbedSelectMarketsAwaitingDispute = sinon.stub();

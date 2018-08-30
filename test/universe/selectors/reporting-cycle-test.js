@@ -1,5 +1,5 @@
 describe(`modules/universe/selectors/reporting-cycle.js`, () => {
-  const test = t =>
+  const oldtest = t =>
     test(t.description, () => {
       const AugurJS = {
         augur: t.stub.augur

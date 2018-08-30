@@ -60,7 +60,7 @@ describe("modules/my-positions/actions/update-account-trades-data.js", () => {
       data: { ...market }
     }));
 
-  const test = t => {
+  const oldtest = t => {
     test(t.description, () => {
       const store = mockStore(t.state || {});
 

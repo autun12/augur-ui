@@ -19,7 +19,7 @@ describe("events/actions/listen-to-updates", () => {
       NODES_AUGUR_ON_SET: { type: "NODES_AUGUR_ON_SET" },
       NODES_ETHEREUM_ON_SET: { type: "NODES_ETHEREUM_ON_SET" }
     };
-    const test = t =>
+    const oldtest = t =>
       test(t.description, () => {
         const store = mockStore.mockStore({});
         RewireListenToUpdates.__Rewire__("augur", {
@@ -79,7 +79,7 @@ describe("events/actions/listen-to-updates", () => {
       ]));
   });
   describe("MarketState", () => {
-    const test = t =>
+    const oldtest = t =>
       test(t.description, () => {
         const store = mockStore.mockStore(t.state);
         RewireLogHandlers.__Rewire__("loadMarketsInfo", marketIds => ({
@@ -117,7 +117,7 @@ describe("events/actions/listen-to-updates", () => {
     });
   });
   describe("InitialReportSubmitted", () => {
-    const test = t =>
+    const oldtest = t =>
       test(t.description, () => {
         const store = mockStore.mockStore(t.state);
         RewireLogHandlers.__Rewire__("loadMarketsInfo", marketIds => ({

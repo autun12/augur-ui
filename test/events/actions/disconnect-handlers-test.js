@@ -9,7 +9,7 @@ import { __RewireAPI__ as RewireReInitAugur } from "modules/app/actions/re-init-
 describe("events/actions/disconnect-handlers", () => {
   const mockHistory = { push: arg => assert.deepEqual(arg, "/categories") };
   describe("handleAugurNodeDisconnect", () => {
-    const test = t =>
+    const oldtest = t =>
       test(t.description, done => {
         const store = mockStore.mockStore(t.state);
         RewireReInitAugur.__Rewire__(
@@ -104,7 +104,7 @@ describe("events/actions/disconnect-handlers", () => {
     });
   });
   describe("handleEthereumDisconnect", () => {
-    const test = t =>
+    const oldtest = t =>
       test(t.description, done => {
         const store = mockStore.mockStore(t.state);
         RewireDisconnectHandlers.__Rewire__(

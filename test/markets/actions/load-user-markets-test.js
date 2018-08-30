@@ -8,7 +8,7 @@ describe("modules/markets/actions/load-user-markets.js", () => {
     "bug-bounty": false
   };
 
-  const test = t =>
+  const oldtest = t =>
     test(t.description, () => {
       const state = { ...t.state, env: mockEnv };
       const store = mockStore(state);

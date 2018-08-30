@@ -8,6 +8,6 @@ describe("modules/modal/actions/close-modal", () => {
       type: CLOSE_MODAL
     };
 
-    assert(actual, expected, `didn't return the expected object`);
+    expect(actual).toEqual(expected);
   });
 });

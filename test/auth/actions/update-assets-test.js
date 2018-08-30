@@ -19,7 +19,7 @@ describe("modules/auth/actions/update-assets.js", () => {
     "updateLoginAccount",
     stubbedUpdateLoginAccount
   );
-  const test = t =>
+  const oldtest = t =>
     test(t.description, done => {
       const store = mockStore(t.state || {});
       t.assertions(store, done);

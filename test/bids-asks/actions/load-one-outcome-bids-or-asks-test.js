@@ -7,7 +7,7 @@ const marketsData = { MARKET_0: { minPrice: "0", maxPrice: "1" } };
 const constants = { ORDER_STATE: { OPEN: "OPEN" } };
 
 describe(`modules/bids-asks/actions/load-one-outcome-bids-or-asks.js`, () => {
-  const test = t =>
+  const oldtest = t =>
     test(t.description, done => {
       const store = configureMockStore([thunk])({ ...t.mock.state });
       const loadOneOutcomeBidsOrAsks = jest.mock(

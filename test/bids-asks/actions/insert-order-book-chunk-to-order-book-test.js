@@ -2,7 +2,7 @@ import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 
 describe(`modules/bids-asks/actions/insert-order-book-chunk-to-order-book.js`, () => {
-  const test = t =>
+  const oldtest = t =>
     test(t.description, () => {
       const store = configureMockStore([thunk])({});
       const insertOrderBookChunkToOrderBook = jest.mock(

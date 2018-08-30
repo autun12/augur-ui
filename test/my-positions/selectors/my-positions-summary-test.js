@@ -4,16 +4,10 @@ import {
   generatePositionsSummary
 } from "modules/my-positions/selectors/my-positions-summary";
 
-import { formatEther, formatShares, formatNumber } from "utils/fo1rmat-number";
+import { formatEther, formatShares, formatNumber } from "utils/format-number";
 
 describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
   describe("generateOutcomePositionSummary", () => {
-    const test = t => {
-      test(t.description, () => {
-        t.assertions();
-      });
-    };
-
     test(`should return the expected value when adjusted positions are undefined`, () => {
       const actual = generateOutcomePositionSummary(undefined);
 
@@ -98,7 +92,7 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
   });
 
   describe("generateMarketsPositionsSummary", () => {
-    const test = t => {
+    const oldtest = t => {
       test(t.description, () => {
         t.assertions();
       });
@@ -238,7 +232,7 @@ describe(`modules/my-positions/selectors/my-positions-summary.js`, () => {
   });
 
   describe("generatePositionsSummary", () => {
-    const test = t => {
+    const oldtest = t => {
       test(t.description, () => {
         t.assertions();
       });

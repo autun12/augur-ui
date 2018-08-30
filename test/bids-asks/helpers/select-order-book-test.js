@@ -16,7 +16,7 @@ import { CLOSE_DIALOG_CLOSING } from "modules/market/constants/close-dialog-stat
 
 describe("modules/bids-asks/helpers/select-order-book.js", () => {
   const mockStore = configureMockStore([thunk]);
-  const test = t =>
+  const oldtest = t =>
     test(t.description, done => {
       const store = mockStore(t.state || {});
       selectOrderBookRewireAPI.__Rewire__("store", store);

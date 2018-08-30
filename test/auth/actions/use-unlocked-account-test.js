@@ -6,7 +6,7 @@ const MOCK_ERROR = { error: 42, message: "fail!" };
 
 describe(`modules/auth/actions/use-unlocked-account.js`, () => {
   const mockStore = configureMockStore([thunk]);
-  const test = t =>
+  const oldtest = t =>
     test(t.description, done => {
       const store = mockStore(t.state);
       const AugurJS = {
