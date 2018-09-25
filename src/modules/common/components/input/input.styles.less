@@ -1,7 +1,7 @@
 @import (reference) '~assets/styles/shared';
 
 .Input {
-  .border(true, @border-all, @color-transparent, @border-width-2);
+  .border(true, @border-all, @color-transparent, @border-width-0);
 
   background-color: @color-input-background;
   display: flex;
@@ -20,10 +20,10 @@
   }
 
   input:focus {
-    .border(true, @border-all, @color-transparent, @border-width-2);
+    //.border(true, @border-all, @color-transparent, @border-width-0);
   }
 
-  &:focus-within {
+  &:focus-within > input:focus {
     .border(true, @border-all, @color-input-border, @border-width-2);
   }
 
@@ -67,7 +67,7 @@
 }
 
 .Input__Incremental {
-  .border(true, @border-all, @color-transparent, @border-width-2);
+  .border(true, @border-all, @color-transparent, @border-width-0);
 
   background-color: @color-input-background;
   display: flex;
@@ -95,10 +95,10 @@
   }
 
   input:focus {
-    .border(true, @border-all, @color-transparent, @border-width-2);
+  // .border(true, @border-all, @color-transparent, @border-width-2);
   }
 
-  &:focus-within {
+  &:focus-within > input:focus {
     .border(true, @border-all, @color-input-border, @border-width-2);
   }
 
