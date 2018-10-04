@@ -9,7 +9,7 @@ describe(`modules/auth/actions/use-unlocked-account.js`, () => {
   proxyquire.noPreserveCache();
   const mockStore = configureMockStore([thunk]);
   const test = t =>
-    it(t.description, done => {
+    test(t.description, done => {
       const store = mockStore(t.state);
       const AugurJS = {
         augur: {

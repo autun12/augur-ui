@@ -47,7 +47,7 @@ describe(`modules/auth/actions/load-account-history.js`, () => {
     __RewireAPI__.__ResetDependency__("loadReportingHistory");
   });
 
-  it("get actions for running through", () => {
+  test("get actions for running through", () => {
     store.dispatch(loadAccountHistory(123456, 234567));
     const actual = store.getActions();
     const expected = [
@@ -75,6 +75,6 @@ describe(`modules/auth/actions/load-account-history.js`, () => {
       }
     ];
 
-    assert.deepEqual(actual, expected, `Dispatched unexpected actions.`);
+    expect(actual).toEqual(expected);
   });
 });

@@ -6,8 +6,14 @@ import {
 } from "modules/notifications/actions/notifications";
 import { selectCurrentTimestampInSeconds } from "src/select-state";
 import { ETH, REP } from "modules/account/constants/asset-types";
+import logError from "src/utils/log-error";
 
-export function transferFunds(amount, currency, toAddress) {
+export function transferFunds(
+  amount,
+  currency,
+  toAddress,
+  callback = logError
+) {
   return (dispatch, getState) => {
     const { universe, loginAccount } = getState();
     const fromAddress = loginAccount.address;
@@ -100,7 +106,7 @@ export function transferFunds(amount, currency, toAddress) {
           }
         });
       default:
-        console.error("transferFunds: unknown currency", currency);
+        callback(`transferFunds: unknown currency ${currency}`);
     }
   };
 }
