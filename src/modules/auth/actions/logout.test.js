@@ -1,20 +1,21 @@
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import testState from "test/testState";
-import { augur } from "services/augurjs";
-
-jest.mock("services/augurjs");
-
 import { logout } from "modules/auth/actions/logout";
+import { augur } from "services/augurjs";
 
 describe(`modules/auth/actions/logout.js`, () => {
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
-  const fakeAugurJS = { augur: { rpc: {} } };
-  const store = mockStore(testState);
-  fakeAugurJS.augur.rpc.clear = () => {};
+
+  beforeEach(() => {
+    jest.spyOn(augur.rpc, "clear").mockImplementation(() => {});
+  });
 
   test(`should logout of the logged in account`, () => {
+    const store = mockStore(testState);
+    augur.rpc.clear = jest.fn();
+
     const expectedOutput = [
       {
         type: "CLEAR_TRANSACTION_DATA"

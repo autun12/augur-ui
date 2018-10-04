@@ -3,7 +3,7 @@ import { clearLoginAccount } from "modules/auth/actions/update-login-account";
 import { clearOrphanedOrderData } from "modules/orders/actions/orphaned-orders";
 
 export function logout() {
-  return (dispatch, getState) => {
+  return dispatch => {
     const localStorageRef =
       typeof window !== "undefined" && window.localStorage;
     augur.rpc.clear();

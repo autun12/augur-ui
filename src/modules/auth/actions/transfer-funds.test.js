@@ -1,28 +1,17 @@
-import sinon from "sinon";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 
-import {
-  transferFunds,
-  __RewireAPI__ as transferFundsReqireAPI
-} from "modules/auth/actions/transfer-funds";
-
+import { transferFunds } from "modules/auth/actions/transfer-funds";
 import { ETH, REP } from "modules/account/constants/asset-types";
+
+import { augur } from "services/augurjs";
+
+jest.mock("services/augurjs");
 
 describe("modules/auth/actions/transfer-funds.js", () => {
   let mockStore;
   beforeEach(() => {
     mockStore = configureMockStore([thunk]);
-  });
-
-  afterEach(() => {
-    transferFundsReqireAPI.__ResetDependency__("augur");
-    transferFundsReqireAPI.__ResetDependency__("updateAssets");
-    transferFundsReqireAPI.__ResetDependency__("addNotification");
-    transferFundsReqireAPI.__ResetDependency__("updateNotifications");
-    transferFundsReqireAPI.__ResetDependency__(
-      "selectCurrentTimestampInSeconds"
-    );
   });
 
   test(`should return the expected console error from the default switch`, () => {
@@ -44,19 +33,11 @@ describe("modules/auth/actions/transfer-funds.js", () => {
         address: "0xtest"
       }
     };
+
     const store = mockStore(state || {});
 
-    const sendEther = sinon.stub();
-
-    transferFundsReqireAPI.__Rewire__("augur", {
-      assets: {
-        sendEther
-      }
-    });
-
     store.dispatch(transferFunds(10, ETH, "0xtest2"));
-
-    assert(sendEther.calledOnce, `didn't call 'Cash.send' once as expected`);
+    expect(augur.assets.sendEther).toHaveBeenCalled();
   });
 
   test(`should call the 'REP' method of augur when currency is REP`, () => {
